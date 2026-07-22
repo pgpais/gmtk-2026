@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://da8sgbng7wcgu"]
 
+[ext_resource type="PackedScene" uid="uid://di6quukxkulqn" path="res://map/grid_map.tscn" id="1_ig7tw"]
+
 [node name="main" type="Node2D" unique_id=1936105572]
 
-[node name="GridMap" type="Node2D" parent="." unique_id=491411527]
+[node name="GridMap" parent="." unique_id=1574253330 instance=ExtResource("1_ig7tw")]
