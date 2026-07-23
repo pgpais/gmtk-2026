@@ -20,3 +20,4 @@ func trigger():
 	
 	if not is_attacking: # if it attacked someone, stop doing actions. else, move
 		move(1, 0)
+		perform_movement()
