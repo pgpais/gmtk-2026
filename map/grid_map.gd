@@ -14,8 +14,6 @@ extends Node2D
 		tile_size_multiplier = value
 		_setup_map()
 
-@export var
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_setup_map()
