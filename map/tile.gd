@@ -30,15 +30,15 @@ func _ready():
     mouse_exited.connect(_on_mouse_exited)
 
 func _on_mouse_entered():
-    var tween = create_tween()
-    tween.tween_method(_set_modulate, sprite.modulate, Color(1, 1, 1, 0.5), 0.1)
+	var tween = create_tween()
+	tween.tween_method(_set_modulate, sprite.modulate, Color(1, 1, 1, 0.5), 0.1)
 
 func _on_mouse_exited():
-    var tween = create_tween()
-    tween.tween_method(_set_modulate, sprite.modulate, Color(1, 1, 1, 1), 0.1)
+	var tween = create_tween()
+	tween.tween_method(_set_modulate, sprite.modulate, Color(1, 1, 1, 1), 0.1)
 
 func _set_modulate(color: Color):
-    sprite.modulate = color
+	sprite.modulate = color
 
 func _highlight_tile() -> void:
     var tween = create_tween()
