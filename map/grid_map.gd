@@ -1,4 +1,5 @@
 @tool
+class_name LayerGridMap
 extends Node2D
 
 ## Maximum number of tiles the map can have

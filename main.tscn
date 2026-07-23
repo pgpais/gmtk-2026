@@ -1,7 +1,211 @@
 [gd_scene format=3 uid="uid://da8sgbng7wcgu"]
 
-[ext_resource type="PackedScene" uid="uid://di6quukxkulqn" path="res://map/grid_map.tscn" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://dojshow4it3ya" path="res://map/grid_map.gd" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://dtdg6wi6v4o0a" path="res://map/layer.gd" id="2_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://bmifyrtst83yc" path="res://map/tile.tscn" id="3_lquwl"]
+[ext_resource type="Script" uid="uid://d1vsxetgx8k52" path="res://map/tile.gd" id="4_7mycd"]
 
 [node name="main" type="Node2D" unique_id=1936105572]
 
-[node name="GridMap" parent="." unique_id=1574253330 instance=ExtResource("1_ig7tw")]
+[node name="LayerGridMap" type="Node2D" parent="." unique_id=1932554677]
+script = ExtResource("1_ig7tw")
+layers = Array[int]([8, 8, 4, 2, 1, 1])
+metadata/_custom_type_script = "uid://dojshow4it3ya"
+
+[node name="Layer" type="Node2D" parent="LayerGridMap" unique_id=794099245]
+position = Vector2(32, 0)
+script = ExtResource("2_1bvp3")
+number_of_tiles = 8
+tile_size_multiplier = 1
+
+[node name="Tile9" type="Area2D" parent="LayerGridMap/Layer" unique_id=813079352 instance=ExtResource("3_lquwl")]
+position = Vector2(0, 32)
+script = ExtResource("4_7mycd")
+tile_size_multiplier = 1
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
+
+[node name="Tile10" type="Area2D" parent="LayerGridMap/Layer" unique_id=1510838028 instance=ExtResource("3_lquwl")]
+position = Vector2(0, 96)
+script = ExtResource("4_7mycd")
+tile_index = 1
+tile_size_multiplier = 1
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
+
+[node name="Tile11" type="Area2D" parent="LayerGridMap/Layer" unique_id=1789110600 instance=ExtResource("3_lquwl")]
+position = Vector2(0, 160)
+script = ExtResource("4_7mycd")
+tile_index = 2
+tile_size_multiplier = 1
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
+
+[node name="Tile12" type="Area2D" parent="LayerGridMap/Layer" unique_id=2135098610 instance=ExtResource("3_lquwl")]
+position = Vector2(0, 224)
+script = ExtResource("4_7mycd")
+tile_index = 3
+tile_size_multiplier = 1
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
+
+[node name="Tile13" type="Area2D" parent="LayerGridMap/Layer" unique_id=2081878392 instance=ExtResource("3_lquwl")]
+position = Vector2(0, 288)
+script = ExtResource("4_7mycd")
+tile_index = 4
+tile_size_multiplier = 1
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
+
+[node name="Tile14" type="Area2D" parent="LayerGridMap/Layer" unique_id=1460432222 instance=ExtResource("3_lquwl")]
+position = Vector2(0, 352)
+script = ExtResource("4_7mycd")
+tile_index = 5
+tile_size_multiplier = 1
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
+
+[node name="Tile15" type="Area2D" parent="LayerGridMap/Layer" unique_id=2126632334 instance=ExtResource("3_lquwl")]
+position = Vector2(0, 416)
+script = ExtResource("4_7mycd")
+tile_index = 6
+tile_size_multiplier = 1
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
+
+[node name="Tile16" type="Area2D" parent="LayerGridMap/Layer" unique_id=248006537 instance=ExtResource("3_lquwl")]
+position = Vector2(0, 480)
+script = ExtResource("4_7mycd")
+tile_index = 7
+tile_size_multiplier = 1
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
+
+[node name="Layer4" type="Node2D" parent="LayerGridMap" unique_id=1504729255]
+position = Vector2(96, 0)
+script = ExtResource("2_1bvp3")
+number_of_tiles = 8
+tile_size_multiplier = 1
+
+[node name="Tile9" type="Area2D" parent="LayerGridMap/Layer4" unique_id=157483017 instance=ExtResource("3_lquwl")]
+position = Vector2(0, 32)
+script = ExtResource("4_7mycd")
+tile_size_multiplier = 1
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
+
+[node name="Tile10" type="Area2D" parent="LayerGridMap/Layer4" unique_id=36596839 instance=ExtResource("3_lquwl")]
+position = Vector2(0, 96)
+script = ExtResource("4_7mycd")
+tile_index = 1
+tile_size_multiplier = 1
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
+
+[node name="Tile11" type="Area2D" parent="LayerGridMap/Layer4" unique_id=1791856660 instance=ExtResource("3_lquwl")]
+position = Vector2(0, 160)
+script = ExtResource("4_7mycd")
+tile_index = 2
+tile_size_multiplier = 1
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
+
+[node name="Tile12" type="Area2D" parent="LayerGridMap/Layer4" unique_id=1011992094 instance=ExtResource("3_lquwl")]
+position = Vector2(0, 224)
+script = ExtResource("4_7mycd")
+tile_index = 3
+tile_size_multiplier = 1
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
+
+[node name="Tile13" type="Area2D" parent="LayerGridMap/Layer4" unique_id=2050178827 instance=ExtResource("3_lquwl")]
+position = Vector2(0, 288)
+script = ExtResource("4_7mycd")
+tile_index = 4
+tile_size_multiplier = 1
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
+
+[node name="Tile14" type="Area2D" parent="LayerGridMap/Layer4" unique_id=957200335 instance=ExtResource("3_lquwl")]
+position = Vector2(0, 352)
+script = ExtResource("4_7mycd")
+tile_index = 5
+tile_size_multiplier = 1
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
+
+[node name="Tile15" type="Area2D" parent="LayerGridMap/Layer4" unique_id=1676913510 instance=ExtResource("3_lquwl")]
+position = Vector2(0, 416)
+script = ExtResource("4_7mycd")
+tile_index = 6
+tile_size_multiplier = 1
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
+
+[node name="Tile16" type="Area2D" parent="LayerGridMap/Layer4" unique_id=103693335 instance=ExtResource("3_lquwl")]
+position = Vector2(0, 480)
+script = ExtResource("4_7mycd")
+tile_index = 7
+tile_size_multiplier = 1
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
+
+[node name="Layer5" type="Node2D" parent="LayerGridMap" unique_id=341840281]
+position = Vector2(160, 0)
+script = ExtResource("2_1bvp3")
+number_of_tiles = 4
+tile_size_multiplier = 2
+
+[node name="Tile5" type="Area2D" parent="LayerGridMap/Layer5" unique_id=715812766 instance=ExtResource("3_lquwl")]
+position = Vector2(0, 64)
+script = ExtResource("4_7mycd")
+tile_size_multiplier = 2
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
+
+[node name="Tile6" type="Area2D" parent="LayerGridMap/Layer5" unique_id=1129992974 instance=ExtResource("3_lquwl")]
+position = Vector2(0, 192)
+script = ExtResource("4_7mycd")
+tile_index = 1
+tile_size_multiplier = 2
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
+
+[node name="Tile7" type="Area2D" parent="LayerGridMap/Layer5" unique_id=1760220445 instance=ExtResource("3_lquwl")]
+position = Vector2(0, 320)
+script = ExtResource("4_7mycd")
+tile_index = 2
+tile_size_multiplier = 2
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
+
+[node name="Tile8" type="Area2D" parent="LayerGridMap/Layer5" unique_id=1743949748 instance=ExtResource("3_lquwl")]
+position = Vector2(0, 448)
+script = ExtResource("4_7mycd")
+tile_index = 3
+tile_size_multiplier = 2
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
+
+[node name="Layer8" type="Node2D" parent="LayerGridMap" unique_id=361836062]
+position = Vector2(224, 0)
+script = ExtResource("2_1bvp3")
+number_of_tiles = 2
+tile_size_multiplier = 4
+
+[node name="Tile3" type="Area2D" parent="LayerGridMap/Layer8" unique_id=2068235883 instance=ExtResource("3_lquwl")]
+position = Vector2(0, 128)
+script = ExtResource("4_7mycd")
+tile_size_multiplier = 4
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
+
+[node name="Tile4" type="Area2D" parent="LayerGridMap/Layer8" unique_id=35129629 instance=ExtResource("3_lquwl")]
+position = Vector2(0, 384)
+script = ExtResource("4_7mycd")
+tile_index = 1
+tile_size_multiplier = 4
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
+
+[node name="Layer10" type="Node2D" parent="LayerGridMap" unique_id=125999832]
+position = Vector2(288, 0)
+script = ExtResource("2_1bvp3")
+number_of_tiles = 1
+tile_size_multiplier = 8
+
+[node name="Tile2" type="Area2D" parent="LayerGridMap/Layer10" unique_id=1404528872 instance=ExtResource("3_lquwl")]
+position = Vector2(0, 256)
+script = ExtResource("4_7mycd")
+tile_size_multiplier = 8
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
+
+[node name="Layer12" type="Node2D" parent="LayerGridMap" unique_id=1254319061]
+position = Vector2(352, 0)
+script = ExtResource("2_1bvp3")
+number_of_tiles = 1
+tile_size_multiplier = 8
+
+[node name="Tile2" type="Area2D" parent="LayerGridMap/Layer12" unique_id=1091121609 instance=ExtResource("3_lquwl")]
+position = Vector2(0, 256)
+script = ExtResource("4_7mycd")
+tile_size_multiplier = 8
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
