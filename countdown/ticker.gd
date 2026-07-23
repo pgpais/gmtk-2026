@@ -15,6 +15,9 @@ func _process(delta: float) -> void:
 func next_tick():
 	current_count = (current_count + 1) % max_count
 
+	if current_count == 0:
+		EventBus.new_cycle.emit()
+	
 	new_tick.emit(current_count)
 	EventBus.ticker_new_tick.emit(current_count)
 

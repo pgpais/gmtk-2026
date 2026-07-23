@@ -1,10 +1,53 @@
 class_name SpawnHandler
 extends Node
 
-@export var grid: LayerGridMap
-@export var enemiesParent: Node
+@onready var grid_map : LayerGridMap = %LayerGridMap
 
-func _spawn_enemy(enemy_scene: PackedScene, tile: Tile):
-	var enemy = enemy_scene.instantiate() # TODO: add type
+@export var enemies_data : Array[EnemyData]
+@export var allies_data : Array[AllyData]
+
+@export var enemiesParent : Node
+@export var alliesParent : Node
+
+func _ready() -> void:
+	EventBus.new_cycle.connect(test)
+
+func test():
+	spawn_enemies(3)
+	spawn_allies(3)
+
+func spawn_enemies(n):
+	var start_layer = 0
+	
+	for i in n:
+		var enemy_data : EnemyData = enemies_data.pick_random()
+		
+		var tile : Tile = grid_map.get_random_empty_tile(start_layer) # get a random start tile
+		
+		_spawn_enemy(enemy_data, tile)
+
+func _spawn_enemy(enemy_data: EnemyData, tile: Tile):
+	var enemy_scene : PackedScene = enemy_data.scene 
+	var enemy : Enemy = enemy_scene.instantiate()
+	
 	enemiesParent.add_child(enemy, true)
+	enemy.set_data(enemy_data)
 	enemy.set_tile(tile)
+	tile.set_entity(enemy)
+
+func spawn_allies(n):
+	var start_layer = len(grid_map.columns) - 1
+	
+	for i in n:
+		var ally_data : AllyData = allies_data.pick_random()
+		var tile : Tile = grid_map.get_random_empty_tile(start_layer) # get a random start tile
+		
+		_spawn_ally(ally_data, tile)
+
+func _spawn_ally(ally_data: AllyData, tile: Tile):
+	var ally_scene : PackedScene = ally_data.scene
+	var ally : Ally = ally_scene.instantiate()
+	
+	alliesParent.add_child(ally, true)
+	ally.set_tile(tile)
+	tile.set_entity(ally)

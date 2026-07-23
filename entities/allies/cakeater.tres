@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AllyData" format=3 uid="uid://duwsfod2j2pgr"]
+
+[ext_resource type="Script" uid="uid://dly02pjrb1d6s" path="res://entities/allies/ally_data.gd" id="1_apr0j"]
+[ext_resource type="PackedScene" uid="uid://bnt35p1hurl2f" path="res://entities/cakeater.tscn" id="1_lftmn"]
+
+[resource]
+script = ExtResource("1_apr0j")
+scene = ExtResource("1_lftmn")
+move = 2
+metadata/_custom_type_script = "uid://dly02pjrb1d6s"

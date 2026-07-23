@@ -41,6 +41,12 @@ func _ready() -> void:
 		global_position = current_tile.global_position
 		current_tile.set_entity(self)
 
+func set_data(data):
+	pass
+
+func set_tile(tile):
+	current_tile = tile
+
 func click():
 	pass
 

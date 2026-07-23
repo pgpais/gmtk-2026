@@ -1,12 +1,17 @@
 class_name Ally
 extends Entity
 
+var _ally_data : AllyData
+
 @export var ranged : bool # if it attacks at a distance
 var range : int
 
 func _ready() -> void:
 	team = TEAMS.ALLY
 	super._ready()
+
+func set_data(data):
+	_ally_data = data
 
 func trigger():
 	if ranged:

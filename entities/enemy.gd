@@ -1,6 +1,8 @@
 class_name Enemy
 extends Entity
 
+var _enemy_data : EnemyData
+
 @export var ranged : bool # if it attacks at a distance
 var range : int
 
@@ -8,9 +10,8 @@ func _ready() -> void:
 	team = TEAMS.ENEMY
 	super._ready() 
 
-func spawn():
-	team = TEAMS.ENEMY
-	# TO DO
+func set_data(data):
+	_enemy_data = data
 
 func trigger():
 	if ranged:
