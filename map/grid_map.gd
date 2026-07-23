@@ -45,7 +45,7 @@ func get_tiles_in_range(range_distance: Vector2, starting_tile: Tile) -> Array[T
 	return result
 
 func get_random_empty_tile(layer_index : int) -> Tile:
-	var order = range(0, len(layers[layer_index].tiles))
+	var order = range(0, len(columns[layer_index].tiles))
 	order.shuffle()
 	
 	var tile 

@@ -11,12 +11,13 @@ extends Node2D
 #region properties
 var entity_id : int # important to make combinations (e.g., id 5 + id 9 = instantiate entity with id 14)
 enum TEAMS {
-	PLAYER,
+	ALLY,
 	ENEMY,
 	NEUTRAL,
 }
 var team = TEAMS.NEUTRAL
-var time_to_move : float # to configure the move tween
+## to configure the move tween
+var time_to_move : float = 1  
 #endregion
 
 #region state control
@@ -33,8 +34,10 @@ var current_tile : Tile = null
 
 func _ready() -> void:
 	if not current_tile:
-		var start_layer = 0 if team == TEAMS.ENEMY else len(grid_map.layers) - 1	
-		grid_map.get_random_empty_tile(start_layer) # get a random start tile
+		var start_layer = 0 if team == TEAMS.ENEMY else len(grid_map.columns) - 1	
+		current_tile = grid_map.get_random_empty_tile(start_layer) # get a random start tile
+		global_position = current_tile.global_position
+		current_tile.set_entity(self)
 
 func click():
 	pass
@@ -48,19 +51,16 @@ func _set_position(position):
 
 func _move_to_tile(target_tile):
 	var tween = create_tween()
-	tween.tween_method(_set_position, current_tile.global_position, target_tile.global_position, time_to_move).set_delay(1.0)
+	tween.tween_method(_set_position, current_tile.global_position, target_tile.global_position, time_to_move)
 	
 func move(x, y):
-	if is_moving: # if it's already moving do not move
-		return
-	
 	var new_layer_index = 0
 	var new_tile_index = 0
 	
-	new_layer_index = current_tile.layer._index + x
+	new_layer_index = current_tile.layer.layer_index + x
 	new_tile_index = current_tile.tile_index + y
 	
-	if (new_layer_index < 0 or new_layer_index >= len(grid_map.layers)): # if it's already on the left/right edge
+	if (new_layer_index < 0 or new_layer_index >= len(grid_map.columns)): # if it's already on the left/right edge
 		collide(new_layer_index, new_tile_index) # animation colliding but stays in the same tile
 		return
 	
@@ -71,7 +71,9 @@ func move(x, y):
 		return	
 	
 	_move_to_tile(target_tile)
+	current_tile.set_entity(null)
 	current_tile = target_tile # attention: updating current tile before animation is completed
+	current_tile.set_entity(self)
 
 func collide(x, y): # animation colliding with the edge / obstacle but not moving
 	pass
