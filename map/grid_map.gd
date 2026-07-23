@@ -49,15 +49,11 @@ func _setup_map():
 func _connect_tiles():
 	for i in range(layers.size() - 1):
 		var current_layer = layers[i]
-		print("Connecting layer ", current_layer.name)
 		var tile_number: int = current_layer.number_of_tiles
 		for j in range(tile_number):
 			var current_tile = current_layer.get_tile(j)
 			var next_layer = layers[i + 1]
 			var size_ratio = next_layer.number_of_tiles / (current_layer.number_of_tiles * 1.0)
-			print("size ratio: ", size_ratio)
 			var next_tile_index: int = j * size_ratio
-			print("Connecting tile ", current_tile.name, " of layer ", current_layer.name, " to tile ", next_tile_index, " of layer ", next_layer.name)
 			var next_tile = next_layer.get_tile(next_tile_index)
 			current_tile.next_tile = next_tile
-			print("Connecting tile ", current_tile.name, " of layer ", current_layer.name, " to tile ", next_tile.name, " of layer ", next_layer.name)
