@@ -11,13 +11,10 @@ extends Node2D
 @export var layer_sizes: Array[int]:
 	set(value):
 		layer_sizes = value
-		_setup_map()
+		if (Engine.is_editor_hint()):
+			_setup_map()
 
 var layers: Array[Layer]
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	_setup_map()
 
 func get_layer(index: int) -> Layer:
 	return layers[index]
@@ -36,10 +33,12 @@ func _setup_map():
 		var layer_size: int = layer_sizes[i]
 			
 		layer.name = "Layer"
-		add_child(layer, true)
-		layer.owner = get_tree().edited_scene_root
-		layer.position.x = 64 * i + 32
 
+		add_child(layer, true)
+		if (Engine.is_editor_hint()):
+			layer.owner = get_tree().edited_scene_root
+
+		layer.position.x = 64 * i + 32
 		layer.setup_layer(layer_size, map_size / layer_size)
 
 		layers.append(layer)

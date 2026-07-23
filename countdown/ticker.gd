@@ -1,11 +1,20 @@
+class_name Ticker
 extends Node
 
+signal new_tick(count)
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+@export var max_count: int = 3
+@export var current_count: int = 0
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if Input.is_action_just_pressed("move_ticker") && OS.has_feature("editor_runtime"):
+		next_tick()
+
+func next_tick():
+	current_count = (current_count + 1) % max_count
+	
+	new_tick.emit(current_count)
+	EventBus.ticker_new_tick.emit(current_count)
+
+func reset():
+	current_count = 0

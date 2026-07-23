@@ -4,6 +4,8 @@
 [ext_resource type="Script" uid="uid://dtdg6wi6v4o0a" path="res://map/layer.gd" id="2_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://bmifyrtst83yc" path="res://map/tile.tscn" id="3_lquwl"]
 [ext_resource type="Script" uid="uid://d1vsxetgx8k52" path="res://map/tile.gd" id="4_7mycd"]
+[ext_resource type="Script" uid="uid://hgtti3egwqpo" path="res://countdown/ticker.gd" id="5_lquwl"]
+[ext_resource type="PackedScene" uid="uid://my3e0m2p0nby" path="res://countdown/ticker_view.tscn" id="6_7mycd"]
 
 [node name="main" type="Node2D" unique_id=1936105572]
 
@@ -290,3 +292,11 @@ script = ExtResource("4_7mycd")
 tile_size_multiplier = 8
 layer = NodePath("..")
 metadata/_custom_type_script = "uid://d1vsxetgx8k52"
+
+[node name="Ticker" type="Node" parent="." unique_id=34223848]
+script = ExtResource("5_lquwl")
+metadata/_custom_type_script = "uid://hgtti3egwqpo"
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1780476147]
+
+[node name="TickerView" parent="HUD" unique_id=1923798234 instance=ExtResource("6_7mycd")]

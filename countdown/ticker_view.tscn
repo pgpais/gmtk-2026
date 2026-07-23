@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://my3e0m2p0nby"]
+
+[ext_resource type="Script" uid="uid://djaegtrgd5qf" path="res://ticker_view.gd" id="1_sto81"]
+
+[node name="TickerView" type="Control" unique_id=1923798234 node_paths=PackedStringArray("ticker", "label")]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 20.0
+offset_right = 20.0
+offset_bottom = 60.0
+grow_horizontal = 2
+script = ExtResource("1_sto81")
+highlight_color = Color(1, 1, 0, 1)
+highlight_scale = Vector2(2, 2)
+ticker = NodePath("")
+label = NodePath("Label")
+
+[node name="Label" type="Label" parent="." unique_id=1141362174]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_font_sizes/font_size = 32
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
