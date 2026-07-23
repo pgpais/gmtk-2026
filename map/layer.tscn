@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://ry11bssctcu6"]
+
+[ext_resource type="Script" uid="uid://dtdg6wi6v4o0a" path="res://map/layer.gd" id="1_eckew"]
+[ext_resource type="PackedScene" uid="uid://bmifyrtst83yc" path="res://map/tile.tscn" id="2_iilxw"]
+[ext_resource type="Script" uid="uid://d1vsxetgx8k52" path="res://map/tile.gd" id="3_8lcul"]
+
+[node name="Layer" type="Node2D" unique_id=1921114732]
+script = ExtResource("1_eckew")
+tile_scene = ExtResource("2_iilxw")
+number_of_tiles = 6
+tile_size_multiplier = 3
+metadata/_custom_type_script = "uid://dtdg6wi6v4o0a"
+
+[node name="Tile2" type="Area2D" parent="." unique_id=813079352 instance=ExtResource("2_iilxw")]
+position = Vector2(0, 96)
+script = ExtResource("3_8lcul")
+tile_size_multiplier = 3
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
+
+[node name="Tile3" type="Area2D" parent="." unique_id=123598818 instance=ExtResource("2_iilxw")]
+position = Vector2(0, 288)
+script = ExtResource("3_8lcul")
+tile_index = 1
+tile_size_multiplier = 3
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
+
+[node name="Tile4" type="Area2D" parent="." unique_id=1508149090 instance=ExtResource("2_iilxw")]
+position = Vector2(0, 480)
+script = ExtResource("3_8lcul")
+tile_index = 2
+tile_size_multiplier = 3
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
+
+[node name="Tile6" type="Area2D" parent="." unique_id=1400680170 instance=ExtResource("2_iilxw")]
+position = Vector2(0, 672)
+script = ExtResource("3_8lcul")
+tile_index = 3
+tile_size_multiplier = 3
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
+
+[node name="Tile10" type="Area2D" parent="." unique_id=841407276 instance=ExtResource("2_iilxw")]
+position = Vector2(0, 864)
+script = ExtResource("3_8lcul")
+tile_index = 4
+tile_size_multiplier = 3
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
+
+[node name="Tile11" type="Area2D" parent="." unique_id=573067173 instance=ExtResource("2_iilxw")]
+position = Vector2(0, 1056)
+script = ExtResource("3_8lcul")
+tile_index = 5
+tile_size_multiplier = 3
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
