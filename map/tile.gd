@@ -5,6 +5,7 @@ extends Area2D
 
 @export var tile_index: int = 0
 @export var highlight_color: Color = Color.YELLOW
+@export var danger_color: Color = Color.RED
 
 @export var layer: MapColumn
 
@@ -17,7 +18,7 @@ func set_entity(entity: Entity):
     self.entity = entity
 
 func trigger():
-    _highlight_tile()
+    highlight()
     if entity:
         entity.trigger()
 
@@ -40,7 +41,15 @@ func _on_mouse_exited():
 func _set_modulate(color: Color):
 	sprite.modulate = color
 
-func _highlight_tile() -> void:
+func highlight() -> void:
     var tween = create_tween()
     tween.tween_method(_set_modulate, Color(1, 1, 1, 1), highlight_color, 0.1)
     tween.tween_method(_set_modulate, highlight_color, Color(1, 1, 1, 1), 0.1)
+
+func show_danger_highlight() -> void:
+    var tween = create_tween()
+    tween.tween_method(_set_modulate, Color(1, 1, 1, 1), danger_color, 0.1)
+
+func hide_danger_highlight() -> void:
+    var tween = create_tween()
+    tween.tween_method(_set_modulate, danger_color, Color(1, 1, 1, 1), 0.1)
