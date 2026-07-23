@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dojshow4it3ya" path="res://map/grid_map.gd" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://dtdg6wi6v4o0a" path="res://map/layer.gd" id="2_1bvp3"]
+[ext_resource type="Resource" uid="uid://dd5geybdckkoo" path="res://core/game_settings_data.tres" id="2_lquwl"]
 [ext_resource type="PackedScene" uid="uid://bmifyrtst83yc" path="res://map/tile.tscn" id="3_lquwl"]
 [ext_resource type="Script" uid="uid://d1vsxetgx8k52" path="res://map/tile.gd" id="4_7mycd"]
 [ext_resource type="Script" uid="uid://hgtti3egwqpo" path="res://countdown/ticker.gd" id="5_lquwl"]
@@ -11,292 +12,487 @@
 
 [node name="LayerGridMap" type="Node2D" parent="." unique_id=1932554677]
 script = ExtResource("1_ig7tw")
-layer_sizes = Array[int]([8, 8, 4, 2, 2, 1])
+game_settings = ExtResource("2_lquwl")
 metadata/_custom_type_script = "uid://dojshow4it3ya"
 
-[node name="Layer4" type="Node2D" parent="LayerGridMap" unique_id=26409963]
+[node name="MapColumn2" type="Node2D" parent="LayerGridMap" unique_id=2106553353]
 position = Vector2(32, 0)
 script = ExtResource("2_1bvp3")
-number_of_tiles = 8
-tile_size_multiplier = 1
 
-[node name="Tile" type="Area2D" parent="LayerGridMap/Layer4" unique_id=813079352 node_paths=PackedStringArray("next_tile", "layer") instance=ExtResource("3_lquwl")]
-z_index = 4
+[node name="Tile" type="Area2D" parent="LayerGridMap/MapColumn2" unique_id=813079352 node_paths=PackedStringArray("layer") instance=ExtResource("3_lquwl")]
 position = Vector2(0, 32)
 script = ExtResource("4_7mycd")
-next_tile = NodePath("../../Layer5/Tile")
-tile_size_multiplier = 1
 layer = NodePath("..")
 metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="Tile2" type="Area2D" parent="LayerGridMap/Layer4" unique_id=1396575807 node_paths=PackedStringArray("next_tile", "layer") instance=ExtResource("3_lquwl")]
-z_index = 4
+[node name="Tile2" type="Area2D" parent="LayerGridMap/MapColumn2" unique_id=353344325 node_paths=PackedStringArray("layer") instance=ExtResource("3_lquwl")]
 position = Vector2(0, 96)
 script = ExtResource("4_7mycd")
-next_tile = NodePath("../../Layer5/Tile2")
 tile_index = 1
-tile_size_multiplier = 1
 layer = NodePath("..")
 metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="Tile3" type="Area2D" parent="LayerGridMap/Layer4" unique_id=1046784244 node_paths=PackedStringArray("next_tile", "layer") instance=ExtResource("3_lquwl")]
-z_index = 4
+[node name="Tile3" type="Area2D" parent="LayerGridMap/MapColumn2" unique_id=1601174655 node_paths=PackedStringArray("layer") instance=ExtResource("3_lquwl")]
 position = Vector2(0, 160)
 script = ExtResource("4_7mycd")
-next_tile = NodePath("../../Layer5/Tile3")
 tile_index = 2
-tile_size_multiplier = 1
 layer = NodePath("..")
 metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="Tile4" type="Area2D" parent="LayerGridMap/Layer4" unique_id=787410296 node_paths=PackedStringArray("next_tile", "layer") instance=ExtResource("3_lquwl")]
-z_index = 4
+[node name="Tile4" type="Area2D" parent="LayerGridMap/MapColumn2" unique_id=1078409723 node_paths=PackedStringArray("layer") instance=ExtResource("3_lquwl")]
 position = Vector2(0, 224)
 script = ExtResource("4_7mycd")
-next_tile = NodePath("../../Layer5/Tile4")
 tile_index = 3
-tile_size_multiplier = 1
 layer = NodePath("..")
 metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="Tile5" type="Area2D" parent="LayerGridMap/Layer4" unique_id=1531034449 node_paths=PackedStringArray("next_tile", "layer") instance=ExtResource("3_lquwl")]
-z_index = 4
+[node name="Tile5" type="Area2D" parent="LayerGridMap/MapColumn2" unique_id=753842991 node_paths=PackedStringArray("layer") instance=ExtResource("3_lquwl")]
 position = Vector2(0, 288)
 script = ExtResource("4_7mycd")
-next_tile = NodePath("../../Layer5/Tile5")
 tile_index = 4
-tile_size_multiplier = 1
 layer = NodePath("..")
 metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="Tile6" type="Area2D" parent="LayerGridMap/Layer4" unique_id=1222352620 node_paths=PackedStringArray("next_tile", "layer") instance=ExtResource("3_lquwl")]
-z_index = 4
+[node name="Tile6" type="Area2D" parent="LayerGridMap/MapColumn2" unique_id=495957047 node_paths=PackedStringArray("layer") instance=ExtResource("3_lquwl")]
 position = Vector2(0, 352)
 script = ExtResource("4_7mycd")
-next_tile = NodePath("../../Layer5/Tile6")
 tile_index = 5
-tile_size_multiplier = 1
 layer = NodePath("..")
 metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="Tile7" type="Area2D" parent="LayerGridMap/Layer4" unique_id=66779259 node_paths=PackedStringArray("next_tile", "layer") instance=ExtResource("3_lquwl")]
-z_index = 4
+[node name="Tile7" type="Area2D" parent="LayerGridMap/MapColumn2" unique_id=1458123835 node_paths=PackedStringArray("layer") instance=ExtResource("3_lquwl")]
 position = Vector2(0, 416)
 script = ExtResource("4_7mycd")
-next_tile = NodePath("../../Layer5/Tile7")
 tile_index = 6
-tile_size_multiplier = 1
 layer = NodePath("..")
 metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="Tile8" type="Area2D" parent="LayerGridMap/Layer4" unique_id=1120705859 node_paths=PackedStringArray("next_tile", "layer") instance=ExtResource("3_lquwl")]
-z_index = 4
+[node name="Tile8" type="Area2D" parent="LayerGridMap/MapColumn2" unique_id=2136397608 node_paths=PackedStringArray("layer") instance=ExtResource("3_lquwl")]
 position = Vector2(0, 480)
 script = ExtResource("4_7mycd")
-next_tile = NodePath("../../Layer5/Tile8")
 tile_index = 7
-tile_size_multiplier = 1
 layer = NodePath("..")
 metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="Layer5" type="Node2D" parent="LayerGridMap" unique_id=790413749]
+[node name="MapColumn11" type="Node2D" parent="LayerGridMap" unique_id=1899830246]
 position = Vector2(96, 0)
 script = ExtResource("2_1bvp3")
-number_of_tiles = 8
-tile_size_multiplier = 1
 
-[node name="Tile" type="Area2D" parent="LayerGridMap/Layer5" unique_id=541662927 node_paths=PackedStringArray("next_tile", "layer") instance=ExtResource("3_lquwl")]
-z_index = 4
+[node name="Tile" type="Area2D" parent="LayerGridMap/MapColumn11" unique_id=1505020310 node_paths=PackedStringArray("layer") instance=ExtResource("3_lquwl")]
 position = Vector2(0, 32)
 script = ExtResource("4_7mycd")
-next_tile = NodePath("../../Layer6/Tile")
-tile_size_multiplier = 1
 layer = NodePath("..")
 metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="Tile2" type="Area2D" parent="LayerGridMap/Layer5" unique_id=590297083 node_paths=PackedStringArray("next_tile", "layer") instance=ExtResource("3_lquwl")]
-z_index = 4
+[node name="Tile2" type="Area2D" parent="LayerGridMap/MapColumn11" unique_id=1203422307 node_paths=PackedStringArray("layer") instance=ExtResource("3_lquwl")]
 position = Vector2(0, 96)
 script = ExtResource("4_7mycd")
-next_tile = NodePath("../../Layer6/Tile")
 tile_index = 1
-tile_size_multiplier = 1
 layer = NodePath("..")
 metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="Tile3" type="Area2D" parent="LayerGridMap/Layer5" unique_id=1743489990 node_paths=PackedStringArray("next_tile", "layer") instance=ExtResource("3_lquwl")]
-z_index = 4
+[node name="Tile3" type="Area2D" parent="LayerGridMap/MapColumn11" unique_id=584761919 node_paths=PackedStringArray("layer") instance=ExtResource("3_lquwl")]
 position = Vector2(0, 160)
 script = ExtResource("4_7mycd")
-next_tile = NodePath("../../Layer6/Tile2")
 tile_index = 2
-tile_size_multiplier = 1
 layer = NodePath("..")
 metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="Tile4" type="Area2D" parent="LayerGridMap/Layer5" unique_id=1206136928 node_paths=PackedStringArray("next_tile", "layer") instance=ExtResource("3_lquwl")]
-z_index = 4
+[node name="Tile4" type="Area2D" parent="LayerGridMap/MapColumn11" unique_id=1963245988 node_paths=PackedStringArray("layer") instance=ExtResource("3_lquwl")]
 position = Vector2(0, 224)
 script = ExtResource("4_7mycd")
-next_tile = NodePath("../../Layer6/Tile2")
 tile_index = 3
-tile_size_multiplier = 1
 layer = NodePath("..")
 metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="Tile5" type="Area2D" parent="LayerGridMap/Layer5" unique_id=952627145 node_paths=PackedStringArray("next_tile", "layer") instance=ExtResource("3_lquwl")]
-z_index = 4
+[node name="Tile5" type="Area2D" parent="LayerGridMap/MapColumn11" unique_id=1649619199 node_paths=PackedStringArray("layer") instance=ExtResource("3_lquwl")]
 position = Vector2(0, 288)
 script = ExtResource("4_7mycd")
-next_tile = NodePath("../../Layer6/Tile3")
 tile_index = 4
-tile_size_multiplier = 1
 layer = NodePath("..")
 metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="Tile6" type="Area2D" parent="LayerGridMap/Layer5" unique_id=1612332693 node_paths=PackedStringArray("next_tile", "layer") instance=ExtResource("3_lquwl")]
-z_index = 4
+[node name="Tile6" type="Area2D" parent="LayerGridMap/MapColumn11" unique_id=389741994 node_paths=PackedStringArray("layer") instance=ExtResource("3_lquwl")]
 position = Vector2(0, 352)
 script = ExtResource("4_7mycd")
-next_tile = NodePath("../../Layer6/Tile3")
 tile_index = 5
-tile_size_multiplier = 1
 layer = NodePath("..")
 metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="Tile7" type="Area2D" parent="LayerGridMap/Layer5" unique_id=227259990 node_paths=PackedStringArray("next_tile", "layer") instance=ExtResource("3_lquwl")]
-z_index = 4
+[node name="Tile7" type="Area2D" parent="LayerGridMap/MapColumn11" unique_id=881873844 node_paths=PackedStringArray("layer") instance=ExtResource("3_lquwl")]
 position = Vector2(0, 416)
 script = ExtResource("4_7mycd")
-next_tile = NodePath("../../Layer6/Tile4")
 tile_index = 6
-tile_size_multiplier = 1
 layer = NodePath("..")
 metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="Tile8" type="Area2D" parent="LayerGridMap/Layer5" unique_id=254324250 node_paths=PackedStringArray("next_tile", "layer") instance=ExtResource("3_lquwl")]
-z_index = 4
+[node name="Tile8" type="Area2D" parent="LayerGridMap/MapColumn11" unique_id=892065193 node_paths=PackedStringArray("layer") instance=ExtResource("3_lquwl")]
 position = Vector2(0, 480)
 script = ExtResource("4_7mycd")
-next_tile = NodePath("../../Layer6/Tile4")
 tile_index = 7
-tile_size_multiplier = 1
 layer = NodePath("..")
 metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="Layer6" type="Node2D" parent="LayerGridMap" unique_id=1600347612]
+[node name="MapColumn12" type="Node2D" parent="LayerGridMap" unique_id=2068963450]
 position = Vector2(160, 0)
 script = ExtResource("2_1bvp3")
-number_of_tiles = 4
-tile_size_multiplier = 2
 
-[node name="Tile" type="Area2D" parent="LayerGridMap/Layer6" unique_id=1066673727 node_paths=PackedStringArray("next_tile", "layer") instance=ExtResource("3_lquwl")]
-z_index = 4
-position = Vector2(0, 64)
+[node name="Tile" type="Area2D" parent="LayerGridMap/MapColumn12" unique_id=1189717332 node_paths=PackedStringArray("layer") instance=ExtResource("3_lquwl")]
+position = Vector2(0, 32)
 script = ExtResource("4_7mycd")
-next_tile = NodePath("../../Layer7/Tile")
-tile_size_multiplier = 2
 layer = NodePath("..")
 metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="Tile2" type="Area2D" parent="LayerGridMap/Layer6" unique_id=1125613373 node_paths=PackedStringArray("next_tile", "layer") instance=ExtResource("3_lquwl")]
-z_index = 4
-position = Vector2(0, 192)
+[node name="Tile2" type="Area2D" parent="LayerGridMap/MapColumn12" unique_id=1850700782 node_paths=PackedStringArray("layer") instance=ExtResource("3_lquwl")]
+position = Vector2(0, 96)
 script = ExtResource("4_7mycd")
-next_tile = NodePath("../../Layer7/Tile")
 tile_index = 1
-tile_size_multiplier = 2
 layer = NodePath("..")
 metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="Tile3" type="Area2D" parent="LayerGridMap/Layer6" unique_id=1439551679 node_paths=PackedStringArray("next_tile", "layer") instance=ExtResource("3_lquwl")]
-z_index = 4
-position = Vector2(0, 320)
+[node name="Tile3" type="Area2D" parent="LayerGridMap/MapColumn12" unique_id=970359729 node_paths=PackedStringArray("layer") instance=ExtResource("3_lquwl")]
+position = Vector2(0, 160)
 script = ExtResource("4_7mycd")
-next_tile = NodePath("../../Layer7/Tile2")
 tile_index = 2
-tile_size_multiplier = 2
 layer = NodePath("..")
 metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="Tile4" type="Area2D" parent="LayerGridMap/Layer6" unique_id=1203459029 node_paths=PackedStringArray("next_tile", "layer") instance=ExtResource("3_lquwl")]
-z_index = 4
-position = Vector2(0, 448)
+[node name="Tile4" type="Area2D" parent="LayerGridMap/MapColumn12" unique_id=518705909 node_paths=PackedStringArray("layer") instance=ExtResource("3_lquwl")]
+position = Vector2(0, 224)
 script = ExtResource("4_7mycd")
-next_tile = NodePath("../../Layer7/Tile2")
 tile_index = 3
-tile_size_multiplier = 2
 layer = NodePath("..")
 metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="Layer7" type="Node2D" parent="LayerGridMap" unique_id=468929499]
+[node name="Tile5" type="Area2D" parent="LayerGridMap/MapColumn12" unique_id=442316998 node_paths=PackedStringArray("layer") instance=ExtResource("3_lquwl")]
+position = Vector2(0, 288)
+script = ExtResource("4_7mycd")
+tile_index = 4
+layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
+
+[node name="Tile6" type="Area2D" parent="LayerGridMap/MapColumn12" unique_id=15695345 node_paths=PackedStringArray("layer") instance=ExtResource("3_lquwl")]
+position = Vector2(0, 352)
+script = ExtResource("4_7mycd")
+tile_index = 5
+layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
+
+[node name="Tile7" type="Area2D" parent="LayerGridMap/MapColumn12" unique_id=792260145 node_paths=PackedStringArray("layer") instance=ExtResource("3_lquwl")]
+position = Vector2(0, 416)
+script = ExtResource("4_7mycd")
+tile_index = 6
+layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
+
+[node name="Tile8" type="Area2D" parent="LayerGridMap/MapColumn12" unique_id=43147668 node_paths=PackedStringArray("layer") instance=ExtResource("3_lquwl")]
+position = Vector2(0, 480)
+script = ExtResource("4_7mycd")
+tile_index = 7
+layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
+
+[node name="MapColumn13" type="Node2D" parent="LayerGridMap" unique_id=1760368487]
 position = Vector2(224, 0)
 script = ExtResource("2_1bvp3")
-number_of_tiles = 2
-tile_size_multiplier = 4
 
-[node name="Tile" type="Area2D" parent="LayerGridMap/Layer7" unique_id=1937633657 node_paths=PackedStringArray("next_tile", "layer") instance=ExtResource("3_lquwl")]
-z_index = 4
-position = Vector2(0, 128)
+[node name="Tile" type="Area2D" parent="LayerGridMap/MapColumn13" unique_id=1800095221 node_paths=PackedStringArray("layer") instance=ExtResource("3_lquwl")]
+position = Vector2(0, 32)
 script = ExtResource("4_7mycd")
-next_tile = NodePath("../../Layer10/Tile")
-tile_size_multiplier = 4
 layer = NodePath("..")
 metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="Tile2" type="Area2D" parent="LayerGridMap/Layer7" unique_id=1580108407 node_paths=PackedStringArray("next_tile", "layer") instance=ExtResource("3_lquwl")]
-z_index = 4
-position = Vector2(0, 384)
+[node name="Tile2" type="Area2D" parent="LayerGridMap/MapColumn13" unique_id=43032942 node_paths=PackedStringArray("layer") instance=ExtResource("3_lquwl")]
+position = Vector2(0, 96)
 script = ExtResource("4_7mycd")
-next_tile = NodePath("../../Layer10/Tile2")
 tile_index = 1
-tile_size_multiplier = 4
 layer = NodePath("..")
 metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="Layer10" type="Node2D" parent="LayerGridMap" unique_id=1167699493]
+[node name="Tile3" type="Area2D" parent="LayerGridMap/MapColumn13" unique_id=1582456492 node_paths=PackedStringArray("layer") instance=ExtResource("3_lquwl")]
+position = Vector2(0, 160)
+script = ExtResource("4_7mycd")
+tile_index = 2
+layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
+
+[node name="Tile4" type="Area2D" parent="LayerGridMap/MapColumn13" unique_id=870108234 node_paths=PackedStringArray("layer") instance=ExtResource("3_lquwl")]
+position = Vector2(0, 224)
+script = ExtResource("4_7mycd")
+tile_index = 3
+layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
+
+[node name="Tile5" type="Area2D" parent="LayerGridMap/MapColumn13" unique_id=1386854479 node_paths=PackedStringArray("layer") instance=ExtResource("3_lquwl")]
+position = Vector2(0, 288)
+script = ExtResource("4_7mycd")
+tile_index = 4
+layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
+
+[node name="Tile6" type="Area2D" parent="LayerGridMap/MapColumn13" unique_id=1639220603 node_paths=PackedStringArray("layer") instance=ExtResource("3_lquwl")]
+position = Vector2(0, 352)
+script = ExtResource("4_7mycd")
+tile_index = 5
+layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
+
+[node name="Tile7" type="Area2D" parent="LayerGridMap/MapColumn13" unique_id=1665582907 node_paths=PackedStringArray("layer") instance=ExtResource("3_lquwl")]
+position = Vector2(0, 416)
+script = ExtResource("4_7mycd")
+tile_index = 6
+layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
+
+[node name="Tile8" type="Area2D" parent="LayerGridMap/MapColumn13" unique_id=1098211547 node_paths=PackedStringArray("layer") instance=ExtResource("3_lquwl")]
+position = Vector2(0, 480)
+script = ExtResource("4_7mycd")
+tile_index = 7
+layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
+
+[node name="MapColumn14" type="Node2D" parent="LayerGridMap" unique_id=972750381]
 position = Vector2(288, 0)
 script = ExtResource("2_1bvp3")
-number_of_tiles = 2
-tile_size_multiplier = 4
 
-[node name="Tile" type="Area2D" parent="LayerGridMap/Layer10" unique_id=1063140447 node_paths=PackedStringArray("next_tile", "layer") instance=ExtResource("3_lquwl")]
-z_index = 4
-position = Vector2(0, 128)
+[node name="Tile" type="Area2D" parent="LayerGridMap/MapColumn14" unique_id=1040773429 node_paths=PackedStringArray("layer") instance=ExtResource("3_lquwl")]
+position = Vector2(0, 32)
 script = ExtResource("4_7mycd")
-next_tile = NodePath("../../Layer12/Tile")
-tile_size_multiplier = 4
 layer = NodePath("..")
 metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="Tile2" type="Area2D" parent="LayerGridMap/Layer10" unique_id=806448594 node_paths=PackedStringArray("next_tile", "layer") instance=ExtResource("3_lquwl")]
-z_index = 4
-position = Vector2(0, 384)
+[node name="Tile2" type="Area2D" parent="LayerGridMap/MapColumn14" unique_id=536660546 node_paths=PackedStringArray("layer") instance=ExtResource("3_lquwl")]
+position = Vector2(0, 96)
 script = ExtResource("4_7mycd")
-next_tile = NodePath("../../Layer12/Tile")
 tile_index = 1
-tile_size_multiplier = 4
 layer = NodePath("..")
 metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="Layer12" type="Node2D" parent="LayerGridMap" unique_id=642404460]
+[node name="Tile3" type="Area2D" parent="LayerGridMap/MapColumn14" unique_id=970806029 node_paths=PackedStringArray("layer") instance=ExtResource("3_lquwl")]
+position = Vector2(0, 160)
+script = ExtResource("4_7mycd")
+tile_index = 2
+layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
+
+[node name="Tile4" type="Area2D" parent="LayerGridMap/MapColumn14" unique_id=35450992 node_paths=PackedStringArray("layer") instance=ExtResource("3_lquwl")]
+position = Vector2(0, 224)
+script = ExtResource("4_7mycd")
+tile_index = 3
+layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
+
+[node name="Tile5" type="Area2D" parent="LayerGridMap/MapColumn14" unique_id=429592130 node_paths=PackedStringArray("layer") instance=ExtResource("3_lquwl")]
+position = Vector2(0, 288)
+script = ExtResource("4_7mycd")
+tile_index = 4
+layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
+
+[node name="Tile6" type="Area2D" parent="LayerGridMap/MapColumn14" unique_id=1043628166 node_paths=PackedStringArray("layer") instance=ExtResource("3_lquwl")]
+position = Vector2(0, 352)
+script = ExtResource("4_7mycd")
+tile_index = 5
+layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
+
+[node name="Tile7" type="Area2D" parent="LayerGridMap/MapColumn14" unique_id=819162654 node_paths=PackedStringArray("layer") instance=ExtResource("3_lquwl")]
+position = Vector2(0, 416)
+script = ExtResource("4_7mycd")
+tile_index = 6
+layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
+
+[node name="Tile8" type="Area2D" parent="LayerGridMap/MapColumn14" unique_id=1596903604 node_paths=PackedStringArray("layer") instance=ExtResource("3_lquwl")]
+position = Vector2(0, 480)
+script = ExtResource("4_7mycd")
+tile_index = 7
+layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
+
+[node name="MapColumn15" type="Node2D" parent="LayerGridMap" unique_id=290155922]
 position = Vector2(352, 0)
 script = ExtResource("2_1bvp3")
-number_of_tiles = 1
-tile_size_multiplier = 8
 
-[node name="Tile" type="Area2D" parent="LayerGridMap/Layer12" unique_id=170798841 node_paths=PackedStringArray("layer") instance=ExtResource("3_lquwl")]
-z_index = 4
-position = Vector2(0, 256)
+[node name="Tile" type="Area2D" parent="LayerGridMap/MapColumn15" unique_id=1569838479 node_paths=PackedStringArray("layer") instance=ExtResource("3_lquwl")]
+position = Vector2(0, 32)
 script = ExtResource("4_7mycd")
-tile_size_multiplier = 8
+layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
+
+[node name="Tile2" type="Area2D" parent="LayerGridMap/MapColumn15" unique_id=908972123 node_paths=PackedStringArray("layer") instance=ExtResource("3_lquwl")]
+position = Vector2(0, 96)
+script = ExtResource("4_7mycd")
+tile_index = 1
+layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
+
+[node name="Tile3" type="Area2D" parent="LayerGridMap/MapColumn15" unique_id=1109415048 node_paths=PackedStringArray("layer") instance=ExtResource("3_lquwl")]
+position = Vector2(0, 160)
+script = ExtResource("4_7mycd")
+tile_index = 2
+layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
+
+[node name="Tile4" type="Area2D" parent="LayerGridMap/MapColumn15" unique_id=1434934747 node_paths=PackedStringArray("layer") instance=ExtResource("3_lquwl")]
+position = Vector2(0, 224)
+script = ExtResource("4_7mycd")
+tile_index = 3
+layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
+
+[node name="Tile5" type="Area2D" parent="LayerGridMap/MapColumn15" unique_id=291935699 node_paths=PackedStringArray("layer") instance=ExtResource("3_lquwl")]
+position = Vector2(0, 288)
+script = ExtResource("4_7mycd")
+tile_index = 4
+layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
+
+[node name="Tile6" type="Area2D" parent="LayerGridMap/MapColumn15" unique_id=1033918332 node_paths=PackedStringArray("layer") instance=ExtResource("3_lquwl")]
+position = Vector2(0, 352)
+script = ExtResource("4_7mycd")
+tile_index = 5
+layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
+
+[node name="Tile7" type="Area2D" parent="LayerGridMap/MapColumn15" unique_id=1010406674 node_paths=PackedStringArray("layer") instance=ExtResource("3_lquwl")]
+position = Vector2(0, 416)
+script = ExtResource("4_7mycd")
+tile_index = 6
+layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
+
+[node name="Tile8" type="Area2D" parent="LayerGridMap/MapColumn15" unique_id=1336719772 node_paths=PackedStringArray("layer") instance=ExtResource("3_lquwl")]
+position = Vector2(0, 480)
+script = ExtResource("4_7mycd")
+tile_index = 7
+layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
+
+[node name="MapColumn16" type="Node2D" parent="LayerGridMap" unique_id=190548568]
+position = Vector2(416, 0)
+script = ExtResource("2_1bvp3")
+
+[node name="Tile" type="Area2D" parent="LayerGridMap/MapColumn16" unique_id=1471447766 node_paths=PackedStringArray("layer") instance=ExtResource("3_lquwl")]
+position = Vector2(0, 32)
+script = ExtResource("4_7mycd")
+layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
+
+[node name="Tile2" type="Area2D" parent="LayerGridMap/MapColumn16" unique_id=411929523 node_paths=PackedStringArray("layer") instance=ExtResource("3_lquwl")]
+position = Vector2(0, 96)
+script = ExtResource("4_7mycd")
+tile_index = 1
+layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
+
+[node name="Tile3" type="Area2D" parent="LayerGridMap/MapColumn16" unique_id=1390704865 node_paths=PackedStringArray("layer") instance=ExtResource("3_lquwl")]
+position = Vector2(0, 160)
+script = ExtResource("4_7mycd")
+tile_index = 2
+layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
+
+[node name="Tile4" type="Area2D" parent="LayerGridMap/MapColumn16" unique_id=1702480102 node_paths=PackedStringArray("layer") instance=ExtResource("3_lquwl")]
+position = Vector2(0, 224)
+script = ExtResource("4_7mycd")
+tile_index = 3
+layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
+
+[node name="Tile5" type="Area2D" parent="LayerGridMap/MapColumn16" unique_id=1834552013 node_paths=PackedStringArray("layer") instance=ExtResource("3_lquwl")]
+position = Vector2(0, 288)
+script = ExtResource("4_7mycd")
+tile_index = 4
+layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
+
+[node name="Tile6" type="Area2D" parent="LayerGridMap/MapColumn16" unique_id=1252892585 node_paths=PackedStringArray("layer") instance=ExtResource("3_lquwl")]
+position = Vector2(0, 352)
+script = ExtResource("4_7mycd")
+tile_index = 5
+layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
+
+[node name="Tile7" type="Area2D" parent="LayerGridMap/MapColumn16" unique_id=425438775 node_paths=PackedStringArray("layer") instance=ExtResource("3_lquwl")]
+position = Vector2(0, 416)
+script = ExtResource("4_7mycd")
+tile_index = 6
+layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
+
+[node name="Tile8" type="Area2D" parent="LayerGridMap/MapColumn16" unique_id=1776418745 node_paths=PackedStringArray("layer") instance=ExtResource("3_lquwl")]
+position = Vector2(0, 480)
+script = ExtResource("4_7mycd")
+tile_index = 7
+layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
+
+[node name="MapColumn17" type="Node2D" parent="LayerGridMap" unique_id=1448934974]
+position = Vector2(480, 0)
+script = ExtResource("2_1bvp3")
+
+[node name="Tile" type="Area2D" parent="LayerGridMap/MapColumn17" unique_id=1772096919 node_paths=PackedStringArray("layer") instance=ExtResource("3_lquwl")]
+position = Vector2(0, 32)
+script = ExtResource("4_7mycd")
+layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
+
+[node name="Tile2" type="Area2D" parent="LayerGridMap/MapColumn17" unique_id=1416378802 node_paths=PackedStringArray("layer") instance=ExtResource("3_lquwl")]
+position = Vector2(0, 96)
+script = ExtResource("4_7mycd")
+tile_index = 1
+layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
+
+[node name="Tile3" type="Area2D" parent="LayerGridMap/MapColumn17" unique_id=673096057 node_paths=PackedStringArray("layer") instance=ExtResource("3_lquwl")]
+position = Vector2(0, 160)
+script = ExtResource("4_7mycd")
+tile_index = 2
+layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
+
+[node name="Tile4" type="Area2D" parent="LayerGridMap/MapColumn17" unique_id=878518390 node_paths=PackedStringArray("layer") instance=ExtResource("3_lquwl")]
+position = Vector2(0, 224)
+script = ExtResource("4_7mycd")
+tile_index = 3
+layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
+
+[node name="Tile5" type="Area2D" parent="LayerGridMap/MapColumn17" unique_id=897647014 node_paths=PackedStringArray("layer") instance=ExtResource("3_lquwl")]
+position = Vector2(0, 288)
+script = ExtResource("4_7mycd")
+tile_index = 4
+layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
+
+[node name="Tile6" type="Area2D" parent="LayerGridMap/MapColumn17" unique_id=1042751384 node_paths=PackedStringArray("layer") instance=ExtResource("3_lquwl")]
+position = Vector2(0, 352)
+script = ExtResource("4_7mycd")
+tile_index = 5
+layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
+
+[node name="Tile7" type="Area2D" parent="LayerGridMap/MapColumn17" unique_id=656144084 node_paths=PackedStringArray("layer") instance=ExtResource("3_lquwl")]
+position = Vector2(0, 416)
+script = ExtResource("4_7mycd")
+tile_index = 6
+layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
+
+[node name="Tile8" type="Area2D" parent="LayerGridMap/MapColumn17" unique_id=869476560 node_paths=PackedStringArray("layer") instance=ExtResource("3_lquwl")]
+position = Vector2(0, 480)
+script = ExtResource("4_7mycd")
+tile_index = 7
 layer = NodePath("..")
 metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
 [node name="Ticker" type="Node" parent="." unique_id=34223848]
 script = ExtResource("5_lquwl")
+game_settings = ExtResource("2_lquwl")
 metadata/_custom_type_script = "uid://hgtti3egwqpo"
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1780476147]
 
-[node name="TickerView" parent="HUD" unique_id=1923798234 instance=ExtResource("6_7mycd")]
+[node name="TickerView" parent="HUD" unique_id=1923798234 node_paths=PackedStringArray("ticker") instance=ExtResource("6_7mycd")]
+ticker = NodePath("../../Ticker")

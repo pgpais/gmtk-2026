@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://my3e0m2p0nby"]
 
-[ext_resource type="Script" uid="uid://djaegtrgd5qf" path="res://ticker_view.gd" id="1_sto81"]
+[ext_resource type="Script" uid="uid://djaegtrgd5qf" path="res://countdown/ticker_view.gd" id="1_sto81"]
 
 [node name="TickerView" type="Control" unique_id=1923798234 node_paths=PackedStringArray("ticker", "label")]
 layout_mode = 3

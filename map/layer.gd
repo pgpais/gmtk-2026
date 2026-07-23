@@ -1,25 +1,20 @@
 @tool
 ## map/layer.gd
-class_name Layer
+class_name MapColumn
 extends Node2D
 
 @export var tile_scene: PackedScene = preload("uid://bmifyrtst83yc")
 
-## Number of tiles in this layer
-@export var number_of_tiles: int
-
-@export var tile_size_multiplier: int
+@export var layer_index: int
 
 
 var tiles: Array[Tile]
 
+
 func get_tile(index: int) -> Tile:
 	return tiles[index]
 
-func setup_layer(number_of_tiles: int, tile_size_multiplier: int):
-	self.number_of_tiles = number_of_tiles
-	self.tile_size_multiplier = tile_size_multiplier
-
+func setup_layer(number_of_tiles: int, layer_index: int, tile_size: Vector2 = Vector2(64, 64)):
 	for child in get_children():
 		child.queue_free()
 
@@ -27,6 +22,11 @@ func setup_layer(number_of_tiles: int, tile_size_multiplier: int):
 		var tile: Tile = tile_scene.instantiate()
 		add_child(tile, true)
 		tiles.append(tile)
-		tile.owner = get_tree().edited_scene_root
-		tile.tile_size_multiplier = tile_size_multiplier
+		if Engine.is_editor_hint():
+			tile.owner = get_tree().edited_scene_root
+		tile.position = Vector2(0, tile_size.y / 2 + i * tile_size.y)
 		tile.initialize(self, i)
+
+func trigger_tiles():
+	for tile in tiles:
+		tile.trigger()

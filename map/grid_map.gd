@@ -3,56 +3,50 @@ class_name LayerGridMap
 extends Node2D
 
 ## Maximum number of tiles the map can have
-@export var map_size: int = 8:
+@export var game_settings: GameSettings:
 	set(value):
-		map_size = value
+		game_settings = value
 		_setup_map()
+		
+var map_size: int = 8
+var tiles_per_column: int = 8
+var columns: Array[MapColumn]
 
-@export var layer_sizes: Array[int]:
-	set(value):
-		layer_sizes = value
-		if (Engine.is_editor_hint()):
-			_setup_map()
 
-var layers: Array[Layer]
+func _ready() -> void:
+	_setup_map()
+	
+	EventBus.ticker_new_tick.connect(_on_new_tick)
 
-func get_layer(index: int) -> Layer:
-	return layers[index]
+func get_layer(index: int) -> MapColumn:
+	return columns[index]
 
 func get_tile(layer_index: int, tile_index: int) -> Tile:
-	return layers[layer_index].get_tile(tile_index)
+	return columns[layer_index].get_tile(tile_index)
+
+func get_empty_tiles_in_layer(layer_index: int) -> Array[Tile]:
+	return columns[layer_index].get_empty_tiles()
 
 func _setup_map():
-	layers = []
+	columns = []
 
 	for child in get_children():
 		child.queue_free()
 
-	for i in range(layer_sizes.size()):
-		var layer = Layer.new()
-		var layer_size: int = layer_sizes[i]
+	for i in range(map_size):
+		var mapColumn = MapColumn.new()
+		var layer_size: int = tiles_per_column
 			
-		layer.name = "Layer"
+		mapColumn.name = "MapColumn"
 
-		add_child(layer, true)
+		add_child(mapColumn, true)
 		if (Engine.is_editor_hint()):
-			layer.owner = get_tree().edited_scene_root
+			mapColumn.owner = get_tree().edited_scene_root
+		columns.append(mapColumn)
+		
+		mapColumn.position.x = game_settings.tile_size.x * i + game_settings.tile_size.x / 2
+		mapColumn.setup_layer(layer_size, i)
 
-		layer.position.x = 64 * i + 32
-		layer.setup_layer(layer_size, map_size / layer_size)
-
-		layers.append(layer)
-
-	_connect_tiles()
-
-func _connect_tiles():
-	for i in range(layers.size() - 1):
-		var current_layer = layers[i]
-		var tile_number: int = current_layer.number_of_tiles
-		for j in range(tile_number):
-			var current_tile = current_layer.get_tile(j)
-			var next_layer = layers[i + 1]
-			var size_ratio = next_layer.number_of_tiles / (current_layer.number_of_tiles * 1.0)
-			var next_tile_index: int = j * size_ratio
-			var next_tile = next_layer.get_tile(next_tile_index)
-			current_tile.next_tile = next_tile
+func _on_new_tick(count: int):
+	var layer = columns[count]
+	layer.trigger_tiles()

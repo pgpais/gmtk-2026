@@ -4,24 +4,24 @@ extends Node2D
 
 # 
 #region node references
-@export var sprite : Sprite2D
-@export var animator : AnimationPlayer
+@export var sprite: Sprite2D
+@export var animator: AnimationPlayer
 #endregion
 
 #region properties
-var entity_id : int # important to make combinations (e.g., id 5 + id 9 = instantiate entity with id 14)
-var time_to_move : float # to configure the move tween
+var entity_id: int # important to make combinations (e.g., id 5 + id 9 = instantiate entity with id 14)
+var time_to_move: float # to configure the move tween
 #endregion
 
 #region state control
-var is_busy : bool:
-	get: 
+var is_busy: bool:
+	get:
 		return is_moving and is_attacking
-var is_moving : bool = false
-var is_attacking : bool = false
+var is_moving: bool = false
+var is_attacking: bool = false
 #endregion
 
-var current_tile : Tile
+var current_tile: Tile
 
 func trigger():
 	pass
@@ -42,5 +42,5 @@ func move(backwards = false):
 		_move_to_tile(current_tile.previous_tile)
 		current_tile = current_tile.previous_tile # attention: updating current tile before animation is completed
 	else:
-		_move_to_tile(current_tile.next_tile)
-		current_tile = current_tile.next_tile # attention: updating current tile before animation is completed
+		_move_to_tile(current_tile.left_tile)
+		current_tile = current_tile.left_tile # attention: updating current tile before animation is completed
