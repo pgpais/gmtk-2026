@@ -22,6 +22,19 @@ func get_layer(index: int) -> Layer:
 func get_tile(layer_index: int, tile_index: int) -> Tile:
 	return layers[layer_index].get_tile(tile_index)
 
+func get_random_empty_tile(layer_index : int) -> Tile:
+	var order = range(0, len(layers[layer_index].tiles))
+	order.shuffle()
+	
+	var tile 
+	
+	for tile_index in order:
+		tile = get_tile(layer_index, tile_index)
+		if not tile.entity:
+			return tile
+			
+	return null
+
 func _setup_map():
 	layers = []
 
