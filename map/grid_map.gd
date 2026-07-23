@@ -58,24 +58,25 @@ func get_random_empty_tile(layer_index : int) -> Tile:
 	return null
 
 func _setup_map():
-	columns = []
+	if (!Engine.is_editor_hint() || Engine.is_editor_hint() && get_tree().current_scene == self):
+		columns = []
 
-	for child in get_children():
-		child.queue_free()
+		for child in get_children():
+			child.queue_free()
 
-	for i in range(map_size):
-		var mapColumn = MapColumn.new()
-		var layer_size: int = tiles_per_column
+		for i in range(map_size):
+			var mapColumn = MapColumn.new()
+			var layer_size: int = tiles_per_column
+				
+			mapColumn.name = "MapColumn"
+
+			if (!Engine.is_editor_hint() || Engine.is_editor_hint() && get_tree().current_scene == self):
+				add_child(mapColumn, true)
+				mapColumn.owner = self;
+				columns.append(mapColumn)
 			
-		mapColumn.name = "MapColumn"
-
-		add_child(mapColumn, true)
-		if (Engine.is_editor_hint()):
-			mapColumn.owner = get_tree().edited_scene_root
-		columns.append(mapColumn)
-		
-		mapColumn.position.x = game_settings.tile_size.x * i + game_settings.tile_size.x / 2
-		mapColumn.setup_layer(layer_size, i)
+			mapColumn.position.x = game_settings.tile_size.x * i + game_settings.tile_size.x / 2
+			mapColumn.setup_layer(layer_size, i)
 
 func _on_new_tick(count: int):
 	var layer = columns[count]
