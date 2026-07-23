@@ -21,12 +21,19 @@ var previous_tile: Tile:
         tile_size_multiplier = value
         _scale_tile()
 
+@export var layer: Layer
+
 @export_group("Parameters")
 @export var tile_size: Vector2 = Vector2(64, 64)
 
 
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
+
+
+func initialize(layer: Layer, tile_index: int):
+    self.tile_index = tile_index
+    self.layer = layer
 
 func _ready():
     collision_shape.shape = RectangleShape2D.new()
@@ -56,3 +63,7 @@ func _scale_tile():
         sprite.scale.y = tile_size_multiplier / 2.0
         # sprite.position.y = tile_size.y * (tile_size_multiplier - 1) / 2.0
     position.y = new_tile_size / 2 + new_tile_size * tile_index
+
+func _draw() -> void:
+    if next_tile:
+        draw_line(Vector2.ZERO, next_tile.global_position - global_position, Color.YELLOW)
