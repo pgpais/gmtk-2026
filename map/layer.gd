@@ -15,6 +15,8 @@ func get_tile(index: int) -> Tile:
 	return tiles[index]
 
 func setup_layer(number_of_tiles: int, layer_index: int, tile_size: Vector2 = Vector2(64, 64)):
+	self.layer_index = layer_index
+
 	for child in get_children():
 		child.queue_free()
 
