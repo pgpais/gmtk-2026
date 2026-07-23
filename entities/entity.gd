@@ -77,6 +77,11 @@ func move(x, y):
 		return
 	
 	var target_tile = grid_map.get_tile(new_layer_index, current_tile.tile_index)
+	if (new_tile_index < 0 or new_tile_index >= len(grid_map.columns[new_layer_index].tiles)): # if it's already on the top/bottom edge
+		collide(new_layer_index, new_tile_index) # animation colliding but stays in the same tile
+		return
+		
+	var target_tile = grid_map.get_tile(new_layer_index, new_tile_index)
 	
 	if not target_tile.entity == null: # tile is occupied
 		collide(new_layer_index, new_tile_index) # animation colliding but stays in the same tile	
