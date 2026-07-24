@@ -1,16 +1,21 @@
 class_name Entity
 extends Node2D
 
-@onready var grid_map : LayerGridMap = LayerGridMap.instance
+var entity_data: EntityData
+
+@onready var grid_map: LayerGridMap = LayerGridMap.instance
 signal finished_movement()
+
+@export var action_sequence: ActionSequence
+@export var action_handler: ActionHandler
 
 #region node references
 #@export var sprite : Sprite2D
-@export var animator : AnimationPlayer
+@export var animator: AnimationPlayer
 #endregion
 
 #region properties
-var entity_id : int # important to make combinations (e.g., id 5 + id 9 = instantiate entity with id 14)
+var entity_id: int # important to make combinations (e.g., id 5 + id 9 = instantiate entity with id 14)
 enum TEAMS {
 	ALLY,
 	ENEMY,
@@ -18,20 +23,20 @@ enum TEAMS {
 }
 var team = TEAMS.NEUTRAL
 ## to configure the move tween
-var time_to_move : float = 1  
+var time_to_move: float = 1
 #endregion
 
 #region state control
 #@export var hp : int = 10 
 
-var is_busy : bool:
-	get: 
+var is_busy: bool:
+	get:
 		return is_moving and is_attacking
-var is_moving : bool = false
-var is_attacking : bool = false
+var is_moving: bool = false
+var is_attacking: bool = false
 #endregion
 
-var current_tile : Tile = null
+var current_tile: Tile = null
 @export var movement_strategy: MovementStrategy
 
 func _ready() -> void:
@@ -43,23 +48,36 @@ func _ready() -> void:
 		#current_tile.set_entity(self)
 
 func set_data(data):
-	pass
+	entity_data = data
 
 func set_tile(tile):
 	current_tile = tile
 
-func click():
-	pass
-
-func trigger():
-	pass
-
-func set_movement_strategy(movement_strategy: MovementStrategy):
-	self.movement_strategy = movement_strategy
-
 # directly move to position
 func set_new_position(position):
 	global_position = position
+
+	if animator.has_animation("move"):
+		animator.play("move")
+
+func move(tile_path):
+	if animator.has_animation("move"):
+		animator.play("move")
+		
+	if tile_path.is_empty():
+		finished_movement.emit()
+		return
+	
+	for tile in tile_path:
+		await _move_to_tile(tile)
+		
+	if animator.has_animation("idle"):
+		animator.play("idle")
+	else:
+		animator.stop()
+	
+	finished_movement.emit()
+	EventBus.action_step_performed.emit()
 
 func _move_to_tile(target_tile):
 	if animator.has_animation("move"):
@@ -68,6 +86,8 @@ func _move_to_tile(target_tile):
 	var tween = create_tween()
 	tween.tween_method(set_new_position, current_tile.global_position, target_tile.global_position, time_to_move)
 	tween.tween_callback(finished_movement.emit)
+	
+	await tween.finished
 	
 func perform_movement():
 	if movement_strategy:
@@ -95,8 +115,8 @@ func _move(x, y):
 	var target_tile = grid_map.get_tile(new_layer_index, new_tile_index)
 	
 	if not target_tile.entity == null: # tile is occupied
-		collide(new_layer_index, new_tile_index) # animation colliding but stays in the same tile	
-		return	
+		collide(new_layer_index, new_tile_index) # animation colliding but stays in the same tile
+		return
 	
 	_move_to_tile(target_tile)
 	current_tile.set_entity(null)
@@ -111,4 +131,9 @@ func finish_movement():
 
 func collide(x, y): # animation colliding with the edge / obstacle but not moving
 	pass
+
+func trigger():
+	pass
 	
+func act():
+	pass

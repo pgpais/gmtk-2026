@@ -3,12 +3,14 @@
 [ext_resource type="Script" uid="uid://ik53tbaqcr7g" path="res://entities/ally.gd" id="1_binvp"]
 [ext_resource type="Texture2D" uid="uid://w5kafc3luitw" path="res://icon.svg" id="3_ukqju"]
 [ext_resource type="Script" uid="uid://08ngtap170yx" path="res://abilities/selectable.gd" id="4_bathf"]
+[ext_resource type="Script" uid="uid://ddx61kskhe162" path="res://abilities/actions/action_handler.gd" id="4_mmojd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tfbxm"]
 size = Vector2(38, 38)
 
-[node name="Enemy" type="Node2D" unique_id=28648160]
+[node name="Ally" type="Node2D" unique_id=28648160 node_paths=PackedStringArray("action_handler")]
 script = ExtResource("1_binvp")
+action_handler = NodePath("ActionHandler")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1325808683]
 visible = false
@@ -22,3 +24,7 @@ metadata/_custom_type_script = "uid://08ngtap170yx"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Selectable" unique_id=2037993044]
 shape = SubResource("RectangleShape2D_tfbxm")
+
+[node name="ActionHandler" type="Node" parent="." unique_id=209209378]
+script = ExtResource("4_mmojd")
+metadata/_custom_type_script = "uid://ddx61kskhe162"

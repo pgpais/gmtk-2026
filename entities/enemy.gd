@@ -1,34 +1,29 @@
 class_name Enemy
 extends Entity
 
-var _enemy_data: EnemyData
-
 @export var ranged: bool # if it attacks at a distance
 var range: int
 
 func _ready() -> void:
 	team = TEAMS.ENEMY
+	action_handler.set_entity(self)
 	super._ready()
 
 func set_data(data):
-	_enemy_data = data
-
-	var visuals = _enemy_data.scene.instantiate()
+	entity_data = data
+	
+	var visuals = entity_data.scene.instantiate()
 	visuals.name = "Visuals"
 	add_child(visuals, true)
 	animator = visuals.get_node("AnimationPlayer")
-	
 
+	
 func trigger():
 	if current_tile.layer.layer_index == 0:
 		# Next to frog king
 		# TODO: play frog king attack animation
 		EventBus.enemy_attacked_frog_king.emit(self)
 
-	if ranged:
-		for tile in current_tile.tiles_in_range(range):
-			if tile.entity.team == TEAMS.ALLY:
-				is_attacking = true
-	
-	if not is_attacking: # if it attacked someone, stop doing actions. else, move
-		perform_movement()
+	action_handler.perform_actions()
+	# for action: ActionSequence in possible_actions:
+	# 	pass # to do

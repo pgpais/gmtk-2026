@@ -80,6 +80,27 @@ func get_random_empty_tile(layer_index: int) -> Tile:
 			
 	return null
 
+func get_tile_path(current_tile : Tile, target_tile : Tile, include_target : bool = true) -> Array[Tile]:
+	var path = []
+	
+	var current_x = current_tile.layer.layer_index
+	var current_y = current_tile.tile.tile_index
+	
+	var target_x = target_tile.layer.layer_index
+	var target_y = target_tile.tile.tile_index
+	
+	while current_x != target_x or current_y != target_y:
+		current_x += sign(target_x - current_x)
+		current_y += sign(target_y - current_y)
+		
+		var next_tile = get_tile(current_x, current_y)
+		path.append(next_tile)
+	
+	if include_target:
+		path.append(target_tile)
+	
+	return path
+
 func _setup_map():
 	if (!Engine.is_editor_hint() || Engine.is_editor_hint() && get_tree().edited_scene_root == self):
 		print("setup map")

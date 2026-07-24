@@ -1,0 +1,2 @@
+extends ActionSequence
+class_name SequentialActionStrategy
