@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 EventBus="*uid://cigmyyxcg56w6"
+ActionHandler="*uid://ddx61kskhe162"
 
 [display]
 

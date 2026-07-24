@@ -52,46 +52,54 @@ func get_tiles_in_ability_range(ability_range: AbilityRange, starting_tile: Tile
 	var tile_position: Vector2 = Vector2(starting_tile.layer.layer_index, starting_tile.tile_index)
 
 	var tiles: Array[Tile] = []
+	
+	if ability_range.range_type == AbilityRange.range_types.distance:
+		pass
+	
+	elif ability_range.range_type == AbilityRange.range_types.directional:
 
-	for i in range(ability_range.left_min_range, ability_range.left_max_range + 1):
-		var tile = get_tile(tile_position.x - i, tile_position.y)
-		if tile:
-			tiles.append(tile)
-	
-	for i in range(ability_range.right_min_range, ability_range.right_max_range + 1):
-		var tile = get_tile(tile_position.x + i, tile_position.y)
-		if tile:
-			tiles.append(tile)
-	
-	for i in range(ability_range.up_min_range, ability_range.up_max_range + 1):
-		var tile = get_tile(tile_position.x, tile_position.y + i)
-		if tile:
-			tiles.append(tile)
-	
-	for i in range(ability_range.down_min_range, ability_range.down_max_range + 1):
-		var tile = get_tile(tile_position.x, tile_position.y - i)
-		if tile:
-			tiles.append(tile)
+		for i in range(ability_range.left_min_range, ability_range.left_max_range + 1):
+			var tile = get_tile(tile_position.x - i, tile_position.y)
+			if tile:
+				tiles.append(tile)
+		
+		for i in range(ability_range.right_min_range, ability_range.right_max_range + 1):
+			var tile = get_tile(tile_position.x + i, tile_position.y)
+			if tile:
+				tiles.append(tile)
+		
+		for i in range(ability_range.up_min_range, ability_range.up_max_range + 1):
+			var tile = get_tile(tile_position.x, tile_position.y + i)
+			if tile:
+				tiles.append(tile)
+		
+		for i in range(ability_range.down_min_range, ability_range.down_max_range + 1):
+			var tile = get_tile(tile_position.x, tile_position.y - i)
+			if tile:
+				tiles.append(tile)
 
-	for i in range(ability_range.top_left_min_range, ability_range.top_left_max_range + 1):
-		var tile = get_tile(tile_position.x - i, tile_position.y + i)
-		if tile:
-			tiles.append(tile)
+		for i in range(ability_range.top_left_min_range, ability_range.top_left_max_range + 1):
+			var tile = get_tile(tile_position.x - i, tile_position.y + i)
+			if tile:
+				tiles.append(tile)
+		
+		for i in range(ability_range.top_right_min_range, ability_range.top_right_max_range + 1):
+			var tile = get_tile(tile_position.x + i, tile_position.y + i)
+			if tile:
+				tiles.append(tile)
+		
+		for i in range(ability_range.bottom_left_min_range, ability_range.bottom_left_max_range + 1):
+			var tile = get_tile(tile_position.x - i, tile_position.y - i)
+			if tile:
+				tiles.append(tile)
+		
+		for i in range(ability_range.bottom_right_min_range, ability_range.bottom_right_max_range + 1):
+			var tile = get_tile(tile_position.x + i, tile_position.y - i)
+			if tile:
+				tiles.append(tile)
 	
-	for i in range(ability_range.top_right_min_range, ability_range.top_right_max_range + 1):
-		var tile = get_tile(tile_position.x + i, tile_position.y + i)
-		if tile:
-			tiles.append(tile)
-	
-	for i in range(ability_range.bottom_left_min_range, ability_range.bottom_left_max_range + 1):
-		var tile = get_tile(tile_position.x - i, tile_position.y - i)
-		if tile:
-			tiles.append(tile)
-	
-	for i in range(ability_range.bottom_right_min_range, ability_range.bottom_right_max_range + 1):
-		var tile = get_tile(tile_position.x + i, tile_position.y - i)
-		if tile:
-			tiles.append(tile)
+	elif ability_range.range_type == AbilityRange.range_types.path:
+		pass
 	
 	return tiles
 
@@ -107,6 +115,27 @@ func get_random_empty_tile(layer_index: int) -> Tile:
 			return tile
 			
 	return null
+
+func get_tile_path(current_tile : Tile, target_tile : Tile, include_target : bool = true) -> Array[Tile]:
+	var path = []
+	
+	var current_x = current_tile.layer.layer_index
+	var current_y = current_tile.tile.tile_index
+	
+	var target_x = target_tile.layer.layer_index
+	var target_y = target_tile.tile.tile_index
+	
+	while current_x != target_x or current_y != target_y:
+		current_x += sign(target_x - current_x)
+		current_y += sign(target_y - current_y)
+		
+		var next_tile = get_tile(current_x, current_y)
+		path.append(next_tile)
+	
+	if include_target:
+		path.append(target_tile)
+	
+	return path
 
 func _setup_map():
 	if (!Engine.is_editor_hint() || Engine.is_editor_hint() && get_tree().current_scene == self):

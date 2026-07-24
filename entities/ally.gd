@@ -1,23 +1,22 @@
 class_name Ally
 extends Entity
 
-var _ally_data : AllyData
+var banked_actions : Array[ActionStrategy]
 
-@export var ranged : bool # if it attacks at a distance
-var range : int
-
-func _ready() -> void:
+func _init() -> void:
 	team = TEAMS.ALLY
-	super._ready()
 
-func set_data(data):
-	_ally_data = data
+func set_data(data : AllyData):
+	entity_data = data
 
-func trigger():
-	if ranged:
-		for tile in current_tile.tiles_in_range(range):
-			if tile.entity.team == TEAMS.ALLY:
-				is_attacking = true
-	
-	if not is_attacking: # if it attacked someone, stop doing actions. else, move
-		perform_movement()
+func bank_action(action : ActionStrategy):
+	banked_actions.append(action)
+
+func overwatch_tiles(tiles : Array[Tile]):
+	pass
+
+func trigger():	
+	act()
+
+func act():
+	ActionHandler.perform_actions(banked_actions)

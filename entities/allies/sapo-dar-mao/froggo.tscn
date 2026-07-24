@@ -10,14 +10,13 @@
 [ext_resource type="Texture2D" uid="uid://bhids280virmf" path="res://entities/allies/sapo-dar-mao/texture/Uplip.png" id="5_vyyh7"]
 [ext_resource type="Texture2D" uid="uid://bll2ujfh5pmov" path="res://entities/allies/sapo-dar-mao/texture/Downlip.png" id="6_bapcr"]
 
-[sub_resource type="Resource" id="Resource_yxpq7"]
+[sub_resource type="Resource" id="Resource_85ew2"]
 script = ExtResource("3_qou4r")
-target_type = 1
 metadata/_custom_type_script = "uid://yyhnn4sejhrt"
 
-[sub_resource type="Resource" id="Resource_85ew2"]
+[sub_resource type="Resource" id="Resource_hcdyo"]
 script = ExtResource("2_yxpq7")
-steps = Array[ExtResource("3_qou4r")]([SubResource("Resource_yxpq7"), null])
+steps = Array[ExtResource("3_qou4r")]([SubResource("Resource_85ew2"), null, null, null])
 metadata/_custom_type_script = "uid://cbxx16xijc863"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_x8b68"]
@@ -477,7 +476,7 @@ _data = {
 position = Vector2(550, 263)
 scale = Vector2(0.2, 0.2)
 script = ExtResource("1_hcdyo")
-action = SubResource("Resource_85ew2")
+possible_actions = Array[ExtResource("2_yxpq7")]([SubResource("Resource_hcdyo"), null, null])
 animator = NodePath("AnimationPlayer")
 
 [node name="Body" type="Sprite2D" parent="." unique_id=1226581100]

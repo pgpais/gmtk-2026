@@ -33,8 +33,6 @@ var range_tiles: Array[Tile]
 func _ready() -> void:
 	EventBus.selection_needed.connect(_change_to_selection_state)
 	EventBus.movement_needed.connect(_move_control_entity_to_target_tile)
-	EventBus.entity_selected.connect(_on_entity_selected)
-	EventBus.tile_selected.connect(_on_tile_selected)
 	
 	EventBus.entity_selected.connect(_on_entity_selected)
 	EventBus.tile_selected.connect(_on_tile_selected)
@@ -52,7 +50,8 @@ func _change_to_selection_state(target_type, selection_range, highlight_range) -
 		_change_to_enemy_selection_state()
 
 func _move_control_entity_to_target_tile():
-	control_entity._move_to_tile(target_tile)
+	var tile_path : Array[Tile] = grid_map.get_path_of_tiles(control_entity.current_tile, target_tile) 
+	control_entity.move(tile_path)
 
 func _change_to_tile_selection_state() -> void:
 	print("change to tile selection state")
@@ -90,10 +89,10 @@ func _on_entity_selected(entity: Entity) -> void:
 
 	print("selected entity: ", entity)
 
-	#range_tiles = entity.movement_strategy.tiles_to_highlight(entity, grid_map)
-	#range_highlighter.show_highlight_tiles(range_tiles)
+	range_tiles = entity.movement_strategy.tiles_to_highlight(entity, grid_map)
+	range_highlighter.show_highlight_tiles(range_tiles)
 
-	#_change_to_tile_selection_state()
+	_change_to_tile_selection_state()
 
 func _on_tile_selected(tile: Tile) -> void:
 	if !is_active: return
