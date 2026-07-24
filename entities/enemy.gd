@@ -13,6 +13,12 @@ func _ready() -> void:
 func set_data(data):
 	_enemy_data = data
 
+	var visuals = _enemy_data.scene.instantiate()
+	visuals.name = "Visuals"
+	add_child(visuals, true)
+	animator = visuals.get_node("AnimationPlayer")
+	
+
 func trigger():
 	if current_tile.layer.layer_index == 0:
 		# Next to frog king

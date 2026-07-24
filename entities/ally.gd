@@ -13,6 +13,11 @@ func _ready() -> void:
 func set_data(data):
 	_ally_data = data
 
+	var visuals = _ally_data.scene.instantiate()
+	visuals.name = "Visuals"
+	add_child(visuals, true)
+	animator = visuals.get_node("AnimationPlayer")
+
 func trigger():
 	if ranged:
 		for tile in current_tile.tiles_in_range(range):
