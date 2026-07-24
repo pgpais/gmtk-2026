@@ -1,0 +1,12 @@
+extends AnimatedSprite2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "give_hand":
+		visible = true
+		play("lightning")
