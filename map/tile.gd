@@ -6,6 +6,7 @@ extends Area2D
 @export var tile_index: int = 0
 @export var highlight_color: Color = Color.YELLOW
 @export var danger_color: Color = Color.RED
+@export var positive_color: Color = Color.GREEN
 
 @export var layer: MapColumn
 
@@ -29,6 +30,7 @@ func initialize(layer: MapColumn, tile_index: int):
 func _ready():
 	mouse_entered.connect(_on_mouse_entered)
 	mouse_exited.connect(_on_mouse_exited)
+	input_event.connect(_on_input_event)
 
 func _on_mouse_entered():
 	var tween = create_tween()
@@ -37,6 +39,11 @@ func _on_mouse_entered():
 func _on_mouse_exited():
 	var tween = create_tween()
 	tween.tween_method(_set_modulate, sprite.modulate, Color(1, 1, 1, 1), 0.1)
+
+func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int):
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			EventBus.tile_selected.emit(self)
 
 func _set_modulate(color: Color):
 	sprite.modulate = color
@@ -53,3 +60,11 @@ func show_danger_highlight() -> void:
 func hide_danger_highlight() -> void:
 	var tween = create_tween()
 	tween.tween_method(_set_modulate, danger_color, Color(1, 1, 1, 1), 0.1)
+
+func show_positive_highlight() -> void:
+	var tween = create_tween()
+	tween.tween_method(_set_modulate, Color(1, 1, 1, 1), positive_color, 0.1)
+
+func hide_positive_highlight() -> void:
+	var tween = create_tween()
+	tween.tween_method(_set_modulate, positive_color, Color(1, 1, 1, 1), 0.1)
