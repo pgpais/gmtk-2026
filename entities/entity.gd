@@ -4,6 +4,8 @@ extends Node2D
 @onready var grid_map : LayerGridMap = LayerGridMap.instance
 signal finished_movement()
 
+@export var action : ActionStrategy
+
 #region node references
 #@export var sprite : Sprite2D
 @export var animator : AnimationPlayer
@@ -74,9 +76,9 @@ func perform_movement():
 	if movement_strategy:
 		movement_strategy.move(self)
 	elif team == TEAMS.ENEMY:
-		move(-1, 0)
+		_move(-1, 0)
 	elif team == TEAMS.ALLY:
-		move(1, 0)
+		_move(1, 0)
 
 func _move(x, y):
 	var new_layer_index = 0
