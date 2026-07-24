@@ -49,6 +49,54 @@ func get_tiles_in_range(range_distance: Vector2, starting_tile: Tile) -> Array[T
 	return result
 
 func get_random_empty_tile(layer_index : int) -> Tile:
+func get_tiles_in_ability_range(ability_range: AbilityRange, starting_tile: Tile) -> Array[Tile]:
+	var tile_position: Vector2 = Vector2(starting_tile.layer.layer_index, starting_tile.tile_index)
+
+	var tiles: Array[Tile] = []
+
+	for i in range(ability_range.left_min_range, ability_range.left_max_range + 1):
+		var tile = get_tile(tile_position.x - i, tile_position.y)
+		if tile:
+			tiles.append(tile)
+	
+	for i in range(ability_range.right_min_range, ability_range.right_max_range + 1):
+		var tile = get_tile(tile_position.x + i, tile_position.y)
+		if tile:
+			tiles.append(tile)
+	
+	for i in range(ability_range.up_min_range, ability_range.up_max_range + 1):
+		var tile = get_tile(tile_position.x, tile_position.y + i)
+		if tile:
+			tiles.append(tile)
+	
+	for i in range(ability_range.down_min_range, ability_range.down_max_range + 1):
+		var tile = get_tile(tile_position.x, tile_position.y - i)
+		if tile:
+			tiles.append(tile)
+
+	for i in range(ability_range.top_left_min_range, ability_range.top_left_max_range + 1):
+		var tile = get_tile(tile_position.x - i, tile_position.y + i)
+		if tile:
+			tiles.append(tile)
+	
+	for i in range(ability_range.top_right_min_range, ability_range.top_right_max_range + 1):
+		var tile = get_tile(tile_position.x + i, tile_position.y + i)
+		if tile:
+			tiles.append(tile)
+	
+	for i in range(ability_range.bottom_left_min_range, ability_range.bottom_left_max_range + 1):
+		var tile = get_tile(tile_position.x - i, tile_position.y - i)
+		if tile:
+			tiles.append(tile)
+	
+	for i in range(ability_range.bottom_right_min_range, ability_range.bottom_right_max_range + 1):
+		var tile = get_tile(tile_position.x + i, tile_position.y - i)
+		if tile:
+			tiles.append(tile)
+	
+	return tiles
+
+func get_random_empty_tile(layer_index: int) -> Tile:
 	var order = range(0, len(columns[layer_index].tiles))
 	order.shuffle()
 	
