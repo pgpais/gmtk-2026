@@ -13,8 +13,10 @@ func _ready() -> void:
 	EventBus.new_cycle.connect(test)
 
 func test():
-	spawn_enemies(3)
-	spawn_allies(3)
+	if enemies_data.size() > 0:
+		spawn_enemies(3)
+	if allies_data.size() > 0:
+		spawn_allies(3)
 
 func spawn_enemies(n):
 	var start_layer = len(grid_map.columns) - 1
