@@ -1,20 +1,20 @@
 class_name Entity
 extends Node2D
 
-var entity_data : EntityData
+var entity_data: EntityData
 
-@onready var grid_map : LayerGridMap = LayerGridMap.instance
+@onready var grid_map: LayerGridMap = LayerGridMap.instance
 signal finished_movement()
 
-@export var possible_actions : Array[ActionStrategy]
+@export var possible_actions: Array[ActionStrategy]
 
 #region node references
 #@export var sprite : Sprite2D
-@export var animator : AnimationPlayer
+@export var animator: AnimationPlayer
 #endregion
 
 #region properties
-var entity_id : int # important to make combinations (e.g., id 5 + id 9 = instantiate entity with id 14)
+var entity_id: int # important to make combinations (e.g., id 5 + id 9 = instantiate entity with id 14)
 enum TEAMS {
 	ALLY,
 	ENEMY,
@@ -22,20 +22,20 @@ enum TEAMS {
 }
 var team = TEAMS.NEUTRAL
 ## to configure the move tween
-var time_to_move : float = 1  
+var time_to_move: float = 1
 #endregion
 
 #region state control
 #@export var hp : int = 10 
 
-var is_busy : bool:
-	get: 
+var is_busy: bool:
+	get:
 		return is_moving and is_attacking
-var is_moving : bool = false
-var is_attacking : bool = false
+var is_moving: bool = false
+var is_attacking: bool = false
 #endregion
 
-var current_tile : Tile = null
+var current_tile: Tile = null
 @export var movement_strategy: MovementStrategy
 
 func _ready() -> void:
@@ -71,7 +71,7 @@ func move(tile_path):
 		return
 	
 	for tile in tile_path:
-		await move_to_tile(tile, true)
+		await _move_to_tile(tile)
 		
 	if animator.has_animation("idle"):
 		animator.play("idle")
@@ -117,8 +117,8 @@ func _move(x, y):
 	var target_tile = grid_map.get_tile(new_layer_index, new_tile_index)
 	
 	if not target_tile.entity == null: # tile is occupied
-		collide(new_layer_index, new_tile_index) # animation colliding but stays in the same tile	
-		return	
+		collide(new_layer_index, new_tile_index) # animation colliding but stays in the same tile
+		return
 	
 	_move_to_tile(target_tile)
 	current_tile.set_entity(null)

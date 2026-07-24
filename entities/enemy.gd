@@ -25,7 +25,5 @@ func trigger():
 		# TODO: play frog king attack animation
 		EventBus.enemy_attacked_frog_king.emit(self)
 
-	for action : ActionStrategy in possible_actions:
+	for action: ActionStrategy in possible_actions:
 		pass # to do
-	
-	return best_action
