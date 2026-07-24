@@ -1,11 +1,12 @@
 [gd_scene format=3 uid="uid://bjwl5ilt4my3o"]
 
-[ext_resource type="Texture2D" uid="uid://5ec6d4n5a0y8" path="res://mosquito/textures/Untitled_Artwork.png" id="1_ty75x"]
-[ext_resource type="Texture2D" uid="uid://dt6133tffhd4i" path="res://mosquito/textures/Untitled_Artwork-1.png" id="2_sb5yb"]
-[ext_resource type="Texture2D" uid="uid://de6501yoaomgm" path="res://mosquito/textures/Untitled_Artwork-2.png" id="3_xys58"]
-[ext_resource type="Texture2D" uid="uid://dx16ft1586wul" path="res://mosquito/textures/Untitled_Artwork-3.png" id="4_tkvbd"]
-[ext_resource type="Texture2D" uid="uid://c74dv6yvastll" path="res://mosquito/textures/Untitled_Artwork-4.png" id="5_b88o5"]
-[ext_resource type="Texture2D" uid="uid://doprdw2kbbxye" path="res://mosquito/textures/fur.png" id="6_7f85r"]
+[ext_resource type="Texture2D" uid="uid://5ec6d4n5a0y8" path="res://entities/enemies/mosquito/textures/Untitled_Artwork.png" id="1_ty75x"]
+[ext_resource type="Script" uid="uid://djwq2t6ffm83s" path="res://entities/enemy.gd" id="1_ysue2"]
+[ext_resource type="Texture2D" uid="uid://dt6133tffhd4i" path="res://entities/enemies/mosquito/textures/Untitled_Artwork-1.png" id="2_sb5yb"]
+[ext_resource type="Texture2D" uid="uid://de6501yoaomgm" path="res://entities/enemies/mosquito/textures/Untitled_Artwork-2.png" id="3_xys58"]
+[ext_resource type="Texture2D" uid="uid://dx16ft1586wul" path="res://entities/enemies/mosquito/textures/Untitled_Artwork-3.png" id="4_tkvbd"]
+[ext_resource type="Texture2D" uid="uid://c74dv6yvastll" path="res://entities/enemies/mosquito/textures/Untitled_Artwork-4.png" id="5_b88o5"]
+[ext_resource type="Texture2D" uid="uid://doprdw2kbbxye" path="res://entities/enemies/mosquito/textures/fur.png" id="6_7f85r"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_h3yei"]
 animations = [{
@@ -31,7 +32,6 @@ animations = [{
 }]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_xwoj3"]
-load_path = "res://.godot/imported/Untitled_Artwork-2.png-bb8ce8598666385836a117459c71c021.ctex"
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wfcus"]
 
@@ -244,7 +244,10 @@ _data = {
 &"sting": SubResource("Animation_xbffa")
 }
 
-[node name="Mosquito" type="Node2D" unique_id=1111273269]
+[node name="Mosquito" type="Node2D" unique_id=1111273269 node_paths=PackedStringArray("animator")]
+scale = Vector2(0.2, 0.2)
+script = ExtResource("1_ysue2")
+animator = NodePath("AnimationPlayer")
 
 [node name="Head" type="Node2D" parent="." unique_id=685796134]
 
