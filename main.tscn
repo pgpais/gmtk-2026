@@ -13,6 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://b1nc3nt363lx5" path="res://core/frog_king/frog_king.tscn" id="10_dg77c"]
 [ext_resource type="Script" uid="uid://cxwch0s8x7i5t" path="res://ui/menus/end_game_menu.gd" id="13_ycdy4"]
 [ext_resource type="PackedScene" uid="uid://nclqfbt55yp5" path="res://core/frog_king/frog_king_ui.tscn" id="14_w48qg"]
+[ext_resource type="Script" uid="uid://dly02pjrb1d6s" path="res://entities/allies/ally_data.gd" id="9_w48qg"]
+[ext_resource type="Resource" uid="uid://duwsfod2j2pgr" path="res://entities/allies/sapo-dar-mao/sapo-dar-mao.tres" id="10_vivmo"]
 
 [sub_resource type="Resource" id="Resource_tfbxm"]
 script = ExtResource("8_kek77")
