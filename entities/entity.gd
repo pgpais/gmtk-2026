@@ -5,7 +5,7 @@ extends Node2D
 signal finished_movement()
 
 #region node references
-@export var sprite : Sprite2D
+#@export var sprite : Sprite2D
 @export var animator : AnimationPlayer
 #endregion
 
@@ -22,7 +22,7 @@ var time_to_move : float = 1
 #endregion
 
 #region state control
-@export var hp : int = 10 
+#@export var hp : int = 10 
 
 var is_busy : bool:
 	get: 
@@ -35,7 +35,7 @@ var current_tile : Tile = null
 @export var movement_strategy: MovementStrategy
 
 func _ready() -> void:
-	pass
+	finished_movement.connect(finish_movement)
 	#if not current_tile:
 		#var start_layer = 0 if team == TEAMS.ENEMY else len(grid_map.columns) - 1	
 		#current_tile = grid_map.get_random_empty_tile(start_layer) # get a random start tile
@@ -62,6 +62,9 @@ func set_new_position(position):
 	global_position = position
 
 func _move_to_tile(target_tile):
+	if animator.has_animation("move"):
+		animator.play("move")
+
 	var tween = create_tween()
 	tween.tween_method(set_new_position, current_tile.global_position, target_tile.global_position, time_to_move)
 	tween.tween_callback(finished_movement.emit)
@@ -69,8 +72,10 @@ func _move_to_tile(target_tile):
 func perform_movement():
 	if movement_strategy:
 		movement_strategy.move(self)
-	else:
+	elif team == TEAMS.ENEMY:
 		_move(-1, 0)
+	elif team == TEAMS.ALLY:
+		_move(1, 0)
 
 func _move(x, y):
 	var new_layer_index = 0
@@ -97,6 +102,12 @@ func _move(x, y):
 	current_tile.set_entity(null)
 	current_tile = target_tile # attention: updating current tile before animation is completed
 	current_tile.set_entity(self)
+
+func finish_movement():
+	if animator.has_animation("idle"):
+		animator.play("idle")
+	else:
+		animator.stop()
 
 func collide(x, y): # animation colliding with the edge / obstacle but not moving
 	pass

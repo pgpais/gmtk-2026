@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AllyData" format=3 uid="uid://duwsfod2j2pgr"]
+
+[ext_resource type="PackedScene" uid="uid://c8nq565hfwm2v" path="res://entities/allies/sapo-dar-mao/froggo.tscn" id="1_f4pua"]
+[ext_resource type="Script" uid="uid://dly02pjrb1d6s" path="res://entities/allies/ally_data.gd" id="4_6hps5"]
+
+[resource]
+script = ExtResource("4_6hps5")
+scene = ExtResource("1_f4pua")
+move = 2
+metadata/_custom_type_script = "uid://dly02pjrb1d6s"

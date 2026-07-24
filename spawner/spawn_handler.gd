@@ -3,11 +3,14 @@ extends Node
 
 @onready var grid_map : LayerGridMap = LayerGridMap.instance
 
-@export var enemies_data : Array[EnemyData]
-@export var allies_data : Array[AllyData]
+@export var enemy_scene: PackedScene
+@export var enemies_data: Array[EnemyData]
 
-@export var enemiesParent : Node
-@export var alliesParent : Node
+@export var ally_scene: PackedScene
+@export var allies_data: Array[AllyData]
+
+@export var enemiesParent: Node
+@export var alliesParent: Node
 
 func _ready() -> void:
 	EventBus.new_cycle.connect(test)
@@ -30,7 +33,6 @@ func spawn_enemies(n):
 			_spawn_enemy(enemy_data, tile)
 
 func _spawn_enemy(enemy_data: EnemyData, tile: Tile):
-	var enemy_scene : PackedScene = enemy_data.scene 
 	var enemy : Enemy = enemy_scene.instantiate()
 	
 	enemiesParent.add_child(enemy, true)
@@ -50,7 +52,6 @@ func spawn_allies(n):
 			_spawn_ally(ally_data, tile)
 
 func _spawn_ally(ally_data: AllyData, tile: Tile):
-	var ally_scene : PackedScene = ally_data.scene
 	var ally : Ally = ally_scene.instantiate()
 	
 	alliesParent.add_child(ally, true)

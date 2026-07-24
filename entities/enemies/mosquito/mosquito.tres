@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EnemyData" format=3 uid="uid://bi1cyixed87us"]
+
+[ext_resource type="PackedScene" uid="uid://bjwl5ilt4my3o" path="res://entities/enemies/mosquito/mosquito.tscn" id="1_2eh1l"]
+[ext_resource type="Script" uid="uid://bp1u6h3jw4ia" path="res://entities/enemies/enemy_data.gd" id="1_jbtja"]
+
+[resource]
+script = ExtResource("1_jbtja")
+scene = ExtResource("1_2eh1l")
+move = 3
+metadata/_custom_type_script = "uid://bp1u6h3jw4ia"
