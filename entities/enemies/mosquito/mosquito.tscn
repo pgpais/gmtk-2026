@@ -245,7 +245,6 @@ _data = {
 }
 
 [node name="Mosquito" type="Node2D" unique_id=1111273269 node_paths=PackedStringArray("animator")]
-scale = Vector2(0.2, 0.2)
 script = ExtResource("1_ysue2")
 animator = NodePath("AnimationPlayer")
 

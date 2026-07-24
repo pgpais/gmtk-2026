@@ -463,7 +463,6 @@ _data = {
 
 [node name="Sapo Dar Mao" type="Node2D" unique_id=626510176 node_paths=PackedStringArray("animator")]
 position = Vector2(550, 263)
-scale = Vector2(0.2, 0.2)
 script = ExtResource("1_hcdyo")
 animator = NodePath("AnimationPlayer")
 
