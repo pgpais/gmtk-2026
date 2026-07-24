@@ -24,4 +24,4 @@ func trigger():
 	if not is_attacking: # if it attacked someone, stop doing actions. else, move
 		var projectile = projectile_scene.instantiate()
 		add_child(projectile)
-		#move(1, 0)
+		#perform_movement()
