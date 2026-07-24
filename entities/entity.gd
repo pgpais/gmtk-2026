@@ -6,7 +6,8 @@ var entity_data: EntityData
 @onready var grid_map: LayerGridMap = LayerGridMap.instance
 signal finished_movement()
 
-@export var possible_actions: Array[ActionStrategy]
+@export var action_sequence: ActionSequence
+@export var action_handler: ActionHandler
 
 #region node references
 #@export var sprite : Sprite2D
@@ -51,9 +52,6 @@ func set_data(data):
 
 func set_tile(tile):
 	current_tile = tile
-
-func add_new_possible_action(action: ActionStrategy):
-	self.possible_actions.append(action)
 
 # directly move to position
 func set_new_position(position):

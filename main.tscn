@@ -12,31 +12,14 @@
 [ext_resource type="Script" uid="uid://bym02wtry3fff" path="res://core/range_highlighter.gd" id="7_5vw27"]
 [ext_resource type="PackedScene" uid="uid://bdxs68uy606we" path="res://entities/allies/ally.tscn" id="7_yaehf"]
 [ext_resource type="Script" uid="uid://cs7o53c5hrvdk" path="res://abilities/range/ability_range.gd" id="8_kek77"]
-[ext_resource type="Resource" uid="uid://bi1cyixed87us" path="res://entities/enemies/mosquito.tres" id="8_ycdy4"]
-[ext_resource type="Script" uid="uid://dly02pjrb1d6s" path="res://entities/allies/ally_data.gd" id="9_w48qg"]
-[ext_resource type="Resource" uid="uid://duwsfod2j2pgr" path="res://entities/allies/sapo-dar-mao/sapo-dar-mao.tres" id="10_vivmo"]
+[ext_resource type="Resource" uid="uid://bi1cyixed87us" path="res://entities/enemies/mosquito/mosquito.tres" id="8_ycdy4"]
 [ext_resource type="PackedScene" uid="uid://b1nc3nt363lx5" path="res://core/frog_king/frog_king.tscn" id="10_dg77c"]
+[ext_resource type="Script" uid="uid://5kjnatrb4mig" path="res://abilities/range/range_pattern.gd" id="10_yaehf"]
 [ext_resource type="Script" uid="uid://cxwch0s8x7i5t" path="res://ui/menus/end_game_menu.gd" id="13_ycdy4"]
 [ext_resource type="PackedScene" uid="uid://nclqfbt55yp5" path="res://core/frog_king/frog_king_ui.tscn" id="14_w48qg"]
 
 [sub_resource type="Resource" id="Resource_tfbxm"]
 script = ExtResource("8_kek77")
-left_min_range = 1
-left_max_range = 2
-right_min_range = 1
-right_max_range = 2
-up_min_range = 1
-up_max_range = 2
-down_min_range = 1
-down_max_range = 2
-top_left_min_range = 1
-top_left_max_range = 2
-top_right_min_range = 1
-top_right_max_range = 2
-bottom_left_min_range = 1
-bottom_left_max_range = 2
-bottom_right_min_range = 1
-bottom_right_max_range = 2
 metadata/_custom_type_script = "uid://cs7o53c5hrvdk"
 
 [node name="main" type="Node2D" unique_id=1936105572]

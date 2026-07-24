@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://bjwl5ilt4my3o"]
 
 [ext_resource type="Texture2D" uid="uid://5ec6d4n5a0y8" path="res://entities/enemies/mosquito/textures/Untitled_Artwork.png" id="1_ty75x"]
-[ext_resource type="Script" uid="uid://djwq2t6ffm83s" path="res://entities/enemy.gd" id="1_ysue2"]
 [ext_resource type="Texture2D" uid="uid://dt6133tffhd4i" path="res://entities/enemies/mosquito/textures/Untitled_Artwork-1.png" id="2_sb5yb"]
 [ext_resource type="Texture2D" uid="uid://de6501yoaomgm" path="res://entities/enemies/mosquito/textures/Untitled_Artwork-2.png" id="3_xys58"]
 [ext_resource type="Texture2D" uid="uid://dx16ft1586wul" path="res://entities/enemies/mosquito/textures/Untitled_Artwork-3.png" id="4_tkvbd"]
@@ -268,10 +267,7 @@ _data = {
 &"sting": SubResource("Animation_xbffa")
 }
 
-[node name="Mosquito" type="Node2D" unique_id=1111273269 node_paths=PackedStringArray("animator")]
-scale = Vector2(0.2, 0.2)
-script = ExtResource("1_ysue2")
-animator = NodePath("AnimationPlayer")
+[node name="Mosquito" type="Node2D" unique_id=1111273269]
 
 [node name="Head" type="Node2D" parent="." unique_id=685796134]
 position = Vector2(-74, 74)

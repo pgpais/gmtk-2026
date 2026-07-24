@@ -1,7 +1,7 @@
 class_name Ally
 extends Entity
 
-var banked_actions: Array[ActionStrategy]
+var banked_actions: Array[ActionSequence]
 
 func _init() -> void:
 	team = TEAMS.ALLY
@@ -14,7 +14,7 @@ func set_data(data: AllyData):
 	add_child(visuals, true)
 	animator = visuals.get_node("AnimationPlayer")
 
-func bank_action(action: ActionStrategy):
+func bank_action(action: ActionSequence):
 	banked_actions.append(action)
 
 func overwatch_tiles(tiles: Array[Tile]):
@@ -24,4 +24,5 @@ func trigger():
 	act()
 
 func act():
-	ActionHandler.perform_actions(banked_actions)
+	pass
+	# ActionHandler.perform_actions(banked_actions)
