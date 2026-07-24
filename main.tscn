@@ -1,14 +1,37 @@
 [gd_scene format=3 uid="uid://da8sgbng7wcgu"]
 
+[ext_resource type="Script" uid="uid://bg53xmxan81ij" path="res://core/entity_controller.gd" id="1_4c57u"]
 [ext_resource type="PackedScene" uid="uid://br1v8qvourxk3" path="res://layer_grid_map.tscn" id="1_kek77"]
 [ext_resource type="Resource" uid="uid://dd5geybdckkoo" path="res://core/game_settings_data.tres" id="2_lquwl"]
 [ext_resource type="Script" uid="uid://hgtti3egwqpo" path="res://countdown/ticker.gd" id="5_lquwl"]
 [ext_resource type="Script" uid="uid://looe88ko4por" path="res://spawner/spawn_handler.gd" id="6_4c57u"]
 [ext_resource type="PackedScene" uid="uid://my3e0m2p0nby" path="res://countdown/ticker_view.tscn" id="6_7mycd"]
 [ext_resource type="Script" uid="uid://bp1u6h3jw4ia" path="res://entities/enemies/enemy_data.gd" id="7_4c57u"]
+[ext_resource type="Script" uid="uid://bym02wtry3fff" path="res://core/range_highlighter.gd" id="7_5vw27"]
+[ext_resource type="Script" uid="uid://cs7o53c5hrvdk" path="res://abilities/range/ability_range.gd" id="8_kek77"]
 [ext_resource type="Resource" uid="uid://bi1cyixed87us" path="res://entities/enemies/mosquito.tres" id="8_ycdy4"]
 [ext_resource type="Script" uid="uid://dly02pjrb1d6s" path="res://entities/allies/ally_data.gd" id="9_w48qg"]
 [ext_resource type="Resource" uid="uid://duwsfod2j2pgr" path="res://entities/allies/cakeater.tres" id="10_vivmo"]
+
+[sub_resource type="Resource" id="Resource_tfbxm"]
+script = ExtResource("8_kek77")
+left_min_range = 1
+left_max_range = 2
+right_min_range = 1
+right_max_range = 2
+up_min_range = 1
+up_max_range = 2
+down_min_range = 1
+down_max_range = 2
+top_left_min_range = 1
+top_left_max_range = 2
+top_right_min_range = 1
+top_right_max_range = 2
+bottom_left_min_range = 1
+bottom_left_max_range = 2
+bottom_right_min_range = 1
+bottom_right_max_range = 2
+metadata/_custom_type_script = "uid://cs7o53c5hrvdk"
 
 [node name="main" type="Node2D" unique_id=1936105572]
 
@@ -20,6 +43,16 @@ enemies_data = Array[ExtResource("7_4c57u")]([ExtResource("8_ycdy4")])
 allies_data = Array[ExtResource("9_w48qg")]([ExtResource("10_vivmo")])
 enemiesParent = NodePath("../Entities/Enemies")
 alliesParent = NodePath("../Entities/Allies")
+
+[node name="EntityController" type="Node" parent="." unique_id=1994216120]
+script = ExtResource("1_4c57u")
+metadata/_custom_type_script = "uid://bg53xmxan81ij"
+
+[node name="RangeHighlighter" type="Node" parent="." unique_id=1559212750 node_paths=PackedStringArray("grid_map")]
+script = ExtResource("7_5vw27")
+debug_range = SubResource("Resource_tfbxm")
+grid_map = NodePath("../LayerGridMap")
+metadata/_custom_type_script = "uid://bym02wtry3fff"
 
 [node name="Ticker" type="Node" parent="." unique_id=34223848]
 script = ExtResource("5_lquwl")
