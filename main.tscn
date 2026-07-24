@@ -2,15 +2,24 @@
 
 [ext_resource type="PackedScene" uid="uid://br1v8qvourxk3" path="res://layer_grid_map.tscn" id="1_kek77"]
 [ext_resource type="Resource" uid="uid://dd5geybdckkoo" path="res://core/game_settings_data.tres" id="2_lquwl"]
-[ext_resource type="PackedScene" uid="uid://bnt35p1hurl2f" path="res://entities/tower.tscn" id="5_272bh"]
 [ext_resource type="Script" uid="uid://hgtti3egwqpo" path="res://countdown/ticker.gd" id="5_lquwl"]
-[ext_resource type="PackedScene" uid="uid://dr5swm4njn0uk" path="res://entities/enemy.tscn" id="6_5vw27"]
+[ext_resource type="Script" uid="uid://looe88ko4por" path="res://spawner/spawn_handler.gd" id="6_4c57u"]
 [ext_resource type="PackedScene" uid="uid://my3e0m2p0nby" path="res://countdown/ticker_view.tscn" id="6_7mycd"]
+[ext_resource type="Script" uid="uid://bp1u6h3jw4ia" path="res://entities/enemies/enemy_data.gd" id="7_4c57u"]
+[ext_resource type="Resource" uid="uid://bi1cyixed87us" path="res://entities/enemies/mosquito.tres" id="8_ycdy4"]
+[ext_resource type="Script" uid="uid://dly02pjrb1d6s" path="res://entities/allies/ally_data.gd" id="9_w48qg"]
+[ext_resource type="Resource" uid="uid://duwsfod2j2pgr" path="res://entities/allies/cakeater.tres" id="10_vivmo"]
 
 [node name="main" type="Node2D" unique_id=1936105572]
 
 [node name="LayerGridMap" parent="." unique_id=2027443948 instance=ExtResource("1_kek77")]
-unique_name_in_owner = true
+
+[node name="SpawnHandler" type="Node" parent="." unique_id=1568226340 node_paths=PackedStringArray("enemiesParent", "alliesParent")]
+script = ExtResource("6_4c57u")
+enemies_data = Array[ExtResource("7_4c57u")]([ExtResource("8_ycdy4")])
+allies_data = Array[ExtResource("9_w48qg")]([ExtResource("10_vivmo")])
+enemiesParent = NodePath("../Entities/Enemies")
+alliesParent = NodePath("../Entities/Allies")
 
 [node name="Ticker" type="Node" parent="." unique_id=34223848]
 script = ExtResource("5_lquwl")
@@ -24,6 +33,6 @@ ticker = NodePath("../../Ticker")
 
 [node name="Entities" type="Node2D" parent="." unique_id=1746099726]
 
-[node name="Enemy" parent="Entities" unique_id=28648160 instance=ExtResource("6_5vw27")]
+[node name="Enemies" type="Node2D" parent="Entities" unique_id=1180351692]
 
-[node name="Tower" parent="Entities" unique_id=1662188270 instance=ExtResource("5_272bh")]
+[node name="Allies" type="Node2D" parent="Entities" unique_id=2136276855]

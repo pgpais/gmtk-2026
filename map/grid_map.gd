@@ -2,6 +2,8 @@
 class_name LayerGridMap
 extends Node2D
 
+static var instance : LayerGridMap
+
 ## Maximum number of tiles the map can have
 @export var game_settings: GameSettings:
 	set(value):
@@ -16,6 +18,8 @@ var columns: Array[MapColumn]
 
 
 func _ready() -> void:
+	instance = self
+	
 	_setup_map()
 	
 	EventBus.ticker_new_tick.connect(_on_new_tick)

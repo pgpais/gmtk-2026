@@ -3,6 +3,8 @@ extends Entity
 
 var _ally_data : AllyData
 
+@export var projectile_scene : PackedScene
+
 @export var ranged : bool # if it attacks at a distance
 var range : int
 
@@ -20,4 +22,6 @@ func trigger():
 				is_attacking = true
 	
 	if not is_attacking: # if it attacked someone, stop doing actions. else, move
-		move(-1, 0)
+		var projectile = projectile_scene.instantiate()
+		add_child(projectile)
+		#move(1, 0)
