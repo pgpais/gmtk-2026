@@ -4,351 +4,488 @@
 [ext_resource type="Resource" uid="uid://dd5geybdckkoo" path="res://core/game_settings_data.tres" id="2_akrxh"]
 [ext_resource type="Script" uid="uid://dtdg6wi6v4o0a" path="res://map/layer.gd" id="3_5f17n"]
 [ext_resource type="PackedScene" uid="uid://bmifyrtst83yc" path="res://map/tile.tscn" id="4_01owg"]
+[ext_resource type="Script" uid="uid://d1vsxetgx8k52" path="res://map/tile.gd" id="5_akrxh"]
 
 [node name="LayerGridMap" type="Node2D" unique_id=2027443948]
 script = ExtResource("1_56ot8")
 game_settings = ExtResource("2_akrxh")
 metadata/_custom_type_script = "uid://dojshow4it3ya"
 
-[node name="MapColumn3" type="Node2D" parent="." unique_id=2040253343]
-position = Vector2(32, 0)
+[node name="MapColumn3" type="Node2D" parent="." unique_id=360826812]
+position = Vector2(160, 0)
 script = ExtResource("3_5f17n")
 
-[node name="Tile" parent="MapColumn3" unique_id=813079352 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
+[node name="Tile" type="Area2D" parent="MapColumn3" unique_id=813079352 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
+position = Vector2(0, 160)
+script = ExtResource("5_akrxh")
 layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="Tile2" parent="MapColumn3" unique_id=1861324477 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
-position = Vector2(0, 96)
+[node name="Tile2" type="Area2D" parent="MapColumn3" unique_id=1650244774 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
+position = Vector2(0, 480)
+script = ExtResource("5_akrxh")
 tile_index = 1
 layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="Tile3" parent="MapColumn3" unique_id=1496393180 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
-position = Vector2(0, 160)
+[node name="Tile3" type="Area2D" parent="MapColumn3" unique_id=1029497102 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
+position = Vector2(0, 800)
+script = ExtResource("5_akrxh")
 tile_index = 2
 layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="Tile4" parent="MapColumn3" unique_id=757023182 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
-position = Vector2(0, 224)
+[node name="Tile4" type="Area2D" parent="MapColumn3" unique_id=2033411552 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
+position = Vector2(0, 1120)
+script = ExtResource("5_akrxh")
 tile_index = 3
 layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="Tile5" parent="MapColumn3" unique_id=1474995198 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
-position = Vector2(0, 288)
+[node name="Tile5" type="Area2D" parent="MapColumn3" unique_id=44907039 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
+position = Vector2(0, 1440)
+script = ExtResource("5_akrxh")
 tile_index = 4
 layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="Tile6" parent="MapColumn3" unique_id=397205995 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
-position = Vector2(0, 352)
+[node name="Tile6" type="Area2D" parent="MapColumn3" unique_id=1734514598 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
+position = Vector2(0, 1760)
+script = ExtResource("5_akrxh")
 tile_index = 5
 layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="Tile7" parent="MapColumn3" unique_id=1984274150 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
-position = Vector2(0, 416)
+[node name="Tile7" type="Area2D" parent="MapColumn3" unique_id=1519039325 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
+position = Vector2(0, 2080)
+script = ExtResource("5_akrxh")
 tile_index = 6
 layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="Tile8" parent="MapColumn3" unique_id=979275242 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
-position = Vector2(0, 480)
+[node name="Tile8" type="Area2D" parent="MapColumn3" unique_id=1773687849 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
+position = Vector2(0, 2400)
+script = ExtResource("5_akrxh")
 tile_index = 7
 layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="MapColumn4" type="Node2D" parent="." unique_id=1872497473]
-position = Vector2(96, 0)
+[node name="MapColumn4" type="Node2D" parent="." unique_id=34280007]
+position = Vector2(480, 0)
 script = ExtResource("3_5f17n")
 layer_index = 1
 
-[node name="Tile" parent="MapColumn4" unique_id=2079251829 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
+[node name="Tile" type="Area2D" parent="MapColumn4" unique_id=429090124 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
+position = Vector2(0, 160)
+script = ExtResource("5_akrxh")
 layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="Tile2" parent="MapColumn4" unique_id=1876047077 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
-position = Vector2(0, 96)
+[node name="Tile2" type="Area2D" parent="MapColumn4" unique_id=26395368 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
+position = Vector2(0, 480)
+script = ExtResource("5_akrxh")
 tile_index = 1
 layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="Tile3" parent="MapColumn4" unique_id=848479082 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
-position = Vector2(0, 160)
+[node name="Tile3" type="Area2D" parent="MapColumn4" unique_id=1993184321 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
+position = Vector2(0, 800)
+script = ExtResource("5_akrxh")
 tile_index = 2
 layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="Tile4" parent="MapColumn4" unique_id=1097958830 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
-position = Vector2(0, 224)
+[node name="Tile4" type="Area2D" parent="MapColumn4" unique_id=109940827 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
+position = Vector2(0, 1120)
+script = ExtResource("5_akrxh")
 tile_index = 3
 layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="Tile5" parent="MapColumn4" unique_id=246594098 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
-position = Vector2(0, 288)
+[node name="Tile5" type="Area2D" parent="MapColumn4" unique_id=303069531 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
+position = Vector2(0, 1440)
+script = ExtResource("5_akrxh")
 tile_index = 4
 layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="Tile6" parent="MapColumn4" unique_id=1460806908 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
-position = Vector2(0, 352)
+[node name="Tile6" type="Area2D" parent="MapColumn4" unique_id=577139419 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
+position = Vector2(0, 1760)
+script = ExtResource("5_akrxh")
 tile_index = 5
 layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="Tile7" parent="MapColumn4" unique_id=198037558 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
-position = Vector2(0, 416)
+[node name="Tile7" type="Area2D" parent="MapColumn4" unique_id=1105907418 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
+position = Vector2(0, 2080)
+script = ExtResource("5_akrxh")
 tile_index = 6
 layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="Tile8" parent="MapColumn4" unique_id=2098358118 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
-position = Vector2(0, 480)
+[node name="Tile8" type="Area2D" parent="MapColumn4" unique_id=1809284059 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
+position = Vector2(0, 2400)
+script = ExtResource("5_akrxh")
 tile_index = 7
 layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="MapColumn5" type="Node2D" parent="." unique_id=811430170]
-position = Vector2(160, 0)
+[node name="MapColumn5" type="Node2D" parent="." unique_id=962542195]
+position = Vector2(800, 0)
 script = ExtResource("3_5f17n")
 layer_index = 2
 
-[node name="Tile" parent="MapColumn5" unique_id=1727854885 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
+[node name="Tile" type="Area2D" parent="MapColumn5" unique_id=297348974 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
+position = Vector2(0, 160)
+script = ExtResource("5_akrxh")
 layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="Tile2" parent="MapColumn5" unique_id=468118047 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
-position = Vector2(0, 96)
+[node name="Tile2" type="Area2D" parent="MapColumn5" unique_id=85557007 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
+position = Vector2(0, 480)
+script = ExtResource("5_akrxh")
 tile_index = 1
 layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="Tile3" parent="MapColumn5" unique_id=664678031 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
-position = Vector2(0, 160)
+[node name="Tile3" type="Area2D" parent="MapColumn5" unique_id=958814001 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
+position = Vector2(0, 800)
+script = ExtResource("5_akrxh")
 tile_index = 2
 layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="Tile4" parent="MapColumn5" unique_id=254863394 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
-position = Vector2(0, 224)
+[node name="Tile4" type="Area2D" parent="MapColumn5" unique_id=1553281162 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
+position = Vector2(0, 1120)
+script = ExtResource("5_akrxh")
 tile_index = 3
 layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="Tile5" parent="MapColumn5" unique_id=1968248631 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
-position = Vector2(0, 288)
+[node name="Tile5" type="Area2D" parent="MapColumn5" unique_id=2017666329 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
+position = Vector2(0, 1440)
+script = ExtResource("5_akrxh")
 tile_index = 4
 layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="Tile6" parent="MapColumn5" unique_id=518410264 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
-position = Vector2(0, 352)
+[node name="Tile6" type="Area2D" parent="MapColumn5" unique_id=2043716540 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
+position = Vector2(0, 1760)
+script = ExtResource("5_akrxh")
 tile_index = 5
 layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="Tile7" parent="MapColumn5" unique_id=1328199019 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
-position = Vector2(0, 416)
+[node name="Tile7" type="Area2D" parent="MapColumn5" unique_id=1196447283 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
+position = Vector2(0, 2080)
+script = ExtResource("5_akrxh")
 tile_index = 6
 layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="Tile8" parent="MapColumn5" unique_id=1891166789 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
-position = Vector2(0, 480)
+[node name="Tile8" type="Area2D" parent="MapColumn5" unique_id=1815110183 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
+position = Vector2(0, 2400)
+script = ExtResource("5_akrxh")
 tile_index = 7
 layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="MapColumn6" type="Node2D" parent="." unique_id=123728393]
-position = Vector2(224, 0)
+[node name="MapColumn6" type="Node2D" parent="." unique_id=1487953607]
+position = Vector2(1120, 0)
 script = ExtResource("3_5f17n")
 layer_index = 3
 
-[node name="Tile" parent="MapColumn6" unique_id=1864583453 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
+[node name="Tile" type="Area2D" parent="MapColumn6" unique_id=1898455665 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
+position = Vector2(0, 160)
+script = ExtResource("5_akrxh")
 layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="Tile2" parent="MapColumn6" unique_id=1390803934 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
-position = Vector2(0, 96)
+[node name="Tile2" type="Area2D" parent="MapColumn6" unique_id=955103829 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
+position = Vector2(0, 480)
+script = ExtResource("5_akrxh")
 tile_index = 1
 layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="Tile3" parent="MapColumn6" unique_id=1324555583 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
-position = Vector2(0, 160)
+[node name="Tile3" type="Area2D" parent="MapColumn6" unique_id=549631240 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
+position = Vector2(0, 800)
+script = ExtResource("5_akrxh")
 tile_index = 2
 layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="Tile4" parent="MapColumn6" unique_id=1085567567 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
-position = Vector2(0, 224)
+[node name="Tile4" type="Area2D" parent="MapColumn6" unique_id=1004745255 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
+position = Vector2(0, 1120)
+script = ExtResource("5_akrxh")
 tile_index = 3
 layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="Tile5" parent="MapColumn6" unique_id=1010501950 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
-position = Vector2(0, 288)
+[node name="Tile5" type="Area2D" parent="MapColumn6" unique_id=1268295363 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
+position = Vector2(0, 1440)
+script = ExtResource("5_akrxh")
 tile_index = 4
 layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="Tile6" parent="MapColumn6" unique_id=1076542950 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
-position = Vector2(0, 352)
+[node name="Tile6" type="Area2D" parent="MapColumn6" unique_id=938498954 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
+position = Vector2(0, 1760)
+script = ExtResource("5_akrxh")
 tile_index = 5
 layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="Tile7" parent="MapColumn6" unique_id=1944118427 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
-position = Vector2(0, 416)
+[node name="Tile7" type="Area2D" parent="MapColumn6" unique_id=205092148 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
+position = Vector2(0, 2080)
+script = ExtResource("5_akrxh")
 tile_index = 6
 layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="Tile8" parent="MapColumn6" unique_id=152765297 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
-position = Vector2(0, 480)
+[node name="Tile8" type="Area2D" parent="MapColumn6" unique_id=1436589414 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
+position = Vector2(0, 2400)
+script = ExtResource("5_akrxh")
 tile_index = 7
 layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="MapColumn7" type="Node2D" parent="." unique_id=649129590]
-position = Vector2(288, 0)
+[node name="MapColumn7" type="Node2D" parent="." unique_id=155162776]
+position = Vector2(1440, 0)
 script = ExtResource("3_5f17n")
 layer_index = 4
 
-[node name="Tile" parent="MapColumn7" unique_id=1199930708 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
+[node name="Tile" type="Area2D" parent="MapColumn7" unique_id=679904513 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
+position = Vector2(0, 160)
+script = ExtResource("5_akrxh")
 layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="Tile2" parent="MapColumn7" unique_id=1705852948 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
-position = Vector2(0, 96)
+[node name="Tile2" type="Area2D" parent="MapColumn7" unique_id=1545910822 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
+position = Vector2(0, 480)
+script = ExtResource("5_akrxh")
 tile_index = 1
 layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="Tile3" parent="MapColumn7" unique_id=347411149 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
-position = Vector2(0, 160)
+[node name="Tile3" type="Area2D" parent="MapColumn7" unique_id=1244078412 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
+position = Vector2(0, 800)
+script = ExtResource("5_akrxh")
 tile_index = 2
 layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="Tile4" parent="MapColumn7" unique_id=467547363 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
-position = Vector2(0, 224)
+[node name="Tile4" type="Area2D" parent="MapColumn7" unique_id=883585610 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
+position = Vector2(0, 1120)
+script = ExtResource("5_akrxh")
 tile_index = 3
 layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="Tile5" parent="MapColumn7" unique_id=1354509417 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
-position = Vector2(0, 288)
+[node name="Tile5" type="Area2D" parent="MapColumn7" unique_id=853075319 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
+position = Vector2(0, 1440)
+script = ExtResource("5_akrxh")
 tile_index = 4
 layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="Tile6" parent="MapColumn7" unique_id=1819060921 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
-position = Vector2(0, 352)
+[node name="Tile6" type="Area2D" parent="MapColumn7" unique_id=1884836095 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
+position = Vector2(0, 1760)
+script = ExtResource("5_akrxh")
 tile_index = 5
 layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="Tile7" parent="MapColumn7" unique_id=764103604 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
-position = Vector2(0, 416)
+[node name="Tile7" type="Area2D" parent="MapColumn7" unique_id=676955356 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
+position = Vector2(0, 2080)
+script = ExtResource("5_akrxh")
 tile_index = 6
 layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="Tile8" parent="MapColumn7" unique_id=838207457 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
-position = Vector2(0, 480)
+[node name="Tile8" type="Area2D" parent="MapColumn7" unique_id=615241992 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
+position = Vector2(0, 2400)
+script = ExtResource("5_akrxh")
 tile_index = 7
 layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="MapColumn8" type="Node2D" parent="." unique_id=759029070]
-position = Vector2(352, 0)
+[node name="MapColumn8" type="Node2D" parent="." unique_id=1155948996]
+position = Vector2(1760, 0)
 script = ExtResource("3_5f17n")
 layer_index = 5
 
-[node name="Tile" parent="MapColumn8" unique_id=2047226778 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
+[node name="Tile" type="Area2D" parent="MapColumn8" unique_id=122869800 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
+position = Vector2(0, 160)
+script = ExtResource("5_akrxh")
 layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="Tile2" parent="MapColumn8" unique_id=84218726 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
-position = Vector2(0, 96)
+[node name="Tile2" type="Area2D" parent="MapColumn8" unique_id=1167884577 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
+position = Vector2(0, 480)
+script = ExtResource("5_akrxh")
 tile_index = 1
 layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="Tile3" parent="MapColumn8" unique_id=630361372 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
-position = Vector2(0, 160)
+[node name="Tile3" type="Area2D" parent="MapColumn8" unique_id=128449564 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
+position = Vector2(0, 800)
+script = ExtResource("5_akrxh")
 tile_index = 2
 layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="Tile4" parent="MapColumn8" unique_id=364935289 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
-position = Vector2(0, 224)
+[node name="Tile4" type="Area2D" parent="MapColumn8" unique_id=1290039335 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
+position = Vector2(0, 1120)
+script = ExtResource("5_akrxh")
 tile_index = 3
 layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="Tile5" parent="MapColumn8" unique_id=308485221 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
-position = Vector2(0, 288)
+[node name="Tile5" type="Area2D" parent="MapColumn8" unique_id=2092749424 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
+position = Vector2(0, 1440)
+script = ExtResource("5_akrxh")
 tile_index = 4
 layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="Tile6" parent="MapColumn8" unique_id=2061209489 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
-position = Vector2(0, 352)
+[node name="Tile6" type="Area2D" parent="MapColumn8" unique_id=1618274061 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
+position = Vector2(0, 1760)
+script = ExtResource("5_akrxh")
 tile_index = 5
 layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="Tile7" parent="MapColumn8" unique_id=237307266 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
-position = Vector2(0, 416)
+[node name="Tile7" type="Area2D" parent="MapColumn8" unique_id=2009571508 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
+position = Vector2(0, 2080)
+script = ExtResource("5_akrxh")
 tile_index = 6
 layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="Tile8" parent="MapColumn8" unique_id=1300699767 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
-position = Vector2(0, 480)
+[node name="Tile8" type="Area2D" parent="MapColumn8" unique_id=1151629502 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
+position = Vector2(0, 2400)
+script = ExtResource("5_akrxh")
 tile_index = 7
 layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="MapColumn9" type="Node2D" parent="." unique_id=1553435175]
-position = Vector2(416, 0)
+[node name="MapColumn9" type="Node2D" parent="." unique_id=1226926550]
+position = Vector2(2080, 0)
 script = ExtResource("3_5f17n")
 layer_index = 6
 
-[node name="Tile" parent="MapColumn9" unique_id=1615155085 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
+[node name="Tile" type="Area2D" parent="MapColumn9" unique_id=1116031005 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
+position = Vector2(0, 160)
+script = ExtResource("5_akrxh")
 layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="Tile2" parent="MapColumn9" unique_id=1188776745 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
-position = Vector2(0, 96)
+[node name="Tile2" type="Area2D" parent="MapColumn9" unique_id=1857332405 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
+position = Vector2(0, 480)
+script = ExtResource("5_akrxh")
 tile_index = 1
 layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="Tile3" parent="MapColumn9" unique_id=2093064050 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
-position = Vector2(0, 160)
+[node name="Tile3" type="Area2D" parent="MapColumn9" unique_id=414202203 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
+position = Vector2(0, 800)
+script = ExtResource("5_akrxh")
 tile_index = 2
 layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="Tile4" parent="MapColumn9" unique_id=1879284831 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
-position = Vector2(0, 224)
+[node name="Tile4" type="Area2D" parent="MapColumn9" unique_id=152381463 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
+position = Vector2(0, 1120)
+script = ExtResource("5_akrxh")
 tile_index = 3
 layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="Tile5" parent="MapColumn9" unique_id=1307513267 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
-position = Vector2(0, 288)
+[node name="Tile5" type="Area2D" parent="MapColumn9" unique_id=1825299972 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
+position = Vector2(0, 1440)
+script = ExtResource("5_akrxh")
 tile_index = 4
 layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="Tile6" parent="MapColumn9" unique_id=182707035 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
-position = Vector2(0, 352)
+[node name="Tile6" type="Area2D" parent="MapColumn9" unique_id=1243023505 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
+position = Vector2(0, 1760)
+script = ExtResource("5_akrxh")
 tile_index = 5
 layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="Tile7" parent="MapColumn9" unique_id=755104688 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
-position = Vector2(0, 416)
+[node name="Tile7" type="Area2D" parent="MapColumn9" unique_id=710885461 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
+position = Vector2(0, 2080)
+script = ExtResource("5_akrxh")
 tile_index = 6
 layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="Tile8" parent="MapColumn9" unique_id=436049426 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
-position = Vector2(0, 480)
+[node name="Tile8" type="Area2D" parent="MapColumn9" unique_id=393881001 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
+position = Vector2(0, 2400)
+script = ExtResource("5_akrxh")
 tile_index = 7
 layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="MapColumn10" type="Node2D" parent="." unique_id=1395422726]
-position = Vector2(480, 0)
+[node name="MapColumn10" type="Node2D" parent="." unique_id=1835042446]
+position = Vector2(2400, 0)
 script = ExtResource("3_5f17n")
 layer_index = 7
 
-[node name="Tile" parent="MapColumn10" unique_id=1279823208 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
+[node name="Tile" type="Area2D" parent="MapColumn10" unique_id=1136749298 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
+position = Vector2(0, 160)
+script = ExtResource("5_akrxh")
 layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="Tile2" parent="MapColumn10" unique_id=2008534478 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
-position = Vector2(0, 96)
+[node name="Tile2" type="Area2D" parent="MapColumn10" unique_id=1478317193 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
+position = Vector2(0, 480)
+script = ExtResource("5_akrxh")
 tile_index = 1
 layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="Tile3" parent="MapColumn10" unique_id=1915694774 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
-position = Vector2(0, 160)
+[node name="Tile3" type="Area2D" parent="MapColumn10" unique_id=666510378 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
+position = Vector2(0, 800)
+script = ExtResource("5_akrxh")
 tile_index = 2
 layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="Tile4" parent="MapColumn10" unique_id=1730689376 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
-position = Vector2(0, 224)
+[node name="Tile4" type="Area2D" parent="MapColumn10" unique_id=1485076533 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
+position = Vector2(0, 1120)
+script = ExtResource("5_akrxh")
 tile_index = 3
 layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="Tile5" parent="MapColumn10" unique_id=1804120692 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
-position = Vector2(0, 288)
+[node name="Tile5" type="Area2D" parent="MapColumn10" unique_id=2112127924 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
+position = Vector2(0, 1440)
+script = ExtResource("5_akrxh")
 tile_index = 4
 layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="Tile6" parent="MapColumn10" unique_id=896351840 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
-position = Vector2(0, 352)
+[node name="Tile6" type="Area2D" parent="MapColumn10" unique_id=272714125 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
+position = Vector2(0, 1760)
+script = ExtResource("5_akrxh")
 tile_index = 5
 layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="Tile7" parent="MapColumn10" unique_id=1206851890 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
-position = Vector2(0, 416)
+[node name="Tile7" type="Area2D" parent="MapColumn10" unique_id=1747478861 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
+position = Vector2(0, 2080)
+script = ExtResource("5_akrxh")
 tile_index = 6
 layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"
 
-[node name="Tile8" parent="MapColumn10" unique_id=279443911 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
-position = Vector2(0, 480)
+[node name="Tile8" type="Area2D" parent="MapColumn10" unique_id=1889098017 node_paths=PackedStringArray("layer") instance=ExtResource("4_01owg")]
+position = Vector2(0, 2400)
+script = ExtResource("5_akrxh")
 tile_index = 7
 layer = NodePath("..")
+metadata/_custom_type_script = "uid://d1vsxetgx8k52"

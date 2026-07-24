@@ -2,18 +2,15 @@
 class_name LayerGridMap
 extends Node2D
 
-static var instance : LayerGridMap
+static var instance: LayerGridMap
+
+@export_tool_button("Recreate map") var recreate_map = _setup_map
 
 ## Maximum number of tiles the map can have
 @export var game_settings: GameSettings:
 	set(value):
 		game_settings = value
-		map_size = game_settings.map_columns
-		tiles_per_column = game_settings.tiles_per_column
 		_setup_map()
-		
-var map_size: int = 8
-var tiles_per_column: int = 8
 var columns: Array[MapColumn]
 
 
@@ -24,10 +21,22 @@ func _ready() -> void:
 	
 	EventBus.ticker_new_tick.connect(_on_new_tick)
 
+func _process(delta: float) -> void:
+	if Input.is_key_pressed(Key.KEY_O):
+		var in_range = get_tiles_in_range(Vector2(2, 1), get_tile(4, 4))
+		for tile in in_range:
+			tile.show_danger_highlight()
+	if Input.is_key_pressed(Key.KEY_P):
+		var in_range = get_tiles_in_range(Vector2(2, 1), get_tile(2, 4))
+		for tile in in_range:
+			tile.hide_danger_highlight()
+
 func get_layer(index: int) -> MapColumn:
 	return columns[index]
 
 func get_tile(layer_index: int, tile_index: int) -> Tile:
+	if layer_index >= len(columns) or tile_index >= len(columns[layer_index].tiles) or layer_index < 0 or tile_index < 0:
+		return null
 	return columns[layer_index].get_tile(tile_index)
 
 func get_empty_tiles_in_column(layer_index: int) -> Array[Tile]:
@@ -99,7 +108,7 @@ func get_random_empty_tile(layer_index: int) -> Tile:
 	var order = range(0, len(columns[layer_index].tiles))
 	order.shuffle()
 	
-	var tile 
+	var tile
 	
 	for tile_index in order:
 		tile = get_tile(layer_index, tile_index)
@@ -109,25 +118,26 @@ func get_random_empty_tile(layer_index: int) -> Tile:
 	return null
 
 func _setup_map():
-	if (!Engine.is_editor_hint() || Engine.is_editor_hint() && get_tree().current_scene == self):
+	if (!Engine.is_editor_hint() || Engine.is_editor_hint() && get_tree().edited_scene_root == self):
+		print("setup map")
 		columns = []
 
 		for child in get_children():
 			child.queue_free()
 
-		for i in range(map_size):
+		for i in range(game_settings.map_columns):
 			var mapColumn = MapColumn.new()
-			var layer_size: int = tiles_per_column
+			var layer_size: int = game_settings.tiles_per_column
 				
 			mapColumn.name = "MapColumn"
 
-			if (!Engine.is_editor_hint() || Engine.is_editor_hint() && get_tree().current_scene == self):
+			if (!Engine.is_editor_hint() || Engine.is_editor_hint() && get_tree().edited_scene_root == self):
 				add_child(mapColumn, true)
 				mapColumn.owner = self;
 				columns.append(mapColumn)
 			
 			mapColumn.position.x = game_settings.tile_size.x * i + game_settings.tile_size.x / 2
-			mapColumn.setup_layer(layer_size, i)
+			mapColumn.setup_layer(layer_size, i, game_settings.tile_size)
 
 func _on_new_tick(count: int):
 	var layer = columns[count]

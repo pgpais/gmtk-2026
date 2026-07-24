@@ -25,7 +25,7 @@ func setup_layer(number_of_tiles: int, layer_index: int, tile_size: Vector2 = Ve
 		add_child(tile, true)
 		tiles.append(tile)
 		if Engine.is_editor_hint():
-			tile.owner = self
+			tile.owner = get_tree().get_edited_scene_root()
 		tile.position = Vector2(0, tile_size.y / 2 + i * tile_size.y)
 		tile.initialize(self, i)
 
