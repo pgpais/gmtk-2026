@@ -9,6 +9,11 @@ func _init() -> void:
 func set_data(data : AllyData):
 	entity_data = data
 
+	var visuals = _ally_data.scene.instantiate()
+	visuals.name = "Visuals"
+	add_child(visuals, true)
+	animator = visuals.get_node("AnimationPlayer")
+
 func bank_action(action : ActionStrategy):
 	banked_actions.append(action)
 

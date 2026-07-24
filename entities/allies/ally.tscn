@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://bdxs68uy606we"]
+
+[ext_resource type="Script" uid="uid://ik53tbaqcr7g" path="res://entities/ally.gd" id="1_binvp"]
+[ext_resource type="Texture2D" uid="uid://w5kafc3luitw" path="res://icon.svg" id="3_ukqju"]
+[ext_resource type="Script" uid="uid://08ngtap170yx" path="res://abilities/selectable.gd" id="4_bathf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tfbxm"]
+size = Vector2(38, 38)
+
+[node name="Enemy" type="Node2D" unique_id=28648160]
+script = ExtResource("1_binvp")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1325808683]
+visible = false
+modulate = Color(0.8929083, 0.17015585, 1.1551381e-06, 1)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_ukqju")
+
+[node name="Selectable" type="Area2D" parent="." unique_id=1588231175]
+script = ExtResource("4_bathf")
+metadata/_custom_type_script = "uid://08ngtap170yx"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Selectable" unique_id=2037993044]
+shape = SubResource("RectangleShape2D_tfbxm")

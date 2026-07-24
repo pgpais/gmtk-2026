@@ -26,6 +26,8 @@ var time_to_move : float = 1
 #endregion
 
 #region state control
+#@export var hp : int = 10 
+
 var is_busy : bool:
 	get: 
 		return is_moving and is_attacking
@@ -34,6 +36,15 @@ var is_attacking : bool = false
 #endregion
 
 var current_tile : Tile = null
+@export var movement_strategy: MovementStrategy
+
+func _ready() -> void:
+	finished_movement.connect(finish_movement)
+	#if not current_tile:
+		#var start_layer = 0 if team == TEAMS.ENEMY else len(grid_map.columns) - 1	
+		#current_tile = grid_map.get_random_empty_tile(start_layer) # get a random start tile
+		#global_position = current_tile.global_position
+		#current_tile.set_entity(self)
 
 func set_data(data):
 	entity_data = data
@@ -47,6 +58,9 @@ func add_new_possible_action(action: ActionStrategy):
 # directly move to position
 func set_new_position(position):
 	global_position = position
+
+	if animator.has_animation("move"):
+		animator.play("move")
 
 func move(tile_path):
 	if animator.has_animation("move"):
@@ -67,31 +81,55 @@ func move(tile_path):
 	finished_movement.emit()
 	EventBus.action_step_performed.emit()
 
-func move_to_tile(tile : Tile, compound_movement : bool = false):
-	if !compound_movement:
-		if animator.has_animation("move"):
-			animator.play("move")
-	
-	var current_pos = current_tile.global_position
-	
+func _move_to_tile(target_tile):
+	if animator.has_animation("move"):
+		animator.play("move")
+
 	var tween = create_tween()
-	tween.tween_method(set_new_position, current_pos, tile.global_position, time_to_move)
+	tween.tween_method(set_new_position, current_tile.global_position, target_tile.global_position, time_to_move)
+	tween.tween_callback(finished_movement.emit)
 	
 	await tween.finished
 	
-	if global_position != tile.global_position:
-		global_position = tile.global_position
+func perform_movement():
+	if movement_strategy:
+		movement_strategy.move(self)
+	elif team == TEAMS.ENEMY:
+		_move(-1, 0)
+	elif team == TEAMS.ALLY:
+		_move(1, 0)
 
-	if current_tile != null:
-		current_tile.set_entity(null)
-	current_tile = tile
-	current_tile.set_entity(self)
+func _move(x, y):
+	var new_layer_index = 0
+	var new_tile_index = 0
 	
-	if !compound_movement:
-		if animator.has_animation("idle"):
-			animator.play("idle")
-		else:
-			animator.stop()
+	new_layer_index = current_tile.layer.layer_index + x
+	new_tile_index = current_tile.tile_index + y
+	
+	if (new_layer_index < 0 or new_layer_index >= len(grid_map.columns)): # if it's already on the left/right edge
+		collide(new_layer_index, new_tile_index) # animation colliding but stays in the same tile
+		return
+	
+	if (new_tile_index < 0 or new_tile_index >= len(grid_map.columns[new_layer_index].tiles)): # if it's already on the top/bottom edge
+		collide(new_layer_index, new_tile_index) # animation colliding but stays in the same tile
+		return
+		
+	var target_tile = grid_map.get_tile(new_layer_index, new_tile_index)
+	
+	if not target_tile.entity == null: # tile is occupied
+		collide(new_layer_index, new_tile_index) # animation colliding but stays in the same tile	
+		return	
+	
+	_move_to_tile(target_tile)
+	current_tile.set_entity(null)
+	current_tile = target_tile # attention: updating current tile before animation is completed
+	current_tile.set_entity(self)
+
+func finish_movement():
+	if animator.has_animation("idle"):
+		animator.play("idle")
+	else:
+		animator.stop()
 
 func collide(x, y): # animation colliding with the edge / obstacle but not moving
 	pass

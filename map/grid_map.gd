@@ -2,18 +2,15 @@
 class_name LayerGridMap
 extends Node2D
 
-static var instance : LayerGridMap
+static var instance: LayerGridMap
+
+@export_tool_button("Recreate map") var recreate_map = _setup_map
 
 ## Maximum number of tiles the map can have
 @export var game_settings: GameSettings:
 	set(value):
 		game_settings = value
-		map_size = game_settings.map_columns
-		tiles_per_column = game_settings.tiles_per_column
 		_setup_map()
-		
-var map_size: int = 8
-var tiles_per_column: int = 8
 var columns: Array[MapColumn]
 
 
@@ -28,6 +25,8 @@ func get_layer(index: int) -> MapColumn:
 	return columns[index]
 
 func get_tile(layer_index: int, tile_index: int) -> Tile:
+	if layer_index >= len(columns) or tile_index >= len(columns[layer_index].tiles) or layer_index < 0 or tile_index < 0:
+		return null
 	return columns[layer_index].get_tile(tile_index)
 
 func get_empty_tiles_in_column(layer_index: int) -> Array[Tile]:
@@ -49,65 +48,30 @@ func get_tiles_in_range(range_distance: Vector2, starting_tile: Tile) -> Array[T
 	return result
 
 func get_tiles_in_ability_range(ability_range: AbilityRange, starting_tile: Tile) -> Array[Tile]:
-	var tile_position: Vector2 = Vector2(starting_tile.layer.layer_index, starting_tile.tile_index)
+	var tile_position: Vector2i = Vector2i(starting_tile.layer.layer_index, starting_tile.tile_index)
 
 	var tiles: Array[Tile] = []
-	
-	if ability_range.range_type == AbilityRange.range_types.distance:
-		pass
-	
-	elif ability_range.range_type == AbilityRange.range_types.directional:
 
-		for i in range(ability_range.left_min_range, ability_range.left_max_range + 1):
-			var tile = get_tile(tile_position.x - i, tile_position.y)
-			if tile:
-				tiles.append(tile)
-		
-		for i in range(ability_range.right_min_range, ability_range.right_max_range + 1):
-			var tile = get_tile(tile_position.x + i, tile_position.y)
-			if tile:
-				tiles.append(tile)
-		
-		for i in range(ability_range.up_min_range, ability_range.up_max_range + 1):
-			var tile = get_tile(tile_position.x, tile_position.y + i)
-			if tile:
-				tiles.append(tile)
-		
-		for i in range(ability_range.down_min_range, ability_range.down_max_range + 1):
-			var tile = get_tile(tile_position.x, tile_position.y - i)
-			if tile:
-				tiles.append(tile)
+	for pattern in ability_range.patterns:
+		var direction_vector = pattern.get_direction_vector()
 
-		for i in range(ability_range.top_left_min_range, ability_range.top_left_max_range + 1):
-			var tile = get_tile(tile_position.x - i, tile_position.y + i)
-			if tile:
-				tiles.append(tile)
-		
-		for i in range(ability_range.top_right_min_range, ability_range.top_right_max_range + 1):
-			var tile = get_tile(tile_position.x + i, tile_position.y + i)
-			if tile:
-				tiles.append(tile)
-		
-		for i in range(ability_range.bottom_left_min_range, ability_range.bottom_left_max_range + 1):
-			var tile = get_tile(tile_position.x - i, tile_position.y - i)
-			if tile:
-				tiles.append(tile)
-		
-		for i in range(ability_range.bottom_right_min_range, ability_range.bottom_right_max_range + 1):
-			var tile = get_tile(tile_position.x + i, tile_position.y - i)
-			if tile:
-				tiles.append(tile)
-	
-	elif ability_range.range_type == AbilityRange.range_types.path:
-		pass
-	
+		for i in range(pattern.distance):
+			tile_position += direction_vector * pattern.area_grid * i
+
+			for x in range(pattern.area_grid.x):
+				for y in range(pattern.area_grid.y):
+					var tile = get_tile(tile_position.x + x + pattern.offset.x, tile_position.y + y + pattern.offset.y)
+
+					if tile:
+						tiles.append(tile)
+
 	return tiles
 
 func get_random_empty_tile(layer_index: int) -> Tile:
 	var order = range(0, len(columns[layer_index].tiles))
 	order.shuffle()
 	
-	var tile 
+	var tile
 	
 	for tile_index in order:
 		tile = get_tile(layer_index, tile_index)
@@ -138,25 +102,26 @@ func get_tile_path(current_tile : Tile, target_tile : Tile, include_target : boo
 	return path
 
 func _setup_map():
-	if (!Engine.is_editor_hint() || Engine.is_editor_hint() && get_tree().current_scene == self):
+	if (!Engine.is_editor_hint() || Engine.is_editor_hint() && get_tree().edited_scene_root == self):
+		print("setup map")
 		columns = []
 
 		for child in get_children():
 			child.queue_free()
 
-		for i in range(map_size):
+		for i in range(game_settings.map_columns):
 			var mapColumn = MapColumn.new()
-			var layer_size: int = tiles_per_column
+			var layer_size: int = game_settings.tiles_per_column
 				
 			mapColumn.name = "MapColumn"
 
-			if (!Engine.is_editor_hint() || Engine.is_editor_hint() && get_tree().current_scene == self):
+			if (!Engine.is_editor_hint() || Engine.is_editor_hint() && get_tree().edited_scene_root == self):
 				add_child(mapColumn, true)
 				mapColumn.owner = self;
 				columns.append(mapColumn)
 			
 			mapColumn.position.x = game_settings.tile_size.x * i + game_settings.tile_size.x / 2
-			mapColumn.setup_layer(layer_size, i)
+			mapColumn.setup_layer(layer_size, i, game_settings.tile_size)
 
 func _on_new_tick(count: int):
 	var layer = columns[count]
