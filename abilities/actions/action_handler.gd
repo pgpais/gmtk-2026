@@ -50,4 +50,7 @@ func finish_action():
 	next_action()
 	
 func finish_all_actions():
+	actions_to_perform = []
+	current_step = 0
+	current_action = 0
 	all_actions_finished.emit()
