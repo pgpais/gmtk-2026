@@ -70,9 +70,9 @@ func perform_movement():
 	if movement_strategy:
 		movement_strategy.move(self)
 	else:
-		move(-1, 0)
+		_move(-1, 0)
 
-func move(x, y):
+func _move(x, y):
 	var new_layer_index = 0
 	var new_tile_index = 0
 	
