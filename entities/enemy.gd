@@ -15,7 +15,7 @@ func set_data(data):
 	var visuals = entity_data.scene.instantiate()
 	visuals.name = "Visuals"
 	add_child(visuals, true)
-	animator = visuals.get_node("AnimationPlayer")
+	_animator = visuals.get_node("AnimationPlayer")
 
 	
 func trigger():

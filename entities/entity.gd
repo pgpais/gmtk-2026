@@ -5,13 +5,14 @@ var entity_data: EntityData
 
 @onready var grid_map: LayerGridMap = LayerGridMap.instance
 signal finished_movement()
+signal animation_finished(animation_name)
 
 @export var action_sequence: ActionSequence
 @export var action_handler: ActionHandler
 
 #region node references
 #@export var sprite : Sprite2D
-@export var animator: AnimationPlayer
+@export var _animator: AnimationPlayer
 #endregion
 
 #region properties
@@ -57,12 +58,12 @@ func set_tile(tile):
 func set_new_position(position):
 	global_position = position
 
-	if animator.has_animation("move"):
-		animator.play("move")
+	if _animator.has_animation("move"):
+		_animator.play("move")
 
 func move(tile_path):
-	if animator.has_animation("move"):
-		animator.play("move")
+	if _animator.has_animation("move"):
+		_animator.play("move")
 		
 	if tile_path.is_empty():
 		finished_movement.emit()
@@ -71,17 +72,17 @@ func move(tile_path):
 	for tile in tile_path:
 		await _move_to_tile(tile)
 		
-	if animator.has_animation("idle"):
-		animator.play("idle")
+	if _animator.has_animation("idle"):
+		_animator.play("idle")
 	else:
-		animator.stop()
+		_animator.stop()
 	
 	finished_movement.emit()
 	EventBus.action_step_performed.emit()
 
 func _move_to_tile(target_tile):
-	if animator.has_animation("move"):
-		animator.play("move")
+	if _animator.has_animation("move"):
+		_animator.play("move")
 
 	var tween = create_tween()
 	tween.tween_method(set_new_position, current_tile.global_position, target_tile.global_position, time_to_move)
@@ -124,10 +125,10 @@ func _move(x, y):
 	current_tile.set_entity(self)
 
 func finish_movement():
-	if animator.has_animation("idle"):
-		animator.play("idle")
+	if _animator.has_animation("idle"):
+		_animator.play("idle")
 	else:
-		animator.stop()
+		_animator.stop()
 
 func collide(x, y): # animation colliding with the edge / obstacle but not moving
 	pass
@@ -137,3 +138,15 @@ func trigger():
 	
 func act():
 	pass
+
+func play_animation(animation):
+	if _animator.has_animation(animation):
+		_animator.play(animation)
+
+		while (true):
+			var finished_animation = await _animator.animation_finished
+			if finished_animation == animation:
+				animation_finished.emit(animation)
+				break;
+	else:
+		print("Animation not found: " + animation)
