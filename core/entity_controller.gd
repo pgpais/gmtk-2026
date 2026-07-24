@@ -39,14 +39,13 @@ func _ready() -> void:
 	
 func _change_to_selection_state(target_type, selection_range, highlight_range) -> void:
 	if highlight_range:
-		pass
-		# highlight range
-	
-	if target_type == ActionStep.TARGET_TYPES.tile:
+		pass # highlight range
+		
+	if target_type == SelectionStep.TARGET_TYPES.tile:
 		_change_to_tile_selection_state()
-	elif target_type == ActionStep.TARGET_TYPES.ally:
+	elif target_type == SelectionStep.TARGET_TYPES.ally:
 		_change_to_ally_selection_state()
-	elif target_type == ActionStep.TARGET_TYPES.enemy:
+	elif target_type == SelectionStep.TARGET_TYPES.enemy:
 		_change_to_enemy_selection_state()
 
 func _move_control_entity_to_target_tile():

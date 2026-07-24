@@ -4,6 +4,8 @@ var actions_to_perform : Array[ActionStrategy]
 var current_step : int = 0
 var current_action : int = 0
 
+var parameters : Dictionary
+
 signal action_step_finished
 signal action_finished
 signal all_actions_finished
@@ -11,13 +13,19 @@ signal all_actions_finished
 func _ready() -> void:
 	EventBus.action_step_performed.connect(next_step)
 
+func set_parameter(parameter_name : String, value : Variant):
+	parameters[parameter_name] = value
+	
+func get_parameter(parameter_name : String):
+	return parameters[parameter_name]
+
 func perform_action(action : ActionStrategy):
 	actions_to_perform = [action]
-	next_step()
+	perform_step()
 	
 func perform_actions(actions : Array[ActionStrategy]):
 	actions_to_perform = actions
-	next_step()	
+	perform_step()
 
 func next_step():	
 	current_step += 1
@@ -33,6 +41,9 @@ func next_action():
 		next_step()
 	
 func perform_step():
+	if current_action >= len(actions_to_perform) or actions_to_perform[current_action] == null or current_step >= len(actions_to_perform[current_action].steps):
+		return
+	
 	var step : ActionStep = actions_to_perform[current_action].steps[current_step] 
 	
 	if step is SelectionStep:

@@ -68,7 +68,6 @@ func move(tile_path):
 	EventBus.action_step_performed.emit()
 
 func move_to_tile(tile : Tile, compound_movement : bool = false):
-	
 	if !compound_movement:
 		if animator.has_animation("move"):
 			animator.play("move")

@@ -8,16 +8,18 @@ var range : int
 
 func _ready() -> void:
 	team = TEAMS.ENEMY
-	super._ready() 
 
 func set_data(data):
 	_enemy_data = data
 
 func trigger():
-	if ranged:
-		for tile in current_tile.tiles_in_range(range):
-			if tile.entity.team == TEAMS.ALLY:
-				is_attacking = true
+	var action = get_best_action()
+	ActionHandler.perform_action(action)
 	
-	if not is_attacking: # if it attacked someone, stop doing actions. else, move
-		perform_movement()
+func get_best_action() -> ActionStrategy:
+	var best_action = null
+
+	for action : ActionStrategy in possible_actions:
+		pass # to do
+	
+	return best_action
