@@ -48,7 +48,6 @@ func get_tiles_in_range(range_distance: Vector2, starting_tile: Tile) -> Array[T
 
 	return result
 
-func get_random_empty_tile(layer_index : int) -> Tile:
 func get_tiles_in_ability_range(ability_range: AbilityRange, starting_tile: Tile) -> Array[Tile]:
 	var tile_position: Vector2 = Vector2(starting_tile.layer.layer_index, starting_tile.tile_index)
 
