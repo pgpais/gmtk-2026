@@ -62,21 +62,20 @@ func set_new_position(position):
 	global_position = position
 
 func _move_to_tile(target_tile):
+	if animator.has_animation("move"):
+		animator.play("move")
+
 	var tween = create_tween()
 	tween.tween_method(set_new_position, current_tile.global_position, target_tile.global_position, time_to_move)
 	tween.tween_callback(finished_movement.emit)
 	
 func perform_movement():
-	
-	if animator.has_animation("move"):
-		animator.play("move")
-	
 	if movement_strategy:
 		movement_strategy.move(self)
 	elif team == TEAMS.ENEMY:
-		move(-1, 0)
+		_move(-1, 0)
 	elif team == TEAMS.ALLY:
-		move(1, 0)
+		_move(1, 0)
 
 func _move(x, y):
 	var new_layer_index = 0
