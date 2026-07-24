@@ -1,19 +1,24 @@
 class_name Enemy
 extends Entity
 
-var _enemy_data : EnemyData
+var _enemy_data: EnemyData
 
-@export var ranged : bool # if it attacks at a distance
-var range : int
+@export var ranged: bool # if it attacks at a distance
+var range: int
 
 func _ready() -> void:
 	team = TEAMS.ENEMY
-	super._ready() 
+	super._ready()
 
 func set_data(data):
 	_enemy_data = data
 
 func trigger():
+	if current_tile.layer.layer_index == 0:
+		# Next to frog king
+		# TODO: play frog king attack animation
+		EventBus.enemy_attacked_frog_king.emit(self)
+
 	if ranged:
 		for tile in current_tile.tiles_in_range(range):
 			if tile.entity.team == TEAMS.ALLY:

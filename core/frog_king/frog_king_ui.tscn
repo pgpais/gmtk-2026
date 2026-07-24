@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://nclqfbt55yp5"]
+
+[ext_resource type="Script" uid="uid://bahfmguevuo7b" path="res://core/frog_king/frog_king_ui.gd" id="1_h8fi4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2cqfq"]
+bg_color = Color(1, 0, 0, 1)
+
+[node name="FrogKingUI" type="Control" unique_id=1013682348 node_paths=PackedStringArray("frog_king", "health_bar")]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -262.0
+offset_top = 94.0
+offset_right = 262.0
+offset_bottom = 194.0
+grow_horizontal = 2
+script = ExtResource("1_h8fi4")
+frog_king = NodePath("")
+health_bar = NodePath("ProgressBar")
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=131783683]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_2cqfq")
+value = 50.0
+show_percentage = false
