@@ -21,16 +21,6 @@ func _ready() -> void:
 	
 	EventBus.ticker_new_tick.connect(_on_new_tick)
 
-func _process(delta: float) -> void:
-	if Input.is_key_pressed(Key.KEY_O):
-		var in_range = get_tiles_in_range(Vector2(2, 1), get_tile(4, 4))
-		for tile in in_range:
-			tile.show_danger_highlight()
-	if Input.is_key_pressed(Key.KEY_P):
-		var in_range = get_tiles_in_range(Vector2(2, 1), get_tile(2, 4))
-		for tile in in_range:
-			tile.hide_danger_highlight()
-
 func get_layer(index: int) -> MapColumn:
 	return columns[index]
 
@@ -58,50 +48,23 @@ func get_tiles_in_range(range_distance: Vector2, starting_tile: Tile) -> Array[T
 	return result
 
 func get_tiles_in_ability_range(ability_range: AbilityRange, starting_tile: Tile) -> Array[Tile]:
-	var tile_position: Vector2 = Vector2(starting_tile.layer.layer_index, starting_tile.tile_index)
+	var tile_position: Vector2i = Vector2i(starting_tile.layer.layer_index, starting_tile.tile_index)
 
 	var tiles: Array[Tile] = []
 
-	for i in range(ability_range.left_min_range, ability_range.left_max_range + 1):
-		var tile = get_tile(tile_position.x - i, tile_position.y)
-		if tile:
-			tiles.append(tile)
-	
-	for i in range(ability_range.right_min_range, ability_range.right_max_range + 1):
-		var tile = get_tile(tile_position.x + i, tile_position.y)
-		if tile:
-			tiles.append(tile)
-	
-	for i in range(ability_range.up_min_range, ability_range.up_max_range + 1):
-		var tile = get_tile(tile_position.x, tile_position.y + i)
-		if tile:
-			tiles.append(tile)
-	
-	for i in range(ability_range.down_min_range, ability_range.down_max_range + 1):
-		var tile = get_tile(tile_position.x, tile_position.y - i)
-		if tile:
-			tiles.append(tile)
+	for pattern in ability_range.patterns:
+		var direction_vector = pattern.get_direction_vector()
 
-	for i in range(ability_range.top_left_min_range, ability_range.top_left_max_range + 1):
-		var tile = get_tile(tile_position.x - i, tile_position.y + i)
-		if tile:
-			tiles.append(tile)
-	
-	for i in range(ability_range.top_right_min_range, ability_range.top_right_max_range + 1):
-		var tile = get_tile(tile_position.x + i, tile_position.y + i)
-		if tile:
-			tiles.append(tile)
-	
-	for i in range(ability_range.bottom_left_min_range, ability_range.bottom_left_max_range + 1):
-		var tile = get_tile(tile_position.x - i, tile_position.y - i)
-		if tile:
-			tiles.append(tile)
-	
-	for i in range(ability_range.bottom_right_min_range, ability_range.bottom_right_max_range + 1):
-		var tile = get_tile(tile_position.x + i, tile_position.y - i)
-		if tile:
-			tiles.append(tile)
-	
+		for i in range(pattern.distance):
+			tile_position += direction_vector * pattern.area_grid * i
+
+			for x in range(pattern.area_grid.x):
+				for y in range(pattern.area_grid.y):
+					var tile = get_tile(tile_position.x + x + pattern.offset.x, tile_position.y + y + pattern.offset.y)
+
+					if tile:
+						tiles.append(tile)
+
 	return tiles
 
 func get_random_empty_tile(layer_index: int) -> Tile:

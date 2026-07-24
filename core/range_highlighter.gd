@@ -23,3 +23,8 @@ func hide_highlight_tiles(tiles: Array[Tile], is_positive: bool = true) -> void:
 			tile.hide_positive_highlight()
 		else:
 			tile.hide_danger_highlight()
+
+func _process(delta: float) -> void:
+	if Input.is_key_pressed(Key.KEY_O):
+		grid_map.get_tile(0, 7).show_positive_highlight()
+		show_highlight_tiles(grid_map.get_tiles_in_ability_range(debug_range, grid_map.get_tile(0, 7)), false)
