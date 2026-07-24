@@ -50,8 +50,8 @@ metadata/_custom_type_script = "uid://bg53xmxan81ij"
 
 [node name="RangeHighlighter" type="Node" parent="." unique_id=1559212750 node_paths=PackedStringArray("grid_map")]
 script = ExtResource("7_5vw27")
-debug_range = SubResource("Resource_tfbxm")
 grid_map = NodePath("../LayerGridMap")
+debug_range = SubResource("Resource_tfbxm")
 metadata/_custom_type_script = "uid://bym02wtry3fff"
 
 [node name="Ticker" type="Node" parent="." unique_id=34223848]
