@@ -31,7 +31,7 @@ var is_movement: bool = true
 var range_tiles: Array[Tile]
 
 func _ready() -> void:
-	EventBus.selection_needed.connect(_change_to_selection_state)
+	EventBus.request_highlight.connect(_change_to_selection_state)
 	EventBus.movement_needed.connect(_move_control_entity_to_target_tile)
 	
 	EventBus.entity_selected.connect(_on_entity_selected)
@@ -41,11 +41,11 @@ func _change_to_selection_state(target_type, selection_range, highlight_range) -
 	if highlight_range:
 		pass # highlight range
 		
-	if target_type == SelectionStep.TARGET_TYPES.tile:
+	if target_type == Constants.TARGET_TYPES.tile:
 		_change_to_tile_selection_state()
-	elif target_type == SelectionStep.TARGET_TYPES.ally:
+	elif target_type == Constants.TARGET_TYPES.ally:
 		_change_to_ally_selection_state()
-	elif target_type == SelectionStep.TARGET_TYPES.enemy:
+	elif target_type == Constants.TARGET_TYPES.enemy:
 		_change_to_enemy_selection_state()
 
 func _move_control_entity_to_target_tile():

@@ -3,7 +3,7 @@ extends Node
 signal ticker_new_tick(count: int)
 signal new_cycle
 
-signal selection_needed(target_type, selection_range, highlight_range)
+signal request_highlight(target_type, selection_range, reference_tile)
 signal direction_selection_needed()
 signal movement_needed()
 

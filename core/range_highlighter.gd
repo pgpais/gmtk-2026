@@ -10,6 +10,9 @@ static var instance: RangeHighlighter
 func _init() -> void:
 	instance = self
 
+func _ready() -> void:
+	EventBus.request_highlight.connect(_on_highlight_request)
+
 func show_highlight_tiles(tiles: Array[Tile], is_positive: bool = true):
 	for tile in tiles:
 		if is_positive:
@@ -28,3 +31,9 @@ func _process(delta: float) -> void:
 	if Input.is_key_pressed(Key.KEY_O):
 		grid_map.get_tile(0, 7).show_positive_highlight()
 		show_highlight_tiles(grid_map.get_tiles_in_ability_range(debug_range, grid_map.get_tile(0, 7)), false)
+
+func _on_highlight_request(target_type, selection_range, reference_tile) -> void:
+	match target_type:
+		Constants.TARGET_TYPES.tile:
+			var tiles: Array[Tile] = grid_map.get_tiles_in_ability_range(selection_range, reference_tile)
+			show_highlight_tiles(tiles)
