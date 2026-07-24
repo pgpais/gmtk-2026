@@ -20,6 +20,9 @@ func take_damage(damage: int):
 
 	health_changed.emit(current_health, old_health)
 
+	if current_health <= 0:
+		health_depleted.emit()
+
 func reset():
 	current_health = max_health
 

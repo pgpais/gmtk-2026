@@ -20,7 +20,12 @@ func _process(delta: float) -> void:
 
 func _die():
     # LOSE
-    pass
+    print("frog king dieded")
+    var tween = create_tween()
+    tween.tween_property(self, "scale", Vector2.ZERO, 0.2)
+    tween.tween_interval(1)
+    await tween.finished
+    EventBus.game_ended.emit(false)
 
 func _on_enemy_attacked_frog_king(enemy: Enemy):
     take_damage(enemy._enemy_data.frog_king_damage)
@@ -40,4 +45,9 @@ func _on_damage_taken(damage: int):
 
 func _ate_beetle():
     # WIN
+    var tween = create_tween()
+    tween.tween_property(self, "scale", Vector2(2, 2), 0.2)
+    tween.tween_interval(1)
+    await tween.finished
+    EventBus.game_ended.emit(true)
     pass

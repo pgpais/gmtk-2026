@@ -10,8 +10,9 @@
 [ext_resource type="Script" uid="uid://bym02wtry3fff" path="res://core/range_highlighter.gd" id="7_5vw27"]
 [ext_resource type="Script" uid="uid://cs7o53c5hrvdk" path="res://abilities/range/ability_range.gd" id="8_kek77"]
 [ext_resource type="Resource" uid="uid://bi1cyixed87us" path="res://entities/enemies/mosquito.tres" id="8_ycdy4"]
-[ext_resource type="Script" uid="uid://dly02pjrb1d6s" path="res://entities/allies/ally_data.gd" id="9_w48qg"]
-[ext_resource type="Resource" uid="uid://duwsfod2j2pgr" path="res://entities/allies/cakeater.tres" id="10_vivmo"]
+[ext_resource type="PackedScene" uid="uid://b1nc3nt363lx5" path="res://core/frog_king/frog_king.tscn" id="10_dg77c"]
+[ext_resource type="Script" uid="uid://cxwch0s8x7i5t" path="res://ui/menus/end_game_menu.gd" id="13_ycdy4"]
+[ext_resource type="PackedScene" uid="uid://nclqfbt55yp5" path="res://core/frog_king/frog_king_ui.tscn" id="14_w48qg"]
 
 [sub_resource type="Resource" id="Resource_tfbxm"]
 script = ExtResource("8_kek77")
@@ -40,7 +41,6 @@ metadata/_custom_type_script = "uid://cs7o53c5hrvdk"
 [node name="SpawnHandler" type="Node" parent="." unique_id=1568226340 node_paths=PackedStringArray("enemiesParent", "alliesParent")]
 script = ExtResource("6_4c57u")
 enemies_data = Array[ExtResource("7_4c57u")]([ExtResource("8_ycdy4")])
-allies_data = Array[ExtResource("9_w48qg")]([ExtResource("10_vivmo")])
 enemiesParent = NodePath("../Entities/Enemies")
 alliesParent = NodePath("../Entities/Allies")
 
@@ -59,11 +59,6 @@ script = ExtResource("5_lquwl")
 game_settings = ExtResource("2_lquwl")
 metadata/_custom_type_script = "uid://hgtti3egwqpo"
 
-[node name="HUD" type="CanvasLayer" parent="." unique_id=1780476147]
-
-[node name="TickerView" parent="HUD" unique_id=1923798234 node_paths=PackedStringArray("ticker") instance=ExtResource("6_7mycd")]
-ticker = NodePath("../../Ticker")
-
 [node name="Entities" type="Node2D" parent="." unique_id=1746099726]
 
 [node name="Enemies" type="Node2D" parent="Entities" unique_id=1180351692]
@@ -73,3 +68,80 @@ ticker = NodePath("../../Ticker")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=404450474]
 position = Vector2(1220, 1278)
 zoom = Vector2(0.2, 0.2)
+
+[node name="FrogKing" parent="." unique_id=1757092826 instance=ExtResource("10_dg77c")]
+position = Vector2(-1067, 1278)
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1780476147]
+
+[node name="TickerView" parent="HUD" unique_id=1923798234 node_paths=PackedStringArray("ticker") instance=ExtResource("6_7mycd")]
+ticker = NodePath("../../Ticker")
+
+[node name="FrogKingUI" parent="HUD" unique_id=1013682348 node_paths=PackedStringArray("frog_king") instance=ExtResource("14_w48qg")]
+frog_king = NodePath("../../FrogKing")
+
+[node name="Menus" type="CanvasLayer" parent="." unique_id=635451417]
+layer = 10
+
+[node name="EndGameMenu" type="Control" parent="Menus" unique_id=189605733 node_paths=PackedStringArray("victory_menu", "defeat_menu", "quit_button")]
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 345.0
+offset_bottom = 266.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("13_ycdy4")
+victory_menu = NodePath("VictoryMenu")
+defeat_menu = NodePath("DefeatMenu")
+quit_button = NodePath("Button")
+
+[node name="DefeatMenu" type="Control" parent="Menus/EndGameMenu" unique_id=1263875727]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Menus/EndGameMenu/DefeatMenu" unique_id=1602947207]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 40
+text = "PERDESTE BORRO"
+
+[node name="VictoryMenu" type="Control" parent="Menus/EndGameMenu" unique_id=1824694837]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Menus/EndGameMenu/VictoryMenu" unique_id=168523353]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 40
+text = "GANHASTE LINDO"
+
+[node name="Button" type="Button" parent="Menus/EndGameMenu" unique_id=176543546]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -102.0
+offset_top = -74.0
+offset_right = 102.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Leave"

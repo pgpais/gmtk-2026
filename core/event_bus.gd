@@ -6,3 +6,5 @@ signal entity_selected(entity: Entity)
 signal tile_selected(tile: Tile)
 
 signal enemy_attacked_frog_king(enemy: Enemy)
+
+signal game_ended(win: bool)
