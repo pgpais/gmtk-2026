@@ -28,4 +28,5 @@ func execute(action_handler: ActionHandler, entity: Entity, grid_map: LayerGridM
 
 func set_selectable_tiles(tiles: Array[Tile], state: bool):
 	for tile in tiles:
-		tile.set_selectable(state)
+		if tile.selectable:
+			tile.selectable.set_selectable(state)
