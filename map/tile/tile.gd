@@ -20,6 +20,8 @@ signal entity_entered_tile(entity: Entity)
 var base_sprite_position;
 var entity: Entity = null
 
+var overwatches: Array[Overwatch] = []
+
 func _ready():
 	mouse_entered.connect(_on_mouse_entered)
 	mouse_exited.connect(_on_mouse_exited)
@@ -90,3 +92,15 @@ func select_direction(direction: String) -> void:
 		entity.direction_selected.emit(direction)
 		
 	pop_direction_buttons(false)
+
+func add_overwatch(overwatch: Overwatch):
+	overwatches.append(overwatch)
+	
+func remove_overwatch(overwatch: Overwatch):
+	overwatches.erase(overwatch)
+
+func check_overwatches(entity: Entity):
+	print("checking overwatches ", overwatches.size(), " on tile ", self)
+	for i in range(overwatches.size()):
+		var overwatch = overwatches[i]
+		await overwatch.check(entity)
