@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bdxs68uy606we"]
 
-[ext_resource type="Script" uid="uid://ik53tbaqcr7g" path="res://entities/ally.gd" id="1_binvp"]
+[ext_resource type="Script" uid="uid://ik53tbaqcr7g" path="res://entities/allies/ally.gd" id="1_binvp"]
 [ext_resource type="Texture2D" uid="uid://w5kafc3luitw" path="res://icon.svg" id="3_ukqju"]
 [ext_resource type="Script" uid="uid://08ngtap170yx" path="res://abilities/selectable.gd" id="4_bathf"]
 [ext_resource type="Script" uid="uid://ddx61kskhe162" path="res://abilities/actions/action_handler.gd" id="4_mmojd"]

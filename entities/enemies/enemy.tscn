@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://btttbslmc1cd"]
+
+[ext_resource type="Script" uid="uid://djwq2t6ffm83s" path="res://entities/enemies/enemy.gd" id="1_p7g5j"]
+[ext_resource type="Script" uid="uid://yyhnn4sejhrt" path="res://abilities/actions/action.gd" id="2_jq0pf"]
+[ext_resource type="Texture2D" uid="uid://w5kafc3luitw" path="res://icon.svg" id="2_pqhw6"]
+[ext_resource type="Script" uid="uid://c2y0chmbgrpql" path="res://abilities/movement/sequential_movement_strategy.gd" id="2_uvc0s"]
+[ext_resource type="Script" uid="uid://b3n7i5kgdbo7r" path="res://abilities/actions/sequential_action_strategy.gd" id="3_68dbu"]
+[ext_resource type="Script" uid="uid://08ngtap170yx" path="res://abilities/selectable.gd" id="3_b4nis"]
+[ext_resource type="Script" uid="uid://ddx61kskhe162" path="res://abilities/actions/action_handler.gd" id="5_x8e4v"]
+
+[sub_resource type="Resource" id="Resource_mmojd"]
+script = ExtResource("3_68dbu")
+metadata/_custom_type_script = "uid://b3n7i5kgdbo7r"
+
+[sub_resource type="Resource" id="Resource_b4nis"]
+script = ExtResource("2_uvc0s")
+movement_directions = Array[Vector2i]([Vector2i(-1, 0)])
+metadata/_custom_type_script = "uid://c2y0chmbgrpql"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tfbxm"]
+size = Vector2(38, 38)
+
+[node name="Enemy" type="Node2D" unique_id=28648160 node_paths=PackedStringArray("action_handler") groups=["enemies"]]
+scale = Vector2(0.2, 0.2)
+script = ExtResource("1_p7g5j")
+action_sequence = SubResource("Resource_mmojd")
+action_handler = NodePath("ActionHandler")
+_selectable = NodePath("Selectable")
+movement_strategy = SubResource("Resource_b4nis")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1325808683]
+visible = false
+modulate = Color(0.8929083, 0.17015585, 1.1551381e-06, 1)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_pqhw6")
+
+[node name="Selectable" type="Area2D" parent="." unique_id=1588231175]
+script = ExtResource("3_b4nis")
+metadata/_custom_type_script = "uid://08ngtap170yx"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Selectable" unique_id=2037993044]
+shape = SubResource("RectangleShape2D_tfbxm")
+
+[node name="ActionHandler" type="Node" parent="." unique_id=1754959916]
+script = ExtResource("5_x8e4v")
+metadata/_custom_type_script = "uid://ddx61kskhe162"

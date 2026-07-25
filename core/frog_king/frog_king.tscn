@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://d4chonwgcgkul"]
 
-[ext_resource type="Texture2D" uid="uid://ylsnjc24o3i7" path="res://core/frog_king/heart.png" id="4_22vrh"]
+[ext_resource type="Texture2D" uid="uid://ylsnjc24o3i7" path="res://core/frog_king/textures/heart.png" id="4_22vrh"]
 
 [sub_resource type="Animation" id="Animation_22vrh"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("mouth:position")
+tracks/0/path = NodePath("Mouth:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -19,7 +19,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("body:scale")
+tracks/1/path = NodePath("Body:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -43,7 +43,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("body:modulate")
+tracks/3/path = NodePath("Body:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -55,7 +55,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("eye_lid:visible")
+tracks/4/path = NodePath("EyeLid1:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -67,7 +67,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("eye_lid2:visible")
+tracks/5/path = NodePath("EyeLid2:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -106,7 +106,7 @@ resource_name = "dislike"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("body:modulate")
+tracks/0/path = NodePath("Body:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -121,7 +121,7 @@ resource_name = "eat"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("mouth:position")
+tracks/0/path = NodePath("Mouth:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -133,7 +133,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("body:scale")
+tracks/1/path = NodePath("Body:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -157,7 +157,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("body:modulate")
+tracks/3/path = NodePath("Body:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -173,7 +173,7 @@ length = 2.4333334
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("eye_lid:visible")
+tracks/0/path = NodePath("EyeLid1:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -185,7 +185,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("eye_lid2:visible")
+tracks/1/path = NodePath("EyeLid2:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -213,7 +213,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("body:modulate")
+tracks/1/path = NodePath("Body:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -245,40 +245,37 @@ _data = {
 }
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_uum2k"]
-load_path = "res://.godot/imported/Finish body.png-b1b291c3700f634552edda6b900d9001.ctex"
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_gwxp3"]
-load_path = "res://.godot/imported/Frog mouth.png-8eed9fa9ea887aa67505471bc68b2a72.ctex"
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_466dl"]
-load_path = "res://.godot/imported/Pisca.png-ef129c3d57082524667bdca5d8047fcc.ctex"
 
 [sub_resource type="Gradient" id="Gradient_r0xi3"]
 colors = PackedColorArray(0.7647059, 0, 0, 0, 1, 0.54509807, 0.56078434, 1)
 
-[node name="frog_king" type="Node2D" unique_id=1670368785]
+[node name="FrogKing" type="Node2D" unique_id=1670368785]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=349069595]
 libraries/ = SubResource("AnimationLibrary_fw7co")
 
-[node name="body" type="Sprite2D" parent="." unique_id=771013884]
+[node name="Body" type="Sprite2D" parent="." unique_id=771013884]
 position = Vector2(-32.19995, 293.9828)
 scale = Vector2(0.6, 0.6)
 texture = SubResource("CompressedTexture2D_uum2k")
 
-[node name="mouth" type="Sprite2D" parent="." unique_id=635677910]
+[node name="Mouth" type="Sprite2D" parent="." unique_id=635677910]
 show_behind_parent = true
 position = Vector2(2.0000076, 271)
 scale = Vector2(0.6, 0.6)
 texture = SubResource("CompressedTexture2D_gwxp3")
 
-[node name="eye_lid" type="Sprite2D" parent="." unique_id=1643880347]
+[node name="EyeLid1" type="Sprite2D" parent="." unique_id=1643880347]
 visible = false
 position = Vector2(169.00002, 113.00001)
 scale = Vector2(0.6, 0.6)
 texture = SubResource("CompressedTexture2D_466dl")
 
-[node name="eye_lid2" type="Sprite2D" parent="." unique_id=1206468117]
+[node name="EyeLid2" type="Sprite2D" parent="." unique_id=1206468117]
 visible = false
 position = Vector2(166, 418.99997)
 scale = Vector2(0.6, 0.6)
