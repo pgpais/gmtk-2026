@@ -11,6 +11,14 @@ size = Vector2(80, 80)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q0kha"]
 size = Vector2(80, 80)
 
+[sub_resource type="Animation" id="Animation_eapbg"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qwjc5"]
+_data = {
+&"RESET": SubResource("Animation_eapbg")
+}
+
 [node name="Tile" type="Area2D" unique_id=1440746278]
 script = ExtResource("1_s4ekl")
 
@@ -103,3 +111,6 @@ offset_bottom = 64.0
 grow_horizontal = 2
 grow_vertical = 2
 texture_normal = ExtResource("2_s4ekl")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1731311896]
+libraries/ = SubResource("AnimationLibrary_qwjc5")
