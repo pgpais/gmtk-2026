@@ -179,7 +179,7 @@ func pop_direction_buttons(toggle):
 	current_tile.pop_direction_buttons(toggle)
 
 func collide(x, y): # animation colliding with the edge / obstacle but not moving
-	pass
+	finished_movement.emit()
 
 func trigger():
 	pass

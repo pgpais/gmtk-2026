@@ -147,6 +147,6 @@ func _setup_map():
 
 func _on_new_tick(count: int):
 	var column = columns[count]
-	column.trigger_tiles()
+	await column.trigger_tiles()
 	
 	EventBus.tick_triggers_finished.emit()
