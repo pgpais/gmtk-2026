@@ -31,4 +31,4 @@ func setup_layer(number_of_tiles: int, layer_index: int, tile_size: Vector2 = Ve
 
 func trigger_tiles():
 	for tile in tiles:
-		tile.trigger()
+		await tile.trigger()

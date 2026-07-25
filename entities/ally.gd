@@ -14,15 +14,15 @@ func set_data(data: AllyData):
 	add_child(visuals, true)
 	animator = visuals.get_node("AnimationPlayer")
 
-func bank_action(action: ActionSequence):
-	banked_actions.append(action)
+func bank_actions(action_sequence: ActionSequence):
+	banked_actions.append(action_sequence)
 
 func overwatch_tiles(tiles: Array[Tile]):
 	pass
 
 func trigger():
-	act()
+	await act()
 
 func act():
-	pass
-	# ActionHandler.perform_actions(banked_actions)
+	for action_sequence in banked_actions:
+		action_handler.perform_actions(action_sequence)

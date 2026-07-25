@@ -25,7 +25,7 @@ func get_entity() -> Entity:
 func trigger():
 	highlight()
 	if entity:
-		entity.trigger()
+		await entity.trigger()
 
 func initialize(layer: MapColumn, tile_index: int):
 	self.tile_index = tile_index
