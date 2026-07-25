@@ -45,6 +45,7 @@ var current_tile: Tile = null
 
 func _ready() -> void:
 	finished_movement.connect(finish_movement)
+	action_handler.set_entity(self)
 	#if not current_tile:
 		#var start_layer = 0 if team == TEAMS.ENEMY else len(grid_map.columns) - 1	
 		#current_tile = grid_map.get_random_empty_tile(start_layer) # get a random start tile

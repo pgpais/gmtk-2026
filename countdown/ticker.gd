@@ -16,19 +16,19 @@ func _process(delta: float) -> void:
 		next_tick()
 
 func next_tick():
-	if current_count + 1 == max_count:
+	current_count = current_count + 1
+
+	if current_count == max_count:
 		reset()
 		EventBus.tick_triggers_finished.emit()
-	else:
-		current_count = (current_count + 1) % max_count
 
-		new_tick.emit(current_count)
-		EventBus.ticker_new_tick.emit(current_count)
+	new_tick.emit(current_count)
+	EventBus.ticker_new_tick.emit(current_count)
 
-		print("current tick: ", current_count)
+	print("current tick: ", current_count)
 
 func reset():
-	current_count = -1
+	current_count = 0
 	EventBus.new_cycle.emit()
 	
 	print("new cycle")

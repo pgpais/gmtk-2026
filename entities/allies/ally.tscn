@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://w5kafc3luitw" path="res://icon.svg" id="3_ukqju"]
 [ext_resource type="Script" uid="uid://08ngtap170yx" path="res://abilities/selectable.gd" id="4_bathf"]
 [ext_resource type="Script" uid="uid://ddx61kskhe162" path="res://abilities/actions/action_handler.gd" id="4_mmojd"]
+[ext_resource type="PackedScene" uid="uid://dw8jbt2qu4loo" path="res://ui/entities/entity_control_ui.tscn" id="5_miwyd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tfbxm"]
 size = Vector2(280, 336)

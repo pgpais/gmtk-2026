@@ -6,7 +6,6 @@ var range: int
 
 func _ready() -> void:
 	team = TEAMS.ENEMY
-	action_handler.set_entity(self)
 	super._ready()
 
 func set_data(data):

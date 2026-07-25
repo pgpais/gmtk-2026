@@ -37,7 +37,7 @@ func _on_move_button_pressed():
 	ally.request_move()
 
 func _on_action_button_pressed():
-	pass
+	ally.request_action()
 		
 func _on_entity_selected(entity: Entity):
 	if entity == owner:
