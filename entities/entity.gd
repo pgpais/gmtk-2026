@@ -123,9 +123,8 @@ func _move(x, y):
 		
 	var target_tile = grid_map.get_tile(new_layer_index, new_tile_index)
 	
-	if not target_tile.entity == null: # tile is occupied
-		collide(new_layer_index, new_tile_index) # animation colliding but stays in the same tile
-		return
+	if not target_tile.entity == null: 
+		target_tile.entity.die()
 	
 	await _move_to_tile(target_tile)
 	
@@ -172,8 +171,8 @@ func shoot_at(tile_position : Vector2):
 		entity_on_tile.die()
 		
 func die():
-	# to do
-	modulate = Color.RED
+	play_animation("dismiss")
+	queue_free()
 
 func pop_direction_buttons(toggle):
 	current_tile.pop_direction_buttons(toggle)

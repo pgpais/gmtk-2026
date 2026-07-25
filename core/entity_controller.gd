@@ -44,10 +44,14 @@ func _ready() -> void:
 func _change_to_selection_state(target_type, selection_range, reference_tile) -> void:
 	if selection_range != null:
 		range_tiles = grid_map.get_tiles_in_range(selection_range, reference_tile)
-		range_highlighter.show_highlight_tiles(range_tiles)
-
+		
 		for tile in range_tiles:
-			tile.selectable.set_selectable(true)
+			if ((target_type in [Constants.TARGET_TYPES.TILE, Constants.TARGET_TYPES.DIRECTION] and ! tile.entity)
+			or (target_type == Constants.TARGET_TYPES.ENTITY and tile.entity)):
+				tile.selectable.set_selectable(true)
+				range_highlighter.highlight_tile(tile, true)
+			else:
+				range_highlighter.darken_tile(tile)
 
 	for selectable_entity in selectable_entities:
 		if selectable_entity:
@@ -130,13 +134,6 @@ func _on_tile_selected(tile: Tile) -> void:
 	target_tile_changed.emit(tile)
 	
 	range_highlighter.hide_highlight_tiles(range_tiles)
-
-	#if is_movement:
-		##TODO: perform movement
-		#pass
-	#else:
-		##TODO: perform ability
-		#pass
 		
 	EventBus.player_action_performed.emit()
 
