@@ -47,7 +47,7 @@ func get_tiles_in_range(ability_range: AbilityRange, reference_tile: Tile) -> Ar
 			directions.append(-direction)
 
 		for dir in directions:
-			for i in range(1, pattern.distance + 1):
+			for i in range(0, pattern.distance + 1):
 				var tile_position = base_position + dir * pattern.area_grid * i
 				tiles.append_array(_get_tiles_in_pattern(tile_position, pattern))
 	
@@ -78,7 +78,7 @@ func get_random_empty_tile(layer_index: int) -> Tile:
 			
 	return null
 
-func get_tile_path(current_tile : Tile, target_tile : Tile, include_target : bool = true) -> Array[Tile]:
+func get_tile_path(current_tile: Tile, target_tile: Tile, include_target: bool = true) -> Array[Tile]:
 	var path = []
 	
 	var current_x = current_tile.layer.layer_index
