@@ -13,6 +13,7 @@ func _ready():
 	if ticker:
 		_on_new_tick(ticker.current_count)
 		ticker.new_tick.connect(_on_new_tick)
+		ticker.new_cycle.connect(_on_new_tick)
 
 func _on_new_tick(count):
 	var tween = create_tween()
