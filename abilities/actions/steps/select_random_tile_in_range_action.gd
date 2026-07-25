@@ -1,6 +1,10 @@
 extends Action
 class_name SelectRandomTileInRangeAction
 
+@export var parameter_name: String = "selected_tile"
+
+@export var select_tile_with_entity: bool = false
+
 @export var selection_range: AbilityRange
 
 func execute(action_handler: ActionHandler, entity: Entity, grid_map: LayerGridMap):
@@ -11,8 +15,8 @@ func execute(action_handler: ActionHandler, entity: Entity, grid_map: LayerGridM
 	var selected_tile = null
 	
 	for tile in tiles:
-		if ! tile.entity:
-			selected_tile = tile 
+		if (tile.entity and select_tile_with_entity) or (!tile.entity and !select_tile_with_entity):
+			selected_tile = tile
 			break
 	
-	action_handler.set_parameter("selected_tile", selected_tile)
+	action_handler.set_parameter(parameter_name, selected_tile)
