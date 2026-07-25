@@ -97,7 +97,7 @@ func _on_entity_selected(entity: Entity) -> void:
 	if state == EntityControllerState.WaitingNextAction:
 		if entity.team == Entity.TEAMS.NEUTRAL:
 			#TODO: turn into ally (might be just setting AllyData)
-			pass
+			EventBus.ally_action_performed.emit()
 		if entity.team == Entity.TEAMS.ALLY:
 			control_entity = entity
 			control_entity_changed.emit(entity)
@@ -114,7 +114,6 @@ func _on_entity_selected(entity: Entity) -> void:
 			
 	else:
 		return
-
 
 	# _change_to_tile_selection_state()
 

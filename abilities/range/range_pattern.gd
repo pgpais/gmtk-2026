@@ -8,4 +8,4 @@ extends Resource
 @export var mirror: bool = false
 
 func get_direction_vector() -> Vector2i:
-    return Constants.DIRECTION_VECTORS[direction]
+	return Constants.DIRECTION_VECTORS[direction]
