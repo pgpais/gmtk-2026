@@ -37,32 +37,36 @@ func get_empty_tiles_in_column(layer_index: int) -> Array[Tile]:
 
 func get_tiles_in_range(ability_range: AbilityRange, reference_tile: Tile) -> Array[Tile]:
 	var tiles: Array[Tile] = []
-	var base_position = Vector2i(reference_tile.layer.layer_index, reference_tile.tile_index)
-	
+	var base_position = get_tile_coordinates(reference_tile)
+
 	for pattern in ability_range.patterns:
-		var direction = pattern.get_direction_vector()
-		var directions = [direction]
+		var directions: Array[Vector2i] = [pattern.get_direction_vector()]
 
 		if pattern.mirror:
-			directions.append(-direction)
+			directions.append(-pattern.get_direction_vector())
 
 		for dir in directions:
-			for i in range(0, pattern.distance + 1):
-				var tile_position = base_position + dir * pattern.area_grid * i
-				tiles.append_array(_get_tiles_in_pattern(tile_position, pattern))
-	
+			for i in range(0, pattern.distance):
+				var tile_position = (base_position + dir) + dir * pattern.area_grid * i
+				tiles.append_array(_get_tiles_in_pattern(tile_position, pattern, dir))
+
 	return tiles
 
-func _get_tiles_in_pattern(position: Vector2i, pattern) -> Array[Tile]:
+func _get_tiles_in_pattern(reference_position: Vector2i, pattern: RangePattern, direction: Vector2i) -> Array[Tile]:
 	var tiles: Array[Tile] = []
-	
+	var growth := Vector2i(
+		-1 if direction.x < 0 else 1,
+		-1 if direction.y < 0 else 1
+	)
+
 	for x in range(pattern.area_grid.x):
 		for y in range(pattern.area_grid.y):
-			var tile = get_tile(position.x + x + pattern.offset.x, position.y + y + pattern.offset.y)
+			var local_offset = (Vector2i(x, y) + pattern.offset) * growth
+			var tile = get_tile(reference_position.x + local_offset.x, reference_position.y + local_offset.y)
 
 			if tile:
 				tiles.append(tile)
-	
+
 	return tiles
 
 func get_random_empty_tile(layer_index: int) -> Tile:

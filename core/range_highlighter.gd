@@ -13,7 +13,7 @@ func _ready() -> void:
 	EventBus.request_highlight.connect(_on_highlight_request)
 
 func _process(delta: float) -> void:
-	if Input.is_key_pressed(Key.KEY_O):
+	if Input.is_action_just_pressed("test_highlight"):
 		grid_map.get_tile(3, 3).show_positive_highlight()
 		show_highlight_tiles(grid_map.get_tiles_in_range(debug_range, grid_map.get_tile(3, 3)), false)
 
