@@ -21,6 +21,10 @@ var current_spawn_cycle : int = 0
 
 func _ready() -> void:
 	EventBus.new_cycle.connect(cycle)
+	EventBus.request_enemy_spawn.connect(_on_enemy_spawn_requested)
+
+func _on_enemy_spawn_requested(tile: Tile, enemy_data: EnemyData):
+	_spawn_enemy(enemy_data, tile)
 
 func cycle():
 	special_spawned = false

@@ -11,6 +11,8 @@ signal entity_selected(entity: Entity)
 signal tile_selected(tile: Tile)
 signal direction_selected(direction: Vector2)
 
+signal request_enemy_spawn(tile, enemy_data)
+
 signal action_step_performed
 signal enemy_attacked_frog_king(enemy: Enemy)
 
