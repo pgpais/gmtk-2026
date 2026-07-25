@@ -20,10 +20,11 @@ metadata/_custom_type_script = "uid://c2y0chmbgrpql"
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tfbxm"]
 size = Vector2(38, 38)
 
-[node name="Enemy" type="Node2D" unique_id=28648160 node_paths=PackedStringArray("action_handler") groups=["enemies"]]
+[node name="Enemy" type="Node2D" unique_id=28648160 node_paths=PackedStringArray("action_handler", "_selectable") groups=["enemies"]]
 script = ExtResource("1_p7g5j")
 action_sequence = SubResource("Resource_mmojd")
 action_handler = NodePath("ActionHandler")
+_selectable = NodePath("Selectable")
 movement_strategy = SubResource("Resource_b4nis")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1325808683]

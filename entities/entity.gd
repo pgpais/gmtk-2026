@@ -10,6 +10,7 @@ signal direction_selected(direction : String)
 
 @export var action_sequence: ActionSequence
 @export var action_handler: ActionHandler
+@export var _selectable: Selectable
 
 #region node references
 #@export var sprite : Sprite2D
@@ -88,9 +89,12 @@ func _move_to_tile(target_tile):
 
 	var tween = create_tween()
 	tween.tween_method(set_new_position, current_tile.global_position, target_tile.global_position, time_to_move)
-	tween.tween_callback(finished_movement.emit)
-	
 	await tween.finished
+
+	current_tile.set_entity(null)
+	current_tile = target_tile # attention: updating current tile before animation is completed
+	current_tile.set_entity(self)
+
 	
 func perform_movement():
 	if movement_strategy:
@@ -122,9 +126,8 @@ func _move(x, y):
 		return
 	
 	_move_to_tile(target_tile)
-	current_tile.set_entity(null)
-	current_tile = target_tile # attention: updating current tile before animation is completed
-	current_tile.set_entity(self)
+	
+	finished_movement.emit()
 
 func finish_movement():
 	if animator.has_animation("idle"):
@@ -193,3 +196,6 @@ func play_animation(animation):
 				break;
 	else:
 		print("Animation not found: " + animation)
+
+func set_selectable(is_selectable: bool):
+	_selectable.set_selectable(is_selectable)

@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://dw8jbt2qu4loo"]
+
+[ext_resource type="Script" uid="uid://bov5x3yn3tpot" path="res://ui/entities/entity_control_ui.gd" id="1_hwwo4"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_tfbxm"]
+
+[node name="EntityControlUI" type="Control" unique_id=928674730 node_paths=PackedStringArray("move_button", "move_reference", "action_button", "action_reference", "dismiss_button", "dismiss_reference")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_right = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hwwo4")
+move_button = NodePath("MoveButton")
+move_reference = NodePath("HBoxContainer/ReferenceRect")
+action_button = NodePath("ActionButton")
+action_reference = NodePath("HBoxContainer/ReferenceRect3")
+dismiss_button = NodePath("DismissButton")
+dismiss_reference = NodePath("HBoxContainer/ReferenceRect2")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=807966718]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = SubResource("PlaceholderTexture2D_tfbxm")
+
+[node name="MoveButton" type="Button" parent="." unique_id=311205509]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+theme_override_font_sizes/font_size = 50
+text = "Move"
+
+[node name="DismissButton" type="Button" parent="." unique_id=848494835]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+theme_override_font_sizes/font_size = 50
+text = "Dismiss"
+
+[node name="ActionButton" type="Button" parent="." unique_id=1206398211]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+theme_override_font_sizes/font_size = 50
+text = "Action"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1099613994]
+layout_mode = 0
+offset_left = -244.0
+offset_top = -578.0
+offset_right = 241.54004
+offset_bottom = -538.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_constants/separation = 4
+
+[node name="ReferenceRect" type="ReferenceRect" parent="HBoxContainer" unique_id=1384727909]
+layout_mode = 2
+size_flags_horizontal = 6
+
+[node name="ReferenceRect2" type="ReferenceRect" parent="HBoxContainer" unique_id=462335718]
+layout_mode = 2
+size_flags_horizontal = 6
+
+[node name="ReferenceRect3" type="ReferenceRect" parent="HBoxContainer" unique_id=1648060888]
+layout_mode = 2
+size_flags_horizontal = 6

@@ -127,4 +127,6 @@ func _setup_map():
 
 func _on_new_tick(count: int):
 	var layer = columns[count]
-	layer.trigger_tiles()
+	await layer.trigger_tiles()
+	
+	EventBus.tick_triggers_finished.emit()
