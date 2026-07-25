@@ -1,0 +1,382 @@
+[gd_scene format=3 uid="uid://s11oa1ht1eie"]
+
+[ext_resource type="Script" uid="uid://160jlf2raxkd" path="res://entities/allies/highlight.gd" id="1_4xfqm"]
+[ext_resource type="Texture2D" uid="uid://molsrus6cxpd" path="res://entities/allies/linguado/Untitled_Artwork-1.png" id="1_e1cvy"]
+[ext_resource type="Texture2D" uid="uid://boo3um4if8t1e" path="res://entities/allies/linguado/Untitled_Artwork-2.png" id="2_7gxn4"]
+[ext_resource type="Shader" uid="uid://dlara25h5dn1b" path="res://assets/fx/highlighter.gdshader" id="2_77tds"]
+[ext_resource type="Texture2D" uid="uid://ct57ymjksn7q0" path="res://entities/allies/linguado/Untitled_Artwork-3.png" id="3_kvvr2"]
+[ext_resource type="Texture2D" uid="uid://b4uosmutg0ikj" path="res://entities/allies/linguado/Untitled_Artwork-4.png" id="4_amvql"]
+[ext_resource type="Texture2D" uid="uid://c5jc4h7u62em2" path="res://entities/allies/linguado/Tongue.png" id="4_kvvr2"]
+[ext_resource type="Texture2D" uid="uid://bjlqmofi2uwyb" path="res://entities/allies/linguado/Tongue tip.png" id="5_amvql"]
+[ext_resource type="PackedScene" uid="uid://ut8t6yfdgmgr" path="res://assets/death/scene/death_animation.tscn" id="7_amvql"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mxwy7"]
+shader = ExtResource("2_77tds")
+shader_parameter/aura_color = Color(0.95686275, 0.8156863, 0.39215687, 1)
+shader_parameter/aura_width = 0.0
+shader_parameter/pulse_speed = 4.0
+shader_parameter/pulse_intensity = 0.5
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r0xi3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_e1cvy")
+}, {
+"duration": 0.2,
+"texture": ExtResource("2_7gxn4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_kvvr2")
+}],
+"loop": 0,
+"name": &"open_mouth",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_w134f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D/tongue2:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 0.2)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("body_under_water:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("death_animation:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Node2D:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("body:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.06666667)]
+}
+
+[sub_resource type="Animation" id="Animation_amvql"]
+resource_name = "dismiss"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("death_animation:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(-0.06666667, 0.033333335, 0.13333334, 0.23333333, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 4, 5, 6]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("death_animation:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.47017783),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("body:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_twqfl"]
+resource_name = "hide"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("body:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.27, 0.53333336),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-7.616699, -33.6167), Vector2(-8, -490), Vector2(-7.616699, -33.6167)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("body:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.27, 0.53),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1), Vector2(0.1, 0.1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("body_under_water:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.58),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("body:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_kvvr2"]
+resource_name = "idle"
+length = 3.0000000000000004
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("body:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.4333333, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-7.616699, -33.6167), Vector2(-59, -34), Vector2(-7.616699, -33.6167)]
+}
+
+[sub_resource type="Animation" id="Animation_bimfc"]
+resource_name = "lick"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.10000001),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D/tongue2:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(-0.033333335, 0.3, 0.43333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0.3), Vector2(1e-05, 0.2), Vector2(0.2, 0.4)]
+}
+
+[sub_resource type="Animation" id="Animation_4xfqm"]
+resource_name = "spawn"
+length = 0.56666666
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("body_under_water:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.03333333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5133334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-0.99999994, 19.000002), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("body:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.53333336),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.06666667), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8dnap"]
+_data = {
+&"RESET": SubResource("Animation_w134f"),
+&"dismiss": SubResource("Animation_amvql"),
+&"hide": SubResource("Animation_twqfl"),
+&"idle": SubResource("Animation_kvvr2"),
+&"lick": SubResource("Animation_bimfc"),
+&"spawn": SubResource("Animation_4xfqm")
+}
+
+[node name="Linguado" type="Node2D" unique_id=1994398961]
+modulate = Color(1, 1, 1, 0.06666667)
+scale = Vector2(0.2, 0.2)
+script = ExtResource("1_4xfqm")
+
+[node name="body" type="AnimatedSprite2D" parent="." unique_id=1722076350]
+material = SubResource("ShaderMaterial_mxwy7")
+position = Vector2(-7.616699, -33.6167)
+sprite_frames = SubResource("SpriteFrames_r0xi3")
+animation = &"open_mouth"
+
+[node name="Node2D" type="Node2D" parent="." unique_id=1936037759]
+position = Vector2(44.999996, 3.7251766e-09)
+rotation = -6.2718782
+scale = Vector2(2.2, 2.2)
+
+[node name="tongue2" type="Sprite2D" parent="Node2D" unique_id=1413518577]
+position = Vector2(-4.622254, -6.766351)
+scale = Vector2(1e-05, 0.2)
+texture = ExtResource("4_kvvr2")
+offset = Vector2(364.05075, 23.00329)
+
+[node name="tongue-tip" type="Sprite2D" parent="Node2D/tongue2" unique_id=1458841431]
+position = Vector2(704.14087, -39.78238)
+scale = Vector2(0.19999999, 1)
+texture = ExtResource("5_amvql")
+offset = Vector2(296.31274, 3.2664604)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2059706388]
+libraries/ = SubResource("AnimationLibrary_8dnap")
+
+[node name="body_under_water" type="Sprite2D" parent="." unique_id=1334566504]
+visible = false
+position = Vector2(-14.999999, 69.999985)
+texture = ExtResource("4_amvql")
+
+[node name="death_animation" parent="." unique_id=429524921 instance=ExtResource("7_amvql")]
+visible = false
+scale = Vector2(3, 3)
+frame_progress = 0.0

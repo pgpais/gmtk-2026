@@ -1,11 +1,23 @@
 [gd_scene format=3 uid="uid://c8nq565hfwm2v"]
 
+[ext_resource type="Script" uid="uid://160jlf2raxkd" path="res://entities/allies/highlight.gd" id="1_4hycb"]
 [ext_resource type="Texture2D" uid="uid://g5ktffwbuwq8" path="res://entities/allies/sapo-dar-mao/texture/Sapo_corpo.png" id="1_iur6c"]
+[ext_resource type="Shader" uid="uid://dlara25h5dn1b" path="res://assets/fx/highlighter.gdshader" id="1_qou4r"]
 [ext_resource type="Script" uid="uid://0a44wb2mxonv" path="res://entities/allies/sapo-dar-mao/body.gd" id="2_iur6c"]
 [ext_resource type="Texture2D" uid="uid://bm88nymknr226" path="res://entities/allies/sapo-dar-mao/texture/arm.png" id="3_crsa7"]
 [ext_resource type="Shader" uid="uid://ctca2om62u8ou" path="res://entities/allies/sapo-dar-mao/froggo.gdshader" id="4_dai0g"]
 [ext_resource type="Texture2D" uid="uid://bhids280virmf" path="res://entities/allies/sapo-dar-mao/texture/Uplip.png" id="5_vyyh7"]
 [ext_resource type="Texture2D" uid="uid://bll2ujfh5pmov" path="res://entities/allies/sapo-dar-mao/texture/Downlip.png" id="6_bapcr"]
+[ext_resource type="Texture2D" uid="uid://ce67mjg2pf80v" path="res://entities/allies/sapo-dar-mao/texture/sapo_amarelo_background.png" id="6_xiaos"]
+[ext_resource type="Texture2D" uid="uid://tfrwtedpshqo" path="res://entities/allies/sapo-dar-mao/texture/Frog-under.png" id="8_crsa7"]
+[ext_resource type="PackedScene" uid="uid://ut8t6yfdgmgr" path="res://assets/death/scene/death_animation.tscn" id="9_dai0g"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w134f"]
+shader = ExtResource("1_qou4r")
+shader_parameter/aura_color = Color(0.95686275, 0.8156863, 0.39215687, 1)
+shader_parameter/aura_width = 4.0
+shader_parameter/pulse_speed = 2.0
+shader_parameter/pulse_intensity = 0.5
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_x8b68"]
 
@@ -313,6 +325,93 @@ tracks/24/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/25/type = "value"
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/path = NodePath("Body:visible")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/26/type = "value"
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/path = NodePath("death_animation:visible")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/27/type = "value"
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/path = NodePath("body_under_water:visible")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/28/type = "value"
+tracks/28/imported = false
+tracks/28/enabled = true
+tracks/28/path = NodePath(".:modulate")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_vyyh7"]
+resource_name = "dismiss"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("death_animation:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.06666667, 0.033333335, 0.13333334, 0.23333333, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 4, 5, 6]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("death_animation:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.47017783),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Body:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_bmee6"]
 resource_name = "give_hand"
@@ -594,6 +693,73 @@ tracks/22/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_dai0g"]
+resource_name = "hide"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.27, 0.53333336),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-7.616699, -33.6167), Vector2(-8, -490), Vector2(-7.616699, -33.6167)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.27, 0.53),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1), Vector2(0.1, 0.1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("body_under_water:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.58),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Body:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_crsa7"]
+resource_name = "idle"
+length = 3.0000000000000004
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.4333333, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-7.616699, -33.6167), Vector2(-59, -34), Vector2(-7.616699, -33.6167)]
+}
+
 [sub_resource type="Animation" id="Animation_276qg"]
 resource_name = "move"
 tracks/0/type = "value"
@@ -705,16 +871,74 @@ tracks/8/keys = {
 "values": [Vector2(1, 1), Vector2(1.6943686, 1), Vector2(1.6943686, 1), Vector2(1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_yxpq7"]
+resource_name = "spawn"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("body_under_water:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.03333333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5133334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-0.99999994, 19.000002), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.53333336),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.06666667), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Body:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_a86ym"]
 _data = {
 &"RESET": SubResource("Animation_v1yxj"),
+&"dismiss": SubResource("Animation_vyyh7"),
 &"give_hand": SubResource("Animation_bmee6"),
-&"move": SubResource("Animation_276qg")
+&"hide": SubResource("Animation_dai0g"),
+&"idle": SubResource("Animation_crsa7"),
+&"move": SubResource("Animation_276qg"),
+&"spawn": SubResource("Animation_yxpq7")
 }
 
 [node name="sapo_dar_mao" type="Node2D" unique_id=626510176]
+scale = Vector2(0.2, 0.2)
+script = ExtResource("1_4hycb")
 
 [node name="Body" type="Sprite2D" parent="." unique_id=1226581100]
+material = SubResource("ShaderMaterial_w134f")
 position = Vector2(-7.616699, -33.6167)
 texture = ExtResource("1_iur6c")
 script = ExtResource("2_iur6c")
@@ -748,9 +972,14 @@ texture = ExtResource("5_vyyh7")
 position = Vector2(-43, 25)
 texture = ExtResource("6_bapcr")
 
+[node name="white_bg" type="Sprite2D" parent="Body" unique_id=710777444]
+show_behind_parent = true
+position = Vector2(-7.3833, 23.6167)
+texture = ExtResource("6_xiaos")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=31361809]
 libraries/ = SubResource("AnimationLibrary_a86ym")
-autoplay = &"RESET"
+autoplay = &"give_hand"
 
 [node name="Body2" type="Sprite2D" parent="." unique_id=1708536216]
 modulate = Color(1, 1, 1, 0)
@@ -768,5 +997,14 @@ texture = ExtResource("5_vyyh7")
 [node name="DLip" type="Sprite2D" parent="Body2/Node2D" unique_id=1854204263]
 position = Vector2(-43, 25)
 texture = ExtResource("6_bapcr")
+
+[node name="body_under_water" type="Sprite2D" parent="." unique_id=1980738004]
+visible = false
+texture = ExtResource("8_crsa7")
+
+[node name="death_animation" parent="." unique_id=429524921 instance=ExtResource("9_dai0g")]
+visible = false
+scale = Vector2(3, 3)
+frame_progress = 0.0
 
 [connection signal="animation_finished" from="AnimationPlayer" to="Body" method="_on_animation_player_animation_finished"]
