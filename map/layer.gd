@@ -23,8 +23,8 @@ func setup_column(number_of_tiles: int, column_index: int, tile_size: Vector2 = 
 		tiles.append(tile)
 		if Engine.is_editor_hint():
 			tile.owner = get_tree().get_edited_scene_root()
-		tile.position = Vector2(0, tile_size.y / 2 + i * (tile_size.y + tile_spacing.y)) + Vector2((randi() % 5 + 1) * randi_range(-1, 1), (randi() % 5 + 1) * randi_range(-1, 1))
-		tile.sprite.rotation = tile.sprite.rotation + randi() % 100 + 1
+		tile.position = Vector2(0, tile_size.y / 2 + i * (tile_size.y + tile_spacing.y)) + Vector2(randi_range(-5, 5), randi_range(-5, 5))
+		tile.sprite.rotation = deg_to_rad(randi_range(1, 100))
 		tile.initialize(self, i)
 
 func trigger_tiles():
