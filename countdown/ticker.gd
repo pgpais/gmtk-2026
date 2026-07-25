@@ -1,6 +1,7 @@
 class_name Ticker
 extends Node
 
+signal new_cycle(count)
 signal new_tick(count)
 
 @export var game_settings: GameSettings
@@ -21,14 +22,15 @@ func next_tick():
 	if current_count == max_count:
 		reset()
 		EventBus.tick_triggers_finished.emit()
-
-	new_tick.emit(current_count)
-	EventBus.ticker_new_tick.emit(current_count)
+	else:
+		EventBus.ticker_new_tick.emit(current_count)
+		new_tick.emit(current_count)
 
 	print("current tick: ", current_count)
 
 func reset():
-	current_count = 0
+	current_count = -1
 	EventBus.new_cycle.emit()
+	new_cycle.emit(current_count)
 	
 	print("new cycle")
