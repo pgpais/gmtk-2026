@@ -18,6 +18,8 @@ var current_spawn_cycle : int = 0
 
 @export var special_spawned : bool = false
 
+@export_range(0,1) var under_dismiss_probability : float = 0.5
+
 func _ready() -> void:
 	EventBus.new_cycle.connect(cycle)
 	EventBus.request_enemy_spawn.connect(_on_enemy_spawn_requested)
@@ -32,8 +34,11 @@ func cycle():
 				spawn_from_sequence(spawn_sequence)
 				
 	current_spawn_cycle += 1
+	
+	dismiss_allies()
 			
 func spawn_from_sequence(spawn_sequence : SpawnSequence):
+	
 	special_spawned = false
 	
 	var spawn_datas = spawn_sequence.spawn_datas # to control spawn limits
@@ -73,10 +78,10 @@ func spawn_from_sequence(spawn_sequence : SpawnSequence):
 					
 					var hidden = randf_range(0, 1) < spawn_data.hidden_probability
 					
-					if entity_data.team == Entity.TEAMS.ALLY:
-						_spawn_ally(entity_data, tile, hidden)
-					elif entity_data.team == Entity.TEAMS.ENEMY:
+					if entity_data.team == Entity.TEAMS.ENEMY:
 						_spawn_enemy(entity_data, tile, hidden)
+					else:
+						_spawn_ally(entity_data, tile, hidden)
 					
 					spawn_count[i] += 1
 					
@@ -134,4 +139,30 @@ func _spawn_ally(ally_data: AllyData, tile: Tile, hidden : bool = false):
 	ally.set_new_position(tile.global_position)
 	tile.set_entity(ally)
 	
-	ally.modulate = ally_data.color # to test
+	ally.modulate = Color(ally_data.color.r, ally_data.color.g, ally_data.color.b, 0.5) # to test
+
+func dismiss_allies():
+	for column_index in grid_map.game_settings.map_columns:
+		var entities = grid_map.get_entities_in_column(column_index)
+		print(entities)
+		var allies_to_dismiss = []
+		
+		var ally_count = 0
+		
+		for entity in entities:
+			if entity.team == Entity.TEAMS.NEUTRAL:
+				if randf_range(0, 1) < under_dismiss_probability:
+					allies_to_dismiss.append(entity)
+			
+			elif entity.team == Entity.TEAMS.ALLY and ! entity.used_this_cycle:
+				allies_to_dismiss.append(entity)
+		
+		print(allies_to_dismiss)
+		
+		if ally_count >= grid_map.game_settings.tiles_per_column:
+			for entity in entities:
+				entity.dismiss()
+				
+		else:
+			for ally in allies_to_dismiss:
+				ally.dismiss()

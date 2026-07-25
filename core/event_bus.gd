@@ -9,6 +9,7 @@ signal direction_selection_needed()
 signal movement_needed()
 
 signal entity_selected(entity: Entity)
+signal ally_selected(entity : Entity)
 signal tile_selected(tile: Tile)
 signal cancel_interaction()
 
