@@ -1,11 +1,12 @@
 extends Resource
 class_name SpawnData
 
+@export var spawn_limit : int = 100
 @export var possible_entity_datas : Array[EntityData]
-@export var column_indexes : Array[int]
-@export var spawn_in_all_columns : bool = true
 @export_range(0, 1) var probability : float = 1
 @export var special_spawn : bool = false
+
+@export_range(0, 1) var repeat_probability : float
 
 enum condition_names {
 	check_if_3_frogs,
@@ -49,4 +50,4 @@ func spawned_special(spawn_handler : SpawnHandler, column_index : int) -> bool:
 	return spawn_handler.special_spawned
 
 func cycle_divisible_by_8(spawn_handler : SpawnHandler, column_index : int) -> bool:
-	return spawn_handler.current_spawn_cycle % 8 == 0
+	return spawn_handler.current_spawn_cycle % 7 == 0

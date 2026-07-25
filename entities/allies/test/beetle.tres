@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="AllyData" format=3 uid="uid://bxlbkdjlasoqe"]
+
+[ext_resource type="Script" uid="uid://yyhnn4sejhrt" path="res://abilities/actions/action.gd" id="1_i5c8u"]
+[ext_resource type="Script" uid="uid://b3n7i5kgdbo7r" path="res://abilities/actions/sequential_action_strategy.gd" id="2_hvkob"]
+[ext_resource type="PackedScene" uid="uid://c8nq565hfwm2v" path="res://entities/allies/sapo-dar-mao/froggo.tscn" id="3_mplcu"]
+[ext_resource type="Script" uid="uid://dly02pjrb1d6s" path="res://entities/allies/ally_data.gd" id="4_hly3s"]
+
+[sub_resource type="Resource" id="Resource_0k0ny"]
+script = ExtResource("2_hvkob")
+metadata/_custom_type_script = "uid://b3n7i5kgdbo7r"
+
+[resource]
+script = ExtResource("4_hly3s")
+scene = ExtResource("3_mplcu")
+action_sequence = SubResource("Resource_0k0ny")
+metadata/_custom_type_script = "uid://dly02pjrb1d6s"

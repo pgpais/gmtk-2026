@@ -15,3 +15,6 @@ signal action_step_performed
 signal enemy_attacked_frog_king(enemy: Enemy)
 
 signal game_ended(win: bool)
+
+func _ready() -> void:
+	new_cycle.emit.call_deferred()
