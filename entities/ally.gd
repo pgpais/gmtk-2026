@@ -12,7 +12,7 @@ func set_data(data: AllyData):
 	var visuals = entity_data.scene.instantiate()
 	visuals.name = "Visuals"
 	add_child(visuals, true)
-	_animator = visuals.get_node("AnimationPlayer")
+	animator = visuals.get_node("AnimationPlayer")
 
 func bank_action(action: ActionSequence):
 	banked_actions.append(action)

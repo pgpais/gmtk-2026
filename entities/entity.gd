@@ -6,13 +6,14 @@ var entity_data: EntityData
 @onready var grid_map: LayerGridMap = LayerGridMap.instance
 signal finished_movement()
 signal animation_finished(animation_name)
+signal direction_selected(direction : String)
 
 @export var action_sequence: ActionSequence
 @export var action_handler: ActionHandler
 
 #region node references
 #@export var sprite : Sprite2D
-@export var _animator: AnimationPlayer
+@export var animator: AnimationPlayer
 #endregion
 
 #region properties
@@ -35,6 +36,7 @@ var is_busy: bool:
 		return is_moving and is_attacking
 var is_moving: bool = false
 var is_attacking: bool = false
+var is_shock : bool = false
 #endregion
 
 var current_tile: Tile = null
@@ -58,12 +60,12 @@ func set_tile(tile):
 func set_new_position(position):
 	global_position = position
 
-	if _animator.has_animation("move"):
-		_animator.play("move")
+	if animator.has_animation("move"):
+		animator.play("move")
 
 func move(tile_path):
-	if _animator.has_animation("move"):
-		_animator.play("move")
+	if animator.has_animation("move"):
+		animator.play("move")
 		
 	if tile_path.is_empty():
 		finished_movement.emit()
@@ -72,17 +74,17 @@ func move(tile_path):
 	for tile in tile_path:
 		await _move_to_tile(tile)
 		
-	if _animator.has_animation("idle"):
-		_animator.play("idle")
+	if animator.has_animation("idle"):
+		animator.play("idle")
 	else:
-		_animator.stop()
+		animator.stop()
 	
 	finished_movement.emit()
 	EventBus.action_step_performed.emit()
 
 func _move_to_tile(target_tile):
-	if _animator.has_animation("move"):
-		_animator.play("move")
+	if animator.has_animation("move"):
+		animator.play("move")
 
 	var tween = create_tween()
 	tween.tween_method(set_new_position, current_tile.global_position, target_tile.global_position, time_to_move)
@@ -125,10 +127,17 @@ func _move(x, y):
 	current_tile.set_entity(self)
 
 func finish_movement():
-	if _animator.has_animation("idle"):
-		_animator.play("idle")
+	if animator.has_animation("idle"):
+		animator.play("idle")
 	else:
-		_animator.stop()
+		animator.stop()
+
+func shock(toggle):
+	is_shock = toggle
+	modulate = Color.AQUAMARINE if toggle else Color.WHITE
+
+func pop_direction_buttons(toggle):
+	current_tile.pop_direction_buttons(toggle)
 
 func collide(x, y): # animation colliding with the edge / obstacle but not moving
 	pass
@@ -140,11 +149,11 @@ func act():
 	pass
 
 func play_animation(animation):
-	if _animator.has_animation(animation):
-		_animator.play(animation)
+	if animator.has_animation(animation):
+		animator.play(animation)
 
 		while (true):
-			var finished_animation = await _animator.animation_finished
+			var finished_animation = await animator.animation_finished
 			if finished_animation == animation:
 				animation_finished.emit(animation)
 				break;
