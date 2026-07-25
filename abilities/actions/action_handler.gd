@@ -16,20 +16,24 @@ func set_parameter(parameter_name: String, value: Variant):
 	print(parameters[parameter_name])
 	
 func get_parameter(parameter_name: String):
+	if !parameters.has(parameter_name):
+		return null
+
 	return parameters[parameter_name]
 
 func set_entity(entity: Entity):
 	self.entity = entity
 
 func perform_actions(action_sequence: ActionSequence = entity.entity_data.action_sequence):
-	actions = action_sequence.actions
+	actions = action_sequence.actions.duplicate()
 	current_action = 0
 	_perform_action(current_action)
 	await all_actions_finished
 
 func insert_actions(action_sequence: ActionSequence):
 	for i in range(len(action_sequence.actions)):
-		actions.insert(current_action + i, action_sequence.actions[i])
+		actions.insert(current_action + i + 1, action_sequence.actions[i])
+		print(actions)
 
 func _perform_action(index: int):
 	var action = actions[index]
