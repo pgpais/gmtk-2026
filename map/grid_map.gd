@@ -32,39 +32,34 @@ func get_tile(layer_index: int, tile_index: int) -> Tile:
 func get_empty_tiles_in_column(layer_index: int) -> Array[Tile]:
 	return columns[layer_index].get_empty_tiles()
 
-## Gets all tiles in range. Range is calculated as a straight line distance from the starting tile
-func get_tiles_in_range(range_distance: Vector2, starting_tile: Tile) -> Array[Tile]:
-	var result: Array[Tile] = []
-
-	var tilePosition: Vector2 = Vector2(starting_tile.layer.layer_index, starting_tile.tile_index)
-	for i in range(1, range_distance.x + 1):
-		result.append(get_tile(tilePosition.x + i, tilePosition.y))
-		result.append(get_tile(tilePosition.x - i, tilePosition.y))
-
-	for i in range(1, range_distance.y + 1):
-		result.append(get_tile(tilePosition.x, tilePosition.y + i))
-		result.append(get_tile(tilePosition.x, tilePosition.y - i))
-
-	return result
-
-func get_tiles_in_ability_range(ability_range: AbilityRange, starting_tile: Tile) -> Array[Tile]:
-	var tile_position: Vector2i = Vector2i(starting_tile.layer.layer_index, starting_tile.tile_index)
-
+func get_tiles_in_range(ability_range: AbilityRange, reference_tile: Tile) -> Array[Tile]:
 	var tiles: Array[Tile] = []
-
+	var base_position = Vector2i(reference_tile.layer.layer_index, reference_tile.tile_index)
+	
 	for pattern in ability_range.patterns:
-		var direction_vector = pattern.get_direction_vector()
+		var direction = pattern.get_direction_vector()
+		var directions = [direction]
 
-		for i in range(pattern.distance):
-			tile_position += direction_vector * pattern.area_grid * i
+		if pattern.mirror:
+			directions.append(-direction)
 
-			for x in range(pattern.area_grid.x):
-				for y in range(pattern.area_grid.y):
-					var tile = get_tile(tile_position.x + x + pattern.offset.x, tile_position.y + y + pattern.offset.y)
+		for dir in directions:
+			for i in range(1, pattern.distance + 1):
+				var tile_position = base_position + dir * pattern.area_grid * i
+				tiles.append_array(_get_tiles_in_pattern(tile_position, pattern))
+	
+	return tiles
 
-					if tile:
-						tiles.append(tile)
+func _get_tiles_in_pattern(position: Vector2i, pattern) -> Array[Tile]:
+	var tiles: Array[Tile] = []
+	
+	for x in range(pattern.area_grid.x):
+		for y in range(pattern.area_grid.y):
+			var tile = get_tile(position.x + x + pattern.offset.x, position.y + y + pattern.offset.y)
 
+			if tile:
+				tiles.append(tile)
+	
 	return tiles
 
 func get_random_empty_tile(layer_index: int) -> Tile:
