@@ -177,6 +177,8 @@ func shoot_at(tile_position : Vector2):
 func die():
 	# to do
 	modulate = Color.RED
+	queue_free()
+	print("entity ", name, " died - IT WAS DELETED FROM THE SCENE")
 
 func pop_direction_buttons(toggle):
 	current_tile.pop_direction_buttons(toggle)

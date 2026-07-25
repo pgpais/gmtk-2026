@@ -56,3 +56,6 @@ func reset():
 
 func _finish_performing():
 	all_actions_finished.emit()
+
+func _exit_tree() -> void:
+	_finish_performing()
