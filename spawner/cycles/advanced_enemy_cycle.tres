@@ -4,14 +4,9 @@
 [ext_resource type="Script" uid="uid://dcphf1th8bjtj" path="res://spawner/spawn_sequence.gd" id="2_y7jn5"]
 [ext_resource type="Script" uid="uid://cwi2b70q6xv3l" path="res://spawner/spawn_data.gd" id="3_m7ome"]
 [ext_resource type="Script" uid="uid://bwhgiqt7i32mc" path="res://entities/entity_data.gd" id="4_af6mi"]
-[ext_resource type="Resource" uid="uid://dbqdlq3cr31py" path="res://entities/enemies/test/choque.tres" id="5_1xxkt"]
-[ext_resource type="Resource" uid="uid://bjqmyiuy8s16f" path="res://entities/enemies/test/espada.tres" id="6_4l7e5"]
-[ext_resource type="Resource" uid="uid://bd7cg6tp5dk2a" path="res://entities/enemies/test/mosq.tres" id="7_0sb5q"]
-[ext_resource type="Resource" uid="uid://cvvof0jokxit0" path="res://entities/enemies/test/ovos.tres" id="8_p6she"]
 
 [sub_resource type="Resource" id="Resource_bf0ii"]
 script = ExtResource("3_m7ome")
-possible_entity_datas = Array[ExtResource("4_af6mi")]([ExtResource("5_1xxkt"), ExtResource("6_4l7e5"), ExtResource("7_0sb5q"), ExtResource("8_p6she")])
 repeat_probability = 0.25
 metadata/_custom_type_script = "uid://cwi2b70q6xv3l"
 

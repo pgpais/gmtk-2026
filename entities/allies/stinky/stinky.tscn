@@ -1,0 +1,311 @@
+[gd_scene format=3 uid="uid://cffcdnwhx4mny"]
+
+[ext_resource type="Texture2D" uid="uid://bldhma6kybf44" path="res://entities/allies/stinky/textures/stinky_frame1.png" id="1_igtjm"]
+[ext_resource type="Shader" uid="uid://bfeixepkfpf3h" path="res://vfx/entities/shocky2.gdshader" id="1_miklj"]
+[ext_resource type="Texture2D" uid="uid://cf5wrrvue8284" path="res://entities/allies/stinky/textures/stinky_frame2.png" id="2_miklj"]
+[ext_resource type="Texture2D" uid="uid://b78a0gju54qf5" path="res://entities/allies/cakey/texture/cakey_tongue_frame1.png" id="5_hdrvs"]
+[ext_resource type="Texture2D" uid="uid://drqmuc65ax0p2" path="res://entities/allies/cakey/texture/cakey_tongue_frame2.png" id="6_poanf"]
+[ext_resource type="Texture2D" uid="uid://dxgdeppwgrl3v" path="res://entities/allies/stinky/textures/stinky_under.png" id="7_nqbq2"]
+[ext_resource type="Texture2D" uid="uid://b3ton1ejyi56x" path="res://entities/allies/cakey/texture/cakey_tongue_frame3.png" id="7_yqhnn"]
+[ext_resource type="Texture2D" uid="uid://b8pjxo6f5muxo" path="res://entities/allies/cakey/texture/cakey_tongue_frame4.png" id="8_w4j0v"]
+[ext_resource type="PackedScene" uid="uid://ut8t6yfdgmgr" path="res://vfx/death/death.tscn" id="9_nqbq2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nqbq2"]
+shader = ExtResource("1_miklj")
+shader_parameter/lightning_color = Color(1, 0.6862745, 0.79607844, 1)
+shader_parameter/max_radius = 0.9
+shader_parameter/thickness = 0.03
+shader_parameter/amplitude = 0.04
+shader_parameter/frequency = 5.0
+shader_parameter/progress = 0.400000019
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r0xi3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_igtjm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_miklj")
+}],
+"loop": 0,
+"name": &"open_mouth",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jofny"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_hdrvs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_poanf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_yqhnn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_w4j0v")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_83yuj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BodyUnderWater:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("DeathAnimation:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Body:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_qo52e"]
+resource_name = "dismiss"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DeathAnimation:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.06666667, 0.033333335, 0.13333334, 0.23333333, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 4, 5, 6]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DeathAnimation:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.47017783),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Body:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_7u5xo"]
+resource_name = "hide"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.27, 0.53333336),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-7.616699, -33.6167), Vector2(-8, -490), Vector2(-7.616699, -33.6167)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.27, 0.53),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1), Vector2(0.1, 0.1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BodyUnderWater:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.58),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Body:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_hmijt"]
+resource_name = "idle"
+length = 3.0000000000000004
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.4333333, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-7.616699, -33.6167), Vector2(-59, -34), Vector2(-7.616699, -33.6167)]
+}
+
+[sub_resource type="Animation" id="Animation_kcmro"]
+resource_name = "open_mouth"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16, 0.43),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_igtjm"]
+resource_name = "smelly"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.14),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kkaqq"]
+_data = {
+&"RESET": SubResource("Animation_83yuj"),
+&"dismiss": SubResource("Animation_qo52e"),
+&"hide": SubResource("Animation_7u5xo"),
+&"idle": SubResource("Animation_hmijt"),
+&"open_mouth": SubResource("Animation_kcmro"),
+&"smelly": SubResource("Animation_igtjm")
+}
+
+[node name="Stinky" type="Node2D" unique_id=398916788]
+scale = Vector2(0.25, 0.25)
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1495430310]
+visible = false
+modulate = Color(1, 1, 1, 0.3882353)
+material = SubResource("ShaderMaterial_nqbq2")
+custom_minimum_size = Vector2(500, 500)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -232.0
+offset_top = -260.0
+offset_right = 268.0
+offset_bottom = 240.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Body" type="AnimatedSprite2D" parent="." unique_id=857491278]
+position = Vector2(-7.616699, -33.6167)
+sprite_frames = SubResource("SpriteFrames_r0xi3")
+animation = &"open_mouth"
+
+[node name="Node2D" type="Node2D" parent="." unique_id=1317741517]
+visible = false
+position = Vector2(8, -36)
+
+[node name="Tongue" type="AnimatedSprite2D" parent="Node2D" unique_id=1993747605]
+position = Vector2(62, 40.5)
+sprite_frames = SubResource("SpriteFrames_jofny")
+frame = 3
+frame_progress = 1.0
+offset = Vector2(199, 41)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=467875489]
+libraries/ = SubResource("AnimationLibrary_kkaqq")
+
+[node name="BodyUnderWater" type="Sprite2D" parent="." unique_id=1682234378]
+visible = false
+texture = ExtResource("7_nqbq2")
+
+[node name="DeathAnimation" parent="." unique_id=429524921 instance=ExtResource("9_nqbq2")]
+visible = false
+scale = Vector2(3, 3)
+frame = 1
+frame_progress = 0.0

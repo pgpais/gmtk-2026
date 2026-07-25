@@ -4,13 +4,9 @@
 [ext_resource type="Script" uid="uid://dcphf1th8bjtj" path="res://spawner/spawn_sequence.gd" id="2_bx1jf"]
 [ext_resource type="Script" uid="uid://cwi2b70q6xv3l" path="res://spawner/spawn_data.gd" id="3_diktk"]
 [ext_resource type="Script" uid="uid://bwhgiqt7i32mc" path="res://entities/entity_data.gd" id="4_ehuhl"]
-[ext_resource type="Resource" uid="uid://b5unws06fkbfl" path="res://entities/allies/test/bolos.tres" id="5_vn1yt"]
-[ext_resource type="Resource" uid="uid://dqosqyvot7oca" path="res://entities/allies/test/linguado.tres" id="6_x7258"]
-[ext_resource type="Resource" uid="uid://cvjxrfn1bbtn7" path="res://entities/allies/test/mao.tres" id="7_w5fit"]
 
 [sub_resource type="Resource" id="Resource_d13ii"]
 script = ExtResource("3_diktk")
-possible_entity_datas = Array[ExtResource("4_ehuhl")]([ExtResource("5_vn1yt"), ExtResource("6_x7258"), ExtResource("7_w5fit")])
 conditions = Array[int]([0])
 metadata/_custom_type_script = "uid://cwi2b70q6xv3l"
 

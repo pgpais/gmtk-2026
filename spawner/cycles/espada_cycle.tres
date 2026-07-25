@@ -4,16 +4,13 @@
 [ext_resource type="Script" uid="uid://dcphf1th8bjtj" path="res://spawner/spawn_sequence.gd" id="2_t4xfy"]
 [ext_resource type="Script" uid="uid://cwi2b70q6xv3l" path="res://spawner/spawn_data.gd" id="3_ofly1"]
 [ext_resource type="Script" uid="uid://bwhgiqt7i32mc" path="res://entities/entity_data.gd" id="4_fv0cg"]
-[ext_resource type="Resource" uid="uid://bjqmyiuy8s16f" path="res://entities/enemies/test/espada.tres" id="5_lo54k"]
 
 [sub_resource type="Resource" id="Resource_e0ago"]
 script = ExtResource("3_ofly1")
-possible_entity_datas = Array[ExtResource("4_fv0cg")]([ExtResource("5_lo54k")])
 metadata/_custom_type_script = "uid://cwi2b70q6xv3l"
 
 [sub_resource type="Resource" id="Resource_fcvvs"]
 script = ExtResource("3_ofly1")
-possible_entity_datas = Array[ExtResource("4_fv0cg")]([ExtResource("5_lo54k")])
 probability = 0.25
 metadata/_custom_type_script = "uid://cwi2b70q6xv3l"
 
