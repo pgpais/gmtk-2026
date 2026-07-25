@@ -28,7 +28,7 @@ func _die():
 	EventBus.game_ended.emit(false)
 
 func _on_enemy_attacked_frog_king(enemy: Enemy):
-	take_damage(enemy.entity_data.frog_king_damage)
+	take_damage(enemy.frog_king_damage)
 
 func _on_health_changed(new_health: int, old_health: int):
 	print("damage taken: ")

@@ -3,6 +3,7 @@ extends Entity
 
 @export var ranged: bool # if it attacks at a distance
 var range: int
+var frog_king_damage: int
 
 func _ready() -> void:
 	team = TEAMS.ENEMY
@@ -16,12 +17,15 @@ func set_data(data):
 	add_child(visuals, true)
 	animator = visuals.get_node("AnimationPlayer")
 
+	frog_king_damage = entity_data.frog_king_damage
+
 	
 func trigger():
 	if current_tile.column.column_index == 0:
 		# Next to frog king
 		# TODO: play frog king attack animation
 		EventBus.enemy_attacked_frog_king.emit(self)
+		queue_free()
 
 	await action_handler.perform_actions(entity_data.action_sequence)
 	# for action: ActionSequence in possible_actions:

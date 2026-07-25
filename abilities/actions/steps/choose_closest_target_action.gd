@@ -4,6 +4,8 @@ extends Action
 ## Group to look for the closest target (required)
 @export var group_name: StringName
 
+@export var parameter_name: String = "target"
+
 ## If range should be visualized (for debug purposes)
 @export var visualize_range: bool = false
 
@@ -38,7 +40,7 @@ func execute(action_handler: ActionHandler, entity: Entity, grid_map: LayerGridM
 			closest_target_distance = distance
 
 	if closest_target == null:
-		action_handler.set_parameter("target", null)
+		action_handler.set_parameter(parameter_name, null)
 		return
 
-	action_handler.set_parameter("target", closest_target)
+	action_handler.set_parameter(parameter_name, closest_target)
