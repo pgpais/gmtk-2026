@@ -29,6 +29,10 @@ func perform_actions():
 	current_action = 0
 	_perform_action(current_action)
 
+func insert_actions(action_sequence: ActionSequence):
+	for i in range(len(action_sequence.actions)):
+		actions.insert(current_action + i, action_sequence.actions[i])
+
 func _perform_action(index: int):
 	await actions[index].execute(self, entity, entity.grid_map)
 	action_finished.emit()
