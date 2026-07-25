@@ -1,10 +1,6 @@
 [gd_scene format=3 uid="uid://d4chonwgcgkul"]
 
-[ext_resource type="Script" uid="uid://c4l2voogg7tht" path="res://core/frog_king/frog_king.gd" id="1_466dl"]
-[ext_resource type="Texture2D" uid="uid://bvlq6jvqnrx74" path="res://core/frog_king/textures/frog_king_body.png" id="2_2bolk"]
-[ext_resource type="Script" uid="uid://h3imy3pyfw5n" path="res://combat/health_component.gd" id="2_3854q"]
-[ext_resource type="Texture2D" uid="uid://7f0jtmbu3vn2" path="res://core/frog_king/textures/frog_king_mouth.png" id="3_j14ed"]
-[ext_resource type="Texture2D" uid="uid://cdkmukfqfgl1t" path="res://core/frog_king/textures/frog_king_eyelid.png" id="4_47ip5"]
+[ext_resource type="Texture2D" uid="uid://ylsnjc24o3i7" path="res://core/frog_king/heart.png" id="4_22vrh"]
 
 [sub_resource type="Animation" id="Animation_22vrh"]
 length = 0.001
@@ -80,6 +76,45 @@ tracks/5/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CPUParticles2D:emitting")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("CPUParticles2D:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_fw7co"]
+resource_name = "dislike"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("body:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.46666667, 0.96),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.38431373, 0.70980394, 0.34117648, 1), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_gc2f1"]
 resource_name = "eat"
@@ -135,7 +170,6 @@ tracks/3/keys = {
 [sub_resource type="Animation" id="Animation_boejm"]
 resource_name = "idle"
 length = 2.4333334
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -161,45 +195,112 @@ tracks/1/keys = {
 "values": [true, false, true, false]
 }
 
+[sub_resource type="Animation" id="Animation_00v1o"]
+resource_name = "likes"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("body:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.93333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0.56078434, 0.5921569, 1), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CPUParticles2D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fw7co"]
 _data = {
 &"RESET": SubResource("Animation_22vrh"),
+&"dislike": SubResource("Animation_fw7co"),
 &"eat": SubResource("Animation_gc2f1"),
-&"idle": SubResource("Animation_boejm")
+&"idle": SubResource("Animation_boejm"),
+&"likes": SubResource("Animation_00v1o")
 }
 
-[node name="FrogKing" type="Node2D" unique_id=1670368785 node_paths=PackedStringArray("health_component", "animator")]
-script = ExtResource("1_466dl")
-health_component = NodePath("HealthComponent")
-animator = NodePath("AnimationPlayer")
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_uum2k"]
+load_path = "res://.godot/imported/Finish body.png-b1b291c3700f634552edda6b900d9001.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_gwxp3"]
+load_path = "res://.godot/imported/Frog mouth.png-8eed9fa9ea887aa67505471bc68b2a72.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_466dl"]
+load_path = "res://.godot/imported/Pisca.png-ef129c3d57082524667bdca5d8047fcc.ctex"
+
+[sub_resource type="Gradient" id="Gradient_r0xi3"]
+colors = PackedColorArray(0.7647059, 0, 0, 0, 1, 0.54509807, 0.56078434, 1)
+
+[node name="frog_king" type="Node2D" unique_id=1670368785]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=349069595]
 libraries/ = SubResource("AnimationLibrary_fw7co")
-autoplay = &"idle"
 
 [node name="body" type="Sprite2D" parent="." unique_id=771013884]
 position = Vector2(-32.19995, 293.9828)
 scale = Vector2(0.6, 0.6)
-texture = ExtResource("2_2bolk")
+texture = SubResource("CompressedTexture2D_uum2k")
 
 [node name="mouth" type="Sprite2D" parent="." unique_id=635677910]
 show_behind_parent = true
 position = Vector2(2.0000076, 271)
 scale = Vector2(0.6, 0.6)
-texture = ExtResource("3_j14ed")
+texture = SubResource("CompressedTexture2D_gwxp3")
 
 [node name="eye_lid" type="Sprite2D" parent="." unique_id=1643880347]
 visible = false
 position = Vector2(169.00002, 113.00001)
 scale = Vector2(0.6, 0.6)
-texture = ExtResource("4_47ip5")
+texture = SubResource("CompressedTexture2D_466dl")
 
 [node name="eye_lid2" type="Sprite2D" parent="." unique_id=1206468117]
 visible = false
 position = Vector2(166, 418.99997)
 scale = Vector2(0.6, 0.6)
-texture = ExtResource("4_47ip5")
+texture = SubResource("CompressedTexture2D_466dl")
 
-[node name="HealthComponent" type="Node" parent="." unique_id=212863698]
-script = ExtResource("2_3854q")
-max_health = 3
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=1845904255]
+visible = false
+position = Vector2(99, 359)
+emitting = false
+amount = 20
+texture = ExtResource("4_22vrh")
+lifetime = 3.0
+one_shot = true
+emission_shape = 1
+emission_sphere_radius = 128.0
+direction = Vector2(0, -1)
+spread = 25.0
+gravity = Vector2(0, 15)
+initial_velocity_min = 80.0
+initial_velocity_max = 120.0
+angular_velocity_min = -15.0
+angular_velocity_max = 15.0
+scale_amount_min = 0.15
+scale_amount_max = 0.15
+color_ramp = SubResource("Gradient_r0xi3")
