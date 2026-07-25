@@ -1,0 +1,51 @@
+[gd_resource type="Resource" script_class="EnemyData" format=3 uid="uid://cvvof0jokxit0"]
+
+[ext_resource type="Script" uid="uid://yyhnn4sejhrt" path="res://abilities/actions/action.gd" id="1_7qmvv"]
+[ext_resource type="Script" uid="uid://cchuyhgd0lsne" path="res://abilities/movement/basic_movement_strategy.gd" id="2_lhrak"]
+[ext_resource type="Script" uid="uid://b2ia62h5b18fg" path="res://abilities/actions/steps/move_action.gd" id="3_qspxb"]
+[ext_resource type="Script" uid="uid://jrmcm2l7ulh4" path="res://abilities/actions/steps/choose_direction_action.gd" id="4_dx6pl"]
+[ext_resource type="Script" uid="uid://mikuqe75xffa" path="res://abilities/actions/steps/shock_action.gd" id="5_bgm8x"]
+[ext_resource type="Script" uid="uid://b3n7i5kgdbo7r" path="res://abilities/actions/sequential_action_strategy.gd" id="6_ormbd"]
+[ext_resource type="PackedScene" uid="uid://bjwl5ilt4my3o" path="res://entities/enemies/mosquito/mosquito.tscn" id="7_bv16n"]
+[ext_resource type="Script" uid="uid://bp1u6h3jw4ia" path="res://entities/enemies/enemy_data.gd" id="8_d6w6x"]
+
+[sub_resource type="Resource" id="Resource_er2l6"]
+script = ExtResource("2_lhrak")
+movement_direction = Vector2i(-3, 0)
+metadata/_custom_type_script = "uid://cchuyhgd0lsne"
+
+[sub_resource type="Resource" id="Resource_wkcs5"]
+script = ExtResource("3_qspxb")
+move_strategy = SubResource("Resource_er2l6")
+metadata/_custom_type_script = "uid://b2ia62h5b18fg"
+
+[sub_resource type="Resource" id="Resource_oab30"]
+script = ExtResource("4_dx6pl")
+metadata/_custom_type_script = "uid://jrmcm2l7ulh4"
+
+[sub_resource type="Resource" id="Resource_jwbcs"]
+script = ExtResource("2_lhrak")
+movement_direction = Vector2i(-1, 0)
+metadata/_custom_type_script = "uid://cchuyhgd0lsne"
+
+[sub_resource type="Resource" id="Resource_4luj4"]
+script = ExtResource("3_qspxb")
+move_strategy = SubResource("Resource_jwbcs")
+metadata/_custom_type_script = "uid://b2ia62h5b18fg"
+
+[sub_resource type="Resource" id="Resource_umeiq"]
+script = ExtResource("5_bgm8x")
+metadata/_custom_type_script = "uid://mikuqe75xffa"
+
+[sub_resource type="Resource" id="Resource_s4ekl"]
+script = ExtResource("6_ormbd")
+actions = Array[ExtResource("1_7qmvv")]([SubResource("Resource_wkcs5"), SubResource("Resource_oab30"), SubResource("Resource_4luj4"), SubResource("Resource_umeiq")])
+metadata/_custom_type_script = "uid://b3n7i5kgdbo7r"
+
+[resource]
+script = ExtResource("8_d6w6x")
+team = 1
+scene = ExtResource("7_bv16n")
+action_sequence = SubResource("Resource_s4ekl")
+color = Color(0.16095755, 0.5127896, 0.4439802, 1)
+metadata/_custom_type_script = "uid://bp1u6h3jw4ia"
