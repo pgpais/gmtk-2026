@@ -9,7 +9,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tfbxm"]
 size = Vector2(280, 336)
 
-[node name="Ally" type="Node2D" unique_id=28648160 node_paths=PackedStringArray("action_handler", "_selectable") groups=["allies"]]
+[node name="Ally" type="Node2D" unique_id=28648160 node_paths=PackedStringArray("action_handler") groups=["allies"]]
+scale = Vector2(0.2, 0.2)
 script = ExtResource("1_binvp")
 action_handler = NodePath("ActionHandler")
 _selectable = NodePath("Selectable")

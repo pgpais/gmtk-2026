@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource("1_rgv1a")
-tile_size = Vector2(400, 400)
+tile_size = Vector2(80, 80)
 metadata/_custom_type_script = "uid://bdia1511y0edp"

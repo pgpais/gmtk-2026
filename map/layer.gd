@@ -10,7 +10,7 @@ var tiles: Array[Tile]
 func get_tile(index: int) -> Tile:
 	return tiles[index]
 
-func setup_column(number_of_tiles: int, column_index: int, tile_size: Vector2 = Vector2(64, 64)):
+func setup_column(number_of_tiles: int, column_index: int, tile_size: Vector2 = Vector2(100, 100), tile_spacing: Vector2 = Vector2(20, 20)):
 	self.column_index = column_index
 
 	for child in get_children():
@@ -23,7 +23,7 @@ func setup_column(number_of_tiles: int, column_index: int, tile_size: Vector2 = 
 		tiles.append(tile)
 		if Engine.is_editor_hint():
 			tile.owner = get_tree().get_edited_scene_root()
-		tile.position = Vector2(0, tile_size.y / 2 + i * tile_size.y)
+		tile.position = Vector2(0, tile_size.y / 2 + i * (tile_size.y + tile_spacing.y))
 		tile.initialize(self, i)
 
 func trigger_tiles():

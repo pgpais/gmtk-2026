@@ -22,8 +22,18 @@
 [ext_resource type="Script" uid="uid://cxwch0s8x7i5t" path="res://ui/menus/end_game_menu.gd" id="13_ycdy4"]
 [ext_resource type="PackedScene" uid="uid://nclqfbt55yp5" path="res://core/frog_king/frog_king_ui.tscn" id="14_w48qg"]
 
+[sub_resource type="Resource" id="Resource_yaehf"]
+script = ExtResource("10_yaehf")
+direction = 1
+area_grid = Vector2i(3, 2)
+offset = Vector2i(0, 1)
+distance = 2
+mirror = true
+metadata/_custom_type_script = "uid://5kjnatrb4mig"
+
 [sub_resource type="Resource" id="Resource_tfbxm"]
 script = ExtResource("8_kek77")
+patterns = Array[ExtResource("10_yaehf")]([SubResource("Resource_yaehf")])
 metadata/_custom_type_script = "uid://cs7o53c5hrvdk"
 
 [node name="main" type="Node2D" unique_id=1936105572]
@@ -42,6 +52,7 @@ expand_mode = 2
 stretch_mode = 4
 
 [node name="LayerGridMap" parent="." unique_id=2027443948 instance=ExtResource("1_kek77")]
+position = Vector2(260, 20)
 
 [node name="SpawnHandler" type="Node" parent="." unique_id=1568226340 node_paths=PackedStringArray("enemiesParent", "alliesParent")]
 script = ExtResource("6_4c57u")
@@ -75,11 +86,10 @@ metadata/_custom_type_script = "uid://hgtti3egwqpo"
 [node name="Allies" type="Node2D" parent="Entities" unique_id=2136276855]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=404450474]
-position = Vector2(1427, 1944)
-zoom = Vector2(0.15, 0.15)
+anchor_mode = 0
 
 [node name="FrogKing" parent="." unique_id=1757092826 instance=ExtResource("10_dg77c")]
-position = Vector2(-1067, 1278)
+position = Vector2(120, 260)
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1780476147]
 
