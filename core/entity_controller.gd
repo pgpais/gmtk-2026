@@ -2,11 +2,12 @@ class_name EntityController
 extends Node
 
 enum EntityControllerState {
-	WaitingNextAction, 
-	ActionSelection, 
-	TileSelection, 
-	AllySelection, 
-	EnemySelection
+	WaitingNextAction,
+	ActionSelection,
+	TileSelection,
+	AllySelection,
+	EnemySelection,
+	ActionPerformed
 }
 
 signal control_entity_changed(entity: Entity)
@@ -28,18 +29,30 @@ var is_active: bool = true
 var state: EntityControllerState = EntityControllerState.WaitingNextAction
 
 var is_movement: bool = true
+var selectable_entities: Array[Entity] = []
 var range_tiles: Array[Tile]
 
 func _ready() -> void:
+	EventBus.tick_triggers_finished.connect(_change_to_action_selection_state)
+
 	EventBus.request_highlight.connect(_change_to_selection_state)
 	EventBus.movement_needed.connect(_move_control_entity_to_target_tile)
 	
 	EventBus.entity_selected.connect(_on_entity_selected)
 	EventBus.tile_selected.connect(_on_tile_selected)
 	
-func _change_to_selection_state(target_type, selection_range, highlight_range) -> void:
-	if highlight_range:
-		pass # highlight range
+func _change_to_selection_state(target_type, selection_range, reference_tile) -> void:
+	if selection_range != null:
+		range_tiles = grid_map.get_tiles_in_range(selection_range, reference_tile)
+		range_highlighter.show_highlight_tiles(range_tiles)
+
+		for tile in range_tiles:
+			tile.selectable.set_selectable(true)
+
+	for selectable_entity in selectable_entities:
+		selectable_entity.set_selectable(false)
+
+	selectable_entities = []
 		
 	if target_type == Constants.TARGET_TYPES.TILE:
 		_change_to_tile_selection_state()
@@ -49,7 +62,7 @@ func _change_to_selection_state(target_type, selection_range, highlight_range) -
 		_change_to_enemy_selection_state()
 
 func _move_control_entity_to_target_tile():
-	var tile_path : Array[Tile] = grid_map.get_path_of_tiles(control_entity.current_tile, target_tile) 
+	var tile_path: Array[Tile] = grid_map.get_path_of_tiles(control_entity.current_tile, target_tile)
 	control_entity.move(tile_path)
 
 func _change_to_tile_selection_state() -> void:
@@ -64,21 +77,37 @@ func _change_to_enemy_selection_state() -> void:
 	print("change to enemy selection state")
 	state = EntityControllerState.EnemySelection
 
+func _change_to_action_selection_state() -> void:
+	print("change to action selection state")
+	state = EntityControllerState.WaitingNextAction
+
+	var allies = get_tree().get_nodes_in_group("allies")
+
+	for ally in allies:
+		ally.set_selectable(true)
+		selectable_entities.append(ally)
+
+func _change_to_action_performed_state() -> void:
+	print("change to action performed state")
+	state = EntityControllerState.ActionPerformed
+
 func _on_entity_selected(entity: Entity) -> void:
 	if !is_active: return
 	
-	if state == EntityControllerState.WaitingNextAction: 
+	if state == EntityControllerState.WaitingNextAction:
+		if entity.team == Entity.TEAMS.NEUTRAL:
+			#TODO: turn into ally (might be just setting AllyData)
+			pass
 		if entity.team == Entity.TEAMS.ALLY:
 			control_entity = entity
 			control_entity_changed.emit(entity)
-			# show options for that frog
 	
 	elif state == EntityControllerState.AllySelection:
 		if entity.team == Entity.TEAMS.ALLY:
 			target_entity = entity
 			target_entity_changed.emit(entity)
 	
-	elif state == EntityControllerState.EnemySelection: 
+	elif state == EntityControllerState.EnemySelection:
 		if entity.team == Entity.TEAMS.ENEMY:
 			target_entity = entity
 			target_entity_changed.emit(entity)
@@ -86,12 +115,8 @@ func _on_entity_selected(entity: Entity) -> void:
 	else:
 		return
 
-	print("selected entity: ", entity)
 
-	range_tiles = entity.movement_strategy.tiles_to_highlight(entity, grid_map)
-	range_highlighter.show_highlight_tiles(range_tiles)
-
-	_change_to_tile_selection_state()
+	# _change_to_tile_selection_state()
 
 func _on_tile_selected(tile: Tile) -> void:
 	if !is_active: return
@@ -113,12 +138,15 @@ func _on_tile_selected(tile: Tile) -> void:
 	#else:
 		##TODO: perform ability
 		#pass
-
-	EventBus.action_step_performed.emit()
+		
+	EventBus.player_action_performed.emit()
 
 	#ability_performed.emit()
-	#state = EntityControllerState.WaitingEntitySelection
 
+	_change_to_action_performed_state()
+
+	
 func _cancel_interaction() -> void:
 	range_highlighter.hide_highlight_tiles(range_tiles)
+
 	state = EntityControllerState.WaitingNextAction

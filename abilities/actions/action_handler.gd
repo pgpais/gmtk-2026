@@ -11,9 +11,6 @@ var parameters: Dictionary
 signal action_finished
 signal all_actions_finished
 
-func _ready() -> void:
-	EventBus.action_step_performed.connect(next_action)
-
 func set_parameter(parameter_name: String, value: Variant):
 	parameters[parameter_name] = value
 	print(parameters[parameter_name])
@@ -24,7 +21,7 @@ func get_parameter(parameter_name: String):
 func set_entity(entity: Entity):
 	self.entity = entity
 
-func perform_actions(action_sequence : ActionSequence = entity.entity_data.action_sequence):
+func perform_actions(action_sequence: ActionSequence = entity.entity_data.action_sequence):
 	actions = action_sequence.actions
 	current_action = 0
 	_perform_action(current_action)
@@ -48,6 +45,10 @@ func next_action():
 		_perform_action(current_action)
 	else:
 		_finish_performing()
+
+func reset():
+	current_action = 0
+	actions.clear()
 
 func _finish_performing():
 	all_actions_finished.emit()

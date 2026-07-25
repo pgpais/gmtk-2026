@@ -11,6 +11,7 @@ signal rotated
 
 @export var action_sequence: ActionSequence
 @export var action_handler: ActionHandler
+@export var _selectable: Selectable
 
 #region node references
 #@export var sprite : Sprite2D
@@ -45,6 +46,7 @@ var current_tile: Tile = null
 
 func _ready() -> void:
 	finished_movement.connect(finish_movement)
+	action_handler.set_entity(self)
 	#if not current_tile:
 		#var start_layer = 0 if team == TEAMS.ENEMY else len(grid_map.columns) - 1	
 		#current_tile = grid_map.get_random_empty_tile(start_layer) # get a random start tile
@@ -89,9 +91,12 @@ func _move_to_tile(target_tile):
 
 	var tween = create_tween()
 	tween.tween_method(set_new_position, current_tile.global_position, target_tile.global_position, time_to_move)
-	tween.tween_callback(finished_movement.emit)
-	
 	await tween.finished
+
+	current_tile.set_entity(null)
+	current_tile = target_tile # attention: updating current tile before animation is completed
+	current_tile.set_entity(self)
+
 	
 func perform_movement():
 	if movement_strategy:
@@ -123,9 +128,8 @@ func _move(x, y):
 		return
 	
 	_move_to_tile(target_tile)
-	current_tile.set_entity(null)
-	current_tile = target_tile # attention: updating current tile before animation is completed
-	current_tile.set_entity(self)
+	
+	finished_movement.emit()
 
 func finish_movement():
 	if animator.has_animation("idle"):
@@ -194,3 +198,6 @@ func play_animation(animation):
 				break;
 	else:
 		print("Animation not found: " + animation)
+
+func set_selectable(is_selectable: bool):
+	_selectable.set_selectable(is_selectable)

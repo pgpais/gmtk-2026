@@ -2,6 +2,8 @@
 class_name Tile
 extends Area2D
 
+signal entity_entered_tile(entity: Entity)
+
 @export var tile_index: int = 0
 @export var highlight_color: Color = Color.YELLOW
 @export var danger_color: Color = Color.RED
@@ -13,7 +15,7 @@ extends Area2D
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 @onready var selectable: Selectable = $Selectable
 
-@export var direction_ui : Control
+@export var direction_ui: Control
 
 var entity: Entity = null
 
@@ -31,6 +33,8 @@ func _on_mouse_exited():
 
 func set_entity(entity: Entity):
 	self.entity = entity
+	if entity:
+		entity_entered_tile.emit(entity)
 
 func get_entity() -> Entity:
 	return entity
@@ -74,7 +78,7 @@ func select():
 func pop_direction_buttons(toggle) -> void:
 	direction_ui.visible = toggle
 	
-func select_direction(direction : String) -> void:
+func select_direction(direction: String) -> void:
 	if entity:
 		entity.direction_selected.emit(direction)
 		

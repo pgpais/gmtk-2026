@@ -4,13 +4,15 @@
 [ext_resource type="Texture2D" uid="uid://w5kafc3luitw" path="res://icon.svg" id="3_ukqju"]
 [ext_resource type="Script" uid="uid://08ngtap170yx" path="res://abilities/selectable.gd" id="4_bathf"]
 [ext_resource type="Script" uid="uid://ddx61kskhe162" path="res://abilities/actions/action_handler.gd" id="4_mmojd"]
+[ext_resource type="PackedScene" uid="uid://dw8jbt2qu4loo" path="res://ui/entities/entity_control_ui.tscn" id="5_miwyd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tfbxm"]
-size = Vector2(38, 38)
+size = Vector2(280, 336)
 
-[node name="Ally" type="Node2D" unique_id=28648160 node_paths=PackedStringArray("action_handler") groups=["allies"]]
+[node name="Ally" type="Node2D" unique_id=28648160 node_paths=PackedStringArray("action_handler", "_selectable") groups=["allies"]]
 script = ExtResource("1_binvp")
 action_handler = NodePath("ActionHandler")
+_selectable = NodePath("Selectable")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1325808683]
 visible = false
@@ -20,11 +22,15 @@ texture = ExtResource("3_ukqju")
 
 [node name="Selectable" type="Area2D" parent="." unique_id=1588231175]
 script = ExtResource("4_bathf")
+_isSelectable = true
 metadata/_custom_type_script = "uid://08ngtap170yx"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Selectable" unique_id=2037993044]
+position = Vector2(28, -48)
 shape = SubResource("RectangleShape2D_tfbxm")
 
 [node name="ActionHandler" type="Node" parent="." unique_id=209209378]
 script = ExtResource("4_mmojd")
 metadata/_custom_type_script = "uid://ddx61kskhe162"
+
+[node name="EntityControlUI" parent="." unique_id=928674730 instance=ExtResource("5_miwyd")]

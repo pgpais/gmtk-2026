@@ -1,7 +1,10 @@
 class_name Selectable
 extends Area2D
 
-var _isSelectable = false
+signal can_be_selected(state: bool)
+signal selected
+
+@export var _isSelectable = false
 var _isHovered = false
 
 func _ready():
@@ -30,6 +33,9 @@ func select():
 		EventBus.tile_selected.emit(owner)
 	else:
 		print("Selectable not owned by entity")
+	
+	selected.emit()
 
 func set_selectable(state: bool):
 	_isSelectable = state
+	can_be_selected.emit(state)
