@@ -24,6 +24,6 @@ func trigger():
 		# TODO: play frog king attack animation
 		EventBus.enemy_attacked_frog_king.emit(self)
 
-	action_handler.perform_actions()
+	await action_handler.perform_actions()
 	# for action: ActionSequence in possible_actions:
 	# 	pass # to do
