@@ -1,19 +1,205 @@
-[gd_scene format=3 uid="uid://b1nc3nt363lx5"]
+[gd_scene format=3 uid="uid://d4chonwgcgkul"]
 
 [ext_resource type="Script" uid="uid://c4l2voogg7tht" path="res://core/frog_king/frog_king.gd" id="1_466dl"]
+[ext_resource type="Texture2D" uid="uid://bvlq6jvqnrx74" path="res://core/frog_king/textures/frog_king_body.png" id="2_2bolk"]
 [ext_resource type="Script" uid="uid://h3imy3pyfw5n" path="res://combat/health_component.gd" id="2_3854q"]
-[ext_resource type="Texture2D" uid="uid://w5kafc3luitw" path="res://icon.svg" id="3_2bolk"]
+[ext_resource type="Texture2D" uid="uid://7f0jtmbu3vn2" path="res://core/frog_king/textures/frog_king_mouth.png" id="3_j14ed"]
+[ext_resource type="Texture2D" uid="uid://cdkmukfqfgl1t" path="res://core/frog_king/textures/frog_king_eyelid.png" id="4_47ip5"]
 
-[node name="FrogKing" type="Node2D" unique_id=1757092826 node_paths=PackedStringArray("health_component")]
+[sub_resource type="Animation" id="Animation_22vrh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("mouth:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2.0000076, 271)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("body:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.6, 0.6)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("body:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("eye_lid:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("eye_lid2:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_gc2f1"]
+resource_name = "eat"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("mouth:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.17947397, 0.32873908, 0.5110102, 0.67483735, 0.8333333, 0.96666664),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(2.0000076, 271), Vector2(280, 263), Vector2(2.0000076, 271), Vector2(280, 263), Vector2(2.0000076, 271), Vector2(280, 263), Vector2(2.0000076, 271)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("body:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.26666668, 0.53333336, 0.76666665, 0.98),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.6, 0.6), Vector2(0.7, 0.7), Vector2(0.6, 0.6), Vector2(0.7, 0.7), Vector2(0.6, 0.6)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.46666667, 0.94300395),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.94908184, 0.25546283, 0.39723468, 1), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("body:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.46, 0.92),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.94908184, 0.25546283, 0.39723468, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_boejm"]
+resource_name = "idle"
+length = 2.4333334
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("eye_lid:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.03333333, 0.26666668, 0.5, 0.76666665),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("eye_lid2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.6, 1.8666667, 2.1333334, 2.3666666),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fw7co"]
+_data = {
+&"RESET": SubResource("Animation_22vrh"),
+&"eat": SubResource("Animation_gc2f1"),
+&"idle": SubResource("Animation_boejm")
+}
+
+[node name="FrogKing" type="Node2D" unique_id=1670368785 node_paths=PackedStringArray("health_component", "animator")]
 script = ExtResource("1_466dl")
 health_component = NodePath("HealthComponent")
-metadata/_custom_type_script = "uid://c4l2voogg7tht"
+animator = NodePath("AnimationPlayer")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1585713701]
-scale = Vector2(1.875, 3.75)
-texture = ExtResource("3_2bolk")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=349069595]
+libraries/ = SubResource("AnimationLibrary_fw7co")
+autoplay = &"idle"
 
-[node name="HealthComponent" type="Node" parent="." unique_id=1143364655]
+[node name="body" type="Sprite2D" parent="." unique_id=771013884]
+position = Vector2(-32.19995, 293.9828)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_2bolk")
+
+[node name="mouth" type="Sprite2D" parent="." unique_id=635677910]
+show_behind_parent = true
+position = Vector2(2.0000076, 271)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("3_j14ed")
+
+[node name="eye_lid" type="Sprite2D" parent="." unique_id=1643880347]
+visible = false
+position = Vector2(169.00002, 113.00001)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("4_47ip5")
+
+[node name="eye_lid2" type="Sprite2D" parent="." unique_id=1206468117]
+visible = false
+position = Vector2(166, 418.99997)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("4_47ip5")
+
+[node name="HealthComponent" type="Node" parent="." unique_id=212863698]
 script = ExtResource("2_3854q")
 max_health = 3
-metadata/_custom_type_script = "uid://h3imy3pyfw5n"
