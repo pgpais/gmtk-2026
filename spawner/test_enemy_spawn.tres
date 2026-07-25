@@ -1,0 +1,69 @@
+[gd_resource type="Resource" script_class="SpawnSequence" format=3 uid="uid://bhr3hrctmx30t"]
+
+[ext_resource type="Script" uid="uid://dcphf1th8bjtj" path="res://spawner/spawn_sequence.gd" id="1_s7asq"]
+[ext_resource type="Script" uid="uid://cwi2b70q6xv3l" path="res://spawner/spawn_data.gd" id="2_1aagx"]
+[ext_resource type="Script" uid="uid://bwhgiqt7i32mc" path="res://entities/entity_data.gd" id="3_kho23"]
+[ext_resource type="Script" uid="uid://yyhnn4sejhrt" path="res://abilities/actions/action.gd" id="4_bs5bv"]
+[ext_resource type="Script" uid="uid://cchuyhgd0lsne" path="res://abilities/movement/basic_movement_strategy.gd" id="5_2utwd"]
+[ext_resource type="Script" uid="uid://b2ia62h5b18fg" path="res://abilities/actions/steps/move_action.gd" id="6_awgtb"]
+[ext_resource type="Script" uid="uid://08b553jmywp" path="res://abilities/actions/steps/select.gd" id="7_iwyda"]
+[ext_resource type="Script" uid="uid://5kjnatrb4mig" path="res://abilities/range/range_pattern.gd" id="8_a3ueo"]
+[ext_resource type="Script" uid="uid://cs7o53c5hrvdk" path="res://abilities/range/ability_range.gd" id="9_p1xso"]
+[ext_resource type="Script" uid="uid://b3n7i5kgdbo7r" path="res://abilities/actions/sequential_action_strategy.gd" id="10_goqcc"]
+[ext_resource type="PackedScene" uid="uid://bjwl5ilt4my3o" path="res://entities/enemies/mosquito/mosquito.tscn" id="11_d37i4"]
+[ext_resource type="Script" uid="uid://bp1u6h3jw4ia" path="res://entities/enemies/enemy_data.gd" id="12_3k55c"]
+
+[sub_resource type="Resource" id="Resource_ooyr6"]
+script = ExtResource("5_2utwd")
+movement_direction = Vector2i(-1, 0)
+metadata/_custom_type_script = "uid://cchuyhgd0lsne"
+
+[sub_resource type="Resource" id="Resource_gf3hx"]
+script = ExtResource("6_awgtb")
+move_strategy = SubResource("Resource_ooyr6")
+metadata/_custom_type_script = "uid://b2ia62h5b18fg"
+
+[sub_resource type="Resource" id="Resource_sbah8"]
+script = ExtResource("8_a3ueo")
+mirror = true
+metadata/_custom_type_script = "uid://5kjnatrb4mig"
+
+[sub_resource type="Resource" id="Resource_kho23"]
+script = ExtResource("8_a3ueo")
+direction = 0
+mirror = true
+metadata/_custom_type_script = "uid://5kjnatrb4mig"
+
+[sub_resource type="Resource" id="Resource_tgrd4"]
+script = ExtResource("9_p1xso")
+patterns = Array[ExtResource("8_a3ueo")]([SubResource("Resource_sbah8"), SubResource("Resource_kho23")])
+metadata/_custom_type_script = "uid://cs7o53c5hrvdk"
+
+[sub_resource type="Resource" id="Resource_oxa7e"]
+script = ExtResource("7_iwyda")
+selection_range = SubResource("Resource_tgrd4")
+metadata/_custom_type_script = "uid://08b553jmywp"
+
+[sub_resource type="Resource" id="Resource_g7j4e"]
+script = ExtResource("10_goqcc")
+actions = Array[ExtResource("4_bs5bv")]([SubResource("Resource_gf3hx"), SubResource("Resource_oxa7e")])
+metadata/_custom_type_script = "uid://b3n7i5kgdbo7r"
+
+[sub_resource type="Resource" id="Resource_my1ba"]
+script = ExtResource("12_3k55c")
+team = 1
+scene = ExtResource("11_d37i4")
+action_sequence = SubResource("Resource_g7j4e")
+metadata/_custom_type_script = "uid://bp1u6h3jw4ia"
+
+[sub_resource type="Resource" id="Resource_6l1jv"]
+script = ExtResource("2_1aagx")
+possible_entity_datas = Array[ExtResource("3_kho23")]([SubResource("Resource_my1ba")])
+column_indexes = Array[int]([7])
+spawn_in_all_columns = false
+metadata/_custom_type_script = "uid://cwi2b70q6xv3l"
+
+[resource]
+script = ExtResource("1_s7asq")
+spawn_sequence = Array[ExtResource("2_1aagx")]([SubResource("Resource_6l1jv")])
+metadata/_custom_type_script = "uid://dcphf1th8bjtj"
