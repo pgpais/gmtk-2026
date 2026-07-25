@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://dojshow4it3ya" path="res://map/grid_map.gd" id="1_56ot8"]
 [ext_resource type="Resource" uid="uid://dd5geybdckkoo" path="res://core/game_settings_data.tres" id="2_akrxh"]
 [ext_resource type="Script" uid="uid://dtdg6wi6v4o0a" path="res://map/layer.gd" id="3_5f17n"]
-[ext_resource type="PackedScene" uid="uid://bmifyrtst83yc" path="res://map/tile.tscn" id="4_01owg"]
-[ext_resource type="Script" uid="uid://d1vsxetgx8k52" path="res://map/tile.gd" id="5_akrxh"]
+[ext_resource type="PackedScene" uid="uid://bmifyrtst83yc" path="res://map/tile/tile.tscn" id="4_01owg"]
+[ext_resource type="Script" uid="uid://d1vsxetgx8k52" path="res://map/tile/tile.gd" id="5_akrxh"]
 
 [node name="LayerGridMap" type="Node2D" unique_id=2027443948]
 script = ExtResource("1_56ot8")
