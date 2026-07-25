@@ -1,10 +1,14 @@
 class_name Constants
 
 enum TARGET_TYPES {
-	tile,
-	ally,
-	enemy,
-	direction
+	TILE,
+	ENTITY,
+	DIRECTION
+}
+
+enum ENTITY_TYPES {
+    ALLY,
+    ENEMY
 }
 
 enum DIRECTION {

@@ -16,6 +16,7 @@ func _ready() -> void:
 
 func set_parameter(parameter_name: String, value: Variant):
 	parameters[parameter_name] = value
+	print(parameters[parameter_name])
 	
 func get_parameter(parameter_name: String):
 	return parameters[parameter_name]

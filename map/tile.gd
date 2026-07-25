@@ -1,7 +1,6 @@
 @tool
 class_name Tile
-extends Area2D
-
+extends Selectable
 
 @export var tile_index: int = 0
 @export var highlight_color: Color = Color.YELLOW
@@ -17,6 +16,9 @@ var entity: Entity = null
 
 func set_entity(entity: Entity):
 	self.entity = entity
+
+func get_entity() -> Entity:
+	return entity
 
 func trigger():
 	highlight()
@@ -39,11 +41,6 @@ func _on_mouse_entered():
 func _on_mouse_exited():
 	var tween = create_tween()
 	tween.tween_method(_set_modulate, sprite.modulate, Color(1, 1, 1, 1), 0.1)
-
-func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int):
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			EventBus.tile_selected.emit(self)
 
 func _set_modulate(color: Color):
 	sprite.modulate = color

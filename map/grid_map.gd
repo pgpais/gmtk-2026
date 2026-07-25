@@ -29,6 +29,9 @@ func get_tile(layer_index: int, tile_index: int) -> Tile:
 		return null
 	return columns[layer_index].get_tile(tile_index)
 
+func get_tile_coordinates(tile: Tile) -> Vector2i:
+	return Vector2i(tile.layer.layer_index, tile.tile_index)
+
 func get_empty_tiles_in_column(layer_index: int) -> Array[Tile]:
 	return columns[layer_index].get_empty_tiles()
 

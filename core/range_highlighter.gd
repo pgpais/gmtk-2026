@@ -19,7 +19,7 @@ func _process(delta: float) -> void:
 
 func _on_highlight_request(target_type, selection_range, reference_tile) -> void:
 	match target_type:
-		Constants.TARGET_TYPES.tile:
+		Constants.TARGET_TYPES.TILE:
 			var tiles: Array[Tile] = grid_map.get_tiles_in_range(selection_range, reference_tile)
 			show_highlight_tiles(tiles)
 

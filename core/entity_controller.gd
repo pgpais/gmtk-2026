@@ -41,11 +41,11 @@ func _change_to_selection_state(target_type, selection_range, highlight_range) -
 	if highlight_range:
 		pass # highlight range
 		
-	if target_type == Constants.TARGET_TYPES.tile:
+	if target_type == Constants.TARGET_TYPES.TILE:
 		_change_to_tile_selection_state()
-	elif target_type == Constants.TARGET_TYPES.ally:
+	elif target_type == Constants.TARGET_TYPES.ENTITY:
 		_change_to_ally_selection_state()
-	elif target_type == Constants.TARGET_TYPES.enemy:
+	elif target_type == Constants.ENTITY_TYPES.ENEMY:
 		_change_to_enemy_selection_state()
 
 func _move_control_entity_to_target_tile():
