@@ -24,6 +24,7 @@ enum TEAMS {
 	ALLY,
 	ENEMY,
 	NEUTRAL,
+	BEETLE,
 }
 var team = TEAMS.NEUTRAL
 ## to configure the move tween
@@ -97,7 +98,6 @@ func _move_to_tile(target_tile):
 	current_tile = target_tile # attention: updating current tile before animation is completed
 	current_tile.set_entity(self)
 
-	
 func perform_movement():
 	if movement_strategy:
 		movement_strategy.move(self)
@@ -187,9 +187,12 @@ func trigger():
 func act():
 	pass
 
-func play_animation(animation):
+func play_animation(animation, backwards = false):
 	if animator.has_animation(animation):
-		animator.play(animation)
+		if ! backwards:
+			animator.play(animation)
+		else:
+			animator.play_backwards(animation)
 
 		while (true):
 			var finished_animation = await animator.animation_finished

@@ -11,6 +11,7 @@ metadata/_custom_type_script = "uid://b3n7i5kgdbo7r"
 
 [resource]
 script = ExtResource("4_hly3s")
+team = 3
 scene = ExtResource("3_mplcu")
 action_sequence = SubResource("Resource_0k0ny")
 metadata/_custom_type_script = "uid://dly02pjrb1d6s"

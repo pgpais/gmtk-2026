@@ -2,9 +2,13 @@ class_name Ally
 extends Entity
 
 var banked_actions: Array[ActionSequence]
+var used_this_cycle : bool = false
 
-func _init() -> void:
-	team = TEAMS.ALLY
+@export var entity_ui : Control
+
+func _ready() -> void:
+	super._ready()	
+	EventBus.new_cycle.connect(reset_usage)
 
 func set_data(data: AllyData):
 	entity_data = data
@@ -13,6 +17,8 @@ func set_data(data: AllyData):
 	visuals.name = "Visuals"
 	add_child(visuals, true)
 	animator = visuals.get_node("AnimationPlayer")
+	
+	play_animation("spawn")
 
 func bank_actions(action_sequence: ActionSequence):
 	banked_actions.append(action_sequence)
@@ -27,6 +33,31 @@ func act():
 	for action_sequence in banked_actions:
 		action_handler.perform_actions(action_sequence)
 
+func activate(player_action : bool = false):
+	modulate.a = 1
+	
+	play_animation("under", true)
+	
+	team = TEAMS.ALLY
+	
+	EventBus.ally_action_performed.emit()
+
+func dive(player_action : bool = false):
+	play_animation("under")
+	
+	team = TEAMS.NEUTRAL
+	
+	if player_action:
+		EventBus.ally_action_performed.emit()
+
+func dismiss(player_action : bool = false):
+	play_animation("dismiss")
+	
+	if player_action:
+		EventBus.ally_action_performed.emit()
+		
+	queue_free()
+
 func request_move():
 	EventBus.request_highlight.emit(Constants.TARGET_TYPES.TILE, entity_data.movement_range, current_tile)
 	
@@ -38,6 +69,8 @@ func fulfill_move_request(target_tile: Tile):
 	EventBus.cancel_interaction.disconnect(cancel_move_request)
 
 	await _move_to_tile(target_tile)
+	
+	used_this_cycle = true
 	EventBus.ally_action_performed.emit()
 
 func cancel_move_request():
@@ -46,7 +79,8 @@ func cancel_move_request():
 
 func request_action():
 	await action_handler.perform_actions(entity_data.action_sequence)
+	used_this_cycle = true
 	EventBus.ally_action_performed.emit()
 
-func request_dismiss():
-	pass
+func reset_usage():
+	used_this_cycle = false

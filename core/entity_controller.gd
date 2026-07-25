@@ -50,7 +50,8 @@ func _change_to_selection_state(target_type, selection_range, reference_tile) ->
 			tile.selectable.set_selectable(true)
 
 	for selectable_entity in selectable_entities:
-		selectable_entity.set_selectable(false)
+		if selectable_entity:
+			selectable_entity.set_selectable(false)
 
 	selectable_entities = []
 		
@@ -96,11 +97,10 @@ func _on_entity_selected(entity: Entity) -> void:
 	
 	if state == EntityControllerState.WaitingNextAction:
 		if entity.team == Entity.TEAMS.NEUTRAL:
-			#TODO: turn into ally (might be just setting AllyData)
-			EventBus.ally_action_performed.emit()
-		if entity.team == Entity.TEAMS.ALLY:
-			control_entity = entity
-			control_entity_changed.emit(entity)
+			entity.activate(true)
+			
+		elif entity.team == Entity.TEAMS.ALLY:
+			EventBus.ally_selected.emit(entity)
 	
 	elif state == EntityControllerState.AllySelection:
 		if entity.team == Entity.TEAMS.ALLY:

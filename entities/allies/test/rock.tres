@@ -60,6 +60,7 @@ metadata/_custom_type_script = "uid://cs7o53c5hrvdk"
 [resource]
 script = ExtResource("4_5vvum")
 movement_range = SubResource("Resource_h6l1k")
+team = 2
 scene = ExtResource("3_ob66d")
 action_sequence = SubResource("Resource_oe2rh")
 color = Color(0.2910221, 0.18230018, 0.3662251, 1)

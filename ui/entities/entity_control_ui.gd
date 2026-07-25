@@ -18,10 +18,9 @@ func _ready():
 	# ally._selectable.selected.connect(trigger_show)
 	ally._selectable.can_be_selected.connect(_on_can_be_selected)
 
-	EventBus.entity_selected.connect(_on_entity_selected)
+	EventBus.ally_selected.connect(_on_entity_selected)
 
 	trigger_hide()
-
 
 	move_button.pressed.connect(_on_move_button_pressed)
 	action_button.pressed.connect(_on_action_button_pressed)
@@ -40,10 +39,10 @@ func _on_action_button_pressed():
 	ally.request_action()
 	
 func _on_dismiss_button_pressed():
-	ally.request_dismiss()
+	ally.dismiss(true)
 		
 func _on_entity_selected(entity: Entity):
-	if entity == owner:
+	if entity.team == Entity.TEAMS.ALLY and entity == owner:
 		trigger_show()
 	else:
 		trigger_hide()
