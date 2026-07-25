@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://yyhnn4sejhrt" path="res://abilities/actions/action.gd" id="1_fwe40"]
 [ext_resource type="Script" uid="uid://cchuyhgd0lsne" path="res://abilities/movement/basic_movement_strategy.gd" id="2_gcd2c"]
 [ext_resource type="Script" uid="uid://b2ia62h5b18fg" path="res://abilities/actions/steps/move_action.gd" id="3_sbs8n"]
-[ext_resource type="Script" uid="uid://jrmcm2l7ulh4" path="res://abilities/actions/steps/choose_direction_action.gd" id="4_0q1c7"]
 [ext_resource type="Script" uid="uid://mikuqe75xffa" path="res://abilities/actions/steps/shock_action.gd" id="5_w7ptj"]
 [ext_resource type="Script" uid="uid://b3n7i5kgdbo7r" path="res://abilities/actions/sequential_action_strategy.gd" id="6_ggbca"]
 [ext_resource type="PackedScene" uid="uid://bjwl5ilt4my3o" path="res://entities/enemies/mosquito/mosquito.tscn" id="7_1cmtn"]
@@ -18,10 +17,6 @@ metadata/_custom_type_script = "uid://cchuyhgd0lsne"
 script = ExtResource("3_sbs8n")
 move_strategy = SubResource("Resource_er2l6")
 metadata/_custom_type_script = "uid://b2ia62h5b18fg"
-
-[sub_resource type="Resource" id="Resource_oab30"]
-script = ExtResource("4_0q1c7")
-metadata/_custom_type_script = "uid://jrmcm2l7ulh4"
 
 [sub_resource type="Resource" id="Resource_jwbcs"]
 script = ExtResource("2_gcd2c")
@@ -39,7 +34,7 @@ metadata/_custom_type_script = "uid://mikuqe75xffa"
 
 [sub_resource type="Resource" id="Resource_s4ekl"]
 script = ExtResource("6_ggbca")
-actions = Array[ExtResource("1_fwe40")]([SubResource("Resource_wkcs5"), SubResource("Resource_oab30"), SubResource("Resource_4luj4"), SubResource("Resource_umeiq")])
+actions = Array[ExtResource("1_fwe40")]([SubResource("Resource_wkcs5"), SubResource("Resource_4luj4"), SubResource("Resource_umeiq")])
 metadata/_custom_type_script = "uid://b3n7i5kgdbo7r"
 
 [resource]
