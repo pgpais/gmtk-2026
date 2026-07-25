@@ -22,3 +22,6 @@ signal ally_action_performed
 signal player_action_performed
 
 signal game_ended(win: bool)
+
+func _ready() -> void:
+	new_cycle.emit.call_deferred()

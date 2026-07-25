@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="SpawnCycle" format=3 uid="uid://escuhvj7cayu"]
+
+[ext_resource type="Script" uid="uid://ckxu256vi8vce" path="res://spawner/spawn_cycle.gd" id="1_8keaf"]
+[ext_resource type="Script" uid="uid://dcphf1th8bjtj" path="res://spawner/spawn_sequence.gd" id="2_ulb72"]
+[ext_resource type="Script" uid="uid://cwi2b70q6xv3l" path="res://spawner/spawn_data.gd" id="3_2dhkg"]
+[ext_resource type="Script" uid="uid://bwhgiqt7i32mc" path="res://entities/entity_data.gd" id="4_8r3jv"]
+[ext_resource type="Resource" uid="uid://dbqdlq3cr31py" path="res://entities/enemies/test/choque.tres" id="5_2k02q"]
+[ext_resource type="Resource" uid="uid://bjqmyiuy8s16f" path="res://entities/enemies/test/espada.tres" id="6_w4m83"]
+[ext_resource type="Resource" uid="uid://bd7cg6tp5dk2a" path="res://entities/enemies/test/mosq.tres" id="7_bxe76"]
+[ext_resource type="Resource" uid="uid://cvvof0jokxit0" path="res://entities/enemies/test/ovos.tres" id="8_7vuyp"]
+
+[sub_resource type="Resource" id="Resource_snupf"]
+script = ExtResource("3_2dhkg")
+possible_entity_datas = Array[ExtResource("4_8r3jv")]([ExtResource("5_2k02q"), ExtResource("6_w4m83"), ExtResource("7_bxe76"), ExtResource("8_7vuyp")])
+probability = 0.25
+metadata/_custom_type_script = "uid://cwi2b70q6xv3l"
+
+[sub_resource type="Resource" id="Resource_nkwwv"]
+script = ExtResource("3_2dhkg")
+possible_entity_datas = Array[ExtResource("4_8r3jv")]([ExtResource("5_2k02q"), ExtResource("6_w4m83"), ExtResource("7_bxe76"), ExtResource("8_7vuyp")])
+probability = 0.25
+metadata/_custom_type_script = "uid://cwi2b70q6xv3l"
+
+[sub_resource type="Resource" id="Resource_5efyv"]
+script = ExtResource("2_ulb72")
+column_indexes = Array[int]([3, 4])
+spawn_datas = Array[ExtResource("3_2dhkg")]([SubResource("Resource_snupf"), SubResource("Resource_nkwwv")])
+metadata/_custom_type_script = "uid://dcphf1th8bjtj"
+
+[resource]
+script = ExtResource("1_8keaf")
+min_cycle = 7
+max_cycle = 100
+spawn_sequences = Array[ExtResource("2_ulb72")]([SubResource("Resource_5efyv")])
+metadata/_custom_type_script = "uid://ckxu256vi8vce"

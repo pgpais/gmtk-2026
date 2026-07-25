@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="SpawnCycle" format=3 uid="uid://dfy2qw4dpqo3i"]
+
+[ext_resource type="Script" uid="uid://ckxu256vi8vce" path="res://spawner/spawn_cycle.gd" id="1_xq0v4"]
+[ext_resource type="Script" uid="uid://dcphf1th8bjtj" path="res://spawner/spawn_sequence.gd" id="2_rsk0a"]
+[ext_resource type="Script" uid="uid://cwi2b70q6xv3l" path="res://spawner/spawn_data.gd" id="3_uoeq4"]
+[ext_resource type="Script" uid="uid://bwhgiqt7i32mc" path="res://entities/entity_data.gd" id="4_3tke3"]
+[ext_resource type="Resource" uid="uid://cvvof0jokxit0" path="res://entities/enemies/test/ovos.tres" id="5_xq0v4"]
+
+[sub_resource type="Resource" id="Resource_e0ago"]
+script = ExtResource("3_uoeq4")
+possible_entity_datas = Array[ExtResource("4_3tke3")]([ExtResource("5_xq0v4")])
+metadata/_custom_type_script = "uid://cwi2b70q6xv3l"
+
+[sub_resource type="Resource" id="Resource_fcvvs"]
+script = ExtResource("3_uoeq4")
+possible_entity_datas = Array[ExtResource("4_3tke3")]([ExtResource("5_xq0v4")])
+probability = 0.25
+metadata/_custom_type_script = "uid://cwi2b70q6xv3l"
+
+[sub_resource type="Resource" id="Resource_qoo17"]
+script = ExtResource("2_rsk0a")
+spawn_limit_per_column = 2
+column_indexes = Array[int]([5, 6, 7])
+spawn_datas = Array[ExtResource("3_uoeq4")]([SubResource("Resource_e0ago"), SubResource("Resource_fcvvs")])
+metadata/_custom_type_script = "uid://dcphf1th8bjtj"
+
+[resource]
+script = ExtResource("1_xq0v4")
+min_cycle = 1
+max_cycle = 1
+spawn_sequences = Array[ExtResource("2_rsk0a")]([SubResource("Resource_qoo17")])
+metadata/_custom_type_script = "uid://ckxu256vi8vce"

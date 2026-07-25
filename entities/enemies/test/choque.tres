@@ -3,14 +3,13 @@
 [ext_resource type="Script" uid="uid://yyhnn4sejhrt" path="res://abilities/actions/action.gd" id="1_y4ptg"]
 [ext_resource type="Script" uid="uid://cchuyhgd0lsne" path="res://abilities/movement/basic_movement_strategy.gd" id="2_rovct"]
 [ext_resource type="Script" uid="uid://b2ia62h5b18fg" path="res://abilities/actions/steps/move_action.gd" id="3_jdpys"]
-[ext_resource type="Script" uid="uid://mikuqe75xffa" path="res://abilities/actions/steps/shock_action.gd" id="5_g8oc2"]
 [ext_resource type="Script" uid="uid://b3n7i5kgdbo7r" path="res://abilities/actions/sequential_action_strategy.gd" id="6_u873e"]
 [ext_resource type="PackedScene" uid="uid://bjwl5ilt4my3o" path="res://entities/enemies/mosquito/mosquito.tscn" id="7_855d1"]
 [ext_resource type="Script" uid="uid://bp1u6h3jw4ia" path="res://entities/enemies/enemy_data.gd" id="8_jbvfn"]
 
 [sub_resource type="Resource" id="Resource_er2l6"]
 script = ExtResource("2_rovct")
-movement_direction = Vector2i(-3, 0)
+movement_direction = Vector2i(-1, 0)
 metadata/_custom_type_script = "uid://cchuyhgd0lsne"
 
 [sub_resource type="Resource" id="Resource_wkcs5"]
@@ -18,23 +17,9 @@ script = ExtResource("3_jdpys")
 move_strategy = SubResource("Resource_er2l6")
 metadata/_custom_type_script = "uid://b2ia62h5b18fg"
 
-[sub_resource type="Resource" id="Resource_jwbcs"]
-script = ExtResource("2_rovct")
-movement_direction = Vector2i(-1, 0)
-metadata/_custom_type_script = "uid://cchuyhgd0lsne"
-
-[sub_resource type="Resource" id="Resource_4luj4"]
-script = ExtResource("3_jdpys")
-move_strategy = SubResource("Resource_jwbcs")
-metadata/_custom_type_script = "uid://b2ia62h5b18fg"
-
-[sub_resource type="Resource" id="Resource_umeiq"]
-script = ExtResource("5_g8oc2")
-metadata/_custom_type_script = "uid://mikuqe75xffa"
-
 [sub_resource type="Resource" id="Resource_s4ekl"]
 script = ExtResource("6_u873e")
-actions = Array[ExtResource("1_y4ptg")]([SubResource("Resource_wkcs5"), SubResource("Resource_4luj4"), SubResource("Resource_umeiq")])
+actions = Array[ExtResource("1_y4ptg")]([SubResource("Resource_wkcs5")])
 metadata/_custom_type_script = "uid://b3n7i5kgdbo7r"
 
 [resource]

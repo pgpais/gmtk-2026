@@ -3,8 +3,7 @@ extends Node
 
 var current_spawn_cycle : int = 0
 
-@export var ally_spawn_cycles : Array[SpawnSequence]
-@export var enemy_spawn_cycles : Array[SpawnSequence]
+@export var spawn_cycles : Array[SpawnCycle]
 
 @onready var grid_map : LayerGridMap = LayerGridMap.instance
 
@@ -27,55 +26,68 @@ func _on_enemy_spawn_requested(tile: Tile, enemy_data: EnemyData):
 	_spawn_enemy(enemy_data, tile)
 
 func cycle():
+	for cycle in spawn_cycles:
+		if current_spawn_cycle >= cycle.min_cycle and current_spawn_cycle <= cycle.max_cycle:
+			for spawn_sequence in cycle.spawn_sequences:
+				spawn_from_sequence(spawn_sequence)
+				
+	current_spawn_cycle += 1
+			
+func spawn_from_sequence(spawn_sequence : SpawnSequence):
 	special_spawned = false
 	
-	var ally_cycle : SpawnSequence
-	var enemy_cycle : SpawnSequence
+	var spawn_datas = spawn_sequence.spawn_datas # to control spawn limits
+	var spawn_count = []
+	spawn_count.resize(len(spawn_datas))
+	spawn_count.fill(0)
 	
-	if current_spawn_cycle < len(ally_spawn_cycles):
-		ally_cycle = ally_spawn_cycles[current_spawn_cycle]
-	elif len(ally_spawn_cycles) > 0:
-		ally_cycle = ally_spawn_cycles[-1] # if no more spawn sequences, use the last spawn sequence
+	var column_indexes = spawn_sequence.column_indexes
 	
-	if current_spawn_cycle < len(enemy_spawn_cycles):
-		enemy_cycle = enemy_spawn_cycles[current_spawn_cycle]
-	elif len(enemy_spawn_cycles) > 0:
-		enemy_cycle = enemy_spawn_cycles[-1] # if no more spawn sequences, use the last spawn sequence
+	column_indexes.shuffle()
 	
-	if ally_cycle:
-		spawn_from_sequence(ally_cycle)
+	for column_index in column_indexes:
+		var column_spawn_count = 0
 		
-	if enemy_cycle:
-		spawn_from_sequence(enemy_cycle)
-
-func spawn_from_sequence(cycle : SpawnSequence):
-	for spawn_data : SpawnData in cycle.spawn_sequence:
-		var column_indexes
+		if grid_map.is_column_full(column_index):
+				continue
 		
-		if spawn_data.spawn_in_all_columns:
-			column_indexes = spawn_data.column_indexes
-		else:
-			column_indexes = [spawn_data.column_indexes.pick_random()]
+		for i in range(len(spawn_sequence.spawn_datas)):
+			var first_time = true
 			
-		for column_index in column_indexes:
-			if grid_map.is_column_full(column_index):
-				continue				
-			
-			if spawn_data.check_all_conditions(self, column_index) and randf_range(0, 1) <= spawn_data.probability:
-				if spawn_data.special_spawn:
-					special_spawned = true
+			var spawn_data : SpawnData = spawn_sequence.spawn_datas[i]
 				
-				var entity_data = spawn_data.possible_entity_datas.pick_random()
-				var tile : Tile = grid_map.get_random_empty_tile(column_index) # get a random tile
+			while first_time or randf_range(0, 1) < spawn_data.repeat_probability:
 				
-				var hidden = randf_range(0, 1) <= spawn_data.hidden_probability
+				first_time = false
 				
-				if entity_data.team == Entity.TEAMS.ALLY:
-					_spawn_ally(entity_data, tile, hidden)
-				elif entity_data.team == Entity.TEAMS.ENEMY:
-					_spawn_enemy(entity_data, tile, hidden)
+				if (
+					spawn_count[i] < spawn_data.spawn_limit
+					and spawn_data.check_all_conditions(self, column_index)
+					and randf_range(0, 1) < spawn_data.probability
+				) :
+					var entity_data = spawn_data.possible_entity_datas.pick_random()
+					var tile : Tile = grid_map.get_random_empty_tile(column_index) # get a random tile
 					
-		current_spawn_cycle += 1
+					if ! tile:
+						break
+					
+					var hidden = randf_range(0, 1) < spawn_data.hidden_probability
+					
+					if entity_data.team == Entity.TEAMS.ALLY:
+						_spawn_ally(entity_data, tile, hidden)
+					elif entity_data.team == Entity.TEAMS.ENEMY:
+						_spawn_enemy(entity_data, tile, hidden)
+					
+					spawn_count[i] += 1
+					
+					if spawn_data.special_spawn:
+						special_spawned = true
+				
+		if column_spawn_count >= spawn_sequence.spawn_limit_per_column:
+			continue
+						
+	if randf_range(0, 1) < spawn_sequence.repeat_probability:
+		spawn_from_sequence(spawn_sequence)
 
 func spawn_enemies(n):
 	var start_layer = len(grid_map.columns) - 1
