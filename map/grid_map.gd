@@ -99,6 +99,23 @@ func get_tile_path(current_tile: Tile, target_tile: Tile, include_target: bool =
 	
 	return path
 
+func get_entities_in_column(column_index : int) -> Array[Entity]:
+	var entities : Array[Entity] = []
+	for tile : Tile in columns[column_index].tiles:
+		if tile.entity:
+			entities.append(tile.entity)
+			
+	return entities
+	
+func is_column_full(column_index : int) -> bool:
+	var count = 0
+	for tile : Tile in columns[column_index].tiles:
+		if tile.entity:
+			count += 1
+				
+	return count >= game_settings.tiles_per_column
+	
+
 func _setup_map():
 	if (!Engine.is_editor_hint() || Engine.is_editor_hint() && get_tree().edited_scene_root == self):
 		print("setup map")

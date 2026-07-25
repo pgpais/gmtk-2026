@@ -1,0 +1,41 @@
+[gd_resource type="Resource" script_class="SpawnSequence" format=3 uid="uid://l4iutbeqaisk"]
+
+[ext_resource type="Script" uid="uid://dcphf1th8bjtj" path="res://spawner/spawn_sequence.gd" id="1_cwq35"]
+[ext_resource type="Script" uid="uid://cwi2b70q6xv3l" path="res://spawner/spawn_data.gd" id="2_w80fe"]
+[ext_resource type="Script" uid="uid://bwhgiqt7i32mc" path="res://entities/entity_data.gd" id="3_84xrx"]
+[ext_resource type="Resource" uid="uid://dftqt6ejs5rl0" path="res://entities/allies/test/rock.tres" id="4_wd7kb"]
+[ext_resource type="Resource" uid="uid://bx8cqfjcwkqyv" path="res://entities/allies/test/stinky.tres" id="5_xgyha"]
+[ext_resource type="Resource" uid="uid://b5unws06fkbfl" path="res://entities/allies/test/bolos.tres" id="6_vbdvo"]
+[ext_resource type="Resource" uid="uid://dqosqyvot7oca" path="res://entities/allies/test/linguado.tres" id="7_k4qjv"]
+[ext_resource type="Resource" uid="uid://cvjxrfn1bbtn7" path="res://entities/allies/test/mao.tres" id="8_vyn7u"]
+
+[sub_resource type="Resource" id="Resource_jou00"]
+script = ExtResource("2_w80fe")
+possible_entity_datas = Array[ExtResource("3_84xrx")]([ExtResource("4_wd7kb"), ExtResource("5_xgyha")])
+column_indexes = Array[int]([3, 4])
+spawn_in_all_columns = false
+probability = 0.25
+special_spawn = true
+metadata/_custom_type_script = "uid://cwi2b70q6xv3l"
+
+[sub_resource type="Resource" id="Resource_pnssb"]
+script = ExtResource("2_w80fe")
+possible_entity_datas = Array[ExtResource("3_84xrx")]([ExtResource("6_vbdvo"), ExtResource("7_k4qjv"), ExtResource("8_vyn7u")])
+column_indexes = Array[int]([0, 1, 2])
+conditions = Array[int]([0])
+hidden_probability = 0.25
+metadata/_custom_type_script = "uid://cwi2b70q6xv3l"
+
+[sub_resource type="Resource" id="Resource_lswn8"]
+script = ExtResource("2_w80fe")
+possible_entity_datas = Array[ExtResource("3_84xrx")]([ExtResource("6_vbdvo"), ExtResource("7_k4qjv"), ExtResource("8_vyn7u"), ExtResource("4_wd7kb"), ExtResource("5_xgyha")])
+column_indexes = Array[int]([4, 5])
+probability = 0.25
+conditions = Array[int]([0])
+hidden_probability = 1.0
+metadata/_custom_type_script = "uid://cwi2b70q6xv3l"
+
+[resource]
+script = ExtResource("1_cwq35")
+spawn_sequence = Array[ExtResource("2_w80fe")]([SubResource("Resource_jou00"), SubResource("Resource_pnssb"), SubResource("Resource_lswn8")])
+metadata/_custom_type_script = "uid://dcphf1th8bjtj"

@@ -5,11 +5,15 @@
 [ext_resource type="Texture2D" uid="uid://dvtn05hgew80d" path="res://map/background/background.png" id="1_w48qg"]
 [ext_resource type="Resource" uid="uid://dd5geybdckkoo" path="res://core/game_settings_data.tres" id="2_lquwl"]
 [ext_resource type="PackedScene" uid="uid://btttbslmc1cd" path="res://entities/enemy.tscn" id="4_2cqfq"]
+[ext_resource type="Script" uid="uid://dcphf1th8bjtj" path="res://spawner/spawn_sequence.gd" id="4_cegan"]
+[ext_resource type="Resource" uid="uid://tccb7lhjh076" path="res://spawner/basic_ally_spawn.tres" id="5_d13ii"]
 [ext_resource type="Script" uid="uid://hgtti3egwqpo" path="res://countdown/ticker.gd" id="5_lquwl"]
 [ext_resource type="Script" uid="uid://looe88ko4por" path="res://spawner/spawn_handler.gd" id="6_4c57u"]
 [ext_resource type="PackedScene" uid="uid://my3e0m2p0nby" path="res://countdown/ticker_view.tscn" id="6_7mycd"]
+[ext_resource type="Resource" uid="uid://l4iutbeqaisk" path="res://spawner/advanced_ally_spawn.tres" id="6_82xsv"]
 [ext_resource type="Script" uid="uid://bp1u6h3jw4ia" path="res://entities/enemies/enemy_data.gd" id="7_4c57u"]
 [ext_resource type="Script" uid="uid://bym02wtry3fff" path="res://core/range_highlighter.gd" id="7_5vw27"]
+[ext_resource type="Resource" uid="uid://bft68135kccdk" path="res://spawner/basic_enemy_spawn.tres" id="7_getpj"]
 [ext_resource type="PackedScene" uid="uid://bdxs68uy606we" path="res://entities/allies/ally.tscn" id="7_yaehf"]
 [ext_resource type="Script" uid="uid://cs7o53c5hrvdk" path="res://abilities/range/ability_range.gd" id="8_kek77"]
 [ext_resource type="Resource" uid="uid://bi1cyixed87us" path="res://entities/enemies/mosquito/mosquito.tres" id="8_ycdy4"]
@@ -41,6 +45,8 @@ stretch_mode = 4
 
 [node name="SpawnHandler" type="Node" parent="." unique_id=1568226340 node_paths=PackedStringArray("enemiesParent", "alliesParent")]
 script = ExtResource("6_4c57u")
+ally_spawn_cycles = Array[ExtResource("4_cegan")]([ExtResource("5_d13ii"), ExtResource("5_d13ii"), ExtResource("5_d13ii"), ExtResource("6_82xsv")])
+enemy_spawn_cycles = Array[ExtResource("4_cegan")]([ExtResource("7_getpj")])
 enemy_scene = ExtResource("4_2cqfq")
 enemies_data = Array[ExtResource("7_4c57u")]([ExtResource("8_ycdy4")])
 ally_scene = ExtResource("7_yaehf")

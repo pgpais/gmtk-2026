@@ -7,6 +7,7 @@ var entity_data: EntityData
 signal finished_movement()
 signal animation_finished(animation_name)
 signal direction_selected(direction : String)
+signal rotated
 
 @export var action_sequence: ActionSequence
 @export var action_handler: ActionHandler
@@ -132,23 +133,23 @@ func finish_movement():
 	else:
 		animator.stop()
 
-#func rotate_to_direction(direction : String):
-	##might change to play an animation?
-	#match direction:
-		#"up":
-			#scale = Vector2(1,1)
-			#rotation = -70
-		#"right":
-			#scale = Vector2(1,1)
-			#rotation = 0
-		#"down":
-			#scale = Vector2(1,1)
-			#rotation = 105
-		#"left":
-			#scale = Vector2(-1,1)
-			#rotation = 0
-			#
-	#rotated.emit()
+func rotate_to_direction(direction : String):
+	#might change to play an animation?
+	match direction:
+		"up":
+			scale = Vector2(1,1)
+			rotation = -70
+		"right":
+			scale = Vector2(1,1)
+			rotation = 0
+		"down":
+			scale = Vector2(1,1)
+			rotation = 105
+		"left":
+			scale = Vector2(-1,1)
+			rotation = 0
+			
+	rotated.emit() # to accomodate the possibility of only finishing when animation finishes
 
 func shock(toggle):
 	is_shock = toggle
