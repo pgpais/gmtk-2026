@@ -8,7 +8,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tfbxm"]
 size = Vector2(38, 38)
 
-[node name="Ally" type="Node2D" unique_id=28648160 node_paths=PackedStringArray("action_handler")]
+[node name="Ally" type="Node2D" unique_id=28648160 node_paths=PackedStringArray("action_handler") groups=["allies"]]
 script = ExtResource("1_binvp")
 action_handler = NodePath("ActionHandler")
 

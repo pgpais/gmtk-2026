@@ -14,7 +14,7 @@ metadata/_custom_type_script = "uid://c2y0chmbgrpql"
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tfbxm"]
 size = Vector2(38, 38)
 
-[node name="Enemy" type="Node2D" unique_id=28648160 node_paths=PackedStringArray("action_handler")]
+[node name="Enemy" type="Node2D" unique_id=28648160 node_paths=PackedStringArray("action_handler") groups=["enemies"]]
 script = ExtResource("1_p7g5j")
 action_handler = NodePath("ActionHandler")
 movement_strategy = SubResource("Resource_b4nis")
