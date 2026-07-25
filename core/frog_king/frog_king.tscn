@@ -135,6 +135,7 @@ tracks/3/keys = {
 [sub_resource type="Animation" id="Animation_boejm"]
 resource_name = "idle"
 length = 2.4333334
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -174,6 +175,7 @@ animator = NodePath("AnimationPlayer")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=349069595]
 libraries/ = SubResource("AnimationLibrary_fw7co")
+autoplay = &"idle"
 
 [node name="body" type="Sprite2D" parent="." unique_id=771013884]
 position = Vector2(-32.19995, 293.9828)
