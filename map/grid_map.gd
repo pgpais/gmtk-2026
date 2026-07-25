@@ -142,8 +142,8 @@ func _setup_map():
 				mapColumn.owner = self;
 				columns.append(mapColumn)
 			
-				mapColumn.position.x = game_settings.tile_size.x * i + game_settings.tile_size.x / 2
-				mapColumn.setup_column(column_size, i, game_settings.tile_size)
+				mapColumn.position.x = (game_settings.tile_size.x + game_settings.tile_spacing.x) * i + game_settings.tile_size.x / 2
+				mapColumn.setup_column(column_size, i, game_settings.tile_size, game_settings.tile_spacing)
 
 func _on_new_tick(count: int):
 	var column = columns[count]

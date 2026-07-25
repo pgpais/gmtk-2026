@@ -21,6 +21,7 @@ metadata/_custom_type_script = "uid://c2y0chmbgrpql"
 size = Vector2(38, 38)
 
 [node name="Enemy" type="Node2D" unique_id=28648160 node_paths=PackedStringArray("action_handler") groups=["enemies"]]
+scale = Vector2(0.2, 0.2)
 script = ExtResource("1_p7g5j")
 action_sequence = SubResource("Resource_mmojd")
 action_handler = NodePath("ActionHandler")
