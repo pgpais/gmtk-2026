@@ -7,7 +7,7 @@ extends Area2D
 @export var danger_color: Color = Color.RED
 @export var positive_color: Color = Color.GREEN
 
-@export var layer: MapColumn
+@export var column: MapColumn
 
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
@@ -40,9 +40,9 @@ func trigger():
 	if entity:
 		await entity.trigger()
 
-func initialize(layer: MapColumn, tile_index: int):
+func initialize(column: MapColumn, tile_index: int):
 	self.tile_index = tile_index
-	self.layer = layer
+	self.column = column
 
 func _set_modulate(color: Color):
 	sprite.modulate = color

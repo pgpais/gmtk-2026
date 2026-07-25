@@ -105,7 +105,7 @@ func _move(x, y):
 	var new_layer_index = 0
 	var new_tile_index = 0
 	
-	new_layer_index = current_tile.layer.layer_index + x
+	new_layer_index = current_tile.column.column_index + x
 	new_tile_index = current_tile.tile_index + y
 	
 	if (new_layer_index < 0 or new_layer_index >= len(grid_map.columns)): # if it's already on the left/right edge

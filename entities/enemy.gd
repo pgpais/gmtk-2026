@@ -19,7 +19,7 @@ func set_data(data):
 
 	
 func trigger():
-	if current_tile.layer.layer_index == 0:
+	if current_tile.column.column_index == 0:
 		# Next to frog king
 		# TODO: play frog king attack animation
 		EventBus.enemy_attacked_frog_king.emit(self)

@@ -1,23 +1,20 @@
 @tool
-## map/layer.gd
 class_name MapColumn
 extends Node2D
 
 @export var tile_scene: PackedScene = preload("uid://bmifyrtst83yc")
-
-@export var layer_index: int
-
+@export var column_index: int
 
 var tiles: Array[Tile]
-
 
 func get_tile(index: int) -> Tile:
 	return tiles[index]
 
-func setup_layer(number_of_tiles: int, layer_index: int, tile_size: Vector2 = Vector2(64, 64)):
-	self.layer_index = layer_index
+func setup_column(number_of_tiles: int, column_index: int, tile_size: Vector2 = Vector2(64, 64)):
+	self.column_index = column_index
 
 	for child in get_children():
+		remove_child(child)
 		child.queue_free()
 
 	for i in number_of_tiles:
