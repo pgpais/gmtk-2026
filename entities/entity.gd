@@ -127,7 +127,7 @@ func _move(x, y):
 		collide(new_layer_index, new_tile_index) # animation colliding but stays in the same tile
 		return
 	
-	_move_to_tile(target_tile)
+	await _move_to_tile(target_tile)
 	
 	finished_movement.emit()
 
