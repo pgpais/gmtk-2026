@@ -8,6 +8,7 @@ signal entity_entered_tile(entity: Entity)
 @export var highlight_color: Color = Color.YELLOW
 @export var danger_color: Color = Color.RED
 @export var positive_color: Color = Color.GREEN
+@export var blocked_color: Color = Color.DIM_GRAY
 
 @export var column: MapColumn
 
@@ -33,12 +34,15 @@ func _process(delta: float) -> void:
 	sprite.position = (sprite.position + Vector2(randi_range(-20, 20), randi_range(-20, 20)) * delta).clamp(base_sprite_position - Vector2(10, 10), base_sprite_position + Vector2(10, 10))
 
 func _on_mouse_entered():
-	var tween = create_tween()
-	tween.tween_method(_set_modulate, sprite.modulate, Color(1, 1, 1, 0.5), 0.1)
+	if selectable._isSelectable:
+		var tween = create_tween()
+		tween.set_ease(Tween.EASE_OUT)
+		tween.set_trans(Tween.TRANS_QUAD)
+		tween.tween_property(self, "scale", Vector2(1.2, 1.2), 0.15)
+		tween.tween_property(self, "scale", Vector2(1.0, 1.0), 0.25)
 
 func _on_mouse_exited():
-	var tween = create_tween()
-	tween.tween_method(_set_modulate, sprite.modulate, Color(1, 1, 1, 1), 0.1)
+	pass
 
 func set_entity(entity: Entity):
 	self.entity = entity
@@ -80,6 +84,14 @@ func show_positive_highlight() -> void:
 func hide_positive_highlight() -> void:
 	var tween = create_tween()
 	tween.tween_method(_set_modulate, positive_color, Color(1, 1, 1, 1), 0.1)
+
+func show_blocked_highlight() -> void:
+	var tween = create_tween()
+	tween.tween_method(_set_modulate, Color(1, 1, 1, 1), blocked_color, 0.1)
+	
+func hide_blocked_highlight() -> void:
+	var tween = create_tween()
+	tween.tween_method(_set_modulate, blocked_color, Color(1, 1, 1, 1), 0.1)
 
 func select():
 	EventBus.tile_selected.emit(self)

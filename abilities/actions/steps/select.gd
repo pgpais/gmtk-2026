@@ -6,12 +6,13 @@ class_name Select
 @export var highlight_selection_range: bool = true
 
 func execute(action_handler: ActionHandler, entity: Entity, grid_map: LayerGridMap):
+	var tiles: Array[Tile] = grid_map.get_tiles_in_range(selection_range, entity.current_tile)
+	
 	if highlight_selection_range:
 		EventBus.request_highlight.emit(target_type, selection_range, entity.current_tile)
+	else:
+		set_selectable_tiles(tiles, true)
 
-	var tiles: Array[Tile] = grid_map.get_tiles_in_range(selection_range, entity.current_tile)
-
-	set_selectable_tiles(tiles, true)
 	var selected_tile: Tile = await EventBus.tile_selected
 	set_selectable_tiles(tiles, false)
 
