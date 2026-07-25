@@ -132,9 +132,43 @@ func finish_movement():
 	else:
 		animator.stop()
 
+#func rotate_to_direction(direction : String):
+	##might change to play an animation?
+	#match direction:
+		#"up":
+			#scale = Vector2(1,1)
+			#rotation = -70
+		#"right":
+			#scale = Vector2(1,1)
+			#rotation = 0
+		#"down":
+			#scale = Vector2(1,1)
+			#rotation = 105
+		#"left":
+			#scale = Vector2(-1,1)
+			#rotation = 0
+			#
+	#rotated.emit()
+
 func shock(toggle):
 	is_shock = toggle
 	modulate = Color.AQUAMARINE if toggle else Color.WHITE
+
+func shoot_at(tile_position : Vector2):
+	var target_tile = grid_map.get_tile(tile_position.x, tile_position.y)
+	
+	var entity_on_tile = target_tile.entity
+	
+	var valid_target = (entity_on_tile
+					and ((team == Entity.TEAMS.ALLY and entity_on_tile.team == Entity.TEAMS.ENEMY) 
+					or (team == Entity.TEAMS.ENEMY and entity_on_tile.team == Entity.TEAMS.ALLY)))
+	
+	if valid_target:
+		entity_on_tile.die()
+		
+func die():
+	# to do
+	modulate = Color.RED
 
 func pop_direction_buttons(toggle):
 	current_tile.pop_direction_buttons(toggle)

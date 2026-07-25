@@ -24,8 +24,8 @@ func get_parameter(parameter_name: String):
 func set_entity(entity: Entity):
 	self.entity = entity
 
-func perform_actions():
-	actions = entity.entity_data.action_sequence.actions
+func perform_actions(action_sequence : ActionSequence = entity.entity_data.action_sequence):
+	actions = action_sequence.actions
 	current_action = 0
 	_perform_action(current_action)
 

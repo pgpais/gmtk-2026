@@ -1,10 +1,16 @@
 [gd_scene format=3 uid="uid://btttbslmc1cd"]
 
 [ext_resource type="Script" uid="uid://djwq2t6ffm83s" path="res://entities/enemy.gd" id="1_p7g5j"]
+[ext_resource type="Script" uid="uid://yyhnn4sejhrt" path="res://abilities/actions/action.gd" id="2_jq0pf"]
 [ext_resource type="Texture2D" uid="uid://w5kafc3luitw" path="res://icon.svg" id="2_pqhw6"]
 [ext_resource type="Script" uid="uid://c2y0chmbgrpql" path="res://abilities/movement/sequential_movement_strategy.gd" id="2_uvc0s"]
+[ext_resource type="Script" uid="uid://b3n7i5kgdbo7r" path="res://abilities/actions/sequential_action_strategy.gd" id="3_68dbu"]
 [ext_resource type="Script" uid="uid://08ngtap170yx" path="res://abilities/selectable.gd" id="3_b4nis"]
 [ext_resource type="Script" uid="uid://ddx61kskhe162" path="res://abilities/actions/action_handler.gd" id="5_x8e4v"]
+
+[sub_resource type="Resource" id="Resource_mmojd"]
+script = ExtResource("3_68dbu")
+metadata/_custom_type_script = "uid://b3n7i5kgdbo7r"
 
 [sub_resource type="Resource" id="Resource_b4nis"]
 script = ExtResource("2_uvc0s")
@@ -16,6 +22,7 @@ size = Vector2(38, 38)
 
 [node name="Enemy" type="Node2D" unique_id=28648160 node_paths=PackedStringArray("action_handler") groups=["enemies"]]
 script = ExtResource("1_p7g5j")
+action_sequence = SubResource("Resource_mmojd")
 action_handler = NodePath("ActionHandler")
 movement_strategy = SubResource("Resource_b4nis")
 
