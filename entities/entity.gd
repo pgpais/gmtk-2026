@@ -5,6 +5,7 @@ var entity_data: EntityData
 
 @onready var grid_map: LayerGridMap = LayerGridMap.instance
 signal finished_movement()
+signal direction_selected(direction : String)
 
 @export var action_sequence: ActionSequence
 @export var action_handler: ActionHandler
@@ -34,6 +35,7 @@ var is_busy: bool:
 		return is_moving and is_attacking
 var is_moving: bool = false
 var is_attacking: bool = false
+var is_shock : bool = false
 #endregion
 
 var current_tile: Tile = null
@@ -128,6 +130,13 @@ func finish_movement():
 		animator.play("idle")
 	else:
 		animator.stop()
+
+func shock(toggle):
+	is_shock = toggle
+	modulate = Color.AQUAMARINE if toggle else Color.WHITE
+
+func pop_direction_buttons(toggle):
+	current_tile.pop_direction_buttons(toggle)
 
 func collide(x, y): # animation colliding with the edge / obstacle but not moving
 	pass

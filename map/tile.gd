@@ -13,6 +13,8 @@ extends Area2D
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 
+@export var direction_ui : Control
+
 var entity: Entity = null
 
 func set_entity(entity: Entity):
@@ -68,3 +70,12 @@ func show_positive_highlight() -> void:
 func hide_positive_highlight() -> void:
 	var tween = create_tween()
 	tween.tween_method(_set_modulate, positive_color, Color(1, 1, 1, 1), 0.1)
+
+func pop_direction_buttons(toggle) -> void:
+	direction_ui.visible = toggle
+	
+func select_direction(direction : String) -> void:
+	if entity:
+		entity.direction_selected.emit(direction)
+		
+	pop_direction_buttons(false)
