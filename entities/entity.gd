@@ -184,9 +184,9 @@ func rotate_to_direction(direction_vector : Vector2):
 	rotation = target_angle
 	
 	if abs(target_angle) > PI / 2.0:
-		scale.y = -1
+		scale.y = -scale.y
 	else:
-		scale.y = 1
+		scale.y = +scale.y
 	
 	rotated.emit() # to accomodate the possibility of only finishing when animation finishes
 
