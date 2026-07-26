@@ -19,6 +19,7 @@
 [ext_resource type="Shader" uid="uid://ctca2om62u8ou" path="res://vfx/entities/froggo.gdshader" id="14_bkt3i"]
 [ext_resource type="AudioStream" uid="uid://beilo1dv2hcej" path="res://sounds/under_sapo.mp3" id="15_k50mi"]
 [ext_resource type="Texture2D" uid="uid://c7o7004r1hoi" path="res://vfx/bubbles/bubble_fx.png" id="16_xmuii"]
+[ext_resource type="AudioStream" uid="uid://bo78ru4bdvmc2" path="res://sounds/bg_sound.mp3" id="20_xv1rc"]
 
 [sub_resource type="Animation" id="Animation_eapbg"]
 length = 0.001
@@ -1849,5 +1850,8 @@ theme_override_font_sizes/font_size = 42
 text = "Quit"
 flat = true
 alignment = 0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1852156014]
+stream = ExtResource("20_xv1rc")
 
 [connection signal="animation_finished" from="FrogIslandUI/FroggoUI/AnimationPlayer" to="FrogIslandUI/FroggoUI/Body1" method="_on_animation_player_animation_finished"]

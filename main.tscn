@@ -26,6 +26,7 @@
 [ext_resource type="Resource" uid="uid://escuhvj7cayu" path="res://spawner/cycles/extreme_enemy_cycle.tres" id="13_a6jrf"]
 [ext_resource type="PackedScene" uid="uid://nclqfbt55yp5" path="res://core/frog_king/frog_king_ui.tscn" id="14_w48qg"]
 [ext_resource type="PackedScene" uid="uid://cfij45y4gl7ps" path="res://ui/menus/end_game_menu.tscn" id="25_0odxb"]
+[ext_resource type="AudioStream" uid="uid://bo78ru4bdvmc2" path="res://sounds/bg_sound.mp3" id="27_a6jrf"]
 
 [sub_resource type="Resource" id="Resource_yaehf"]
 script = ExtResource("10_yaehf")
@@ -128,5 +129,8 @@ metadata/_custom_type_script = "uid://hgtti3egwqpo"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=404450474]
 anchor_mode = 0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1942554994]
+stream = ExtResource("27_a6jrf")
 
 [editable path="FrogKing"]
