@@ -7,17 +7,22 @@
 [ext_resource type="PackedScene" uid="uid://btttbslmc1cd" path="res://entities/enemies/enemy.tscn" id="4_2cqfq"]
 [ext_resource type="Script" uid="uid://ckxu256vi8vce" path="res://spawner/spawn_cycle.gd" id="4_getpj"]
 [ext_resource type="Script" uid="uid://hgtti3egwqpo" path="res://ui/countdown/ticker.gd" id="5_lquwl"]
+[ext_resource type="Resource" uid="uid://cno8pvlj4mcs3" path="res://spawner/cycles/basic_ally_cycle.tres" id="5_ryguw"]
 [ext_resource type="Script" uid="uid://looe88ko4por" path="res://spawner/spawn_handler.gd" id="6_4c57u"]
 [ext_resource type="PackedScene" uid="uid://my3e0m2p0nby" path="res://ui/countdown/ticker_view.tscn" id="6_7mycd"]
-[ext_resource type="Resource" uid="uid://3h63l4socg0n" path="res://spawner/test_enemy_2.tres" id="6_cegan"]
-[ext_resource type="Script" uid="uid://bp1u6h3jw4ia" path="res://entities/enemies/enemy_data.gd" id="7_4c57u"]
+[ext_resource type="Resource" uid="uid://dad0lrdqkn1l1" path="res://spawner/cycles/advanced_ally_cycle.tres" id="6_getpj"]
 [ext_resource type="Script" uid="uid://bym02wtry3fff" path="res://core/range_highlighter.gd" id="7_5vw27"]
-[ext_resource type="Resource" uid="uid://cno8pvlj4mcs3" path="res://spawner/cycles/basic_ally_cycle.tres" id="7_82xsv"]
+[ext_resource type="Resource" uid="uid://7xtcnt50m2kl" path="res://spawner/cycles/beetle_cycle.tres" id="7_getpj"]
 [ext_resource type="PackedScene" uid="uid://bdxs68uy606we" path="res://entities/allies/ally.tscn" id="7_yaehf"]
 [ext_resource type="Script" uid="uid://cs7o53c5hrvdk" path="res://abilities/range/ability_range.gd" id="8_kek77"]
-[ext_resource type="Resource" uid="uid://bi1cyixed87us" path="res://entities/enemies/test/mosquito.tres" id="8_ycdy4"]
-[ext_resource type="PackedScene" uid="uid://b1nc3nt363lx5" path="res://core/frog_king/frog_king.tscn" id="10_dg77c"]
+[ext_resource type="Resource" uid="uid://c22q0t8p1380e" path="res://spawner/cycles/mosquito_cycle.tres" id="8_lswn8"]
+[ext_resource type="Resource" uid="uid://dfy2qw4dpqo3i" path="res://spawner/cycles/ovos_cycle.tres" id="9_a6jrf"]
+[ext_resource type="PackedScene" uid="uid://d4chonwgcgkul" path="res://core/frog_king/frog_king.tscn" id="10_dg77c"]
+[ext_resource type="Resource" uid="uid://bpb28pty35v1o" path="res://spawner/cycles/choque_cycle.tres" id="10_xuqvo"]
 [ext_resource type="Script" uid="uid://5kjnatrb4mig" path="res://abilities/range/range_pattern.gd" id="10_yaehf"]
+[ext_resource type="Resource" uid="uid://c0w6efwtkwcj2" path="res://spawner/cycles/espada_cycle.tres" id="11_qsp4k"]
+[ext_resource type="Resource" uid="uid://ca6l5hbqbik1o" path="res://spawner/cycles/advanced_enemy_cycle.tres" id="12_kq58d"]
+[ext_resource type="Resource" uid="uid://escuhvj7cayu" path="res://spawner/cycles/extreme_enemy_cycle.tres" id="13_a6jrf"]
 [ext_resource type="Script" uid="uid://cxwch0s8x7i5t" path="res://ui/menus/end_game_menu.gd" id="13_ycdy4"]
 [ext_resource type="PackedScene" uid="uid://nclqfbt55yp5" path="res://core/frog_king/frog_king_ui.tscn" id="14_w48qg"]
 
@@ -57,9 +62,8 @@ position = Vector2(260, 20)
 
 [node name="SpawnHandler" type="Node" parent="." unique_id=1568226340 node_paths=PackedStringArray("enemiesParent", "alliesParent")]
 script = ExtResource("6_4c57u")
-spawn_cycles = Array[ExtResource("4_getpj")]([ExtResource("6_cegan"), ExtResource("7_82xsv")])
+spawn_cycles = Array[ExtResource("4_getpj")]([ExtResource("6_getpj"), ExtResource("12_kq58d"), ExtResource("5_ryguw"), ExtResource("7_getpj"), ExtResource("10_xuqvo"), ExtResource("11_qsp4k"), ExtResource("13_a6jrf"), ExtResource("8_lswn8"), ExtResource("9_a6jrf")])
 enemy_scene = ExtResource("4_2cqfq")
-enemies_data = Array[ExtResource("7_4c57u")]([ExtResource("8_ycdy4")])
 ally_scene = ExtResource("7_yaehf")
 enemiesParent = NodePath("../Entities/Enemies")
 alliesParent = NodePath("../Entities/Allies")
@@ -97,11 +101,13 @@ anchor_bottom = 1.0
 offset_top = -150.0
 offset_bottom = 0.0
 grow_vertical = 0
+mouse_filter = 2
 ticker = NodePath("../../Ticker")
 
 [node name="FrogKingUI" parent="HUD" unique_id=1013682348 node_paths=PackedStringArray("frog_king") instance=ExtResource("14_w48qg")]
 offset_left = 850.0
 offset_right = 1374.0
+mouse_filter = 2
 frog_king = NodePath("../../FrogKing")
 
 [node name="Menus" type="CanvasLayer" parent="." unique_id=635451417]
@@ -121,6 +127,7 @@ offset_right = 345.0
 offset_bottom = 266.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("13_ycdy4")
 victory_menu = NodePath("VictoryMenu")
 defeat_menu = NodePath("DefeatMenu")
@@ -133,6 +140,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="Label" type="Label" parent="Menus/EndGameMenu/DefeatMenu" unique_id=1602947207]
 layout_mode = 0
@@ -148,6 +156,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="Label" type="Label" parent="Menus/EndGameMenu/VictoryMenu" unique_id=168523353]
 layout_mode = 0
@@ -168,4 +177,5 @@ offset_top = -74.0
 offset_right = 102.0
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 2
 text = "Leave"

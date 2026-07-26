@@ -65,9 +65,24 @@ func _set_modulate(color: Color):
 	sprite.modulate = color
 
 func highlight() -> void:
+	var orig_scale = scale
+	var orig_modulate = modulate
+	var orig_rotation = rotation_degrees
+
 	var tween = create_tween()
-	tween.tween_method(_set_modulate, Color(1, 1, 1, 1), highlight_color, 0.1)
-	tween.tween_method(_set_modulate, highlight_color, Color(1, 1, 1, 1), 0.1)
+	tween.set_ease(Tween.EASE_OUT)
+	tween.set_trans(Tween.TRANS_QUAD)
+
+	tween.set_parallel(true)
+	tween.tween_property(self, "rotation_degrees", orig_rotation + 360.0, 0.4)
+	tween.tween_property(self, "scale", Vector2(1.4, 1.4), 0.15)
+	tween.tween_property(self, "modulate", Color.GOLD, 0.15)
+
+	tween.chain().set_parallel(true)
+	tween.tween_property(self, "scale", orig_scale, 0.25)
+	tween.tween_property(self, "modulate", orig_modulate, 0.25)
+	
+	tween.chain().tween_property(self, "rotation_degrees", orig_rotation, 0.0)
 
 func show_danger_highlight() -> void:
 	var tween = create_tween()
