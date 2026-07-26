@@ -135,6 +135,7 @@ func _spawn_ally(ally_data: AllyData, tile: Tile, start_hidden  : bool = false):
 	ally.set_data(ally_data)
 	ally.set_tile(tile)
 	ally.set_new_position(tile.global_position)
+	ally.set_selectable(true) # assuming allies are only spawned right before the player's turn
 	tile.set_entity(ally)
 	
 	#ally.modulate = Color(ally_data.color.r, ally_data.color.g, ally_data.color.b, 0.5) # to test
