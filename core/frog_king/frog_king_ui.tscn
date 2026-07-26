@@ -11,11 +11,6 @@ script = ExtResource("1_h8fi4")
 hearts_container = NodePath("Hearts")
 heart_ui_scene = ExtResource("2_io412")
 
-[node name="Background" type="TextureRect" parent="." unique_id=1675375515]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
 [node name="Hearts" type="Container" parent="." unique_id=1200081945]
 layout_mode = 0
 script = ExtResource("2_bmrkl")

@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://br1v8qvourxk3" path="res://layer_grid_map.tscn" id="1_kek77"]
 [ext_resource type="Texture2D" uid="uid://dvtn05hgew80d" path="res://map/textures/background.png" id="1_w48qg"]
 [ext_resource type="Resource" uid="uid://dd5geybdckkoo" path="res://core/game_settings_data.tres" id="2_lquwl"]
+[ext_resource type="Texture2D" uid="uid://dov0b1gwe4hhu" path="res://ui/heart/textures/wooden_bridge.png" id="2_lswn8"]
 [ext_resource type="PackedScene" uid="uid://btttbslmc1cd" path="res://entities/enemies/enemy.tscn" id="4_2cqfq"]
 [ext_resource type="Script" uid="uid://ckxu256vi8vce" path="res://spawner/spawn_cycle.gd" id="4_getpj"]
 [ext_resource type="Script" uid="uid://hgtti3egwqpo" path="res://ui/countdown/ticker.gd" id="5_lquwl"]
@@ -45,7 +46,7 @@ metadata/_custom_type_script = "uid://cs7o53c5hrvdk"
 [node name="Background" type="CanvasLayer" parent="." unique_id=1932169471]
 layer = -1
 
-[node name="TextureRect" type="TextureRect" parent="Background" unique_id=673129687]
+[node name="Background" type="TextureRect" parent="Background" unique_id=673129687]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -55,7 +56,44 @@ texture = ExtResource("1_w48qg")
 expand_mode = 2
 stretch_mode = 4
 
+[node name="WoodenBridge" type="TextureRect" parent="Background" unique_id=809956226]
+modulate = Color(0.78217226, 0.7388439, 0.74211174, 1)
+offset_left = -158.99995
+offset_top = 623.0
+offset_right = 361.00006
+offset_bottom = 1143.0
+rotation = -0.7278023
+scale = Vector2(0.9, 0.7)
+texture = ExtResource("2_lswn8")
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1780476147]
+
+[node name="TickerView" parent="HUD" unique_id=1923798234 node_paths=PackedStringArray("ticker") instance=ExtResource("6_7mycd")]
+anchors_preset = 7
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -150.0
+offset_bottom = 0.0
+grow_vertical = 0
+mouse_filter = 2
+ticker = NodePath("../../Ticker")
+
+[node name="FrogKingUI" parent="HUD" unique_id=1013682348 node_paths=PackedStringArray("frog_king_health_component") instance=ExtResource("14_w48qg")]
+offset_left = 106.0
+offset_top = 386.0
+offset_right = 106.0
+offset_bottom = 386.0
+mouse_filter = 2
+frog_king_health_component = NodePath("../../FrogKing/HealthComponent")
+
+[node name="Menus" type="CanvasLayer" parent="." unique_id=635451417]
+layer = 10
+
+[node name="EndGameMenu" parent="Menus" unique_id=853122381 instance=ExtResource("25_0odxb")]
+visible = false
+
 [node name="FrogKing" parent="." unique_id=1670368785 instance=ExtResource("10_dg77c")]
+position = Vector2(2, -21)
 
 [node name="LayerGridMap" parent="." unique_id=2027443948 instance=ExtResource("1_kek77")]
 position = Vector2(260, 20)
@@ -91,31 +129,5 @@ metadata/_custom_type_script = "uid://hgtti3egwqpo"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=404450474]
 anchor_mode = 0
-
-[node name="HUD" type="CanvasLayer" parent="." unique_id=1780476147]
-
-[node name="TickerView" parent="HUD" unique_id=1923798234 node_paths=PackedStringArray("ticker") instance=ExtResource("6_7mycd")]
-anchors_preset = 7
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -150.0
-offset_bottom = 0.0
-grow_vertical = 0
-mouse_filter = 2
-ticker = NodePath("../../Ticker")
-
-[node name="FrogKingUI" parent="HUD" unique_id=1013682348 node_paths=PackedStringArray("frog_king_health_component") instance=ExtResource("14_w48qg")]
-offset_left = 75.0
-offset_top = 375.0
-offset_right = 75.0
-offset_bottom = 375.0
-mouse_filter = 2
-frog_king_health_component = NodePath("../../FrogKing/HealthComponent")
-
-[node name="Menus" type="CanvasLayer" parent="." unique_id=635451417]
-layer = 10
-
-[node name="EndGameMenu" parent="Menus" unique_id=853122381 instance=ExtResource("25_0odxb")]
-visible = false
 
 [editable path="FrogKing"]
