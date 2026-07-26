@@ -10,6 +10,7 @@ var current_spawn_cycle : int = 0
 @export var enemy_scene: PackedScene
 @export var enemies_data: Array[EnemyData]
 
+@export var beetle_scene: PackedScene
 @export var ally_scene: PackedScene
 @export var allies_data: Array[AllyData]
 
@@ -21,10 +22,10 @@ var current_spawn_cycle : int = 0
 @export_range(0,1) var under_dismiss_probability : float = 0.5
 
 func _ready() -> void:
-	EventBus.new_cycle.connect(cycle)
+	EventBus.new_cycle.connect(cycle.call_deferred)
 	EventBus.request_enemy_spawn.connect(_on_enemy_spawn_requested)
 	
-	cycle.call_deferred()
+	#cycle.call_deferred()
 
 func _on_enemy_spawn_requested(tile: Tile, enemy_data: EnemyData):
 	_spawn_enemy(enemy_data, tile)
@@ -82,6 +83,8 @@ func spawn_from_sequence(spawn_sequence : SpawnSequence):
 					
 					if entity_data.team == Entity.TEAMS.ENEMY:
 						_spawn_enemy(entity_data, tile, start_hidden)
+					if entity_data.team == Entity.TEAMS.BEETLE:
+						_spawn_beetle(entity_data, tile)
 					else:
 						_spawn_ally(entity_data, tile, start_hidden)
 					
@@ -128,14 +131,26 @@ func spawn_allies(n):
 		if tile:
 			_spawn_ally(ally_data, tile)
 
-func _spawn_ally(ally_data: AllyData, tile: Tile, start_hidden  : bool = false):
-	var ally : Ally = ally_scene.instantiate()
+func _spawn_ally(ally_data, tile: Tile, start_hidden  : bool = false):
+	var ally = ally_scene.instantiate()
 	
 	alliesParent.add_child(ally, true)
 	ally.set_data(ally_data)
 	ally.set_tile(tile)
 	ally.set_new_position(tile.global_position)
 	ally.set_selectable(true) # assuming allies are only spawned right before the player's turn
+	tile.set_entity(ally)
+	
+	#ally.modulate = Color(ally_data.color.r, ally_data.color.g, ally_data.color.b, 0.5) # to test
+
+func _spawn_beetle(beetle_data, tile: Tile):
+	var ally = beetle_scene.instantiate()
+	
+	alliesParent.add_child(ally, true)
+	ally.set_data(beetle_data)
+	ally.set_tile(tile)
+	ally.set_new_position(tile.global_position)
+	ally.set_selectable(false) # assuming allies are only spawned right before the player's turn
 	tile.set_entity(ally)
 	
 	#ally.modulate = Color(ally_data.color.r, ally_data.color.g, ally_data.color.b, 0.5) # to test

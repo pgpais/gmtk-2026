@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://fnx7g6uj7psm" path="res://abilities/actions/steps/rotate_to_direction_action.gd" id="5_duf5p"]
 [ext_resource type="Script" uid="uid://dy7kbvn0jq2f1" path="res://abilities/actions/conditions/parameter_condition.gd" id="6_to02a"]
 [ext_resource type="Script" uid="uid://5dunwopatxk8" path="res://abilities/actions/steps/play_animation.gd" id="7_ntngf"]
+[ext_resource type="Script" uid="uid://bqg28e8gqfh07" path="res://abilities/actions/steps/play_animation_on_entity_action.gd" id="8_mipby"]
 [ext_resource type="Script" uid="uid://b3n7i5kgdbo7r" path="res://abilities/actions/sequential_action_strategy.gd" id="8_rhv8x"]
 [ext_resource type="Script" uid="uid://d4afbfntventh" path="res://abilities/actions/steps/branch_action.gd" id="9_iopsy"]
 [ext_resource type="Script" uid="uid://3m2v1upub386" path="res://abilities/actions/steps/calculate_path_to_tile_action.gd" id="10_r3hn1"]
@@ -33,7 +34,7 @@ metadata/_custom_type_script = "uid://cs7o53c5hrvdk"
 
 [sub_resource type="Resource" id="Resource_ax1cv"]
 script = ExtResource("2_mipby")
-target_type = 2
+target_type = 1
 target_team = 0
 selection_range = SubResource("Resource_4htfm")
 metadata/_custom_type_script = "uid://08b553jmywp"
@@ -52,9 +53,14 @@ script = ExtResource("7_ntngf")
 animation_name = "reach_hand_2tiles"
 metadata/_custom_type_script = "uid://5dunwopatxk8"
 
+[sub_resource type="Resource" id="Resource_xfscl"]
+script = ExtResource("8_mipby")
+animation_name = "reach_hand_2tiles"
+metadata/_custom_type_script = "uid://bqg28e8gqfh07"
+
 [sub_resource type="Resource" id="Resource_56i32"]
 script = ExtResource("8_rhv8x")
-actions = Array[ExtResource("1_hetvd")]([SubResource("Resource_3udgd")])
+actions = Array[ExtResource("1_hetvd")]([SubResource("Resource_3udgd"), SubResource("Resource_xfscl")])
 metadata/_custom_type_script = "uid://b3n7i5kgdbo7r"
 
 [sub_resource type="Resource" id="Resource_uon26"]
@@ -62,9 +68,14 @@ script = ExtResource("7_ntngf")
 animation_name = "reach_hand_1tile"
 metadata/_custom_type_script = "uid://5dunwopatxk8"
 
+[sub_resource type="Resource" id="Resource_5pcrh"]
+script = ExtResource("8_mipby")
+animation_name = "reach_hand_1tile"
+metadata/_custom_type_script = "uid://bqg28e8gqfh07"
+
 [sub_resource type="Resource" id="Resource_t8qva"]
 script = ExtResource("8_rhv8x")
-actions = Array[ExtResource("1_hetvd")]([SubResource("Resource_uon26")])
+actions = Array[ExtResource("1_hetvd")]([SubResource("Resource_uon26"), SubResource("Resource_5pcrh")])
 metadata/_custom_type_script = "uid://b3n7i5kgdbo7r"
 
 [sub_resource type="Resource" id="Resource_ou34o"]

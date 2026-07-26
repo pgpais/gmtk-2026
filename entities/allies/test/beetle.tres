@@ -9,7 +9,7 @@
 
 [sub_resource type="Resource" id="Resource_i5c8u"]
 script = ExtResource("2_mplcu")
-movement_direction = Vector2i(-2, 0)
+movement_direction = Vector2i(-1, 0)
 metadata/_custom_type_script = "uid://cchuyhgd0lsne"
 
 [sub_resource type="Resource" id="Resource_fry3o"]

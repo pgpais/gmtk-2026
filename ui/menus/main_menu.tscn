@@ -1853,5 +1853,6 @@ alignment = 0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1852156014]
 stream = ExtResource("20_xv1rc")
+autoplay = true
 
 [connection signal="animation_finished" from="FrogIslandUI/FroggoUI/AnimationPlayer" to="FrogIslandUI/FroggoUI/Body1" method="_on_animation_player_animation_finished"]

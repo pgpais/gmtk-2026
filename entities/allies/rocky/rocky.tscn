@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://beilo1dv2hcej" path="res://sounds/under_sapo.mp3" id="5_f71gx"]
 [ext_resource type="AudioStream" uid="uid://7b8wit7vwuc8" path="res://sounds/sapo_salta.mp3" id="5_myc6e"]
 [ext_resource type="Texture2D" uid="uid://c7o7004r1hoi" path="res://vfx/bubbles/bubble_fx.png" id="7_ifjcd"]
+[ext_resource type="AudioStream" uid="uid://r2al1kmumcp" path="res://sounds/selected.mp3" id="10_myc6e"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2lxv3"]
 
@@ -708,11 +709,12 @@ _data = {
 offsets = PackedFloat32Array(0, 0.9950495)
 colors = PackedColorArray(0.5411765, 0.84705883, 0.6784314, 1, 1, 1, 1, 0.3019608)
 
-[node name="Rocky" type="Node2D" unique_id=530385872]
+[node name="Rocky" type="Node2D" unique_id=530385872 node_paths=PackedStringArray("audioPlayer")]
 modulate = Color(1, 1, 1, 0.06666666)
 position = Vector2(-0.99999994, 19.000002)
 script = ExtResource("1_ux635")
 custom_material = ExtResource("2_jd83n")
+audioPlayer = NodePath("Highlight_Sound")
 
 [node name="Body" type="Sprite2D" parent="." unique_id=1394143273]
 material = ExtResource("2_jd83n")
@@ -768,4 +770,8 @@ color_ramp = SubResource("Gradient_f71gx")
 
 [node name="Audio" type="AudioStreamPlayer2D" parent="." unique_id=1981705312]
 stream = ExtResource("5_f71gx")
+max_polyphony = 2
+
+[node name="Highlight_Sound" type="AudioStreamPlayer2D" parent="." unique_id=1135540669]
+stream = ExtResource("10_myc6e")
 max_polyphony = 2

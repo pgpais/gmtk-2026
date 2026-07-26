@@ -12,7 +12,7 @@ func _ready() -> void:
 	super._ready()	
 	EventBus.new_cycle.connect(reset_usage)
 
-func set_data(data: AllyData, start_hidden = false):
+func set_data(data, start_hidden = false):
 	entity_data = data
 
 	visuals = entity_data.scene.instantiate()
@@ -48,6 +48,7 @@ func trigger():
 	banked_actions = []
 
 func activate(player_action : bool = false):
+	visuals.rise()
 	play_animation("rise")
 	
 	if currently_hidden:
