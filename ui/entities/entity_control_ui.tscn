@@ -1,70 +1,121 @@
 [gd_scene format=3 uid="uid://dw8jbt2qu4loo"]
 
 [ext_resource type="Script" uid="uid://bov5x3yn3tpot" path="res://ui/entities/entity_control_ui.gd" id="1_hwwo4"]
+[ext_resource type="FontFile" uid="uid://bw5aluqm0p8tm" path="res://ui/CabinSketch-Regular.ttf" id="2_dxsxo"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_tfbxm"]
 
-[node name="EntityControlUI" type="Control" unique_id=928674730 node_paths=PackedStringArray("move_button", "move_reference", "action_button", "action_reference", "dismiss_button", "dismiss_reference")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pbtxm"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+expand_margin_left = 20.0
+expand_margin_right = 20.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uqein"]
+bg_color = Color(0.8819366, 0.8819366, 0.88193655, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+expand_margin_left = 20.0
+expand_margin_right = 20.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1oohf"]
+bg_color = Color(0.641934, 0.641934, 0.641934, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+expand_margin_left = 20.0
+expand_margin_right = 20.0
+
+[node name="EntityControlUI" type="Control" unique_id=928674730 node_paths=PackedStringArray("move_button", "action_button", "dismiss_button", "h_box")]
+z_index = 100
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 1.0
-offset_right = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
 script = ExtResource("1_hwwo4")
-move_button = NodePath("MoveButton")
-move_reference = NodePath("HBoxContainer/ReferenceRect")
-action_button = NodePath("ActionButton")
-action_reference = NodePath("HBoxContainer/ReferenceRect3")
-dismiss_button = NodePath("DismissButton")
-dismiss_reference = NodePath("HBoxContainer/ReferenceRect2")
+move_button = NodePath("HBoxContainer/MoveButton")
+action_button = NodePath("HBoxContainer/ActionButton")
+dismiss_button = NodePath("HBoxContainer/DismissButton")
+h_box = NodePath("HBoxContainer")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=807966718]
+visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = SubResource("PlaceholderTexture2D_tfbxm")
 
-[node name="MoveButton" type="Button" parent="." unique_id=311205509]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
-theme_override_font_sizes/font_size = 50
-text = "Move"
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=289241781]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -593.0
+offset_top = -72.5
+offset_right = 593.0
+offset_bottom = 72.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(607, 73.5)
+theme_override_constants/separation = 60
 
-[node name="DismissButton" type="Button" parent="." unique_id=848494835]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
-theme_override_font_sizes/font_size = 50
+[node name="MoveButton" type="Button" parent="HBoxContainer" unique_id=311205509]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_dxsxo")
+theme_override_font_sizes/font_size = 120
+theme_override_styles/normal = SubResource("StyleBoxFlat_pbtxm")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_uqein")
+theme_override_styles/hover = SubResource("StyleBoxFlat_1oohf")
+text = "MOVE"
+
+[node name="DismissButton" type="Button" parent="HBoxContainer" unique_id=848494835]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_dxsxo")
+theme_override_font_sizes/font_size = 120
+theme_override_styles/normal = SubResource("StyleBoxFlat_pbtxm")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_uqein")
+theme_override_styles/hover = SubResource("StyleBoxFlat_1oohf")
 text = "Dismiss"
 
-[node name="ActionButton" type="Button" parent="." unique_id=1206398211]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
-theme_override_font_sizes/font_size = 50
+[node name="ActionButton" type="Button" parent="HBoxContainer" unique_id=1206398211]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_dxsxo")
+theme_override_font_sizes/font_size = 120
+theme_override_styles/normal = SubResource("StyleBoxFlat_pbtxm")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_uqein")
+theme_override_styles/hover = SubResource("StyleBoxFlat_1oohf")
 text = "Action"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1099613994]
+[node name="HBoxContainer3" type="HBoxContainer" parent="." unique_id=1099613994]
+visible = false
 layout_mode = 0
-offset_left = -244.0
-offset_top = -578.0
-offset_right = 241.54004
-offset_bottom = -538.0
+offset_left = -953.45996
+offset_top = 204.0
+offset_right = 951.0
+offset_bottom = 244.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 theme_override_constants/separation = 4
 
-[node name="ReferenceRect" type="ReferenceRect" parent="HBoxContainer" unique_id=1384727909]
+[node name="ReferenceRect" type="ReferenceRect" parent="HBoxContainer3" unique_id=1384727909]
 layout_mode = 2
 size_flags_horizontal = 6
 
-[node name="ReferenceRect2" type="ReferenceRect" parent="HBoxContainer" unique_id=462335718]
+[node name="ReferenceRect2" type="ReferenceRect" parent="HBoxContainer3" unique_id=462335718]
 layout_mode = 2
 size_flags_horizontal = 6
 
-[node name="ReferenceRect3" type="ReferenceRect" parent="HBoxContainer" unique_id=1648060888]
+[node name="ReferenceRect3" type="ReferenceRect" parent="HBoxContainer3" unique_id=1648060888]
 layout_mode = 2
 size_flags_horizontal = 6

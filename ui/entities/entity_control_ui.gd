@@ -1,13 +1,12 @@
 extends Control
 
 @export var move_button: Button
-@export var move_reference: Control
 
 @export var action_button: Button
-@export var action_reference: Control
 
 @export var dismiss_button: Button
-@export var dismiss_reference: Control
+
+@export var h_box : HBoxContainer
 
 var is_visible: bool = false
 
@@ -54,19 +53,22 @@ func trigger_show():
 	dismiss_button.disabled = false
 
 	show()
+	
+	h_box.pivot_offset = h_box.size / 2
+	h_box.scale = Vector2(0.1, 0.1) 
+	
 	var tween = create_tween()
-
-	var move_subtween = create_tween()
-	tween.set_parallel().tween_subtween(move_subtween)
-	move_subtween.tween_property(move_button, "global_position", move_reference.global_position, 0.1)
-
-	var action_subtween = create_tween()
-	tween.set_parallel().tween_subtween(action_subtween)
-	action_subtween.tween_property(action_button, "global_position", action_reference.global_position, 0.1)
-
-	var dismiss_subtween = create_tween()
-	tween.set_parallel().tween_subtween(dismiss_subtween)
-	dismiss_subtween.tween_property(dismiss_button, "global_position", dismiss_reference.global_position, 0.1)
+	tween.set_parallel(true)
+	
+	tween.tween_property(h_box, "scale", Vector2(1, 1), 0.2) \
+		.set_trans(Tween.TRANS_BACK) \
+		.set_ease(Tween.EASE_OUT)
+		
+	var target_position = global_position + Vector2(0, 20) 
+	
+	tween.tween_property(h_box, "global_position", target_position, 0.2) \
+		.set_trans(Tween.TRANS_SINE) \
+		.set_ease(Tween.EASE_OUT)
 
 func trigger_hide():
 	is_visible = false
