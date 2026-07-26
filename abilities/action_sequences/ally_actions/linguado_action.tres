@@ -4,9 +4,12 @@
 [ext_resource type="Script" uid="uid://08b553jmywp" path="res://abilities/actions/steps/select.gd" id="2_gx845"]
 [ext_resource type="Script" uid="uid://5kjnatrb4mig" path="res://abilities/range/range_pattern.gd" id="3_4e026"]
 [ext_resource type="Script" uid="uid://cs7o53c5hrvdk" path="res://abilities/range/ability_range.gd" id="4_vvj2a"]
-[ext_resource type="Script" uid="uid://dvgq0bpxit2w2" path="res://abilities/actions/steps/kill_entity_action.gd" id="5_wb2ro"]
+[ext_resource type="Script" uid="uid://bbn3o2ixvgq4m" path="res://abilities/actions/steps/shoot_at_action.gd" id="5_0fv0w"]
+[ext_resource type="Script" uid="uid://fnx7g6uj7psm" path="res://abilities/actions/steps/rotate_to_direction_action.gd" id="5_mitje"]
 [ext_resource type="Script" uid="uid://b3n7i5kgdbo7r" path="res://abilities/actions/sequential_action_strategy.gd" id="6_mlpty"]
-[ext_resource type="Script" uid="uid://chsul68onsqss" path="res://abilities/actions/steps/overwatch_action.gd" id="7_802c0"]
+[ext_resource type="Script" uid="uid://du80rsj7p05d8" path="res://abilities/actions/steps/reset_direction_action.gd" id="7_ujxhj"]
+[ext_resource type="Script" uid="uid://4dukklpvpmfp" path="res://abilities/actions/steps/bank_action.gd" id="8_ujxhj"]
+[ext_resource type="Script" uid="uid://ei32mmujf581" path="res://abilities/actions/steps/put_target_on_tile_action.gd" id="10_5xu5j"]
 
 [sub_resource type="Resource" id="Resource_3udgd"]
 script = ExtResource("3_4e026")
@@ -45,22 +48,33 @@ script = ExtResource("2_gx845")
 selection_range = SubResource("Resource_sb13e")
 metadata/_custom_type_script = "uid://08b553jmywp"
 
-[sub_resource type="Resource" id="Resource_vbdxd"]
-script = ExtResource("5_wb2ro")
-metadata/_custom_type_script = "uid://dvgq0bpxit2w2"
+[sub_resource type="Resource" id="Resource_sc7qa"]
+script = ExtResource("5_mitje")
+metadata/_custom_type_script = "uid://fnx7g6uj7psm"
 
-[sub_resource type="Resource" id="Resource_k80nm"]
+[sub_resource type="Resource" id="Resource_ks78w"]
+script = ExtResource("5_0fv0w")
+metadata/_custom_type_script = "uid://bbn3o2ixvgq4m"
+
+[sub_resource type="Resource" id="Resource_w6i00"]
+script = ExtResource("7_ujxhj")
+metadata/_custom_type_script = "uid://du80rsj7p05d8"
+
+[sub_resource type="Resource" id="Resource_5xu5j"]
 script = ExtResource("6_mlpty")
-actions = Array[ExtResource("1_5xu5j")]([SubResource("Resource_vbdxd")])
+actions = Array[ExtResource("1_5xu5j")]([SubResource("Resource_sc7qa"), SubResource("Resource_ks78w"), SubResource("Resource_w6i00")])
 metadata/_custom_type_script = "uid://b3n7i5kgdbo7r"
 
-[sub_resource type="Resource" id="Resource_mitje"]
-script = ExtResource("7_802c0")
-team = 1
-action_sequence = SubResource("Resource_k80nm")
-metadata/_custom_type_script = "uid://chsul68onsqss"
+[sub_resource type="Resource" id="Resource_426bd"]
+script = ExtResource("8_ujxhj")
+actions = SubResource("Resource_5xu5j")
+metadata/_custom_type_script = "uid://4dukklpvpmfp"
+
+[sub_resource type="Resource" id="Resource_fak4r"]
+script = ExtResource("10_5xu5j")
+metadata/_custom_type_script = "uid://ei32mmujf581"
 
 [resource]
 script = ExtResource("6_mlpty")
-actions = Array[ExtResource("1_5xu5j")]([SubResource("Resource_0fv0w"), SubResource("Resource_mitje")])
+actions = Array[ExtResource("1_5xu5j")]([SubResource("Resource_0fv0w"), SubResource("Resource_426bd"), SubResource("Resource_fak4r")])
 metadata/_custom_type_script = "uid://b3n7i5kgdbo7r"

@@ -23,6 +23,8 @@ var entity: Entity = null
 
 var overwatches: Array[Overwatch] = []
 
+@export var target : Sprite2D 
+
 func _ready():
 	mouse_entered.connect(_on_mouse_entered)
 	mouse_exited.connect(_on_mouse_exited)
@@ -82,6 +84,26 @@ func initialize(column: MapColumn, tile_index: int):
 
 func _set_modulate(color: Color):
 	sprite.modulate = color
+
+func place_target():
+	target.visible = true
+	var orig_scale = scale
+
+	var tween = create_tween()
+	tween.set_ease(Tween.EASE_OUT)
+	tween.set_trans(Tween.TRANS_QUAD)
+
+	var start_subtween = create_tween()
+	start_subtween.set_parallel().tween_property(self, "scale", Vector2(1.4, 1.4), 0.15)
+
+	var end_subtween = create_tween()
+	end_subtween.set_parallel().tween_property(self, "scale", orig_scale, 0.25)
+	
+	tween.tween_subtween(start_subtween)
+	tween.tween_subtween(end_subtween)
+	
+func hide_target():
+	target.visible = false
 
 func highlight() -> void:
 	var orig_scale = scale

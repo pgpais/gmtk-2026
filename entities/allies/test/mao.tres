@@ -1,89 +1,15 @@
 [gd_resource type="Resource" script_class="AllyData" format=3 uid="uid://cvjxrfn1bbtn7"]
 
-[ext_resource type="Script" uid="uid://yyhnn4sejhrt" path="res://abilities/actions/action.gd" id="1_y3iqh"]
-[ext_resource type="Script" uid="uid://b3n7i5kgdbo7r" path="res://abilities/actions/sequential_action_strategy.gd" id="2_ks78w"]
-[ext_resource type="Script" uid="uid://08b553jmywp" path="res://abilities/actions/steps/select.gd" id="2_q6eva"]
-[ext_resource type="Script" uid="uid://5kjnatrb4mig" path="res://abilities/range/range_pattern.gd" id="3_3b6w0"]
+[ext_resource type="Resource" uid="uid://b3nrysgv6ppgf" path="res://abilities/action_sequences/ally_actions/mao_action.tres" id="1_y3iqh"]
 [ext_resource type="PackedScene" uid="uid://c8nq565hfwm2v" path="res://entities/allies/froggo/froggo.tscn" id="3_x73ch"]
 [ext_resource type="Script" uid="uid://dly02pjrb1d6s" path="res://entities/allies/ally_data.gd" id="4_3b6w0"]
-[ext_resource type="Script" uid="uid://cs7o53c5hrvdk" path="res://abilities/range/ability_range.gd" id="4_uqt1r"]
-[ext_resource type="Script" uid="uid://fnx7g6uj7psm" path="res://abilities/actions/steps/rotate_to_direction_action.gd" id="5_yvv6k"]
-[ext_resource type="Script" uid="uid://dy7kbvn0jq2f1" path="res://abilities/actions/conditions/parameter_condition.gd" id="6_xq2gw"]
-[ext_resource type="Script" uid="uid://d4afbfntventh" path="res://abilities/actions/steps/branch_action.gd" id="7_4htfm"]
-[ext_resource type="Script" uid="uid://5dunwopatxk8" path="res://abilities/actions/steps/play_animation.gd" id="7_xq2gw"]
 [ext_resource type="Resource" uid="uid://cq5jfqj07em4g" path="res://abilities/action_sequences/ally_moves/mao_move.tres" id="8_hcsw8"]
-
-[sub_resource type="Resource" id="Resource_xq2gw"]
-script = ExtResource("3_3b6w0")
-distance = 2
-mirror = true
-metadata/_custom_type_script = "uid://5kjnatrb4mig"
-
-[sub_resource type="Resource" id="Resource_gj3y3"]
-script = ExtResource("3_3b6w0")
-direction = 0
-distance = 2
-mirror = true
-metadata/_custom_type_script = "uid://5kjnatrb4mig"
-
-[sub_resource type="Resource" id="Resource_4htfm"]
-script = ExtResource("4_uqt1r")
-patterns = Array[ExtResource("3_3b6w0")]([SubResource("Resource_xq2gw"), SubResource("Resource_gj3y3")])
-metadata/_custom_type_script = "uid://cs7o53c5hrvdk"
-
-[sub_resource type="Resource" id="Resource_ax1cv"]
-script = ExtResource("2_q6eva")
-target_type = 1
-target_team = 0
-selection_range = SubResource("Resource_4htfm")
-metadata/_custom_type_script = "uid://08b553jmywp"
-
-[sub_resource type="Resource" id="Resource_yy1tj"]
-script = ExtResource("5_yvv6k")
-metadata/_custom_type_script = "uid://fnx7g6uj7psm"
-
-[sub_resource type="Resource" id="Resource_sb13e"]
-script = ExtResource("6_xq2gw")
-parameter_name = "target_is_adjacent"
-metadata/_custom_type_script = "uid://dy7kbvn0jq2f1"
-
-[sub_resource type="Resource" id="Resource_3udgd"]
-script = ExtResource("7_xq2gw")
-animation_name = "reach_hand_2tiles"
-metadata/_custom_type_script = "uid://5dunwopatxk8"
-
-[sub_resource type="Resource" id="Resource_56i32"]
-script = ExtResource("2_ks78w")
-actions = Array[ExtResource("1_y3iqh")]([SubResource("Resource_3udgd")])
-metadata/_custom_type_script = "uid://b3n7i5kgdbo7r"
-
-[sub_resource type="Resource" id="Resource_uon26"]
-script = ExtResource("7_xq2gw")
-animation_name = "reach_hand_1tiles"
-metadata/_custom_type_script = "uid://5dunwopatxk8"
-
-[sub_resource type="Resource" id="Resource_t8qva"]
-script = ExtResource("2_ks78w")
-actions = Array[ExtResource("1_y3iqh")]([SubResource("Resource_uon26")])
-metadata/_custom_type_script = "uid://b3n7i5kgdbo7r"
-
-[sub_resource type="Resource" id="Resource_ou34o"]
-script = ExtResource("7_4htfm")
-condition = SubResource("Resource_sb13e")
-true_action_sequence = SubResource("Resource_t8qva")
-false_action_sequence = SubResource("Resource_56i32")
-metadata/_custom_type_script = "uid://d4afbfntventh"
-
-[sub_resource type="Resource" id="Resource_vji87"]
-script = ExtResource("2_ks78w")
-actions = Array[ExtResource("1_y3iqh")]([SubResource("Resource_ax1cv"), SubResource("Resource_yy1tj"), SubResource("Resource_ou34o")])
-metadata/_custom_type_script = "uid://b3n7i5kgdbo7r"
 
 [resource]
 script = ExtResource("4_3b6w0")
 movement_range = ExtResource("8_hcsw8")
 team = 2
 scene = ExtResource("3_x73ch")
-action_sequence = SubResource("Resource_vji87")
+action_sequence = ExtResource("1_y3iqh")
 color = Color(0.68243855, 0.55624294, 0, 1)
 metadata/_custom_type_script = "uid://dly02pjrb1d6s"

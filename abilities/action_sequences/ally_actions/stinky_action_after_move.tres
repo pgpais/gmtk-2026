@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="SequentialActionStrategy" format=3 uid="uid://bkpumi3iquptc"]
+
+[ext_resource type="Script" uid="uid://yyhnn4sejhrt" path="res://abilities/actions/action.gd" id="1_5qvhf"]
+[ext_resource type="Script" uid="uid://5dunwopatxk8" path="res://abilities/actions/steps/play_animation.gd" id="2_ee4rd"]
+[ext_resource type="Script" uid="uid://csbilxn1xa1e8" path="res://abilities/actions/steps/push_entity.gd" id="3_6ed2o"]
+[ext_resource type="Script" uid="uid://b3n7i5kgdbo7r" path="res://abilities/actions/sequential_action_strategy.gd" id="4_82qr8"]
+
+[sub_resource type="Resource" id="Resource_k8k07"]
+script = ExtResource("2_ee4rd")
+animation_name = "smelly"
+metadata/_custom_type_script = "uid://5dunwopatxk8"
+
+[sub_resource type="Resource" id="Resource_h31nk"]
+script = ExtResource("3_6ed2o")
+metadata/_custom_type_script = "uid://csbilxn1xa1e8"
+
+[resource]
+script = ExtResource("4_82qr8")
+actions = Array[ExtResource("1_5qvhf")]([SubResource("Resource_k8k07"), SubResource("Resource_h31nk")])
+metadata/_custom_type_script = "uid://b3n7i5kgdbo7r"

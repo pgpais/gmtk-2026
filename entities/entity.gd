@@ -130,6 +130,8 @@ func _move(x, y):
 	new_tile_index = current_tile.tile_index + y
 	
 	if (new_layer_index < 0):
+		if team == TEAMS.BEETLE:
+			EventBus.game_ended.emit(true)
 		# Next to frog king
 		# TODO: play frog king attack animation
 		EventBus.enemy_attacked_frog_king.emit(self)
@@ -157,6 +159,8 @@ func _move(x, y):
 			#TODO CASCADING EFFECT
 			if ! target_tile.entity._move(x, y):
 				return false
+	elif will_collide_with_entity and team != target_tile.entity.team and target_tile.entity.entity_data.blocking:
+		return false
 	
 	await _move_to_tile(target_tile)
 	
@@ -186,13 +190,15 @@ func rotate_to_direction(direction_vector : Vector2):
 	
 	rotated.emit() # to accomodate the possibility of only finishing when animation finishes
 
+func reset_direction():
+	rotation = 0
+
 func shock(toggle):
 	is_shock = toggle
 	play_animation("shock")
 	modulate = Color.AQUAMARINE if toggle else Color.WHITE
 
-func shoot_at(tile_position : Vector2):
-	var target_tile = grid_map.get_tile(tile_position.x, tile_position.y)
+func shoot_at(target_tile : Tile):
 	var entity_on_tile = target_tile.entity
 	
 	play_animation("leek")

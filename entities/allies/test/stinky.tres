@@ -9,6 +9,8 @@
 [ext_resource type="Script" uid="uid://cs7o53c5hrvdk" path="res://abilities/range/ability_range.gd" id="4_aiu1q"]
 [ext_resource type="Script" uid="uid://cchuyhgd0lsne" path="res://abilities/movement/basic_movement_strategy.gd" id="5_w6oy3"]
 [ext_resource type="Script" uid="uid://b2ia62h5b18fg" path="res://abilities/actions/steps/move_action.gd" id="6_cpc3h"]
+[ext_resource type="Resource" uid="uid://ck3crnp01t45f" path="res://abilities/action_sequences/ally_actions/stinky_action.tres" id="8_cpc3h"]
+[ext_resource type="Resource" uid="uid://bcglypv2y6oib" path="res://abilities/action_sequences/ally_moves/stinky_move.tres" id="10_n2c77"]
 
 [sub_resource type="Resource" id="Resource_27xgi"]
 script = ExtResource("3_5nygi")
@@ -39,27 +41,10 @@ script = ExtResource("2_d10ps")
 actions = Array[ExtResource("1_dosif")]([SubResource("Resource_n2c77"), SubResource("Resource_y6c3m")])
 metadata/_custom_type_script = "uid://b3n7i5kgdbo7r"
 
-[sub_resource type="Resource" id="Resource_gm3nu"]
-script = ExtResource("3_5nygi")
-area_grid = Vector2i(1, 3)
-offset = Vector2i(0, -1)
-mirror = true
-metadata/_custom_type_script = "uid://5kjnatrb4mig"
-
-[sub_resource type="Resource" id="Resource_w6oy3"]
-script = ExtResource("3_5nygi")
-direction = 0
-mirror = true
-metadata/_custom_type_script = "uid://5kjnatrb4mig"
-
-[sub_resource type="Resource" id="Resource_cpc3h"]
-script = ExtResource("4_aiu1q")
-patterns = Array[ExtResource("3_5nygi")]([SubResource("Resource_gm3nu"), SubResource("Resource_w6oy3")])
-metadata/_custom_type_script = "uid://cs7o53c5hrvdk"
-
 [resource]
 script = ExtResource("4_5nygi")
-movement_range = SubResource("Resource_cpc3h")
+movement_range = ExtResource("10_n2c77")
+action_sequence_after_move = ExtResource("8_cpc3h")
 team = 2
 scene = ExtResource("3_u56qx")
 action_sequence = SubResource("Resource_fw4wx")

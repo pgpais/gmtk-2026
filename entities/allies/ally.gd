@@ -39,8 +39,13 @@ func die():
 	queue_free()
 
 func trigger():
+	if entity_data.action_sequence.actions.is_empty():
+		await dismiss()
+	
 	for action_sequence in banked_actions:
 		await action_handler.perform_actions(action_sequence)
+		
+	banked_actions = []
 
 func activate(player_action : bool = false):
 	play_animation("rise")
@@ -81,6 +86,9 @@ func fulfill_move_request(target_tile: Tile):
 	EventBus.cancel_interaction.disconnect(cancel_move_request)
 
 	await _move_to_tile(target_tile)
+	
+	if entity_data.action_sequence_after_move and ! entity_data.action_sequence_after_move.actions.is_empty():
+		await action_handler.perform_actions(entity_data.action_sequence_after_move.actions)
 	
 	used_this_cycle = true
 	EventBus.ally_action_performed.emit()

@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://d1vsxetgx8k52" path="res://map/tile/tile.gd" id="1_s4ekl"]
 [ext_resource type="Texture2D" uid="uid://ckuul63tbaid8" path="res://map/tile/textures/water_lily.png" id="2_qwjc5"]
 [ext_resource type="Texture2D" uid="uid://w5kafc3luitw" path="res://icon.svg" id="2_s4ekl"]
+[ext_resource type="Texture2D" uid="uid://bpwokyvm8mbag" path="res://ui/target.png" id="5_fak4r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0k0ny"]
 size = Vector2(80, 80)
@@ -19,13 +20,15 @@ _data = {
 &"RESET": SubResource("Animation_eapbg")
 }
 
-[node name="Tile" type="Area2D" unique_id=1440746278]
+[node name="Tile" type="Area2D" unique_id=1440746278 node_paths=PackedStringArray("direction_ui", "target")]
 script = ExtResource("1_s4ekl")
+direction_ui = NodePath("Directions")
+target = NodePath("Target")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=443503160]
 self_modulate = Color(1, 1, 1, 0.78431374)
-position = Vector2(7.6524067, -8.180339)
-rotation = 709.4447
+position = Vector2(0.59060806, -4.2473087)
+rotation = 1494.5621
 scale = Vector2(0.228, 0.236)
 texture = ExtResource("2_qwjc5")
 
@@ -116,3 +119,9 @@ texture_normal = ExtResource("2_s4ekl")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1731311896]
 libraries/ = SubResource("AnimationLibrary_qwjc5")
+
+[node name="Target" type="Sprite2D" parent="." unique_id=944581692]
+visible = false
+position = Vector2(-4.9999995, -7.9999995)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("5_fak4r")
