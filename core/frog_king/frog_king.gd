@@ -14,7 +14,7 @@ func _ready() -> void:
 	health_component.health_depleted.connect(_die)
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("test_frog_king_damage"):
+	if Input.is_action_just_pressed("test_frog_king_damage") && OS.has_feature("editor_runtime"):
 		take_damage(1)
 	pass
 

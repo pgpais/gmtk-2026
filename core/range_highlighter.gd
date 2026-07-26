@@ -12,10 +12,10 @@ func _init() -> void:
 func _ready() -> void:
 	EventBus.request_highlight.connect(_on_highlight_request)
 
-#func _process(delta: float) -> void:
-	#if Input.is_action_just_pressed("test_highlight"):
-		#grid_map.get_tile(3, 3).show_positive_highlight()
-		#show_highlight_tiles(grid_map.get_tiles_in_range(debug_range, grid_map.get_tile(3, 3)), false)
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("test_highlight") && OS.has_feature("editor_runtime"):
+		grid_map.get_tile(3, 3).show_positive_highlight()
+		show_highlight_tiles(grid_map.get_tiles_in_range(debug_range, grid_map.get_tile(3, 3)), false)
 
 func _on_highlight_request(target_type, selection_range, reference_tile) -> void:
 	pass

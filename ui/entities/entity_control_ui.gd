@@ -26,7 +26,6 @@ func _ready():
 	action_button.pressed.connect(_on_action_button_pressed)
 	dismiss_button.pressed.connect(_on_dismiss_button_pressed)	
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Input.is_key_pressed(Key.KEY_ESCAPE):
 		trigger_hide()
