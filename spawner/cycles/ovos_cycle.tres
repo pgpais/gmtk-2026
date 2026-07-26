@@ -26,7 +26,5 @@ metadata/_custom_type_script = "uid://dcphf1th8bjtj"
 
 [resource]
 script = ExtResource("1_xq0v4")
-min_cycle = 2
-max_cycle = 2
 spawn_sequences = Array[ExtResource("2_rsk0a")]([SubResource("Resource_qoo17")])
 metadata/_custom_type_script = "uid://ckxu256vi8vce"
