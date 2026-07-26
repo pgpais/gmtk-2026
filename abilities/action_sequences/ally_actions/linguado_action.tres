@@ -7,9 +7,6 @@
 [ext_resource type="Script" uid="uid://dvgq0bpxit2w2" path="res://abilities/actions/steps/kill_entity_action.gd" id="5_wb2ro"]
 [ext_resource type="Script" uid="uid://b3n7i5kgdbo7r" path="res://abilities/actions/sequential_action_strategy.gd" id="6_mlpty"]
 [ext_resource type="Script" uid="uid://chsul68onsqss" path="res://abilities/actions/steps/overwatch_action.gd" id="7_802c0"]
-[ext_resource type="Script" uid="uid://4dukklpvpmfp" path="res://abilities/actions/steps/bank_action.gd" id="8_35tr2"]
-[ext_resource type="Script" uid="uid://cchuyhgd0lsne" path="res://abilities/movement/basic_movement_strategy.gd" id="9_elw8c"]
-[ext_resource type="Script" uid="uid://b2ia62h5b18fg" path="res://abilities/actions/steps/move_action.gd" id="10_gn1y3"]
 
 [sub_resource type="Resource" id="Resource_3udgd"]
 script = ExtResource("3_4e026")
@@ -43,7 +40,7 @@ script = ExtResource("4_vvj2a")
 patterns = Array[ExtResource("3_4e026")]([SubResource("Resource_3udgd"), SubResource("Resource_r0oml"), SubResource("Resource_b4no4"), SubResource("Resource_jbf8o")])
 metadata/_custom_type_script = "uid://cs7o53c5hrvdk"
 
-[sub_resource type="Resource" id="Resource_56i32"]
+[sub_resource type="Resource" id="Resource_0fv0w"]
 script = ExtResource("2_gx845")
 selection_range = SubResource("Resource_sb13e")
 metadata/_custom_type_script = "uid://08b553jmywp"
@@ -57,33 +54,13 @@ script = ExtResource("6_mlpty")
 actions = Array[ExtResource("1_5xu5j")]([SubResource("Resource_vbdxd")])
 metadata/_custom_type_script = "uid://b3n7i5kgdbo7r"
 
-[sub_resource type="Resource" id="Resource_qo4tq"]
+[sub_resource type="Resource" id="Resource_mitje"]
 script = ExtResource("7_802c0")
 team = 1
 action_sequence = SubResource("Resource_k80nm")
 metadata/_custom_type_script = "uid://chsul68onsqss"
 
-[sub_resource type="Resource" id="Resource_gj3y3"]
-script = ExtResource("6_mlpty")
-actions = Array[ExtResource("1_5xu5j")]([SubResource("Resource_56i32"), SubResource("Resource_qo4tq")])
-metadata/_custom_type_script = "uid://b3n7i5kgdbo7r"
-
-[sub_resource type="Resource" id="Resource_7ykqp"]
-script = ExtResource("8_35tr2")
-actions = SubResource("Resource_gj3y3")
-metadata/_custom_type_script = "uid://4dukklpvpmfp"
-
-[sub_resource type="Resource" id="Resource_7uegs"]
-script = ExtResource("9_elw8c")
-movement_direction = Vector2i(1, 0)
-metadata/_custom_type_script = "uid://cchuyhgd0lsne"
-
-[sub_resource type="Resource" id="Resource_8a3d3"]
-script = ExtResource("10_gn1y3")
-move_strategy = SubResource("Resource_7uegs")
-metadata/_custom_type_script = "uid://b2ia62h5b18fg"
-
 [resource]
 script = ExtResource("6_mlpty")
-actions = Array[ExtResource("1_5xu5j")]([SubResource("Resource_7ykqp"), SubResource("Resource_8a3d3")])
+actions = Array[ExtResource("1_5xu5j")]([SubResource("Resource_0fv0w"), SubResource("Resource_mitje")])
 metadata/_custom_type_script = "uid://b3n7i5kgdbo7r"

@@ -46,3 +46,8 @@ func hide_highlight_tiles(tiles: Array[Tile], is_positive: bool = true) -> void:
 			tile.hide_positive_highlight()
 		else:
 			tile.hide_danger_highlight()
+
+func unhilight_everything():
+	for column in grid_map.columns:
+		for tile in column.tiles:
+			tile.hide_positive_highlight()

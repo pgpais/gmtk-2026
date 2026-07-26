@@ -15,7 +15,7 @@ func _ready() -> void:
 func set_data(data: AllyData, start_hidden = false):
 	entity_data = data
 
-	var visuals = entity_data.scene.instantiate()
+	visuals = entity_data.scene.instantiate()
 	visuals.name = "Visuals"
 	add_child(visuals, true)
 	animator = visuals.get_node("AnimationPlayer")
@@ -43,12 +43,14 @@ func trigger():
 		await action_handler.perform_actions(action_sequence)
 
 func activate(player_action : bool = false):
-	play_animation("under", true)
+	play_animation("rise")
 	
 	if currently_hidden:
 		currently_hidden = false
-		
+	
 	team = TEAMS.ALLY
+	
+	current_tile.show_tile()
 	
 	EventBus.ally_action_performed.emit()
 

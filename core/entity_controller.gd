@@ -121,6 +121,7 @@ func _on_entity_selected(entity: Entity) -> void:
 			target_entity_changed.emit(entity)
 			
 	else:
+		_cancel_interaction()
 		return
 
 	# _change_to_tile_selection_state()

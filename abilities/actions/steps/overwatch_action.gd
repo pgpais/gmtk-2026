@@ -2,7 +2,7 @@ class_name OverwatchAction
 extends Action
 
 @export var tile_test_scene: PackedScene
-@export var target_tile_parameter_name: String = "target_tile"
+@export var target_tile_parameter_name: String = "selected_tile"
 
 @export var team: Entity.TEAMS
 @export var action_sequence: ActionSequence

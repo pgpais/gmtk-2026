@@ -66,8 +66,8 @@ func set_tile(tile):
 func set_new_position(position):
 	global_position = position
 
-	if animator.has_animation("move"):
-		animator.play("move")
+	#if animator.has_animation("move"):
+	#	animator.play("move")
 
 func move(tile_path):
 	if animator.has_animation("move"):
@@ -150,7 +150,7 @@ func _move(x, y):
 	
 	var will_collide_with_entity : bool = not target_tile.entity == null
 	
-	if will_collide_with_entity and team == target_tile.entity:
+	if will_collide_with_entity and team == target_tile.entity.team:
 		if team == TEAMS.ALLY:
 			return false
 		elif team == TEAMS.ENEMY:

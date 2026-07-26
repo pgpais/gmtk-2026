@@ -17,14 +17,15 @@ func _ready():
 	# ally._selectable.selected.connect(trigger_show)
 	ally._selectable.can_be_selected.connect(_on_can_be_selected)
 
-	EventBus.ally_selected.connect(_on_entity_selected)
+	EventBus.entity_selected.connect(_on_entity_selected)
+	EventBus.ally_selected.connect(_on_ally_selected)
 
 	trigger_hide()
 
 	move_button.pressed.connect(_on_move_button_pressed)
 	action_button.pressed.connect(_on_action_button_pressed)
 	dismiss_button.pressed.connect(_on_dismiss_button_pressed)
-
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -39,12 +40,14 @@ func _on_action_button_pressed():
 	
 func _on_dismiss_button_pressed():
 	ally.dismiss(true)
-		
+
 func _on_entity_selected(entity: Entity):
-	if entity.team == Entity.TEAMS.ALLY and entity == owner:
-		trigger_show()
-	else:
+	if entity != owner:
 		trigger_hide()
+
+func _on_ally_selected(entity: Entity):
+	if entity == owner:
+		trigger_show()
 
 func trigger_show():
 	is_visible = true
