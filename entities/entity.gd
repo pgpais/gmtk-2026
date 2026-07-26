@@ -116,7 +116,16 @@ func _move(x, y):
 	new_layer_index = current_tile.column.column_index + x
 	new_tile_index = current_tile.tile_index + y
 	
-	if (new_layer_index < 0 or new_layer_index >= len(grid_map.columns)): # if it's already on the left/right edge
+	if (new_layer_index < 0):
+		# Next to frog king
+		# TODO: play frog king attack animation
+		EventBus.enemy_attacked_frog_king.emit(self)
+		#action_handler.reset()
+		#finished_movement.emit()
+		queue_free()
+		return
+	
+	if (new_layer_index >= len(grid_map.columns)): # if it's already on the left/right edge
 		collide(new_layer_index, new_tile_index) # animation colliding but stays in the same tile
 		return
 	

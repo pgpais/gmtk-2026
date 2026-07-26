@@ -35,7 +35,7 @@ func cycle():
 				
 	current_spawn_cycle += 1
 	
-	dismiss_allies()
+	#dismiss_allies()
 			
 func spawn_from_sequence(spawn_sequence : SpawnSequence):
 	

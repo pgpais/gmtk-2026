@@ -4,6 +4,7 @@ extends MovementStrategy
 @export var movement_direction: Vector2i
 
 func move(entity: Entity):
+	#print("Mov.X:" , movement_direction.x, " " , movement_direction.y )
 	entity._move(movement_direction.x, movement_direction.y)
 
 func tiles_to_highlight(entity: Entity, grid_map: LayerGridMap) -> Array[Tile]:

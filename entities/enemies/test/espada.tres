@@ -3,23 +3,101 @@
 [ext_resource type="Script" uid="uid://yyhnn4sejhrt" path="res://abilities/actions/action.gd" id="1_fwe40"]
 [ext_resource type="Script" uid="uid://cchuyhgd0lsne" path="res://abilities/movement/basic_movement_strategy.gd" id="2_gcd2c"]
 [ext_resource type="Script" uid="uid://b2ia62h5b18fg" path="res://abilities/actions/steps/move_action.gd" id="3_sbs8n"]
+[ext_resource type="Script" uid="uid://5kjnatrb4mig" path="res://abilities/range/range_pattern.gd" id="4_gcd2c"]
+[ext_resource type="Script" uid="uid://cs7o53c5hrvdk" path="res://abilities/range/ability_range.gd" id="5_sbs8n"]
+[ext_resource type="Script" uid="uid://cl5irg4aikin7" path="res://abilities/actions/steps/choose_closest_target_action.gd" id="6_0q1c7"]
 [ext_resource type="Script" uid="uid://b3n7i5kgdbo7r" path="res://abilities/actions/sequential_action_strategy.gd" id="6_ggbca"]
-[ext_resource type="PackedScene" uid="uid://bjwl5ilt4my3o" path="res://entities/enemies/swordy/swordy.tscn" id="7_1cmtn"]
+[ext_resource type="PackedScene" uid="uid://bjwl5ilt4my3o" path="res://entities/enemies/mosquito/mosquito.tscn" id="7_1cmtn"]
+[ext_resource type="Script" uid="uid://qec7r2kwwms4" path="res://abilities/actions/steps/dive_target_action.gd" id="7_sbs8n"]
+[ext_resource type="Script" uid="uid://4eujiecdn8cj" path="res://abilities/actions/steps/increase_attack_damage_action.gd" id="8_0q1c7"]
 [ext_resource type="Script" uid="uid://bp1u6h3jw4ia" path="res://entities/enemies/enemy_data.gd" id="8_qop4w"]
+[ext_resource type="Script" uid="uid://dy7kbvn0jq2f1" path="res://abilities/actions/conditions/parameter_condition.gd" id="9_1cmtn"]
+[ext_resource type="Script" uid="uid://diwfvlv4pkeee" path="res://abilities/actions/steps/loop_action.gd" id="10_qop4w"]
+[ext_resource type="Script" uid="uid://d4afbfntventh" path="res://abilities/actions/steps/branch_action.gd" id="12_8oh8p"]
+[ext_resource type="Script" uid="uid://pb0l2iqvcpye" path="res://abilities/actions/steps/print_action.gd" id="13_qop4w"]
 
-[sub_resource type="Resource" id="Resource_er2l6"]
+[sub_resource type="Resource" id="Resource_2f12q"]
 script = ExtResource("2_gcd2c")
 movement_direction = Vector2i(-1, 0)
 metadata/_custom_type_script = "uid://cchuyhgd0lsne"
 
-[sub_resource type="Resource" id="Resource_wkcs5"]
+[sub_resource type="Resource" id="Resource_qll2x"]
 script = ExtResource("3_sbs8n")
-move_strategy = SubResource("Resource_er2l6")
+move_strategy = SubResource("Resource_2f12q")
 metadata/_custom_type_script = "uid://b2ia62h5b18fg"
+
+[sub_resource type="Resource" id="Resource_ma5cs"]
+script = ExtResource("4_gcd2c")
+area_grid = Vector2i(1, 3)
+offset = Vector2i(0, -1)
+mirror = true
+metadata/_custom_type_script = "uid://5kjnatrb4mig"
+
+[sub_resource type="Resource" id="Resource_xe1y6"]
+script = ExtResource("4_gcd2c")
+direction = 0
+mirror = true
+metadata/_custom_type_script = "uid://5kjnatrb4mig"
+
+[sub_resource type="Resource" id="Resource_476k1"]
+script = ExtResource("5_sbs8n")
+patterns = Array[ExtResource("4_gcd2c")]([SubResource("Resource_ma5cs"), SubResource("Resource_xe1y6")])
+metadata/_custom_type_script = "uid://cs7o53c5hrvdk"
+
+[sub_resource type="Resource" id="Resource_8oh8p"]
+script = ExtResource("6_0q1c7")
+group_name = &"allies"
+visualize_range = true
+range = SubResource("Resource_476k1")
+metadata/_custom_type_script = "uid://cl5irg4aikin7"
+
+[sub_resource type="Resource" id="Resource_c2yv6"]
+script = ExtResource("7_sbs8n")
+metadata/_custom_type_script = "uid://qec7r2kwwms4"
+
+[sub_resource type="Resource" id="Resource_sbs8n"]
+script = ExtResource("8_0q1c7")
+metadata/_custom_type_script = "uid://4eujiecdn8cj"
+
+[sub_resource type="Resource" id="Resource_getpj"]
+script = ExtResource("9_1cmtn")
+parameter_name = "bloodSucked"
+metadata/_custom_type_script = "uid://dy7kbvn0jq2f1"
+
+[sub_resource type="Resource" id="Resource_1cmtn"]
+script = ExtResource("13_qop4w")
+print_message = "loop2"
+metadata/_custom_type_script = "uid://pb0l2iqvcpye"
+
+[sub_resource type="Resource" id="Resource_qop4w"]
+script = ExtResource("10_qop4w")
+metadata/_custom_type_script = "uid://diwfvlv4pkeee"
+
+[sub_resource type="Resource" id="Resource_ryguw"]
+script = ExtResource("6_ggbca")
+actions = Array[ExtResource("1_fwe40")]([SubResource("Resource_1cmtn"), SubResource("Resource_qop4w")])
+metadata/_custom_type_script = "uid://b3n7i5kgdbo7r"
+
+[sub_resource type="Resource" id="Resource_23uuf"]
+script = ExtResource("13_qop4w")
+print_message = "Passei 1"
+metadata/_custom_type_script = "uid://pb0l2iqvcpye"
+
+[sub_resource type="Resource" id="Resource_tkost"]
+script = ExtResource("6_ggbca")
+actions = Array[ExtResource("1_fwe40")]([SubResource("Resource_23uuf")])
+metadata/_custom_type_script = "uid://b3n7i5kgdbo7r"
+
+[sub_resource type="Resource" id="Resource_htjy5"]
+script = ExtResource("12_8oh8p")
+condition = SubResource("Resource_getpj")
+true_action_sequence = SubResource("Resource_tkost")
+false_action_sequence = SubResource("Resource_ryguw")
+metadata/_custom_type_script = "uid://d4afbfntventh"
 
 [sub_resource type="Resource" id="Resource_s4ekl"]
 script = ExtResource("6_ggbca")
-actions = Array[ExtResource("1_fwe40")]([SubResource("Resource_wkcs5")])
+actions = Array[ExtResource("1_fwe40")]([SubResource("Resource_qll2x"), SubResource("Resource_8oh8p"), SubResource("Resource_c2yv6"), SubResource("Resource_sbs8n"), SubResource("Resource_htjy5")])
 metadata/_custom_type_script = "uid://b3n7i5kgdbo7r"
 
 [resource]

@@ -1,5 +1,7 @@
-class_name HasTargetActionCondition
+class_name CheckIfHeight
 extends ActionCondition
 
+@export var check_height : int
+
 func evaluate(action_handler: ActionHandler, entity: Entity, grid_map: LayerGridMap) -> bool:
-	return action_handler.get_parameter("target") != null
+	return false#entity.current_tile_index==check_height

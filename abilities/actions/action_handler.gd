@@ -54,6 +54,9 @@ func reset():
 	current_action = 0
 	actions.clear()
 
+func loopActionsFrom(index: int):
+	current_action = index-1
+
 func _finish_performing():
 	all_actions_finished.emit()
 

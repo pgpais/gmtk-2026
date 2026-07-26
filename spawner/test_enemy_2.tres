@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="SpawnCycle" format=3 uid="uid://3h63l4socg0n"]
+
+[ext_resource type="Script" uid="uid://ckxu256vi8vce" path="res://spawner/spawn_cycle.gd" id="1_8bpb8"]
+[ext_resource type="Script" uid="uid://dcphf1th8bjtj" path="res://spawner/spawn_sequence.gd" id="2_qtnvc"]
+[ext_resource type="Script" uid="uid://cwi2b70q6xv3l" path="res://spawner/spawn_data.gd" id="3_cv8k4"]
+[ext_resource type="Script" uid="uid://bwhgiqt7i32mc" path="res://entities/entity_data.gd" id="4_1w3o7"]
+[ext_resource type="Resource" uid="uid://d1dbobg6gkwdq" path="res://entities/enemies/test/mosquitoEnemy.tres" id="5_8bpb8"]
+
+[sub_resource type="Resource" id="Resource_lt02g"]
+script = ExtResource("3_cv8k4")
+possible_entity_datas = Array[ExtResource("4_1w3o7")]([ExtResource("5_8bpb8")])
+metadata/_custom_type_script = "uid://cwi2b70q6xv3l"
+
+[sub_resource type="Resource" id="Resource_5f8u6"]
+script = ExtResource("2_qtnvc")
+column_indexes = Array[int]([6, 7])
+spawn_datas = Array[ExtResource("3_cv8k4")]([SubResource("Resource_lt02g")])
+metadata/_custom_type_script = "uid://dcphf1th8bjtj"
+
+[resource]
+script = ExtResource("1_8bpb8")
+max_cycle = 222
+spawn_sequences = Array[ExtResource("2_qtnvc")]([SubResource("Resource_5f8u6")])
+metadata/_custom_type_script = "uid://ckxu256vi8vce"
