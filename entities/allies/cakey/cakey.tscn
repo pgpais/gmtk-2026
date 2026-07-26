@@ -19,6 +19,7 @@
 [ext_resource type="AudioStream" uid="uid://dn7g5isjfiol6" path="res://sounds/abrirboca.mp3" id="13_helly"]
 [ext_resource type="AudioStream" uid="uid://cscwrejwuuevx" path="res://sounds/spawn_sound_enemies.mp3" id="13_jcwmu"]
 [ext_resource type="Texture2D" uid="uid://c7o7004r1hoi" path="res://vfx/bubbles/bubble_fx.png" id="18_0qtni"]
+[ext_resource type="AudioStream" uid="uid://r2al1kmumcp" path="res://sounds/selected.mp3" id="20_q4440"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_r0xi3"]
 animations = [{
@@ -1125,4 +1126,8 @@ color_ramp = SubResource("Gradient_q4440")
 
 [node name="Audio2" type="AudioStreamPlayer2D" parent="." unique_id=2137139361]
 stream = ExtResource("11_ld50r")
+max_polyphony = 2
+
+[node name="Highlight_Sound" type="AudioStreamPlayer2D" parent="." unique_id=1239845923]
+stream = ExtResource("20_q4440")
 max_polyphony = 2
