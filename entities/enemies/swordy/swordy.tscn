@@ -264,7 +264,6 @@ tracks/5/keys = {
 
 [sub_resource type="Animation" id="Animation_xqrtd"]
 resource_name = "move"
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -504,6 +503,7 @@ script = ExtResource("1_js2a8")
 custom_material = ExtResource("2_js2a8")
 
 [node name="Node2D" type="Node2D" parent="." unique_id=1304484869]
+scale = Vector2(0.3, 0.3)
 
 [node name="Shadow" type="Sprite2D" parent="Node2D" unique_id=1051024300]
 material = SubResource("ShaderMaterial_vgki1")
@@ -524,13 +524,11 @@ texture = ExtResource("2_b2ufs")
 [node name="Wings1" type="Sprite2D" parent="Node2D" unique_id=361812551]
 show_behind_parent = true
 position = Vector2(64, -63.999992)
-rotation = -0.3907847
 texture = ExtResource("4_o4ujd")
 flip_h = true
 
 [node name="Wings2" type="Sprite2D" parent="Node2D" unique_id=632811014]
 position = Vector2(106.73288, 12.083363)
-rotation = -0.3907847
 texture = ExtResource("4_o4ujd")
 flip_h = true
 flip_v = true
@@ -541,6 +539,7 @@ libraries/ = SubResource("AnimationLibrary_q7dhs")
 [node name="death_animation" parent="." unique_id=429524921 instance=ExtResource("5_b6rho")]
 visible = false
 scale = Vector2(3, 3)
+frame = 6
 frame_progress = 0.0
 
 [node name="Audio" type="AudioStreamPlayer2D" parent="." unique_id=246489762]

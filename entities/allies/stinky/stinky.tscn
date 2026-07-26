@@ -158,6 +158,30 @@ tracks/7/keys = {
 "update": 0,
 "values": [Vector2(1, 1)]
 }
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath(".:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Body:scale")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_djdwr"]
 resource_name = "bubbles"
@@ -645,6 +669,18 @@ tracks/5/keys = {
 "update": 1,
 "values": [true, false]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.03333336),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kkaqq"]
 _data = {
@@ -665,7 +701,6 @@ offsets = PackedFloat32Array(0, 0.9950495)
 colors = PackedColorArray(0.5411765, 0.84705883, 0.6784314, 1, 1, 1, 1, 0.3019608)
 
 [node name="Stinky" type="Node2D" unique_id=398916788]
-modulate = Color(1, 1, 1, 0.06666666)
 position = Vector2(-0.99999994, 19.000002)
 script = ExtResource("1_dq7gy")
 custom_material = ExtResource("2_vlown")
@@ -712,6 +747,7 @@ texture = ExtResource("7_nqbq2")
 [node name="DeathAnimation" parent="." unique_id=429524921 instance=ExtResource("9_nqbq2")]
 visible = false
 scale = Vector2(3, 3)
+frame = 6
 frame_progress = 0.0
 
 [node name="Particles" type="CPUParticles2D" parent="." unique_id=490611562]
@@ -730,5 +766,5 @@ scale_amount_max = 0.3
 color_ramp = SubResource("Gradient_vlown")
 
 [node name="Audio" type="AudioStreamPlayer2D" parent="." unique_id=2057074030]
-stream = ExtResource("9_vlown")
+stream = ExtResource("10_y5vjq")
 max_polyphony = 2
