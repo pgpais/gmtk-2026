@@ -30,3 +30,4 @@ func setup_column(number_of_tiles: int, column_index: int, tile_size: Vector2 = 
 func trigger_tiles():
 	for tile in tiles:
 		await tile.trigger()
+		await get_tree().create_timer(0.1).timeout

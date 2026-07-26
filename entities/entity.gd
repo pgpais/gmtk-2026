@@ -86,13 +86,16 @@ func move(tile_path):
 	finished_movement.emit()
 	EventBus.action_step_performed.emit()
 
-func _move_to_tile(target_tile):
+func _move_to_tile(target_tile: Tile):
+	target_tile.show_positive_highlight()
 	if animator.has_animation("move"):
 		animator.play("move")
 
 	var tween = create_tween()
 	tween.tween_method(set_new_position, current_tile.global_position, target_tile.global_position, time_to_move)
 	await tween.finished
+
+	target_tile.hide_positive_highlight()
 	
 	print("checking overwatches at tile ", target_tile.tile_index, ", ", target_tile.column.column_index)
 	await target_tile.check_overwatches(self)

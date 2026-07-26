@@ -54,8 +54,10 @@ func get_entity() -> Entity:
 
 func trigger():
 	highlight()
+	show_danger_highlight()
 	if entity:
 		await entity.trigger()
+	hide_danger_highlight()
 
 func initialize(column: MapColumn, tile_index: int):
 	self.tile_index = tile_index
