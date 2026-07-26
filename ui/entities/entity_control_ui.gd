@@ -30,6 +30,9 @@ func _process(delta: float) -> void:
 	if Input.is_key_pressed(Key.KEY_ESCAPE):
 		trigger_hide()
 
+	if visible:
+		global_position = get_viewport().get_canvas_transform() * ally.global_position
+
 func _on_move_button_pressed():
 	ally.request_move()
 

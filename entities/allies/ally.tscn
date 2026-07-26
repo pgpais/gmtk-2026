@@ -12,7 +12,7 @@ size = Vector2(280, 336)
 [node name="Ally" type="Node2D" unique_id=28648160 node_paths=PackedStringArray("entity_ui", "action_handler", "_selectable") groups=["allies"]]
 scale = Vector2(0.2, 0.2)
 script = ExtResource("1_binvp")
-entity_ui = NodePath("EntityControlUI")
+entity_ui = NodePath("CanvasLayer/EntityControlUI")
 action_handler = NodePath("ActionHandler")
 _selectable = NodePath("Selectable")
 
@@ -35,4 +35,7 @@ shape = SubResource("RectangleShape2D_tfbxm")
 script = ExtResource("4_mmojd")
 metadata/_custom_type_script = "uid://ddx61kskhe162"
 
-[node name="EntityControlUI" parent="." unique_id=928674730 instance=ExtResource("5_miwyd")]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=104370818]
+
+[node name="EntityControlUI" parent="CanvasLayer" unique_id=928674730 instance=ExtResource("5_miwyd")]
+scale = Vector2(0.2, 0.2)
