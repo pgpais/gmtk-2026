@@ -82,7 +82,7 @@ func get_random_empty_tile(column_index: int) -> Tile:
 			
 	return null
 
-func get_tile_path(current_tile: Tile, target_tile: Tile, include_target: bool = true) -> Array[Tile]:
+func get_tile_path(current_tile: Tile, target_tile: Tile, include_target: bool = true, include_origin: bool = true) -> Array[Tile]:
 	var path = []
 	
 	var current_x = current_tile.column.column_index
@@ -100,6 +100,9 @@ func get_tile_path(current_tile: Tile, target_tile: Tile, include_target: bool =
 	
 	if include_target:
 		path.append(target_tile)
+	
+	if include_origin:
+		path.append(current_tile)
 	
 	return path
 
