@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://djaegtrgd5qf" path="res://ui/countdown/ticker_view.gd" id="1_sto81"]
 [ext_resource type="PackedScene" uid="uid://cgcnpsffnu0j0" path="res://ui/countdown/countdown_background.tscn" id="2_ts6mm"]
+[ext_resource type="FontFile" uid="uid://bw5aluqm0p8tm" path="res://ui/CabinSketch-Regular.ttf" id="3_0p8li"]
 
 [node name="TickerView" type="Control" unique_id=1135792648 node_paths=PackedStringArray("animator", "label")]
 layout_mode = 3
@@ -28,7 +29,6 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
 
 [node name="Label" type="Label" parent="TickerBackground" unique_id=1141362174]
 layout_mode = 1
@@ -44,6 +44,7 @@ offset_bottom = 29.5
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_fonts/font = ExtResource("3_0p8li")
 theme_override_font_sizes/font_size = 62
 text = "2"
 horizontal_alignment = 1
