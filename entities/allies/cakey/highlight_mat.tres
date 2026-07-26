@@ -6,6 +6,6 @@
 resource_local_to_scene = true
 shader = ExtResource("1_hule2")
 shader_parameter/aura_color = Color(0.95686275, 0.8156863, 0.39215687, 1)
-shader_parameter/aura_width = 9.790000465025
+shader_parameter/aura_width = 0.0
 shader_parameter/pulse_speed = 2.0
 shader_parameter/pulse_intensity = 0.5
