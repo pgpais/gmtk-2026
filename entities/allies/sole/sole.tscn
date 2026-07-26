@@ -434,6 +434,81 @@ tracks/4/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_w6i00"]
+resource_name = "rise"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BodyUnderWater:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.03333336),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BodyUnderWater:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.03355278, 0.20436694),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 2)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BodyUnderWater:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.03333333, 0.3568796),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Body:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.32637706, 0.3294273),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Body:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.41483438),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Body:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.4209349, 0.46666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-8, -223), Vector2(-7.616699, -33.6167)]
+}
+
 [sub_resource type="Animation" id="Animation_4xfqm"]
 resource_name = "spawn"
 length = 0.56666666
@@ -545,6 +620,7 @@ _data = {
 &"idle": SubResource("Animation_kvvr2"),
 &"lick": SubResource("Animation_bimfc"),
 &"move": SubResource("Animation_c68m1"),
+&"rise": SubResource("Animation_w6i00"),
 &"spawn": SubResource("Animation_4xfqm"),
 &"under": SubResource("Animation_twqfl")
 }
@@ -585,7 +661,9 @@ libraries/ = SubResource("AnimationLibrary_8dnap")
 
 [node name="BodyUnderWater" type="Sprite2D" parent="." unique_id=1334566504]
 visible = false
+modulate = Color(1, 1, 1, 0)
 position = Vector2(-14.999999, 69.999985)
+scale = Vector2(1, 2)
 texture = ExtResource("4_amvql")
 
 [node name="DeathAnimation" parent="." unique_id=429524921 instance=ExtResource("7_amvql")]
