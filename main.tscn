@@ -104,11 +104,13 @@ grow_vertical = 0
 mouse_filter = 2
 ticker = NodePath("../../Ticker")
 
-[node name="FrogKingUI" parent="HUD" unique_id=1013682348 node_paths=PackedStringArray("frog_king") instance=ExtResource("14_w48qg")]
-offset_left = 850.0
-offset_right = 1374.0
+[node name="FrogKingUI" parent="HUD" unique_id=1013682348 node_paths=PackedStringArray("frog_king_health_component") instance=ExtResource("14_w48qg")]
+offset_left = 75.0
+offset_top = 375.0
+offset_right = 75.0
+offset_bottom = 375.0
 mouse_filter = 2
-frog_king = NodePath("../../FrogKing")
+frog_king_health_component = NodePath("../../FrogKing/HealthComponent")
 
 [node name="Menus" type="CanvasLayer" parent="." unique_id=635451417]
 layer = 10
@@ -179,3 +181,5 @@ grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
 text = "Leave"
+
+[editable path="FrogKing"]

@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://bt6x0f8is84dx"]
+
+[ext_resource type="Script" uid="uid://d117xf5snewna" path="res://ui/heart/heart_ui.gd" id="1_csshb"]
+[ext_resource type="Texture2D" uid="uid://ylsnjc24o3i7" path="res://ui/heart/textures/heart.png" id="2_ivuuj"]
+[ext_resource type="Shader" uid="uid://bo5rbf228opsl" path="res://vfx/shadow/shadow2.gdshader" id="3_ldjpo"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q0kha"]
+shader = ExtResource("3_ldjpo")
+shader_parameter/fume_color = Color(1, 1, 1, 0.9019608)
+shader_parameter/fume_speed = 0.05
+shader_parameter/noise_scale = 8.0
+shader_parameter/wavy_distortion = 0.15
+shader_parameter/dissolve_intensity = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k8aaq"]
+shader = ExtResource("3_ldjpo")
+shader_parameter/fume_color = Color(0.92156863, 0.25882354, 0.3019608, 0.78431374)
+shader_parameter/fume_speed = 0.1
+shader_parameter/noise_scale = 8.0
+shader_parameter/wavy_distortion = 0.3
+shader_parameter/dissolve_intensity = 0.4
+
+[node name="HeartUI" type="Control" unique_id=281142300 node_paths=PackedStringArray("fill", "fill_shadow")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 60.0
+offset_bottom = 60.0
+script = ExtResource("1_csshb")
+fill = NodePath("Fill")
+fill_shadow = NodePath("FillShadow")
+
+[node name="Background" type="TextureRect" parent="." unique_id=2000248520]
+layout_mode = 0
+offset_right = 60.0
+offset_bottom = 60.0
+texture = ExtResource("2_ivuuj")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="BackgroundShadow" type="Sprite2D" parent="." unique_id=587081263]
+material = SubResource("ShaderMaterial_q0kha")
+position = Vector2(30, 30)
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("2_ivuuj")
+
+[node name="Fill" type="TextureRect" parent="." unique_id=897679659]
+modulate = Color(0.9198218, 0.25563982, 0.2974063, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -25.0
+offset_right = 25.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ivuuj")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="FillShadow" type="Sprite2D" parent="." unique_id=456434129]
+modulate = Color(0.40784314, 0.0627451, 0.09803922, 0.39215687)
+material = SubResource("ShaderMaterial_k8aaq")
+position = Vector2(30, 30)
+scale = Vector2(0.11, 0.11)
+texture = ExtResource("2_ivuuj")
