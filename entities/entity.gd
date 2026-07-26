@@ -241,6 +241,7 @@ func trigger():
 	pass
 
 func play_animation(animation, backwards = false):
+	animator.play("RESET")
 	if animator.has_animation(animation):
 		if ! backwards:
 			animator.play(animation)
