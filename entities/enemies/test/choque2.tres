@@ -1,12 +1,12 @@
 [gd_resource type="Resource" script_class="EnemyData" format=3 uid="uid://clkmgm7xk7ji8"]
 
 [ext_resource type="Resource" uid="uid://cslyknkhkpqs1" path="res://abilities/action_sequences/choque2_sequence.tres" id="1_g8kv3"]
-[ext_resource type="PackedScene" uid="uid://bjwl5ilt4my3o" path="res://entities/enemies/swordy/swordy.tscn" id="9_1663h"]
+[ext_resource type="PackedScene" uid="uid://dh6381oqktjwf" path="res://entities/enemies/shocky/shocky.tscn" id="2_g8kv3"]
 [ext_resource type="Script" uid="uid://bp1u6h3jw4ia" path="res://entities/enemies/enemy_data.gd" id="10_a5ccw"]
 
 [resource]
 script = ExtResource("10_a5ccw")
 team = 1
-scene = ExtResource("9_1663h")
+scene = ExtResource("2_g8kv3")
 action_sequence = ExtResource("1_g8kv3")
 metadata/_custom_type_script = "uid://bp1u6h3jw4ia"

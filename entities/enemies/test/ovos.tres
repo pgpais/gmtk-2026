@@ -1,13 +1,13 @@
 [gd_resource type="Resource" script_class="EnemyData" format=3 uid="uid://cvvof0jokxit0"]
 
 [ext_resource type="Resource" uid="uid://84r4k57kwk87" path="res://abilities/action_sequences/ovos_sequence.tres" id="1_heljk"]
-[ext_resource type="PackedScene" uid="uid://bjwl5ilt4my3o" path="res://entities/enemies/swordy/swordy.tscn" id="7_bv16n"]
+[ext_resource type="PackedScene" uid="uid://bybm0k7vevga2" path="res://entities/enemies/big_momma/big_momma.tscn" id="2_heljk"]
 [ext_resource type="Script" uid="uid://bp1u6h3jw4ia" path="res://entities/enemies/enemy_data.gd" id="8_d6w6x"]
 
 [resource]
 script = ExtResource("8_d6w6x")
 team = 1
-scene = ExtResource("7_bv16n")
+scene = ExtResource("2_heljk")
 action_sequence = ExtResource("1_heljk")
 color = Color(0.16095755, 0.5127896, 0.4439802, 1)
 metadata/_custom_type_script = "uid://bp1u6h3jw4ia"

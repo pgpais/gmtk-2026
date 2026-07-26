@@ -1,13 +1,13 @@
 [gd_resource type="Resource" script_class="EnemyData" format=3 uid="uid://bo7sp73hvt80b"]
 
 [ext_resource type="Resource" uid="uid://0vklun6iob5t" path="res://abilities/action_sequences/mosquito2_sequence.tres" id="1_415ai"]
-[ext_resource type="PackedScene" uid="uid://bjwl5ilt4my3o" path="res://entities/enemies/swordy/swordy.tscn" id="2_aygy6"]
+[ext_resource type="PackedScene" uid="uid://b2dnrp4hj3m34" path="res://entities/enemies/mitsy/mitsy.tscn" id="2_415ai"]
 [ext_resource type="Script" uid="uid://bp1u6h3jw4ia" path="res://entities/enemies/enemy_data.gd" id="3_nqy7b"]
 
 [resource]
 script = ExtResource("3_nqy7b")
 team = 1
-scene = ExtResource("2_aygy6")
+scene = ExtResource("2_415ai")
 action_sequence = ExtResource("1_415ai")
 color = Color(0.704523, 0.55415165, 0.17788017, 1)
 metadata/_custom_type_script = "uid://bp1u6h3jw4ia"
