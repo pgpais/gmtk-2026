@@ -7,14 +7,22 @@ extends Control
 @onready var health_component: HealthComponent = frog_king.health_component
 
 func _ready() -> void:
-	health_bar.max_value = health_component.max_health
-	health_bar.value = health_component.current_health
+	frog_king_health_component.health_changed.connect(_on_frog_king_health_changed)
 
-	health_component.health_changed.connect(on_health_changed)
-	health_component.health_depleted.connect(on_health_depleted)
+	_hearts = instantiate_hearts()
 
-func on_health_changed(new_health: int, old_health: int):
-	health_bar.value = new_health
+func instantiate_hearts():
+	var hearts: Array[Control]
 
-func on_health_depleted():
-	pass
+	for child in hearts_container.get_children(): child.queue_free()
+
+	for i in range(0, frog_king_health_component.max_health):
+		var heart: HeartUI = heart_ui_scene.instantiate()
+		hearts_container.add_child(heart, true)
+		hearts.append(heart)
+
+	return hearts
+
+func _on_frog_king_health_changed(current_health: int, old_health: int):
+	for i in range(_hearts.size()):
+		_hearts[i].set_state(i < current_health)
