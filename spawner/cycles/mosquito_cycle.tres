@@ -4,16 +4,17 @@
 [ext_resource type="Script" uid="uid://dcphf1th8bjtj" path="res://spawner/spawn_sequence.gd" id="2_k1gjv"]
 [ext_resource type="Script" uid="uid://cwi2b70q6xv3l" path="res://spawner/spawn_data.gd" id="3_tqav2"]
 [ext_resource type="Script" uid="uid://bwhgiqt7i32mc" path="res://entities/entity_data.gd" id="4_tqav2"]
-[ext_resource type="Resource" uid="uid://bd7cg6tp5dk2a" path="res://entities/enemies/test/dep_mosq.tres" id="5_e0ago"]
+[ext_resource type="Resource" uid="uid://d1dbobg6gkwdq" path="res://entities/enemies/test/mosquito.tres" id="5_e0ago"]
+[ext_resource type="Resource" uid="uid://bo7sp73hvt80b" path="res://entities/enemies/test/mosquito2.tres" id="6_fcvvs"]
 
 [sub_resource type="Resource" id="Resource_e0ago"]
 script = ExtResource("3_tqav2")
-possible_entity_datas = Array[ExtResource("4_tqav2")]([ExtResource("5_e0ago")])
+possible_entity_datas = Array[ExtResource("4_tqav2")]([ExtResource("5_e0ago"), ExtResource("6_fcvvs")])
 metadata/_custom_type_script = "uid://cwi2b70q6xv3l"
 
 [sub_resource type="Resource" id="Resource_fcvvs"]
 script = ExtResource("3_tqav2")
-possible_entity_datas = Array[ExtResource("4_tqav2")]([ExtResource("5_e0ago")])
+possible_entity_datas = Array[ExtResource("4_tqav2")]([ExtResource("5_e0ago"), ExtResource("6_fcvvs")])
 probability = 0.25
 metadata/_custom_type_script = "uid://cwi2b70q6xv3l"
 
@@ -26,7 +27,5 @@ metadata/_custom_type_script = "uid://dcphf1th8bjtj"
 
 [resource]
 script = ExtResource("1_a7t3o")
-min_cycle = 5
-max_cycle = 5
 spawn_sequences = Array[ExtResource("2_k1gjv")]([SubResource("Resource_qoo17")])
 metadata/_custom_type_script = "uid://ckxu256vi8vce"
