@@ -1766,7 +1766,7 @@ texture = ExtResource("8_yapv2")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=31361809]
 libraries/ = SubResource("AnimationLibrary_a86ym")
-autoplay = &"reach_hand_1tile"
+autoplay = &"RESET"
 
 [node name="Body2" type="Sprite2D" parent="." unique_id=1708536216]
 modulate = Color(1, 1, 1, 0)
