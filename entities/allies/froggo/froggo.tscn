@@ -1479,6 +1479,7 @@ tracks/8/keys = {
 
 [sub_resource type="Animation" id="Animation_yxpq7"]
 resource_name = "spawn"
+length = 0.9
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1694,7 +1695,6 @@ offsets = PackedFloat32Array(0, 0.9950495)
 colors = PackedColorArray(0.5411765, 0.84705883, 0.6784314, 1, 1, 1, 1, 0.3019608)
 
 [node name="Froggo" type="Node2D" unique_id=626510176]
-position = Vector2(-0.99999994, 19.000002)
 script = ExtResource("1_yapv2")
 custom_material = ExtResource("2_yapv2")
 
@@ -1762,8 +1762,6 @@ texture = ExtResource("7_yapv2")
 
 [node name="BodyUnderWater" type="Sprite2D" parent="." unique_id=1980738004]
 visible = false
-modulate = Color(1, 1, 1, 0)
-scale = Vector2(1, 2)
 texture = ExtResource("10_yapv2")
 
 [node name="DeathAnimation" parent="." unique_id=429524921 instance=ExtResource("11_alput")]
