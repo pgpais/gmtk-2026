@@ -113,7 +113,6 @@ _data = {
 colors = PackedColorArray(0.7647059, 0, 0, 0, 1, 0.54509807, 0.56078434, 1)
 
 [node name="Bettle" type="Node2D" unique_id=1709891465]
-scale = Vector2(0.2, 0.2)
 
 [node name="Body1" type="Sprite2D" parent="." unique_id=878988208]
 material = SubResource("ShaderMaterial_oaw15")

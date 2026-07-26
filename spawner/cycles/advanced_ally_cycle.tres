@@ -4,16 +4,23 @@
 [ext_resource type="Script" uid="uid://dcphf1th8bjtj" path="res://spawner/spawn_sequence.gd" id="2_34now"]
 [ext_resource type="Script" uid="uid://cwi2b70q6xv3l" path="res://spawner/spawn_data.gd" id="3_hc70t"]
 [ext_resource type="Script" uid="uid://bwhgiqt7i32mc" path="res://entities/entity_data.gd" id="4_jw5ig"]
+[ext_resource type="Resource" uid="uid://dftqt6ejs5rl0" path="res://entities/allies/test/rock.tres" id="5_vtdhi"]
+[ext_resource type="Resource" uid="uid://bx8cqfjcwkqyv" path="res://entities/allies/test/stinky.tres" id="6_thjlu"]
+[ext_resource type="Resource" uid="uid://b5unws06fkbfl" path="res://entities/allies/test/bolos.tres" id="7_ebxxw"]
+[ext_resource type="Resource" uid="uid://dqosqyvot7oca" path="res://entities/allies/test/linguado.tres" id="8_us1ch"]
+[ext_resource type="Resource" uid="uid://cvjxrfn1bbtn7" path="res://entities/allies/test/mao.tres" id="9_5qabr"]
 
 [sub_resource type="Resource" id="Resource_d13ii"]
 script = ExtResource("3_hc70t")
 spawn_limit = 1
+possible_entity_datas = Array[ExtResource("4_jw5ig")]([ExtResource("5_vtdhi"), ExtResource("6_thjlu")])
 special_spawn = true
 hidden_probability = 1.0
 metadata/_custom_type_script = "uid://cwi2b70q6xv3l"
 
 [sub_resource type="Resource" id="Resource_1u8w0"]
 script = ExtResource("3_hc70t")
+possible_entity_datas = Array[ExtResource("4_jw5ig")]([ExtResource("7_ebxxw"), ExtResource("8_us1ch"), ExtResource("9_5qabr")])
 conditions = Array[int]([0])
 hidden_probability = 0.5
 metadata/_custom_type_script = "uid://cwi2b70q6xv3l"
@@ -26,6 +33,7 @@ metadata/_custom_type_script = "uid://dcphf1th8bjtj"
 
 [sub_resource type="Resource" id="Resource_0odxb"]
 script = ExtResource("3_hc70t")
+possible_entity_datas = Array[ExtResource("4_jw5ig")]([ExtResource("7_ebxxw"), ExtResource("8_us1ch"), ExtResource("9_5qabr"), ExtResource("5_vtdhi"), ExtResource("6_thjlu")])
 probability = 0.25
 conditions = Array[int]([0])
 hidden_probability = 1.0

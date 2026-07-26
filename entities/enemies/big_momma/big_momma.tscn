@@ -285,7 +285,6 @@ _data = {
 }
 
 [node name="BigMomma" type="Node2D" unique_id=713239565]
-scale = Vector2(0.15, 0.15)
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=681332645]
 visible = false

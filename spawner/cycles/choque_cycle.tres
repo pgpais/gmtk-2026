@@ -4,13 +4,16 @@
 [ext_resource type="Script" uid="uid://dcphf1th8bjtj" path="res://spawner/spawn_sequence.gd" id="2_eylph"]
 [ext_resource type="Script" uid="uid://cwi2b70q6xv3l" path="res://spawner/spawn_data.gd" id="3_q7lgb"]
 [ext_resource type="Script" uid="uid://bwhgiqt7i32mc" path="res://entities/entity_data.gd" id="4_bd8iv"]
+[ext_resource type="Resource" uid="uid://dbqdlq3cr31py" path="res://entities/enemies/test/choque.tres" id="5_qjv36"]
 
 [sub_resource type="Resource" id="Resource_e0ago"]
 script = ExtResource("3_q7lgb")
+possible_entity_datas = Array[ExtResource("4_bd8iv")]([ExtResource("5_qjv36")])
 metadata/_custom_type_script = "uid://cwi2b70q6xv3l"
 
 [sub_resource type="Resource" id="Resource_fcvvs"]
 script = ExtResource("3_q7lgb")
+possible_entity_datas = Array[ExtResource("4_bd8iv")]([ExtResource("5_qjv36")])
 probability = 0.25
 metadata/_custom_type_script = "uid://cwi2b70q6xv3l"
 

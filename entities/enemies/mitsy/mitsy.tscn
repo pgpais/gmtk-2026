@@ -356,8 +356,6 @@ _data = {
 }
 
 [node name="Mitsy" type="Node2D" unique_id=1111273269]
-position = Vector2(-2, -11)
-scale = Vector2(0.25, 0.25)
 
 [node name="Node2D" type="Node2D" parent="." unique_id=1304484869]
 scale = Vector2(0.3, 0.3)

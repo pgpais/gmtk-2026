@@ -1,0 +1,71 @@
+[gd_resource type="Resource" script_class="EnemyData" format=3 uid="uid://dbqdlq3cr31py"]
+
+[ext_resource type="Script" uid="uid://yyhnn4sejhrt" path="res://abilities/actions/action.gd" id="1_y4ptg"]
+[ext_resource type="Script" uid="uid://cchuyhgd0lsne" path="res://abilities/movement/basic_movement_strategy.gd" id="2_rovct"]
+[ext_resource type="Script" uid="uid://b2ia62h5b18fg" path="res://abilities/actions/steps/move_action.gd" id="3_jdpys"]
+[ext_resource type="Script" uid="uid://db8uxv8205ng6" path="res://abilities/actions/steps/toggle_parameter.gd" id="4_y4ptg"]
+[ext_resource type="Script" uid="uid://mikuqe75xffa" path="res://abilities/actions/steps/shock_action.gd" id="5_g8oc2"]
+[ext_resource type="Script" uid="uid://dy7kbvn0jq2f1" path="res://abilities/actions/conditions/parameter_condition.gd" id="5_jdpys"]
+[ext_resource type="Script" uid="uid://d4afbfntventh" path="res://abilities/actions/steps/branch_action.gd" id="5_rovct"]
+[ext_resource type="Script" uid="uid://b3n7i5kgdbo7r" path="res://abilities/actions/sequential_action_strategy.gd" id="6_u873e"]
+[ext_resource type="PackedScene" uid="uid://bjwl5ilt4my3o" path="res://entities/enemies/swordy/swordy.tscn" id="7_855d1"]
+[ext_resource type="Script" uid="uid://bp1u6h3jw4ia" path="res://entities/enemies/enemy_data.gd" id="8_jbvfn"]
+
+[sub_resource type="Resource" id="Resource_er2l6"]
+script = ExtResource("2_rovct")
+movement_direction = Vector2i(-1, 0)
+metadata/_custom_type_script = "uid://cchuyhgd0lsne"
+
+[sub_resource type="Resource" id="Resource_wkcs5"]
+script = ExtResource("3_jdpys")
+move_strategy = SubResource("Resource_er2l6")
+metadata/_custom_type_script = "uid://b2ia62h5b18fg"
+
+[sub_resource type="Resource" id="Resource_tfbxm"]
+script = ExtResource("4_y4ptg")
+parameter_name = "willShock"
+metadata/_custom_type_script = "uid://db8uxv8205ng6"
+
+[sub_resource type="Resource" id="Resource_a6jrf"]
+script = ExtResource("5_jdpys")
+parameter_name = "willShock"
+metadata/_custom_type_script = "uid://dy7kbvn0jq2f1"
+
+[sub_resource type="Resource" id="Resource_g8oc2"]
+script = ExtResource("5_g8oc2")
+metadata/_custom_type_script = "uid://mikuqe75xffa"
+
+[sub_resource type="Resource" id="Resource_f7ryp"]
+script = ExtResource("6_u873e")
+actions = Array[ExtResource("1_y4ptg")]([SubResource("Resource_g8oc2")])
+metadata/_custom_type_script = "uid://b3n7i5kgdbo7r"
+
+[sub_resource type="Resource" id="Resource_qsp4k"]
+script = ExtResource("5_g8oc2")
+toggle = true
+metadata/_custom_type_script = "uid://mikuqe75xffa"
+
+[sub_resource type="Resource" id="Resource_xuqvo"]
+script = ExtResource("6_u873e")
+actions = Array[ExtResource("1_y4ptg")]([SubResource("Resource_qsp4k")])
+metadata/_custom_type_script = "uid://b3n7i5kgdbo7r"
+
+[sub_resource type="Resource" id="Resource_u1exi"]
+script = ExtResource("5_rovct")
+condition = SubResource("Resource_a6jrf")
+true_action_sequence = SubResource("Resource_xuqvo")
+false_action_sequence = SubResource("Resource_f7ryp")
+metadata/_custom_type_script = "uid://d4afbfntventh"
+
+[sub_resource type="Resource" id="Resource_s4ekl"]
+script = ExtResource("6_u873e")
+actions = Array[ExtResource("1_y4ptg")]([SubResource("Resource_wkcs5"), SubResource("Resource_tfbxm"), SubResource("Resource_u1exi")])
+metadata/_custom_type_script = "uid://b3n7i5kgdbo7r"
+
+[resource]
+script = ExtResource("8_jbvfn")
+team = 1
+scene = ExtResource("7_855d1")
+action_sequence = SubResource("Resource_s4ekl")
+color = Color(0.39607844, 0.9254902, 0.8235294, 1)
+metadata/_custom_type_script = "uid://bp1u6h3jw4ia"

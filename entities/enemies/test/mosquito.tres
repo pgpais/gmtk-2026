@@ -1,0 +1,54 @@
+[gd_resource type="Resource" script_class="EnemyData" format=3 uid="uid://bi1cyixed87us"]
+
+[ext_resource type="PackedScene" uid="uid://bjwl5ilt4my3o" path="res://entities/enemies/mosquito/mosquito.tscn" id="1_2eh1l"]
+[ext_resource type="Script" uid="uid://yyhnn4sejhrt" path="res://abilities/actions/action.gd" id="1_2meft"]
+[ext_resource type="Script" uid="uid://bp1u6h3jw4ia" path="res://entities/enemies/enemy_data.gd" id="1_jbtja"]
+[ext_resource type="Script" uid="uid://cchuyhgd0lsne" path="res://abilities/movement/basic_movement_strategy.gd" id="2_fx2rr"]
+[ext_resource type="Script" uid="uid://b2ia62h5b18fg" path="res://abilities/actions/steps/move_action.gd" id="3_jsuql"]
+[ext_resource type="Script" uid="uid://08b553jmywp" path="res://abilities/actions/steps/select.gd" id="4_fx2rr"]
+[ext_resource type="Script" uid="uid://5kjnatrb4mig" path="res://abilities/range/range_pattern.gd" id="5_jsuql"]
+[ext_resource type="Script" uid="uid://cs7o53c5hrvdk" path="res://abilities/range/ability_range.gd" id="6_1qsbv"]
+[ext_resource type="Script" uid="uid://b3n7i5kgdbo7r" path="res://abilities/actions/sequential_action_strategy.gd" id="6_bf16m"]
+
+[sub_resource type="Resource" id="Resource_er2l6"]
+script = ExtResource("2_fx2rr")
+movement_direction = Vector2i(-1, 0)
+metadata/_custom_type_script = "uid://cchuyhgd0lsne"
+
+[sub_resource type="Resource" id="Resource_wkcs5"]
+script = ExtResource("3_jsuql")
+move_strategy = SubResource("Resource_er2l6")
+metadata/_custom_type_script = "uid://b2ia62h5b18fg"
+
+[sub_resource type="Resource" id="Resource_eeske"]
+script = ExtResource("5_jsuql")
+mirror = true
+metadata/_custom_type_script = "uid://5kjnatrb4mig"
+
+[sub_resource type="Resource" id="Resource_mbjy4"]
+script = ExtResource("5_jsuql")
+direction = 0
+mirror = true
+metadata/_custom_type_script = "uid://5kjnatrb4mig"
+
+[sub_resource type="Resource" id="Resource_2rtw8"]
+script = ExtResource("6_1qsbv")
+patterns = Array[ExtResource("5_jsuql")]([SubResource("Resource_eeske"), SubResource("Resource_mbjy4")])
+metadata/_custom_type_script = "uid://cs7o53c5hrvdk"
+
+[sub_resource type="Resource" id="Resource_4i8ne"]
+script = ExtResource("4_fx2rr")
+selection_range = SubResource("Resource_2rtw8")
+metadata/_custom_type_script = "uid://08b553jmywp"
+
+[sub_resource type="Resource" id="Resource_s4ekl"]
+script = ExtResource("6_bf16m")
+actions = Array[ExtResource("1_2meft")]([SubResource("Resource_wkcs5"), SubResource("Resource_4i8ne")])
+metadata/_custom_type_script = "uid://b3n7i5kgdbo7r"
+
+[resource]
+script = ExtResource("1_jbtja")
+team = 1
+scene = ExtResource("1_2eh1l")
+action_sequence = SubResource("Resource_s4ekl")
+metadata/_custom_type_script = "uid://bp1u6h3jw4ia"

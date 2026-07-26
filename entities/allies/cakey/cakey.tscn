@@ -374,7 +374,6 @@ _data = {
 }
 
 [node name="Cakey" type="Node2D" unique_id=398916788]
-scale = Vector2(0.25, 0.25)
 script = ExtResource("1_awh0g")
 
 [node name="BodyBackground" type="Sprite2D" parent="." unique_id=1667782968]
