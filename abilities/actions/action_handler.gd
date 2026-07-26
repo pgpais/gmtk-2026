@@ -34,7 +34,8 @@ func perform_actions(action_sequence: ActionSequence = entity.entity_data.action
 
 	entity.set_highlight(true)
 
-	_perform_action(current_action)
+	# _perform_action(current_action)
+	call_deferred("_perform_action", current_action)
 	await all_actions_finished
 
 	entity.set_highlight(false)
