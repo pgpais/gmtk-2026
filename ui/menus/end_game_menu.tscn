@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://cxwch0s8x7i5t" path="res://ui/menus/end_game_menu.gd" id="1_v37ls"]
 [ext_resource type="FontFile" uid="uid://bw5aluqm0p8tm" path="res://ui/CabinSketch-Regular.ttf" id="2_c6n5j"]
-[ext_resource type="PackedScene" uid="uid://cr2odqe6nec73" path="res://ui/menus/main_menu.tscn" id="2_y4s5w"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_c6n5j"]
 font = ExtResource("2_c6n5j")
@@ -26,7 +25,6 @@ title_text = NodePath("MarginContainer/VBoxContainer/TitleText")
 replay_button = NodePath("MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/ReplayButton")
 main_menu_button = NodePath("MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MainMenuButton")
 quit_button = NodePath("MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/QuitButton")
-main_menu_scene = ExtResource("2_y4s5w")
 
 [node name="Background" type="ColorRect" parent="." unique_id=510038484]
 layout_mode = 1

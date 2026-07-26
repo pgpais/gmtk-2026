@@ -3,9 +3,9 @@
 [ext_resource type="Script" uid="uid://d2dkkbhti0whm" path="res://ui/menus/main_menu.gd" id="1_4p04u"]
 [ext_resource type="FontFile" uid="uid://bw5aluqm0p8tm" path="res://ui/CabinSketch-Regular.ttf" id="1_5oih7"]
 [ext_resource type="Texture2D" uid="uid://dvtn05hgew80d" path="res://map/textures/background.png" id="1_qc8qn"]
+[ext_resource type="PackedScene" uid="uid://da8sgbng7wcgu" path="res://main.tscn" id="2_4p04u"]
 [ext_resource type="Script" uid="uid://d1xqiwtdtnqfk" path="res://ui/menus/frog_island_ui.gd" id="2_j3y0t"]
 [ext_resource type="Texture2D" uid="uid://ckuul63tbaid8" path="res://map/tile/textures/water_lily.png" id="2_rsjqv"]
-[ext_resource type="PackedScene" uid="uid://da8sgbng7wcgu" path="res://main.tscn" id="2_xv1rc"]
 [ext_resource type="Shader" uid="uid://dlara25h5dn1b" path="res://vfx/highlight/highlighter2.gdshader" id="3_j3y0t"]
 [ext_resource type="Texture2D" uid="uid://g5ktffwbuwq8" path="res://entities/allies/froggo/textures/froggo_body.png" id="4_4p04u"]
 [ext_resource type="Texture2D" uid="uid://bm88nymknr226" path="res://entities/allies/froggo/textures/froggo_arm.png" id="6_f72sp"]
@@ -1606,7 +1606,7 @@ grow_vertical = 2
 script = ExtResource("1_4p04u")
 start_button = NodePath("VBoxContainer/MenuOptions/MarginContainer/StartButton")
 quit_button = NodePath("VBoxContainer/MenuOptions/MarginContainer2/QuitButton")
-game_scene = ExtResource("2_xv1rc")
+game_scene = ExtResource("2_4p04u")
 
 [node name="Background" type="TextureRect" parent="." unique_id=2088509188]
 layout_mode = 1

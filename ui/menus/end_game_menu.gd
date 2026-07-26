@@ -4,7 +4,7 @@ extends Control
 @export var replay_button: Button
 @export var main_menu_button: Button
 @export var quit_button: Button
-@export var main_menu_scene: PackedScene
+@onready var main_menu_scene: PackedScene = preload("uid://cr2odqe6nec73")
 
 func _ready() -> void:
 	EventBus.game_ended.connect(_on_game_ended)
