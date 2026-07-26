@@ -10,10 +10,10 @@ config_version=5
 
 [application]
 
-config/name="gmtk-2026"
+config/name="protect-frog-king"
 run/main_scene="uid://cr2odqe6nec73"
 config/features=PackedStringArray("4.7", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="uid://bwt6g7ya7jlfo"
 
 [autoload]
 
