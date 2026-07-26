@@ -4,13 +4,15 @@ extends Entity
 var banked_actions: Array[ActionSequence]
 var used_this_cycle : bool = false
 
+var currently_hidden : bool = false
+
 @export var entity_ui : Control
 
 func _ready() -> void:
 	super._ready()	
 	EventBus.new_cycle.connect(reset_usage)
 
-func set_data(data: AllyData):
+func set_data(data: AllyData, start_hidden = false):
 	entity_data = data
 
 	var visuals = entity_data.scene.instantiate()
@@ -18,7 +20,12 @@ func set_data(data: AllyData):
 	add_child(visuals, true)
 	animator = visuals.get_node("AnimationPlayer")
 	
-	play_animation("spawn")
+	currently_hidden = start_hidden
+	
+	if start_hidden:
+		play_animation("bubbles")
+	else:
+		play_animation("spawn")
 
 func bank_actions(action_sequence: ActionSequence):
 	banked_actions.append(action_sequence)
@@ -26,18 +33,21 @@ func bank_actions(action_sequence: ActionSequence):
 func overwatch_tiles(tiles: Array[Tile]):
 	pass
 
-func trigger():
-	await act()
+func die():
+	if ! currently_hidden:
+		play_animation("dismiss")
+	queue_free()
 
-func act():
+func trigger():
 	for action_sequence in banked_actions:
-		action_handler.perform_actions(action_sequence)
+		await action_handler.perform_actions(action_sequence)
 
 func activate(player_action : bool = false):
-	modulate.a = 1
-	
 	play_animation("under", true)
 	
+	if currently_hidden:
+		currently_hidden = false
+		
 	team = TEAMS.ALLY
 	
 	EventBus.ally_action_performed.emit()

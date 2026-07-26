@@ -1,67 +1,15 @@
 [gd_resource type="Resource" script_class="AllyData" format=3 uid="uid://b5unws06fkbfl"]
 
-[ext_resource type="Script" uid="uid://yyhnn4sejhrt" path="res://abilities/actions/action.gd" id="1_hcbmf"]
-[ext_resource type="Script" uid="uid://b3n7i5kgdbo7r" path="res://abilities/actions/sequential_action_strategy.gd" id="2_efvm1"]
-[ext_resource type="Script" uid="uid://08b553jmywp" path="res://abilities/actions/steps/select.gd" id="2_yg20i"]
-[ext_resource type="PackedScene" uid="uid://c8nq565hfwm2v" path="res://entities/allies/froggo/froggo.tscn" id="3_df8vh"]
-[ext_resource type="Script" uid="uid://5kjnatrb4mig" path="res://abilities/range/range_pattern.gd" id="3_ljn78"]
-[ext_resource type="Script" uid="uid://cs7o53c5hrvdk" path="res://abilities/range/ability_range.gd" id="4_td7gd"]
+[ext_resource type="Resource" uid="uid://cucgwxaxigvs" path="res://abilities/action_sequences/ally_actions/bolos_action.tres" id="1_1nbak"]
+[ext_resource type="Resource" uid="uid://dwm7iesi2x0m2" path="res://abilities/action_sequences/ally_moves/bolos_move.tres" id="2_a8smh"]
 [ext_resource type="Script" uid="uid://dly02pjrb1d6s" path="res://entities/allies/ally_data.gd" id="4_usuge"]
-[ext_resource type="Script" uid="uid://cchuyhgd0lsne" path="res://abilities/movement/basic_movement_strategy.gd" id="5_qvtn4"]
-[ext_resource type="Script" uid="uid://b2ia62h5b18fg" path="res://abilities/actions/steps/move_action.gd" id="6_obshq"]
-
-[sub_resource type="Resource" id="Resource_jebjq"]
-script = ExtResource("3_ljn78")
-metadata/_custom_type_script = "uid://5kjnatrb4mig"
-
-[sub_resource type="Resource" id="Resource_up8bs"]
-script = ExtResource("4_td7gd")
-patterns = Array[ExtResource("3_ljn78")]([SubResource("Resource_jebjq")])
-metadata/_custom_type_script = "uid://cs7o53c5hrvdk"
-
-[sub_resource type="Resource" id="Resource_suoni"]
-script = ExtResource("2_yg20i")
-selection_range = SubResource("Resource_up8bs")
-metadata/_custom_type_script = "uid://08b553jmywp"
-
-[sub_resource type="Resource" id="Resource_iioo7"]
-script = ExtResource("5_qvtn4")
-movement_direction = Vector2i(1, 0)
-metadata/_custom_type_script = "uid://cchuyhgd0lsne"
-
-[sub_resource type="Resource" id="Resource_up3bg"]
-script = ExtResource("6_obshq")
-move_strategy = SubResource("Resource_iioo7")
-metadata/_custom_type_script = "uid://b2ia62h5b18fg"
-
-[sub_resource type="Resource" id="Resource_sxsx5"]
-script = ExtResource("2_efvm1")
-actions = Array[ExtResource("1_hcbmf")]([SubResource("Resource_suoni"), SubResource("Resource_up3bg")])
-metadata/_custom_type_script = "uid://b3n7i5kgdbo7r"
-
-[sub_resource type="Resource" id="Resource_l8028"]
-script = ExtResource("3_ljn78")
-area_grid = Vector2i(1, 3)
-offset = Vector2i(0, -1)
-mirror = true
-metadata/_custom_type_script = "uid://5kjnatrb4mig"
-
-[sub_resource type="Resource" id="Resource_yg20i"]
-script = ExtResource("3_ljn78")
-direction = 0
-mirror = true
-metadata/_custom_type_script = "uid://5kjnatrb4mig"
-
-[sub_resource type="Resource" id="Resource_qvtn4"]
-script = ExtResource("4_td7gd")
-patterns = Array[ExtResource("3_ljn78")]([SubResource("Resource_l8028"), SubResource("Resource_yg20i")])
-metadata/_custom_type_script = "uid://cs7o53c5hrvdk"
+[ext_resource type="PackedScene" uid="uid://dsf8ybbio8kxl" path="res://entities/allies/cakey/cakey.tscn" id="10_obshq"]
 
 [resource]
 script = ExtResource("4_usuge")
-movement_range = SubResource("Resource_qvtn4")
+movement_range = ExtResource("2_a8smh")
 team = 2
-scene = ExtResource("3_df8vh")
-action_sequence = SubResource("Resource_sxsx5")
+scene = ExtResource("10_obshq")
+action_sequence = ExtResource("1_1nbak")
 color = Color(0.15643457, 0.26579496, 0.7593705, 1)
 metadata/_custom_type_script = "uid://dly02pjrb1d6s"

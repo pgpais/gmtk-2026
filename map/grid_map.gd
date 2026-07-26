@@ -106,6 +106,27 @@ func get_tile_path(current_tile: Tile, target_tile: Tile, include_target: bool =
 	
 	return path
 
+func get_valid_tiles(target_type, selection_range, reference_tile, target_team) -> Array[Tile]:
+	var range_tiles = []
+	var tiles = []
+	
+	if selection_range != null:
+		range_tiles = get_tiles_in_range(selection_range, reference_tile)
+		
+	for tile in range_tiles:
+		if is_valid_tile(target_type, target_team, tile):
+			tiles.append(tile)
+
+	return tiles
+
+func is_valid_tile(target_type, target_team, tile):
+	if ((target_type in [Constants.TARGET_TYPES.TILE, Constants.TARGET_TYPES.DIRECTION] and ! tile.entity)
+	or (target_type == Constants.TARGET_TYPES.ENTITY and tile.entity and tile.entity.team == target_team)):
+		return true
+	else:
+		return false
+	
+
 func get_entities_in_column(column_index : int) -> Array[Entity]:
 	var entities : Array[Entity] = []
 	for tile : Tile in columns[column_index].tiles:
@@ -158,3 +179,22 @@ func make_all_tiles_not_selectable():
 	for column in columns:
 		for tile in column.tiles:
 			tile.selectable.set_selectable(false)
+
+func get_all_overwatches() -> Array[Overwatch]:
+	var overwatches: Array[Overwatch] = []
+	for column in columns:
+		for tile in column.tiles:
+			overwatches.append_array(tile.overwatches)
+	return overwatches
+
+func get_overwatches_of_entity(entity: Entity) -> Array[Overwatch]:
+	var overwatches: Array[Overwatch] = []
+	for column in columns:
+		for tile in column.tiles:
+				overwatches.append_array(tile.overwatches)
+	
+	for overwatch in overwatches:
+		if overwatch.entity == entity:
+			overwatch.remove_self()
+			overwatches.erase(overwatch)
+	return overwatches

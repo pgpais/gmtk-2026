@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="AbilityRange" format=3 uid="uid://cp2qv1jtwc8ox"]
+
+[ext_resource type="Script" uid="uid://5kjnatrb4mig" path="res://abilities/range/range_pattern.gd" id="1_u61mu"]
+[ext_resource type="Script" uid="uid://cs7o53c5hrvdk" path="res://abilities/range/ability_range.gd" id="2_t8qc0"]
+
+[sub_resource type="Resource" id="Resource_x45ir"]
+script = ExtResource("1_u61mu")
+mirror = true
+metadata/_custom_type_script = "uid://5kjnatrb4mig"
+
+[sub_resource type="Resource" id="Resource_g3exs"]
+script = ExtResource("1_u61mu")
+direction = 0
+mirror = true
+metadata/_custom_type_script = "uid://5kjnatrb4mig"
+
+[resource]
+script = ExtResource("2_t8qc0")
+patterns = Array[ExtResource("1_u61mu")]([SubResource("Resource_x45ir"), SubResource("Resource_g3exs")])
+metadata/_custom_type_script = "uid://cs7o53c5hrvdk"

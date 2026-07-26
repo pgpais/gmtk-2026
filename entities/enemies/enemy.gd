@@ -9,7 +9,7 @@ func _ready() -> void:
 	team = TEAMS.ENEMY
 	super._ready()
 
-func set_data(data):
+func set_data(data, hidden = false):
 	entity_data = data
 	
 	visuals = entity_data.scene.instantiate()
@@ -18,6 +18,8 @@ func set_data(data):
 	animator = visuals.get_node("AnimationPlayer")
 
 	frog_king_damage = entity_data.frog_king_damage
+	
+	play_animation("spawn")
 
 	
 func trigger():

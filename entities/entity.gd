@@ -28,6 +28,7 @@ enum TEAMS {
 var team = TEAMS.NEUTRAL
 ## to configure the move tween
 var time_to_move: float = 1
+var power : int = 1
 #endregion
 
 #region state control
@@ -54,8 +55,9 @@ func _ready() -> void:
 		#global_position = current_tile.global_position
 		#current_tile.set_entity(self)
 
-func set_data(data):
+func set_data(data, hidden = false):
 	entity_data = data
+	play_animation("spawn")
 
 func set_tile(tile):
 	current_tile = tile
@@ -97,8 +99,14 @@ func _move_to_tile(target_tile: Tile):
 
 	target_tile.hide_positive_highlight()
 	
-	print("checking overwatches at tile ", target_tile.tile_index, ", ", target_tile.column.column_index)
-	await target_tile.check_overwatches(self)
+	if target_tile.entity and target_tile.entity.is_shock:
+		await die()
+	else:
+		print("checking overwatches at tile ", target_tile.tile_index, ", ", target_tile.column.column_index)
+		await target_tile.check_overwatches(self)
+	
+	if target_tile.entity:
+		await target_tile.entity.die()
 
 	current_tile.set_entity(null)
 	current_tile = target_tile # attention: updating current tile before animation is completed
@@ -128,24 +136,33 @@ func _move(x, y):
 		#action_handler.reset()
 		#finished_movement.emit()
 		queue_free()
-		return
+		return true
 	
 	if (new_layer_index >= len(grid_map.columns)): # if it's already on the left/right edge
 		collide(new_layer_index, new_tile_index) # animation colliding but stays in the same tile
-		return
+		return false
 	
 	if (new_tile_index < 0 or new_tile_index >= len(grid_map.columns[new_layer_index].tiles)): # if it's already on the top/bottom edge
 		collide(new_layer_index, new_tile_index) # animation colliding but stays in the same tile
-		return
+		return false
 		
 	var target_tile = grid_map.get_tile(new_layer_index, new_tile_index)
 	
-	if not target_tile.entity == null: 
-		target_tile.entity.die()
+	var will_collide_with_entity : bool = not target_tile.entity == null
+	
+	if will_collide_with_entity and team == target_tile.entity:
+		if team == TEAMS.ALLY:
+			return false
+		elif team == TEAMS.ENEMY:
+			#TODO CASCADING EFFECT
+			if ! target_tile.entity._move(x, y):
+				return false
 	
 	await _move_to_tile(target_tile)
 	
 	finished_movement.emit()
+	
+	return true
 
 func finish_movement():
 	if animator.has_animation("idle"):
@@ -153,40 +170,61 @@ func finish_movement():
 	else:
 		animator.stop()
 
-func rotate_to_direction(direction : String):
+func rotate_to_direction(direction_vector : Vector2):
 	#might change to play an animation?
-	match direction:
-		"up":
-			scale = Vector2(1,1)
-			rotation = -70
-		"right":
-			scale = Vector2(1,1)
-			rotation = 0
-		"down":
-			scale = Vector2(1,1)
-			rotation = 105
-		"left":
-			scale = Vector2(-1,1)
-			rotation = 0
-			
+	if direction_vector.is_zero_approx():
+		return
+		
+	var target_angle = snapped(direction_vector.angle(), PI / 4.0)
+	
+	rotation = target_angle
+	
+	if abs(target_angle) > PI / 2.0:
+		scale.y = -1
+	else:
+		scale.y = 1
+	
 	rotated.emit() # to accomodate the possibility of only finishing when animation finishes
 
 func shock(toggle):
 	is_shock = toggle
+	play_animation("shock")
 	modulate = Color.AQUAMARINE if toggle else Color.WHITE
 
 func shoot_at(tile_position : Vector2):
 	var target_tile = grid_map.get_tile(tile_position.x, tile_position.y)
-	
 	var entity_on_tile = target_tile.entity
 	
-	var valid_target = (entity_on_tile
-					and ((team == Entity.TEAMS.ALLY and entity_on_tile.team == Entity.TEAMS.ENEMY) 
-					or (team == Entity.TEAMS.ENEMY and entity_on_tile.team == Entity.TEAMS.ALLY)))
+	play_animation("leek")
+	
+	if entity_on_tile:
+		if entity_on_tile.is_shock:
+			await die()
+	
+	var valid_target = team != entity_on_tile.team and entity_on_tile.team != TEAMS.BEETLE 
 	
 	if valid_target:
-		entity_on_tile.die()
+		await kill_other_entity(entity_on_tile)
+		power_action()
+	else:
+		# fails
+		# super hard coded! careful
+		reset_power()
+		action_handler._finish_performing()
 		
+	play_animation("leek", true)
+
+func reset_power():
+	power = 1
+	entity_data.action_sequence.actions = entity_data.action_sequence.actions.slice(0, 1)
+
+func power_action():
+	power += 1
+	entity_data.action_sequence.actions.append(entity_data.action_sequence.actions[0])
+
+func kill_other_entity(entity : Entity):
+	await entity.die()
+
 func die():
 	clear_overwatches()
 	await play_animation("dismiss")
@@ -199,9 +237,6 @@ func collide(x, y): # animation colliding with the edge / obstacle but not movin
 	finished_movement.emit()
 
 func trigger():
-	pass
-	
-func act():
 	pass
 
 func play_animation(animation, backwards = false):
@@ -223,9 +258,9 @@ func set_selectable(is_selectable: bool):
 	_selectable.set_selectable(is_selectable)
 
 func clear_overwatches():
-	#TODO:
-	print("IMPLEMENT OVERWATCH CLEARING YOU DUMBO")
-	pass
+	var overwatches = grid_map.get_overwatches_of_entity(self)
+	for overwatch in overwatches:
+			overwatch.tile.remove_overwatch(overwatch)
 
 func set_highlight(is_highlighted):
 	if visuals.has_method("set_highlight"):

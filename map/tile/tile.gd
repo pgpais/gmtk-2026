@@ -44,10 +44,26 @@ func _on_mouse_entered():
 func _on_mouse_exited():
 	pass
 
+func show_tile():
+	sprite.visible = true
+	sprite.scale = Vector2.ZERO
+	var tween = create_tween()
+	tween.tween_property(sprite, "scale", Vector2.ONE, 0.35).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+
+func hide_tile():
+	var tween = create_tween()
+	tween.tween_property(sprite, "scale", Vector2.ZERO, 0.25).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN)
+	tween.tween_callback(func(): sprite.visible = false)
+
 func set_entity(entity: Entity):
 	self.entity = entity
 	if entity:
 		entity_entered_tile.emit(entity)
+		
+		if entity.team == Entity.TEAMS.NEUTRAL and visible:
+			hide_tile()
+		elif not visible:
+			show_tile()
 
 func get_entity() -> Entity:
 	return entity
@@ -128,6 +144,7 @@ func add_overwatch(overwatch: Overwatch):
 	overwatches.append(overwatch)
 	
 func remove_overwatch(overwatch: Overwatch):
+	overwatch.remove_self()
 	overwatches.erase(overwatch)
 
 func check_overwatches(entity: Entity):
