@@ -23,8 +23,8 @@
 [ext_resource type="Resource" uid="uid://c0w6efwtkwcj2" path="res://spawner/cycles/espada_cycle.tres" id="11_qsp4k"]
 [ext_resource type="Resource" uid="uid://ca6l5hbqbik1o" path="res://spawner/cycles/advanced_enemy_cycle.tres" id="12_kq58d"]
 [ext_resource type="Resource" uid="uid://escuhvj7cayu" path="res://spawner/cycles/extreme_enemy_cycle.tres" id="13_a6jrf"]
-[ext_resource type="Script" uid="uid://cxwch0s8x7i5t" path="res://ui/menus/end_game_menu.gd" id="13_ycdy4"]
 [ext_resource type="PackedScene" uid="uid://nclqfbt55yp5" path="res://core/frog_king/frog_king_ui.tscn" id="14_w48qg"]
+[ext_resource type="PackedScene" uid="uid://cfij45y4gl7ps" path="res://ui/menus/end_game_menu.tscn" id="25_0odxb"]
 
 [sub_resource type="Resource" id="Resource_yaehf"]
 script = ExtResource("10_yaehf")
@@ -115,71 +115,7 @@ frog_king_health_component = NodePath("../../FrogKing/HealthComponent")
 [node name="Menus" type="CanvasLayer" parent="." unique_id=635451417]
 layer = 10
 
-[node name="EndGameMenu" type="Control" parent="Menus" unique_id=189605733 node_paths=PackedStringArray("victory_menu", "defeat_menu", "quit_button")]
+[node name="EndGameMenu" parent="Menus" unique_id=853122381 instance=ExtResource("25_0odxb")]
 visible = false
-layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 345.0
-offset_bottom = 266.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-script = ExtResource("13_ycdy4")
-victory_menu = NodePath("VictoryMenu")
-defeat_menu = NodePath("DefeatMenu")
-quit_button = NodePath("Button")
-
-[node name="DefeatMenu" type="Control" parent="Menus/EndGameMenu" unique_id=1263875727]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="Label" type="Label" parent="Menus/EndGameMenu/DefeatMenu" unique_id=1602947207]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-theme_override_font_sizes/font_size = 40
-text = "PERDESTE BORRO"
-
-[node name="VictoryMenu" type="Control" parent="Menus/EndGameMenu" unique_id=1824694837]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="Label" type="Label" parent="Menus/EndGameMenu/VictoryMenu" unique_id=168523353]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-theme_override_font_sizes/font_size = 40
-text = "GANHASTE LINDO"
-
-[node name="Button" type="Button" parent="Menus/EndGameMenu" unique_id=176543546]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -102.0
-offset_top = -74.0
-offset_right = 102.0
-grow_horizontal = 2
-grow_vertical = 0
-mouse_filter = 2
-text = "Leave"
 
 [editable path="FrogKing"]
