@@ -742,6 +742,7 @@ libraries/ = SubResource("AnimationLibrary_kkaqq")
 
 [node name="BodyUnderWater" type="Sprite2D" parent="." unique_id=1682234378]
 visible = false
+material = ExtResource("2_vlown")
 texture = ExtResource("7_nqbq2")
 
 [node name="DeathAnimation" parent="." unique_id=429524921 instance=ExtResource("9_nqbq2")]

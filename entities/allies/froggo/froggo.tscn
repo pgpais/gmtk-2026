@@ -1787,6 +1787,7 @@ texture = ExtResource("7_yapv2")
 
 [node name="BodyUnderWater" type="Sprite2D" parent="." unique_id=1980738004]
 visible = false
+material = ExtResource("2_yapv2")
 texture = ExtResource("10_yapv2")
 
 [node name="DeathAnimation" parent="." unique_id=429524921 instance=ExtResource("11_alput")]

@@ -747,6 +747,7 @@ libraries/ = SubResource("AnimationLibrary_8dnap")
 
 [node name="BodyUnderWater" type="Sprite2D" parent="." unique_id=1334566504]
 visible = false
+material = ExtResource("2_rw2ga")
 position = Vector2(-14.999999, 69.999985)
 texture = ExtResource("4_amvql")
 
