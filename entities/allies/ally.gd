@@ -69,8 +69,8 @@ func dismiss(player_action : bool = false):
 	queue_free()
 
 func request_move():
-	EventBus.request_highlight.emit(Constants.TARGET_TYPES.TILE, entity_data.movement_range, current_tile)
-	
+	EventBus.request_highlight.emit(Constants.TARGET_TYPES.TILE, entity_data.movement_range, current_tile, Entity.TEAMS.ALLY, true)
+
 	EventBus.tile_selected.connect(fulfill_move_request)
 	EventBus.cancel_interaction.connect(cancel_move_request)
 

@@ -228,6 +228,7 @@ func kill_other_entity(entity : Entity):
 func die():
 	clear_overwatches()
 	await play_animation("dismiss")
+	current_tile.set_entity(null)
 	queue_free()
 
 func pop_direction_buttons(toggle):

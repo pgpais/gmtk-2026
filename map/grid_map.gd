@@ -106,7 +106,7 @@ func get_tile_path(current_tile: Tile, target_tile: Tile, include_target: bool =
 	
 	return path
 
-func get_valid_tiles(target_type, selection_range, reference_tile, target_team) -> Array[Tile]:
+func get_valid_tiles(target_type, selection_range, reference_tile, target_team) -> Array:
 	var range_tiles = []
 	var tiles = []
 	

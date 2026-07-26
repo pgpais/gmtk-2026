@@ -69,8 +69,6 @@ func _change_to_selection_state(target_type, selection_range, reference_tile, te
 		_change_to_ally_selection_state()
 	elif target_type == Constants.ENTITY_TYPES.ENEMY:
 		_change_to_enemy_selection_state()
-		
-	return true
 
 func _move_control_entity_to_target_tile():
 	var tile_path: Array[Tile] = grid_map.get_path_of_tiles(control_entity.current_tile, target_tile)
