@@ -110,6 +110,8 @@ func perform_movement():
 		_move(1, 0)
 
 func _move(x, y):
+	clear_overwatches()
+
 	var new_layer_index = 0
 	var new_tile_index = 0
 	
@@ -183,7 +185,8 @@ func shoot_at(tile_position : Vector2):
 		entity_on_tile.die()
 		
 func die():
-	play_animation("dismiss")
+	clear_overwatches()
+	await play_animation("dismiss")
 	queue_free()
 
 func pop_direction_buttons(toggle):
@@ -215,3 +218,8 @@ func play_animation(animation, backwards = false):
 
 func set_selectable(is_selectable: bool):
 	_selectable.set_selectable(is_selectable)
+
+func clear_overwatches():
+	#TODO:
+	print("IMPLEMENT OVERWATCH CLEARING YOU DUMBO")
+	pass

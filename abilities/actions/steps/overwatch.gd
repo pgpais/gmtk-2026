@@ -16,6 +16,7 @@ func check(entity: Entity) -> bool:
     if entity == self.entity: return false
     if entity.team != target_team: return false
 
+    self.entity.action_handler.set_parameter("overwatch_entity", entity)
     await self.entity.action_handler.perform_actions(action_sequence)
 
     return true
