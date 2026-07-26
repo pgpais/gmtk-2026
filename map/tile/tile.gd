@@ -18,22 +18,46 @@ signal entity_entered_tile(entity: Entity)
 
 @export var direction_ui: Control
 
-var base_sprite_position;
+@export var target : Sprite2D 
+@export var action_cooldown: float = 8
+@export var rotate_chance: float = 0.3
+@export var move_chance: float = 0.5
+@export var invert_chance: float = 0.6
+
 var entity: Entity = null
 
 var overwatches: Array[Overwatch] = []
 
-@export var target : Sprite2D 
+var _base_sprite_position: Vector2
+var _cooldown_timer: float = 0
 
 func _ready():
 	mouse_entered.connect(_on_mouse_entered)
 	mouse_exited.connect(_on_mouse_exited)
 
-	base_sprite_position = sprite.position
+	_base_sprite_position = sprite.position
 
 func _process(delta: float) -> void:
-	sprite.rotation += randf() * delta
-	sprite.position = (sprite.position + Vector2(randi_range(-20, 20), randi_range(-20, 20)) * delta).clamp(base_sprite_position - Vector2(10, 10), base_sprite_position + Vector2(10, 10))
+	_cooldown_timer -= delta
+	if _cooldown_timer > 0:
+		return
+
+	_cooldown_timer = action_cooldown
+
+	if randf() < rotate_chance:
+		var direction := -1 if randf() < invert_chance else 1
+		var target_rotation := sprite.rotation + direction * randf()
+
+		var rotation_tween := create_tween()
+		rotation_tween.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+		rotation_tween.tween_property(sprite, "rotation", target_rotation, action_cooldown)
+
+	if randf() < move_chance:
+		var target_position: Vector2 = (sprite.position + Vector2(randi_range(-20, 20), randi_range(-20, 20))).clamp(_base_sprite_position - Vector2(7, 7), _base_sprite_position + Vector2(7, 7))
+
+		var position_tween := create_tween()
+		position_tween.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+		position_tween.tween_property(sprite, "position", target_position, action_cooldown)
 
 func _on_mouse_entered():
 	if selectable._isSelectable:
