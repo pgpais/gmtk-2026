@@ -517,7 +517,6 @@ _data = {
 }
 
 [node name="Mitsy" type="Node2D" unique_id=1111273269]
-scale = Vector2(0.2, 0.2)
 script = ExtResource("1_g6hyt")
 custom_material = ExtResource("3_7qrwk")
 

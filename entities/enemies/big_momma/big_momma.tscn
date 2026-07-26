@@ -432,7 +432,6 @@ _data = {
 }
 
 [node name="BigMomma" type="Node2D" unique_id=713239565]
-scale = Vector2(0.2, 0.2)
 script = ExtResource("1_a2nen")
 custom_material = ExtResource("2_uep1a")
 

@@ -300,7 +300,6 @@ _data = {
 colors = PackedColorArray(0.7647059, 0, 0, 0, 1, 0.54509807, 0.56078434, 1)
 
 [node name="Bettle" type="Node2D" unique_id=1709891465]
-scale = Vector2(0.2, 0.2)
 script = ExtResource("1_foxku")
 custom_material = ExtResource("2_5qqps")
 
