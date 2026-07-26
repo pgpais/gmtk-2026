@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="EnemyData" format=3 uid="uid://bi1cyixed87us"]
+[gd_resource type="Resource" script_class="EnemyData" format=3 uid="uid://dccycmx7fq4vx"]
 
 [ext_resource type="PackedScene" uid="uid://bjwl5ilt4my3o" path="res://entities/enemies/swordy/swordy.tscn" id="1_2eh1l"]
 [ext_resource type="Script" uid="uid://yyhnn4sejhrt" path="res://abilities/actions/action.gd" id="1_2meft"]
