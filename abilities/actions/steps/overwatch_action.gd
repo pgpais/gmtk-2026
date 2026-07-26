@@ -23,3 +23,13 @@ func execute(action_handler: ActionHandler, entity: Entity, grid_map: LayerGridM
 	var overwatch: Overwatch = Overwatch.new(target_tile, action_sequence, entity, team, test_instance)
 	target_tile.add_overwatch(overwatch)
 	print("overwatch added to tile ", target_tile)
+
+func enable_preview(action_handler: ActionHandler, entity: Entity, grid_map: LayerGridMap):
+	var target_tile = action_handler.get_parameter(target_tile_parameter_name)
+
+	target_tile.show_danger_highlight()
+
+func disable_preview(action_handler: ActionHandler, entity: Entity, grid_map: LayerGridMap):
+	var target_tile = action_handler.get_parameter(target_tile_parameter_name)
+
+	target_tile.hide_danger_highlight()

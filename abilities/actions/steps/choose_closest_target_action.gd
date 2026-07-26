@@ -13,9 +13,20 @@ extends Action
 @export var range: AbilityRange
 
 func execute(action_handler: ActionHandler, entity: Entity, grid_map: LayerGridMap):
+	var current_tile: Tile = entity.current_tile
+
+	await _execution(current_tile, action_handler, entity, grid_map)
+
+func enable_preview(action_handler: ActionHandler, entity: Entity, grid_map: LayerGridMap):
+	await _execution(entity.preview_tile, action_handler, entity, grid_map)
+
+func disable_preview(action_handler: ActionHandler, entity: Entity, grid_map: LayerGridMap):
+	pass
+
+func _execution(current_tile: Tile, action_handler: ActionHandler, entity: Entity, grid_map: LayerGridMap):
 	var possible_targets: Array[Node]
 	if range:
-		var possible_tiles = grid_map.get_tiles_in_range(range, entity.current_tile)
+		var possible_tiles = grid_map.get_tiles_in_range(range, current_tile)
 		if visualize_range:
 			var tile_highlighter: RangeHighlighter = entity.get_tree().current_scene.get_node("RangeHighlighter")
 			tile_highlighter.hide_highlight_tiles(possible_tiles)

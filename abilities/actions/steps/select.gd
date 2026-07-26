@@ -44,3 +44,9 @@ func set_selectable_tiles(tiles: Array[Tile], state: bool):
 	for tile in tiles:
 		if tile.selectable:
 			tile.selectable.set_selectable(state)
+
+func enable_preview(action_handler: ActionHandler, entity: Entity, grid_map: LayerGridMap):
+	pass
+
+func disable_preview(action_handler: ActionHandler, entity: Entity, grid_map: LayerGridMap):
+	pass

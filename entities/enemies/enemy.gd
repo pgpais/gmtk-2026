@@ -32,3 +32,10 @@ func trigger():
 	await action_handler.perform_actions(entity_data.action_sequence)
 	# for action: ActionSequence in possible_actions:
 	# 	pass # to do
+
+func preview_actions(will_preview: bool):
+	if will_preview:
+		print("preview actions")
+		action_handler.preview_actions(entity_data.action_sequence)
+	else:
+		action_handler.disable_preview_actions()

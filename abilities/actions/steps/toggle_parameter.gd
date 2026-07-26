@@ -11,3 +11,9 @@ func execute(action_handler: ActionHandler, entity: Entity, grid_map: LayerGridM
 		return
 		
 	action_handler.set_parameter(parameter_name, !action_handler.get_parameter(parameter_name))
+
+func enable_preview(action_handler: ActionHandler, entity: Entity, grid_map: LayerGridMap):
+	await execute(action_handler, entity, grid_map)
+
+func disable_preview(action_handler: ActionHandler, entity: Entity, grid_map: LayerGridMap):
+	await execute(action_handler, entity, grid_map)

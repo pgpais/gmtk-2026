@@ -5,3 +5,6 @@ extends ActionCondition
 
 func evaluate(action_handler: ActionHandler, entity: Entity, grid_map: LayerGridMap) -> bool:
 	return action_handler.get_parameter(parameter_name) == true
+
+func preview_evaluate(action_handler: ActionHandler, entity: Entity, grid_map: LayerGridMap) -> bool:
+	return action_handler.get_parameter(parameter_name) == true

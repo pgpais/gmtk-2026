@@ -8,3 +8,11 @@ func execute(action_handler: ActionHandler, entity: Entity, grid_map: LayerGridM
 	var direction_to_entity = distance_to_tile.normalized()
 
 	tile.get_entity()._move(direction_to_entity.x, direction_to_entity.y)
+
+func enable_preview(action_handler: ActionHandler, entity: Entity, grid_map: LayerGridMap):
+	var tile: Tile = action_handler.get_parameter("selected_tile")
+	tile.show_danger_highlight()
+
+func disable_preview(action_handler: ActionHandler, entity: Entity, grid_map: LayerGridMap):
+	var tile: Tile = action_handler.get_parameter("selected_tile")
+	tile.hide_danger_highlight()

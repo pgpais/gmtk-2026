@@ -3,6 +3,7 @@ extends Area2D
 
 signal can_be_selected(state: bool)
 signal selected
+signal hovered(state: bool)
 
 @export var _isSelectable = false
 var _isHovered = false
@@ -14,9 +15,11 @@ func _ready():
 
 func _on_mouse_entered():
 	_isHovered = true
+	hovered.emit(_isHovered)
 
 func _on_mouse_exited():
 	_isHovered = false
+	hovered.emit(_isHovered)
 
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton:
