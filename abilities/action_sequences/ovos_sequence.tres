@@ -1,0 +1,75 @@
+[gd_resource type="Resource" script_class="SequentialActionStrategy" format=3 uid="uid://84r4k57kwk87"]
+
+[ext_resource type="Script" uid="uid://yyhnn4sejhrt" path="res://abilities/actions/action.gd" id="1_3eqph"]
+[ext_resource type="Script" uid="uid://db8uxv8205ng6" path="res://abilities/actions/steps/toggle_parameter.gd" id="2_sgets"]
+[ext_resource type="Script" uid="uid://dy7kbvn0jq2f1" path="res://abilities/actions/conditions/parameter_condition.gd" id="3_4be8v"]
+[ext_resource type="PackedScene" uid="uid://bjwl5ilt4my3o" path="res://entities/enemies/swordy/swordy.tscn" id="4_00bms"]
+[ext_resource type="Script" uid="uid://bp1u6h3jw4ia" path="res://entities/enemies/enemy_data.gd" id="5_f071g"]
+[ext_resource type="Script" uid="uid://dd3t6r6ct2kwh" path="res://abilities/actions/steps/spawn_entity.gd" id="6_ejipj"]
+[ext_resource type="Script" uid="uid://b3n7i5kgdbo7r" path="res://abilities/actions/sequential_action_strategy.gd" id="7_ee0j0"]
+[ext_resource type="Script" uid="uid://d4afbfntventh" path="res://abilities/actions/steps/branch_action.gd" id="8_rruv4"]
+[ext_resource type="Script" uid="uid://cchuyhgd0lsne" path="res://abilities/movement/basic_movement_strategy.gd" id="9_bic8v"]
+[ext_resource type="Script" uid="uid://b2ia62h5b18fg" path="res://abilities/actions/steps/move_action.gd" id="10_wexqy"]
+
+[sub_resource type="Resource" id="Resource_qtnvc"]
+script = ExtResource("2_sgets")
+parameter_name = "oscilate"
+metadata/_custom_type_script = "uid://db8uxv8205ng6"
+
+[sub_resource type="Resource" id="Resource_1w3o7"]
+script = ExtResource("3_4be8v")
+parameter_name = "oscilate"
+metadata/_custom_type_script = "uid://dy7kbvn0jq2f1"
+
+[sub_resource type="Resource" id="Resource_jbvfn"]
+script = ExtResource("5_f071g")
+team = 1
+scene = ExtResource("4_00bms")
+metadata/_custom_type_script = "uid://bp1u6h3jw4ia"
+
+[sub_resource type="Resource" id="Resource_jdpys"]
+script = ExtResource("6_ejipj")
+enemy_data = SubResource("Resource_jbvfn")
+metadata/_custom_type_script = "uid://dd3t6r6ct2kwh"
+
+[sub_resource type="Resource" id="Resource_efmvp"]
+script = ExtResource("7_ee0j0")
+actions = Array[ExtResource("1_3eqph")]([SubResource("Resource_jdpys")])
+metadata/_custom_type_script = "uid://b3n7i5kgdbo7r"
+
+[sub_resource type="Resource" id="Resource_u873e"]
+script = ExtResource("9_bic8v")
+movement_direction = Vector2i(-2, -2)
+metadata/_custom_type_script = "uid://cchuyhgd0lsne"
+
+[sub_resource type="Resource" id="Resource_f7ryp"]
+script = ExtResource("10_wexqy")
+move_strategy = SubResource("Resource_u873e")
+metadata/_custom_type_script = "uid://b2ia62h5b18fg"
+
+[sub_resource type="Resource" id="Resource_855d1"]
+script = ExtResource("9_bic8v")
+movement_direction = Vector2i(-2, 2)
+metadata/_custom_type_script = "uid://cchuyhgd0lsne"
+
+[sub_resource type="Resource" id="Resource_g8oc2"]
+script = ExtResource("10_wexqy")
+move_strategy = SubResource("Resource_855d1")
+metadata/_custom_type_script = "uid://b2ia62h5b18fg"
+
+[sub_resource type="Resource" id="Resource_4a3wd"]
+script = ExtResource("7_ee0j0")
+actions = Array[ExtResource("1_3eqph")]([SubResource("Resource_f7ryp"), SubResource("Resource_g8oc2")])
+metadata/_custom_type_script = "uid://b3n7i5kgdbo7r"
+
+[sub_resource type="Resource" id="Resource_cv8k4"]
+script = ExtResource("8_rruv4")
+condition = SubResource("Resource_1w3o7")
+true_action_sequence = SubResource("Resource_4a3wd")
+false_action_sequence = SubResource("Resource_efmvp")
+metadata/_custom_type_script = "uid://d4afbfntventh"
+
+[resource]
+script = ExtResource("7_ee0j0")
+actions = Array[ExtResource("1_3eqph")]([SubResource("Resource_qtnvc"), SubResource("Resource_cv8k4")])
+metadata/_custom_type_script = "uid://b3n7i5kgdbo7r"

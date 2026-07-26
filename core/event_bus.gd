@@ -4,7 +4,7 @@ signal ticker_new_tick(count: int)
 signal tick_triggers_finished
 signal new_cycle
 
-signal request_highlight(target_type, range, reference_tile)
+signal request_highlight(target_type, range, reference_tile, team, highlight)
 signal direction_selection_needed()
 signal movement_needed()
 

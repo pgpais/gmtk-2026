@@ -1,0 +1,105 @@
+[gd_resource type="Resource" script_class="SequentialActionStrategy" format=3 uid="uid://cv2a45v15xd13"]
+
+[ext_resource type="Script" uid="uid://yyhnn4sejhrt" path="res://abilities/actions/action.gd" id="1_3bi7h"]
+[ext_resource type="Script" uid="uid://b4g8cg1qh1qer" path="res://abilities/actions/conditions/check_if_height.gd" id="2_bu2ox"]
+[ext_resource type="Script" uid="uid://cchuyhgd0lsne" path="res://abilities/movement/basic_movement_strategy.gd" id="3_cj08h"]
+[ext_resource type="Script" uid="uid://b2ia62h5b18fg" path="res://abilities/actions/steps/move_action.gd" id="4_fqtux"]
+[ext_resource type="Script" uid="uid://b3n7i5kgdbo7r" path="res://abilities/actions/sequential_action_strategy.gd" id="5_k3ek1"]
+[ext_resource type="Script" uid="uid://d4afbfntventh" path="res://abilities/actions/steps/branch_action.gd" id="6_v1ulg"]
+[ext_resource type="Script" uid="uid://5kjnatrb4mig" path="res://abilities/range/range_pattern.gd" id="7_ep4jr"]
+[ext_resource type="Script" uid="uid://cs7o53c5hrvdk" path="res://abilities/range/ability_range.gd" id="8_o14qu"]
+[ext_resource type="Script" uid="uid://cl5irg4aikin7" path="res://abilities/actions/steps/choose_closest_target_action.gd" id="9_1xaan"]
+[ext_resource type="Script" uid="uid://qec7r2kwwms4" path="res://abilities/actions/steps/dive_target_action.gd" id="10_dactx"]
+[ext_resource type="Script" uid="uid://4eujiecdn8cj" path="res://abilities/actions/steps/increase_attack_damage_action.gd" id="11_sufwg"]
+[ext_resource type="Script" uid="uid://lmqlhagm40y7" path="res://abilities/actions/steps/for_action.gd" id="12_mo3g6"]
+
+[sub_resource type="Resource" id="Resource_82xsv"]
+script = ExtResource("2_bu2ox")
+check_height = 4
+metadata/_custom_type_script = "uid://b4g8cg1qh1qer"
+
+[sub_resource type="Resource" id="Resource_ryguw"]
+script = ExtResource("3_cj08h")
+movement_direction = Vector2i(-1, 1)
+metadata/_custom_type_script = "uid://cchuyhgd0lsne"
+
+[sub_resource type="Resource" id="Resource_getpj"]
+script = ExtResource("4_fqtux")
+move_strategy = SubResource("Resource_ryguw")
+metadata/_custom_type_script = "uid://b2ia62h5b18fg"
+
+[sub_resource type="Resource" id="Resource_d13ii"]
+script = ExtResource("5_k3ek1")
+actions = Array[ExtResource("1_3bi7h")]([SubResource("Resource_getpj")])
+metadata/_custom_type_script = "uid://b3n7i5kgdbo7r"
+
+[sub_resource type="Resource" id="Resource_p75ue"]
+script = ExtResource("3_cj08h")
+movement_direction = Vector2i(-1, -1)
+metadata/_custom_type_script = "uid://cchuyhgd0lsne"
+
+[sub_resource type="Resource" id="Resource_srpn1"]
+script = ExtResource("4_fqtux")
+move_strategy = SubResource("Resource_p75ue")
+metadata/_custom_type_script = "uid://b2ia62h5b18fg"
+
+[sub_resource type="Resource" id="Resource_r06tk"]
+script = ExtResource("5_k3ek1")
+actions = Array[ExtResource("1_3bi7h")]([SubResource("Resource_srpn1")])
+metadata/_custom_type_script = "uid://b3n7i5kgdbo7r"
+
+[sub_resource type="Resource" id="Resource_0sayr"]
+script = ExtResource("6_v1ulg")
+condition = SubResource("Resource_82xsv")
+true_action_sequence = SubResource("Resource_r06tk")
+false_action_sequence = SubResource("Resource_d13ii")
+metadata/_custom_type_script = "uid://d4afbfntventh"
+
+[sub_resource type="Resource" id="Resource_ma5cs"]
+script = ExtResource("7_ep4jr")
+area_grid = Vector2i(1, 3)
+offset = Vector2i(0, -1)
+mirror = true
+metadata/_custom_type_script = "uid://5kjnatrb4mig"
+
+[sub_resource type="Resource" id="Resource_xe1y6"]
+script = ExtResource("7_ep4jr")
+direction = 0
+mirror = true
+metadata/_custom_type_script = "uid://5kjnatrb4mig"
+
+[sub_resource type="Resource" id="Resource_476k1"]
+script = ExtResource("8_o14qu")
+patterns = Array[ExtResource("7_ep4jr")]([SubResource("Resource_ma5cs"), SubResource("Resource_xe1y6")])
+metadata/_custom_type_script = "uid://cs7o53c5hrvdk"
+
+[sub_resource type="Resource" id="Resource_8oh8p"]
+script = ExtResource("9_1xaan")
+group_name = &"allies"
+visualize_range = true
+range = SubResource("Resource_476k1")
+metadata/_custom_type_script = "uid://cl5irg4aikin7"
+
+[sub_resource type="Resource" id="Resource_c2yv6"]
+script = ExtResource("10_dactx")
+metadata/_custom_type_script = "uid://qec7r2kwwms4"
+
+[sub_resource type="Resource" id="Resource_sbs8n"]
+script = ExtResource("11_sufwg")
+metadata/_custom_type_script = "uid://4eujiecdn8cj"
+
+[sub_resource type="Resource" id="Resource_d2h1d"]
+script = ExtResource("5_k3ek1")
+actions = Array[ExtResource("1_3bi7h")]([SubResource("Resource_0sayr"), SubResource("Resource_8oh8p"), SubResource("Resource_c2yv6"), SubResource("Resource_sbs8n")])
+metadata/_custom_type_script = "uid://b3n7i5kgdbo7r"
+
+[sub_resource type="Resource" id="Resource_0jqe4"]
+script = ExtResource("12_mo3g6")
+loop_max = 3
+action_sequence = SubResource("Resource_d2h1d")
+metadata/_custom_type_script = "uid://lmqlhagm40y7"
+
+[resource]
+script = ExtResource("5_k3ek1")
+actions = Array[ExtResource("1_3bi7h")]([SubResource("Resource_0jqe4")])
+metadata/_custom_type_script = "uid://b3n7i5kgdbo7r"
