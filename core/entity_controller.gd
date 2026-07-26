@@ -47,7 +47,7 @@ func _change_to_selection_state(target_type, selection_range, reference_tile, te
 	var valid_tiles = grid_map.get_valid_tiles(target_type, selection_range, reference_tile, team)
 	
 	if valid_tiles.is_empty():
-		
+		_cancel_interaction()
 		return
 	
 	for tile in range_tiles:

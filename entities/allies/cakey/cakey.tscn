@@ -1054,10 +1054,11 @@ _data = {
 offsets = PackedFloat32Array(0, 0.9950495)
 colors = PackedColorArray(0.5411765, 0.84705883, 0.6784314, 1, 1, 1, 1, 0.3019608)
 
-[node name="Cakey" type="Node2D" unique_id=398916788]
+[node name="Cakey" type="Node2D" unique_id=398916788 node_paths=PackedStringArray("audioPlayer")]
 position = Vector2(-0.99999994, 19.000002)
 script = ExtResource("1_awh0g")
 custom_material = ExtResource("2_ffxwy")
+audioPlayer = NodePath("Highlight_Sound")
 
 [node name="BodyBackground" type="Sprite2D" parent="." unique_id=1667782968]
 visible = false

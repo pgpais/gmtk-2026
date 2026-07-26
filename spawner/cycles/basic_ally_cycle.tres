@@ -12,6 +12,7 @@
 script = ExtResource("3_diktk")
 possible_entity_datas = Array[ExtResource("4_ehuhl")]([ExtResource("5_vn1yt"), ExtResource("6_x7258"), ExtResource("7_w5fit")])
 conditions = Array[int]([0])
+hidden_probability = 0.2
 metadata/_custom_type_script = "uid://cwi2b70q6xv3l"
 
 [sub_resource type="Resource" id="Resource_cegan"]

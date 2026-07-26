@@ -89,6 +89,7 @@ func set_entity(entity: Entity):
 		
 		if entity.team == Entity.TEAMS.NEUTRAL and visible:
 			hide_tile()
+			
 	elif ! visible:
 		show_tile()
 

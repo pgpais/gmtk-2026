@@ -17,6 +17,7 @@
 [ext_resource type="AudioStream" uid="uid://cscwrejwuuevx" path="res://sounds/spawn_sound_enemies.mp3" id="11_emseb"]
 [ext_resource type="AudioStream" uid="uid://7b8wit7vwuc8" path="res://sounds/sapo_salta.mp3" id="13_nlibv"]
 [ext_resource type="Texture2D" uid="uid://c7o7004r1hoi" path="res://vfx/bubbles/bubble_fx.png" id="17_ayga7"]
+[ext_resource type="AudioStream" uid="uid://r2al1kmumcp" path="res://sounds/selected.mp3" id="18_k8cys"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_x8b68"]
 
@@ -1718,9 +1719,10 @@ _data = {
 offsets = PackedFloat32Array(0, 0.9950495)
 colors = PackedColorArray(0.5411765, 0.84705883, 0.6784314, 1, 1, 1, 1, 0.3019608)
 
-[node name="Froggo" type="Node2D" unique_id=626510176]
+[node name="Froggo" type="Node2D" unique_id=626510176 node_paths=PackedStringArray("audioPlayer")]
 script = ExtResource("1_yapv2")
 custom_material = ExtResource("2_yapv2")
+audioPlayer = NodePath("Highlight_Sound")
 
 [node name="Body1" type="Sprite2D" parent="." unique_id=1226581100]
 material = ExtResource("2_yapv2")
@@ -1817,5 +1819,9 @@ tangential_accel_max = -30.0
 scale_amount_min = 0.01
 scale_amount_max = 0.3
 color_ramp = SubResource("Gradient_r0xi3")
+
+[node name="Highlight_Sound" type="AudioStreamPlayer2D" parent="." unique_id=1835278405]
+stream = ExtResource("18_k8cys")
+max_polyphony = 2
 
 [connection signal="animation_finished" from="AnimationPlayer" to="Body1" method="_on_animation_player_animation_finished"]
