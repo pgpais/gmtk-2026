@@ -11,6 +11,7 @@ metadata/_custom_type_script = "uid://5kjnatrb4mig"
 [sub_resource type="Resource" id="Resource_w6i00"]
 script = ExtResource("1_amg13")
 direction = 0
+mirror = true
 metadata/_custom_type_script = "uid://5kjnatrb4mig"
 
 [resource]

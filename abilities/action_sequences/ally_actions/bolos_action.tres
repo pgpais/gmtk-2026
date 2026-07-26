@@ -4,7 +4,6 @@
 [ext_resource type="Script" uid="uid://08b553jmywp" path="res://abilities/actions/steps/select.gd" id="2_yvg48"]
 [ext_resource type="Script" uid="uid://5kjnatrb4mig" path="res://abilities/range/range_pattern.gd" id="3_b43go"]
 [ext_resource type="Script" uid="uid://cs7o53c5hrvdk" path="res://abilities/range/ability_range.gd" id="4_lf2g5"]
-[ext_resource type="Script" uid="uid://fnx7g6uj7psm" path="res://abilities/actions/steps/rotate_to_direction_action.gd" id="5_mlism"]
 [ext_resource type="Script" uid="uid://5dunwopatxk8" path="res://abilities/actions/steps/play_animation.gd" id="6_0mgjq"]
 [ext_resource type="Script" uid="uid://dvgq0bpxit2w2" path="res://abilities/actions/steps/kill_entity_action.gd" id="7_4u0tj"]
 [ext_resource type="Script" uid="uid://b3n7i5kgdbo7r" path="res://abilities/actions/sequential_action_strategy.gd" id="8_8rsc4"]
@@ -28,17 +27,13 @@ metadata/_custom_type_script = "uid://cs7o53c5hrvdk"
 
 [sub_resource type="Resource" id="Resource_suoni"]
 script = ExtResource("2_yvg48")
-target_type = 2
+target_type = 3
 selection_range = SubResource("Resource_up8bs")
 metadata/_custom_type_script = "uid://08b553jmywp"
 
-[sub_resource type="Resource" id="Resource_gj3y3"]
-script = ExtResource("5_mlism")
-metadata/_custom_type_script = "uid://fnx7g6uj7psm"
-
 [sub_resource type="Resource" id="Resource_td7gd"]
 script = ExtResource("6_0mgjq")
-animation_name = "\"open_mouth\""
+animation_name = "open_mouth"
 metadata/_custom_type_script = "uid://5dunwopatxk8"
 
 [sub_resource type="Resource" id="Resource_3cfgs"]
@@ -58,5 +53,5 @@ metadata/_custom_type_script = "uid://chsul68onsqss"
 
 [resource]
 script = ExtResource("8_8rsc4")
-actions = Array[ExtResource("1_cgllj")]([SubResource("Resource_suoni"), SubResource("Resource_gj3y3"), SubResource("Resource_td7gd"), SubResource("Resource_56i32")])
+actions = Array[ExtResource("1_cgllj")]([SubResource("Resource_suoni"), SubResource("Resource_td7gd"), SubResource("Resource_56i32")])
 metadata/_custom_type_script = "uid://b3n7i5kgdbo7r"

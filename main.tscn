@@ -75,7 +75,6 @@ anchor_bottom = 1.0
 offset_top = -150.0
 offset_bottom = 0.0
 grow_vertical = 0
-mouse_filter = 2
 ticker = NodePath("../../Ticker")
 
 [node name="FrogKingUI" parent="HUD" unique_id=1013682348 node_paths=PackedStringArray("frog_king_health_component") instance=ExtResource("14_w48qg")]
