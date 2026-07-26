@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://cyso55iwi7rrm"]
+
+[ext_resource type="Script" uid="uid://64ndgih5kdcj" path="res://entities/entity.gd" id="1_fdrhl"]
+[ext_resource type="Script" uid="uid://yyhnn4sejhrt" path="res://abilities/actions/action.gd" id="2_aitv3"]
+[ext_resource type="Texture2D" uid="uid://bwt6g7ya7jlfo" path="res://icon.png" id="2_mx4yx"]
+[ext_resource type="Script" uid="uid://cchuyhgd0lsne" path="res://abilities/movement/basic_movement_strategy.gd" id="3_ep5md"]
+[ext_resource type="Script" uid="uid://ddx61kskhe162" path="res://abilities/actions/action_handler.gd" id="3_tnr1b"]
+[ext_resource type="Script" uid="uid://b2ia62h5b18fg" path="res://abilities/actions/steps/move_action.gd" id="4_qcah7"]
+[ext_resource type="Script" uid="uid://b3n7i5kgdbo7r" path="res://abilities/actions/sequential_action_strategy.gd" id="5_1yvsh"]
+
+[sub_resource type="Resource" id="Resource_qjv36"]
+script = ExtResource("3_ep5md")
+movement_direction = Vector2i(-1, 0)
+metadata/_custom_type_script = "uid://cchuyhgd0lsne"
+
+[sub_resource type="Resource" id="Resource_q7lgb"]
+script = ExtResource("4_qcah7")
+move_strategy = SubResource("Resource_qjv36")
+metadata/_custom_type_script = "uid://b2ia62h5b18fg"
+
+[sub_resource type="Resource" id="Resource_eylph"]
+script = ExtResource("5_1yvsh")
+actions = Array[ExtResource("2_aitv3")]([SubResource("Resource_q7lgb")])
+metadata/_custom_type_script = "uid://b3n7i5kgdbo7r"
+
+[node name="Beetle-Entity" type="Node2D" unique_id=28648160 node_paths=PackedStringArray("action_handler", "_selectable") groups=["allies"]]
+scale = Vector2(0.2, 0.2)
+script = ExtResource("1_fdrhl")
+action_sequence = SubResource("Resource_eylph")
+action_handler = NodePath("ActionHandler")
+_selectable = NodePath("")
+movement_strategy = SubResource("Resource_qjv36")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1325808683]
+visible = false
+modulate = Color(0.8929083, 0.17015585, 1.1551381e-06, 1)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_mx4yx")
+
+[node name="ActionHandler" type="Node" parent="." unique_id=209209378]
+script = ExtResource("3_tnr1b")
+metadata/_custom_type_script = "uid://ddx61kskhe162"

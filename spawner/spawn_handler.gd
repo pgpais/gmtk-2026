@@ -1,11 +1,11 @@
 class_name SpawnHandler
 extends Node
 
-var current_spawn_cycle : int = 0
+var current_spawn_cycle: int = 0
 
-@export var spawn_cycles : Array[SpawnCycle]
+@export var spawn_cycles: Array[SpawnCycle]
 
-@onready var grid_map : LayerGridMap = LayerGridMap.instance
+@onready var grid_map: LayerGridMap = LayerGridMap.instance
 
 @export var enemy_scene: PackedScene
 @export var enemies_data: Array[EnemyData]
@@ -17,9 +17,9 @@ var current_spawn_cycle : int = 0
 @export var enemiesParent: Node
 @export var alliesParent: Node
 
-@export var special_spawned : bool = false
+@export var special_spawned: bool = false
 
-@export_range(0,1) var under_dismiss_probability : float = 0.5
+@export_range(0, 1) var under_dismiss_probability: float = 0.5
 
 func _ready() -> void:
 	EventBus.new_cycle.connect(cycle.call_deferred)
@@ -40,8 +40,7 @@ func cycle():
 	
 	#dismiss_allies()
 			
-func spawn_from_sequence(spawn_sequence : SpawnSequence):
-	
+func spawn_from_sequence(spawn_sequence: SpawnSequence):
 	special_spawned = false
 	
 	var spawn_datas = spawn_sequence.spawn_datas # to control spawn limits
@@ -62,28 +61,27 @@ func spawn_from_sequence(spawn_sequence : SpawnSequence):
 		for i in range(len(spawn_sequence.spawn_datas)):
 			var first_time = true
 			
-			var spawn_data : SpawnData = spawn_sequence.spawn_datas[i]
+			var spawn_data: SpawnData = spawn_sequence.spawn_datas[i]
 				
 			while first_time or randf_range(0, 1) < spawn_data.repeat_probability:
-				
 				first_time = false
 				
 				if (
 					spawn_count[i] < spawn_data.spawn_limit
 					and spawn_data.check_all_conditions(self, column_index)
 					and randf_range(0, 1) < spawn_data.probability
-				) :
+				):
 					var entity_data = spawn_data.possible_entity_datas.pick_random()
-					var tile : Tile = grid_map.get_random_empty_tile(column_index) # get a random tile
+					var tile: Tile = grid_map.get_random_empty_tile(column_index) # get a random tile
 					
-					if ! tile:
+					if !tile:
 						break
 					
-					var start_hidden  = randf_range(0, 1) < spawn_data.hidden_probability
+					var start_hidden = randf_range(0, 1) < spawn_data.hidden_probability
 					
 					if entity_data.team == Entity.TEAMS.ENEMY:
 						_spawn_enemy(entity_data, tile, start_hidden)
-					if entity_data.team == Entity.TEAMS.BEETLE:
+					elif entity_data.team == Entity.TEAMS.BEETLE:
 						_spawn_beetle(entity_data, tile)
 					else:
 						_spawn_ally(entity_data, tile, start_hidden)
@@ -103,18 +101,18 @@ func spawn_enemies(n):
 	var start_layer = len(grid_map.columns) - 1
 	
 	for i in n:
-		var enemy_data : EnemyData = enemies_data.pick_random()
+		var enemy_data: EnemyData = enemies_data.pick_random()
 		
-		var tile : Tile = grid_map.get_random_empty_tile(start_layer) # get a random start tile
+		var tile: Tile = grid_map.get_random_empty_tile(start_layer) # get a random start tile
 		
-		if tile:		
+		if tile:
 			_spawn_enemy(enemy_data, tile)
 
-func _spawn_enemy(enemy_data: EnemyData, tile: Tile, start_hidden  : bool = false):
-	var enemy : Enemy = enemy_scene.instantiate()
+func _spawn_enemy(enemy_data: EnemyData, tile: Tile, start_hidden: bool = false):
+	var enemy: Enemy = enemy_scene.instantiate()
 	
 	enemiesParent.add_child(enemy, true)
-	enemy.set_data(enemy_data, start_hidden  )
+	enemy.set_data(enemy_data, start_hidden)
 	enemy.set_tile(tile)
 	enemy.set_new_position(tile.global_position)
 	tile.set_entity(enemy)
@@ -125,13 +123,13 @@ func spawn_allies(n):
 	var start_layer = 0
 	
 	for i in n:
-		var ally_data : AllyData = allies_data.pick_random()
-		var tile : Tile = grid_map.get_random_empty_tile(start_layer) # get a random start tile
+		var ally_data: AllyData = allies_data.pick_random()
+		var tile: Tile = grid_map.get_random_empty_tile(start_layer) # get a random start tile
 		
 		if tile:
 			_spawn_ally(ally_data, tile)
 
-func _spawn_ally(ally_data, tile: Tile, start_hidden  : bool = false):
+func _spawn_ally(ally_data, tile: Tile, start_hidden: bool = false):
 	var ally = ally_scene.instantiate()
 	
 	alliesParent.add_child(ally, true)
@@ -168,7 +166,7 @@ func dismiss_allies():
 				if randf_range(0, 1) < under_dismiss_probability:
 					allies_to_dismiss.append(entity)
 			
-			elif entity.team == Entity.TEAMS.ALLY and ! entity.used_this_cycle:
+			elif entity.team == Entity.TEAMS.ALLY and !entity.used_this_cycle:
 				allies_to_dismiss.append(entity)
 		
 		print(allies_to_dismiss)

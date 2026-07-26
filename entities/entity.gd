@@ -6,7 +6,7 @@ var entity_data: EntityData
 @onready var grid_map: LayerGridMap = LayerGridMap.instance
 signal finished_movement()
 signal animation_finished(animation_name)
-signal direction_selected(direction : String)
+signal direction_selected(direction: String)
 signal rotated
 
 @export var action_sequence: ActionSequence
@@ -28,7 +28,7 @@ enum TEAMS {
 var team = TEAMS.NEUTRAL
 ## to configure the move tween
 var time_to_move: float = 1
-var power : int = 1
+var power: int = 1
 #endregion
 
 #region state control
@@ -39,7 +39,7 @@ var is_busy: bool:
 		return is_moving and is_attacking
 var is_moving: bool = false
 var is_attacking: bool = false
-var is_shock : bool = false
+var is_shock: bool = false
 #endregion
 
 var visuals: Node2D
@@ -57,7 +57,12 @@ func _ready() -> void:
 
 func set_data(data, hidden = false):
 	entity_data = data
-	play_animation("spawn")
+
+	visuals = entity_data.scene.instantiate()
+	visuals.name = "Visuals"
+	add_child(visuals, true)
+	animator = visuals.get_node("AnimationPlayer")
+	
 
 func set_tile(tile):
 	current_tile = tile
@@ -150,7 +155,7 @@ func _move(x, y):
 		
 	var target_tile = grid_map.get_tile(new_layer_index, new_tile_index)
 	
-	var will_collide_with_entity : bool = not target_tile.entity == null
+	var will_collide_with_entity: bool = not target_tile.entity == null
 	
 	if will_collide_with_entity and team == target_tile.entity.team:
 		if team == TEAMS.ALLY:
@@ -174,7 +179,7 @@ func finish_movement():
 	else:
 		animator.stop()
 
-func rotate_to_direction(direction_vector : Vector2):
+func rotate_to_direction(direction_vector: Vector2):
 	#might change to play an animation?
 	if direction_vector.is_zero_approx():
 		return
@@ -184,9 +189,9 @@ func rotate_to_direction(direction_vector : Vector2):
 	rotation = target_angle
 	
 	if abs(target_angle) > PI / 2.0:
-		scale.y = -scale.y
+		scale.y = - scale.y
 	else:
-		scale.y = +scale.y
+		scale.y = + scale.y
 	
 	rotated.emit() # to accomodate the possibility of only finishing when animation finishes
 
@@ -198,7 +203,7 @@ func shock(toggle):
 	play_animation("shock")
 	modulate = Color.AQUAMARINE if toggle else Color.WHITE
 
-func shoot_at(target_tile : Tile):
+func shoot_at(target_tile: Tile):
 	play_animation("lick")
 	
 	var entity_on_tile = target_tile.entity
@@ -207,7 +212,7 @@ func shoot_at(target_tile : Tile):
 		if entity_on_tile.is_shock:
 			await die()
 	
-	var valid_target = entity_on_tile and team != entity_on_tile.team and entity_on_tile.team != TEAMS.BEETLE 
+	var valid_target = entity_on_tile and team != entity_on_tile.team and entity_on_tile.team != TEAMS.BEETLE
 	
 	if valid_target:
 		await kill_other_entity(entity_on_tile)
@@ -228,7 +233,7 @@ func power_action():
 	power += 1
 	entity_data.action_sequence.actions.append(entity_data.action_sequence.actions[0])
 
-func kill_other_entity(entity : Entity):
+func kill_other_entity(entity: Entity):
 	await entity.die()
 
 func die():
@@ -244,12 +249,12 @@ func collide(x, y): # animation colliding with the edge / obstacle but not movin
 	finished_movement.emit()
 
 func trigger():
-	pass
+	await action_handler.perform_actions(entity_data.action_sequence)
 
 func play_animation(animation, backwards = false):
 	animator.play("RESET")
 	if animator.has_animation(animation):
-		if ! backwards:
+		if !backwards:
 			animator.play(animation)
 		else:
 			animator.play_backwards(animation)
@@ -258,13 +263,14 @@ func play_animation(animation, backwards = false):
 			var finished_animation = await animator.animation_finished
 			if finished_animation == animation:
 				animation_finished.emit(animation)
-				break;
+				break ;
 	else:
 		print("Animation not found: " + animation)
 
 func set_selectable(is_selectable: bool):
-	_selectable.set_selectable(is_selectable)
-	set_highlight(is_selectable)
+	if _selectable:
+		_selectable.set_selectable(is_selectable)
+		set_highlight(is_selectable)
 
 func clear_overwatches():
 	var overwatches = grid_map.get_overwatches_of_entity(self)
