@@ -75,16 +75,18 @@ func highlight() -> void:
 	tween.set_ease(Tween.EASE_OUT)
 	tween.set_trans(Tween.TRANS_QUAD)
 
-	tween.set_parallel(true)
-	tween.tween_property(self, "rotation_degrees", orig_rotation + 360.0, 0.4)
-	tween.tween_property(self, "scale", Vector2(1.4, 1.4), 0.15)
-	tween.tween_property(self, "modulate", Color.GOLD, 0.15)
+	var start_subtween = create_tween()
+	start_subtween.set_parallel().tween_property(self, "rotation_degrees", orig_rotation + 360.0, 0.4)
+	start_subtween.set_parallel().tween_property(self, "scale", Vector2(1.4, 1.4), 0.15)
+	start_subtween.set_parallel().tween_property(self, "modulate", Color.GOLD, 0.15)
 
-	tween.chain().set_parallel(true)
-	tween.tween_property(self, "scale", orig_scale, 0.25)
-	tween.tween_property(self, "modulate", orig_modulate, 0.25)
+	var end_subtween = create_tween()
+	end_subtween.set_parallel().tween_property(self, "scale", orig_scale, 0.25)
+	end_subtween.set_parallel().tween_property(self, "modulate", orig_modulate, 0.25)
 	
-	tween.chain().tween_property(self, "rotation_degrees", orig_rotation, 0.0)
+	tween.tween_subtween(start_subtween)
+	tween.tween_subtween(end_subtween)
+	tween.tween_property(self, "rotation_degrees", orig_rotation, 0.0)
 
 func show_danger_highlight() -> void:
 	var tween = create_tween()
