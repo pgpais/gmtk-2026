@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://dh6381oqktjwf"]
 
 [ext_resource type="Shader" uid="uid://bfeixepkfpf3h" path="res://vfx/entities/shocky2.gdshader" id="1_6678x"]
+[ext_resource type="Script" uid="uid://160jlf2raxkd" path="res://vfx/highlight/highlight.gd" id="1_garjh"]
 [ext_resource type="Shader" uid="uid://bo5rbf228opsl" path="res://vfx/shadow/shadow2.gdshader" id="2_7n2vl"]
+[ext_resource type="Material" uid="uid://j1xhxi8wfrpf" path="res://entities/enemies/shocky/highlight_mat.tres" id="2_ho4ni"]
 [ext_resource type="Texture2D" uid="uid://bxmeme8lwj6vn" path="res://entities/enemies/shocky/textures/shocky_body.png" id="3_krwu5"]
 [ext_resource type="Texture2D" uid="uid://c74dv6yvastll" path="res://entities/enemies/mitsy/textures/mitsy_wing.png" id="4_crys5"]
 [ext_resource type="PackedScene" uid="uid://ut8t6yfdgmgr" path="res://vfx/death/death.tscn" id="5_1wcji"]
@@ -352,6 +354,8 @@ _data = {
 }
 
 [node name="Shocky" type="Node2D" unique_id=713239565]
+script = ExtResource("1_garjh")
+custom_material = ExtResource("2_ho4ni")
 
 [node name="ColorRect1" type="ColorRect" parent="." unique_id=681332645]
 visible = false
@@ -377,14 +381,17 @@ texture = ExtResource("3_krwu5")
 
 [node name="Wings1" type="Sprite2D" parent="Node2D" unique_id=1016341325]
 show_behind_parent = true
+material = ExtResource("2_ho4ni")
 position = Vector2(-60.000015, -145.00002)
 texture = ExtResource("4_crys5")
 
 [node name="Body" type="Sprite2D" parent="Node2D" unique_id=1154991476]
+material = ExtResource("2_ho4ni")
 scale = Vector2(1.0000001, 1.0000001)
 texture = ExtResource("3_krwu5")
 
 [node name="Wings2" type="Sprite2D" parent="Node2D/Body" unique_id=1759210094]
+material = ExtResource("2_ho4ni")
 position = Vector2(-16.000015, -127.00001)
 scale = Vector2(0.99999994, 0.99999994)
 texture = ExtResource("4_crys5")

@@ -12,7 +12,7 @@ func _ready() -> void:
 func set_data(data):
 	entity_data = data
 	
-	var visuals = entity_data.scene.instantiate()
+	visuals = entity_data.scene.instantiate()
 	visuals.name = "Visuals"
 	add_child(visuals, true)
 	animator = visuals.get_node("AnimationPlayer")

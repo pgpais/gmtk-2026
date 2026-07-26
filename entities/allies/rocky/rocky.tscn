@@ -2,17 +2,10 @@
 
 [ext_resource type="Texture2D" uid="uid://1cgbd5b0u58d" path="res://entities/allies/rocky/textures/rocky_body.png" id="1_g0jpy"]
 [ext_resource type="Script" uid="uid://160jlf2raxkd" path="res://vfx/highlight/highlight.gd" id="1_ux635"]
+[ext_resource type="Material" uid="uid://b6spx5yk7hqcs" path="res://entities/allies/rocky/highlight_mat.tres" id="2_jd83n"]
 [ext_resource type="Texture2D" uid="uid://b3bakd2stc4r8" path="res://entities/allies/rocky/textures/rocky_hand.png" id="2_mfscw"]
-[ext_resource type="Shader" uid="uid://dlara25h5dn1b" path="res://vfx/highlight/highlighter2.gdshader" id="2_roui3"]
 [ext_resource type="Texture2D" uid="uid://fp050h5sqixf" path="res://entities/allies/rocky/textures/rocky_under.png" id="3_s5cry"]
 [ext_resource type="PackedScene" uid="uid://ut8t6yfdgmgr" path="res://vfx/death/death.tscn" id="4_unaqx"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5f3ui"]
-shader = ExtResource("2_roui3")
-shader_parameter/aura_color = Color(0.95775646, 0.81693506, 0.3923329, 1)
-shader_parameter/aura_width = 0.0
-shader_parameter/pulse_speed = 2.0
-shader_parameter/pulse_intensity = 0.5
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2lxv3"]
 
@@ -488,9 +481,10 @@ _data = {
 
 [node name="Rocky" type="Node2D" unique_id=530385872]
 script = ExtResource("1_ux635")
+custom_material = ExtResource("2_jd83n")
 
 [node name="Body" type="Sprite2D" parent="." unique_id=1394143273]
-material = SubResource("ShaderMaterial_5f3ui")
+material = ExtResource("2_jd83n")
 position = Vector2(-7.616699, -33.6167)
 texture = ExtResource("1_g0jpy")
 

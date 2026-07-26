@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://cffcdnwhx4mny"]
 
+[ext_resource type="Script" uid="uid://160jlf2raxkd" path="res://vfx/highlight/highlight.gd" id="1_dq7gy"]
 [ext_resource type="Texture2D" uid="uid://bldhma6kybf44" path="res://entities/allies/stinky/textures/stinky_frame1.png" id="1_igtjm"]
 [ext_resource type="Shader" uid="uid://bfeixepkfpf3h" path="res://vfx/entities/shocky2.gdshader" id="1_miklj"]
 [ext_resource type="Texture2D" uid="uid://cf5wrrvue8284" path="res://entities/allies/stinky/textures/stinky_frame2.png" id="2_miklj"]
+[ext_resource type="Material" uid="uid://c7u18do4ux3a4" path="res://entities/allies/stinky/highlight_mat.tres" id="2_vlown"]
 [ext_resource type="Texture2D" uid="uid://b78a0gju54qf5" path="res://entities/allies/cakey/texture/cakey_tongue_frame1.png" id="5_hdrvs"]
 [ext_resource type="Texture2D" uid="uid://drqmuc65ax0p2" path="res://entities/allies/cakey/texture/cakey_tongue_frame2.png" id="6_poanf"]
 [ext_resource type="Texture2D" uid="uid://dxgdeppwgrl3v" path="res://entities/allies/stinky/textures/stinky_under.png" id="7_nqbq2"]
@@ -264,6 +266,8 @@ _data = {
 }
 
 [node name="Stinky" type="Node2D" unique_id=398916788]
+script = ExtResource("1_dq7gy")
+custom_material = ExtResource("2_vlown")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1495430310]
 visible = false
@@ -281,6 +285,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Body" type="AnimatedSprite2D" parent="." unique_id=857491278]
+material = ExtResource("2_vlown")
 position = Vector2(-7.616699, -33.6167)
 sprite_frames = SubResource("SpriteFrames_r0xi3")
 animation = &"open_mouth"

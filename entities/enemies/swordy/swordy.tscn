@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://bjwl5ilt4my3o"]
 
+[ext_resource type="Script" uid="uid://160jlf2raxkd" path="res://vfx/highlight/highlight.gd" id="1_js2a8"]
 [ext_resource type="Shader" uid="uid://bo5rbf228opsl" path="res://vfx/shadow/shadow2.gdshader" id="1_loyrp"]
 [ext_resource type="Texture2D" uid="uid://jymnk3uw3i7s" path="res://entities/enemies/swordy/textures/swordy_body.png" id="2_b2ufs"]
+[ext_resource type="Material" uid="uid://cv8y4edjo7yqd" path="res://entities/enemies/swordy/highlight_mat.tres" id="2_js2a8"]
 [ext_resource type="Shader" uid="uid://dgdospyea384f" path="res://vfx/steel/steel_shine.gdshader" id="3_7xeji"]
 [ext_resource type="Texture2D" uid="uid://c74dv6yvastll" path="res://entities/enemies/mitsy/textures/mitsy_wing.png" id="4_o4ujd"]
 [ext_resource type="PackedScene" uid="uid://ut8t6yfdgmgr" path="res://vfx/death/death.tscn" id="5_b6rho"]
@@ -94,7 +96,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -106,7 +108,7 @@ tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
@@ -119,6 +121,30 @@ tracks/7/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Node2D/HighlightBody:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Node2D/Shadow:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_eeerv"]
@@ -314,6 +340,54 @@ tracks/2/keys = {
 "update": 1,
 "values": [false, true]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Node2D/HighlightBody:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.46666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = false
+tracks/4/path = NodePath("Node2D/HighlightBody:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.033333335, 0.33333334, 0.53333336),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.2, 0.2), Vector2(1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = false
+tracks/5/path = NodePath("Node2D/Shadow:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.033333335, 0.33333334, 0.53333336),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.2, 0.2), Vector2(1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Node2D/Shadow:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_q7dhs"]
 _data = {
@@ -325,13 +399,19 @@ _data = {
 }
 
 [node name="Mosquito" type="Node2D" unique_id=1111273269]
+script = ExtResource("1_js2a8")
+custom_material = ExtResource("2_js2a8")
 
 [node name="Node2D" type="Node2D" parent="." unique_id=1304484869]
 
 [node name="Shadow" type="Sprite2D" parent="Node2D" unique_id=1051024300]
 material = SubResource("ShaderMaterial_vgki1")
 position = Vector2(-16.000002, 0)
-scale = Vector2(1.2, 1.1)
+texture = ExtResource("2_b2ufs")
+
+[node name="HighlightBody" type="Sprite2D" parent="Node2D" unique_id=281135385]
+material = ExtResource("2_js2a8")
+position = Vector2(4, 0)
 texture = ExtResource("2_b2ufs")
 
 [node name="MosquitoHead" type="Sprite2D" parent="Node2D" unique_id=1283111344]
@@ -340,15 +420,15 @@ position = Vector2(4, 0)
 texture = ExtResource("2_b2ufs")
 
 [node name="Wings1" type="Sprite2D" parent="Node2D" unique_id=361812551]
-visible = false
 show_behind_parent = true
 position = Vector2(64, -63.999992)
+rotation = -0.20369437
 texture = ExtResource("4_o4ujd")
 flip_h = true
 
 [node name="Wings2" type="Sprite2D" parent="Node2D" unique_id=632811014]
-visible = false
 position = Vector2(106.73288, 12.083363)
+rotation = -0.20369437
 texture = ExtResource("4_o4ujd")
 flip_h = true
 flip_v = true
@@ -358,6 +438,6 @@ libraries/ = SubResource("AnimationLibrary_q7dhs")
 
 [node name="death_animation" parent="." unique_id=429524921 instance=ExtResource("5_b6rho")]
 visible = false
+modulate = Color(1, 1, 1, 0)
 scale = Vector2(3, 3)
-frame = 5
 frame_progress = 0.0

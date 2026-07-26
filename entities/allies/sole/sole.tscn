@@ -3,19 +3,12 @@
 [ext_resource type="Script" uid="uid://160jlf2raxkd" path="res://vfx/highlight/highlight.gd" id="1_4xfqm"]
 [ext_resource type="Texture2D" uid="uid://molsrus6cxpd" path="res://entities/allies/sole/textures/sole_frame1.png" id="1_e1cvy"]
 [ext_resource type="Texture2D" uid="uid://boo3um4if8t1e" path="res://entities/allies/sole/textures/sole_frame2.png" id="2_7gxn4"]
-[ext_resource type="Shader" uid="uid://dlara25h5dn1b" path="res://vfx/highlight/highlighter2.gdshader" id="2_77tds"]
+[ext_resource type="Material" uid="uid://dryw6c2cre3f1" path="res://entities/allies/sole/highlight_mat.tres" id="2_rw2ga"]
 [ext_resource type="Texture2D" uid="uid://ct57ymjksn7q0" path="res://entities/allies/sole/textures/sole_frame3.png" id="3_kvvr2"]
 [ext_resource type="Texture2D" uid="uid://b4uosmutg0ikj" path="res://entities/allies/sole/textures/sole_under.png" id="4_amvql"]
 [ext_resource type="Texture2D" uid="uid://c5jc4h7u62em2" path="res://entities/allies/sole/textures/sole_tongue.png" id="4_kvvr2"]
 [ext_resource type="Texture2D" uid="uid://bjlqmofi2uwyb" path="res://entities/allies/sole/textures/sole_tongue_tip.png" id="5_amvql"]
 [ext_resource type="PackedScene" uid="uid://ut8t6yfdgmgr" path="res://vfx/death/death.tscn" id="7_amvql"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_mxwy7"]
-shader = ExtResource("2_77tds")
-shader_parameter/aura_color = Color(0.95686275, 0.8156863, 0.39215687, 1)
-shader_parameter/aura_width = 0.0
-shader_parameter/pulse_speed = 4.0
-shader_parameter/pulse_intensity = 0.5
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_r0xi3"]
 animations = [{
@@ -343,9 +336,10 @@ _data = {
 [node name="Sole" type="Node2D" unique_id=1994398961]
 modulate = Color(1, 1, 1, 0.06666667)
 script = ExtResource("1_4xfqm")
+custom_material = ExtResource("2_rw2ga")
 
 [node name="Body" type="AnimatedSprite2D" parent="." unique_id=1722076350]
-material = SubResource("ShaderMaterial_mxwy7")
+material = ExtResource("2_rw2ga")
 position = Vector2(-7.616699, -33.6167)
 sprite_frames = SubResource("SpriteFrames_r0xi3")
 animation = &"open_mouth"

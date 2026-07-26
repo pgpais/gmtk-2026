@@ -27,8 +27,13 @@ func set_entity(entity: Entity):
 func perform_actions(action_sequence: ActionSequence = entity.entity_data.action_sequence):
 	actions = action_sequence.actions.duplicate()
 	current_action = 0
+
+	entity.set_highlight(true)
+
 	_perform_action(current_action)
 	await all_actions_finished
+
+	entity.set_highlight(false)
 
 func insert_actions(action_sequence: ActionSequence):
 	for i in range(len(action_sequence.actions)):

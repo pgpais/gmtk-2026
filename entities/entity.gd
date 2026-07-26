@@ -14,7 +14,6 @@ signal rotated
 @export var _selectable: Selectable
 
 #region node references
-#@export var sprite : Sprite2D
 @export var animator: AnimationPlayer
 #endregion
 
@@ -42,6 +41,7 @@ var is_attacking: bool = false
 var is_shock : bool = false
 #endregion
 
+var visuals: Node2D
 var current_tile: Tile = null
 @export var movement_strategy: MovementStrategy
 
@@ -223,3 +223,7 @@ func clear_overwatches():
 	#TODO:
 	print("IMPLEMENT OVERWATCH CLEARING YOU DUMBO")
 	pass
+
+func set_highlight(is_highlighted):
+	if visuals.has_method("set_highlight"):
+		visuals.set_highlight(is_highlighted)

@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://b2dnrp4hj3m34"]
 
+[ext_resource type="Script" uid="uid://160jlf2raxkd" path="res://vfx/highlight/highlight.gd" id="1_g6hyt"]
 [ext_resource type="Shader" uid="uid://bo5rbf228opsl" path="res://vfx/shadow/shadow2.gdshader" id="1_qunsc"]
 [ext_resource type="Texture2D" uid="uid://5ec6d4n5a0y8" path="res://entities/enemies/mitsy/textures/mitsy_head.png" id="1_ty75x"]
 [ext_resource type="Texture2D" uid="uid://dt6133tffhd4i" path="res://entities/enemies/mitsy/textures/mitsy_sting_frame1.png" id="2_sb5yb"]
+[ext_resource type="Material" uid="uid://djhnwu1dkybit" path="res://entities/enemies/mitsy/highlight_mat.tres" id="3_7qrwk"]
 [ext_resource type="Texture2D" uid="uid://de6501yoaomgm" path="res://entities/enemies/mitsy/textures/mitsy_sting_frame2.png" id="3_xys58"]
 [ext_resource type="Texture2D" uid="uid://dx16ft1586wul" path="res://entities/enemies/mitsy/textures/mitsy_sting_frame3.png" id="4_tkvbd"]
 [ext_resource type="Texture2D" uid="uid://c74dv6yvastll" path="res://entities/enemies/mitsy/textures/mitsy_wing.png" id="5_b88o5"]
@@ -356,6 +358,8 @@ _data = {
 }
 
 [node name="Mitsy" type="Node2D" unique_id=1111273269]
+script = ExtResource("1_g6hyt")
+custom_material = ExtResource("3_7qrwk")
 
 [node name="Node2D" type="Node2D" parent="." unique_id=1304484869]
 scale = Vector2(0.3, 0.3)
@@ -370,10 +374,12 @@ scale = Vector2(1.1, 1.1)
 texture = ExtResource("1_ty75x")
 
 [node name="Head" type="Sprite2D" parent="Node2D/Head" unique_id=1283111344]
+material = ExtResource("3_7qrwk")
 position = Vector2(-5, 16)
 texture = ExtResource("1_ty75x")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Node2D/Head" unique_id=369554190]
+material = ExtResource("3_7qrwk")
 position = Vector2(-67, 65)
 sprite_frames = SubResource("SpriteFrames_h3yei")
 animation = &"sting"
@@ -389,19 +395,23 @@ scale = Vector2(1, 1.3)
 texture = ExtResource("6_7f85r")
 
 [node name="Body" type="Sprite2D" parent="Node2D/Body" unique_id=1494786407]
+material = ExtResource("3_7qrwk")
 position = Vector2(187, -91)
 texture = SubResource("CompressedTexture2D_xwoj3")
 
 [node name="Wings1" type="Sprite2D" parent="Node2D/Body" unique_id=658744466]
+material = ExtResource("3_7qrwk")
 position = Vector2(93.60675, -151)
 texture = ExtResource("5_b88o5")
 
 [node name="Wings2" type="Sprite2D" parent="Node2D/Body" unique_id=632272828]
+material = ExtResource("3_7qrwk")
 position = Vector2(137.60675, -133)
 texture = ExtResource("5_b88o5")
 flip_h = true
 
 [node name="Fur" type="Sprite2D" parent="Node2D/Body" unique_id=1022358595]
+material = ExtResource("3_7qrwk")
 position = Vector2(76, -47)
 texture = ExtResource("6_7f85r")
 

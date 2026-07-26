@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://160jlf2raxkd" path="res://vfx/highlight/highlight.gd" id="1_awh0g"]
 [ext_resource type="Texture2D" uid="uid://dmrsl2nkjwxlo" path="res://entities/allies/cakey/texture/cakey_frame1.png" id="1_hmijt"]
 [ext_resource type="Texture2D" uid="uid://her60w3g05kk" path="res://entities/allies/cakey/texture/cakey_frame2.png" id="2_68726"]
-[ext_resource type="Shader" uid="uid://dlara25h5dn1b" path="res://vfx/highlight/highlighter2.gdshader" id="3_0gmqt"]
+[ext_resource type="Material" uid="uid://wvcncck7eob0" path="res://entities/allies/cakey/highlight_mat.tres" id="2_ffxwy"]
 [ext_resource type="Texture2D" uid="uid://b6eyxlt0lqt61" path="res://entities/allies/cakey/texture/cakey_frame4.png" id="3_7u5xo"]
 [ext_resource type="Texture2D" uid="uid://b78a0gju54qf5" path="res://entities/allies/cakey/texture/cakey_tongue_frame1.png" id="4_i3l6a"]
 [ext_resource type="Texture2D" uid="uid://drqmuc65ax0p2" path="res://entities/allies/cakey/texture/cakey_tongue_frame2.png" id="5_tyim6"]
@@ -12,13 +12,6 @@
 [ext_resource type="Texture2D" uid="uid://b8pjxo6f5muxo" path="res://entities/allies/cakey/texture/cakey_tongue_frame4.png" id="7_ajptk"]
 [ext_resource type="Texture2D" uid="uid://c3erathqibgd0" path="res://entities/allies/cakey/texture/cakey_under.png" id="8_68726"]
 [ext_resource type="PackedScene" uid="uid://ut8t6yfdgmgr" path="res://vfx/death/death.tscn" id="10_i3l6a"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0gmqt"]
-shader = ExtResource("3_0gmqt")
-shader_parameter/aura_color = Color(0.95686275, 0.8156863, 0.39215687, 1)
-shader_parameter/aura_width = 0.0
-shader_parameter/pulse_speed = 2.0
-shader_parameter/pulse_intensity = 0.5
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_r0xi3"]
 animations = [{
@@ -375,13 +368,14 @@ _data = {
 
 [node name="Cakey" type="Node2D" unique_id=398916788]
 script = ExtResource("1_awh0g")
+custom_material = ExtResource("2_ffxwy")
 
 [node name="BodyBackground" type="Sprite2D" parent="." unique_id=1667782968]
 position = Vector2(-20, -8)
 texture = ExtResource("1_7u5xo")
 
 [node name="Body" type="AnimatedSprite2D" parent="." unique_id=857491278]
-material = SubResource("ShaderMaterial_0gmqt")
+material = ExtResource("2_ffxwy")
 position = Vector2(-7.616699, -33.6167)
 sprite_frames = SubResource("SpriteFrames_r0xi3")
 animation = &"open_mouth"

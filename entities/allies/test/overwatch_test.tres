@@ -1,0 +1,97 @@
+[gd_resource type="Resource" script_class="AllyData" format=3 uid="uid://crwbqrrtvhsp"]
+
+[ext_resource type="Script" uid="uid://yyhnn4sejhrt" path="res://abilities/actions/action.gd" id="1_hecyr"]
+[ext_resource type="Script" uid="uid://dly02pjrb1d6s" path="res://entities/allies/ally_data.gd" id="1_hgfua"]
+[ext_resource type="Script" uid="uid://b2tdh6ek0lkje" path="res://abilities/actions/steps/select_random_tile_in_range_action.gd" id="2_t7pq3"]
+[ext_resource type="Script" uid="uid://5kjnatrb4mig" path="res://abilities/range/range_pattern.gd" id="3_yvedr"]
+[ext_resource type="Script" uid="uid://cs7o53c5hrvdk" path="res://abilities/range/ability_range.gd" id="4_ko7gc"]
+[ext_resource type="Script" uid="uid://pb0l2iqvcpye" path="res://abilities/actions/steps/print_action.gd" id="5_riwng"]
+[ext_resource type="Script" uid="uid://b3n7i5kgdbo7r" path="res://abilities/actions/sequential_action_strategy.gd" id="6_yeo75"]
+[ext_resource type="Script" uid="uid://chsul68onsqss" path="res://abilities/actions/steps/overwatch_action.gd" id="7_bv4od"]
+[ext_resource type="Texture2D" uid="uid://w5kafc3luitw" path="res://icon.svg" id="8_ok5dn"]
+[ext_resource type="PackedScene" uid="uid://c8nq565hfwm2v" path="res://entities/allies/sapo-dar-mao/froggo.tscn" id="9_hdcbu"]
+
+[sub_resource type="Resource" id="Resource_t6c80"]
+script = ExtResource("3_yvedr")
+area_grid = Vector2i(1, 3)
+offset = Vector2i(0, -1)
+mirror = true
+metadata/_custom_type_script = "uid://5kjnatrb4mig"
+
+[sub_resource type="Resource" id="Resource_16xue"]
+script = ExtResource("3_yvedr")
+direction = 0
+mirror = true
+metadata/_custom_type_script = "uid://5kjnatrb4mig"
+
+[sub_resource type="Resource" id="Resource_ril7k"]
+script = ExtResource("4_ko7gc")
+patterns = Array[ExtResource("3_yvedr")]([SubResource("Resource_t6c80"), SubResource("Resource_16xue")])
+metadata/_custom_type_script = "uid://cs7o53c5hrvdk"
+
+[sub_resource type="Resource" id="Resource_yhc3l"]
+script = ExtResource("2_t7pq3")
+parameter_name = "target_tile"
+selection_range = SubResource("Resource_ril7k")
+metadata/_custom_type_script = "uid://b2tdh6ek0lkje"
+
+[sub_resource type="Resource" id="Resource_nlvd2"]
+script = ExtResource("5_riwng")
+print_message = "Overwatched biatch"
+metadata/_custom_type_script = "uid://pb0l2iqvcpye"
+
+[sub_resource type="Resource" id="Resource_ropyg"]
+script = ExtResource("6_yeo75")
+actions = Array[ExtResource("1_hecyr")]([SubResource("Resource_nlvd2")])
+metadata/_custom_type_script = "uid://b3n7i5kgdbo7r"
+
+[sub_resource type="PackedScene" id="PackedScene_yr60u"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"id_paths": [PackedInt32Array()],
+"names": PackedStringArray("Node2D", "Node2D", "Sprite2D", "Sprite2D", "modulate", "scale", "texture"),
+"node_count": 2,
+"node_ids": PackedInt32Array(860379474, 1593381533),
+"node_paths": [NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 0, 0, 1073741824, 0, 3, 2, -1, 3, 4, 0, 5, 1, 6, 2, 0),
+"variants": [Color(0.89827543, 2.5268644e-06, 1.6364455e-06, 1), Vector2(0.375, 0.375), ExtResource("8_ok5dn")],
+"version": 3
+}
+
+[sub_resource type="Resource" id="Resource_a0qrx"]
+script = ExtResource("7_bv4od")
+tile_test_scene = SubResource("PackedScene_yr60u")
+action_sequence = SubResource("Resource_ropyg")
+metadata/_custom_type_script = "uid://chsul68onsqss"
+
+[sub_resource type="Resource" id="Resource_5tt6i"]
+script = ExtResource("6_yeo75")
+actions = Array[ExtResource("1_hecyr")]([SubResource("Resource_yhc3l"), SubResource("Resource_a0qrx")])
+metadata/_custom_type_script = "uid://b3n7i5kgdbo7r"
+
+[sub_resource type="Resource" id="Resource_wr30w"]
+script = ExtResource("3_yvedr")
+area_grid = Vector2i(1, 3)
+offset = Vector2i(0, -1)
+mirror = true
+metadata/_custom_type_script = "uid://5kjnatrb4mig"
+
+[sub_resource type="Resource" id="Resource_nhgc3"]
+script = ExtResource("3_yvedr")
+direction = 0
+mirror = true
+metadata/_custom_type_script = "uid://5kjnatrb4mig"
+
+[sub_resource type="Resource" id="Resource_cff7t"]
+script = ExtResource("4_ko7gc")
+patterns = Array[ExtResource("3_yvedr")]([SubResource("Resource_wr30w"), SubResource("Resource_nhgc3")])
+metadata/_custom_type_script = "uid://cs7o53c5hrvdk"
+
+[resource]
+script = ExtResource("1_hgfua")
+movement_range = SubResource("Resource_cff7t")
+scene = ExtResource("9_hdcbu")
+action_sequence = SubResource("Resource_5tt6i")
+metadata/_custom_type_script = "uid://dly02pjrb1d6s"
