@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://cs7o53c5hrvdk" path="res://abilities/range/ability_range.gd" id="5_sbs8n"]
 [ext_resource type="Script" uid="uid://cl5irg4aikin7" path="res://abilities/actions/steps/choose_closest_target_action.gd" id="6_0q1c7"]
 [ext_resource type="Script" uid="uid://b3n7i5kgdbo7r" path="res://abilities/actions/sequential_action_strategy.gd" id="6_ggbca"]
-[ext_resource type="PackedScene" uid="uid://bjwl5ilt4my3o" path="res://entities/enemies/mosquito/mosquito.tscn" id="7_1cmtn"]
+[ext_resource type="PackedScene" uid="uid://bjwl5ilt4my3o" path="res://entities/enemies/swordy/swordy.tscn" id="7_1cmtn"]
 [ext_resource type="Script" uid="uid://qec7r2kwwms4" path="res://abilities/actions/steps/dive_target_action.gd" id="7_sbs8n"]
 [ext_resource type="Script" uid="uid://4eujiecdn8cj" path="res://abilities/actions/steps/increase_attack_damage_action.gd" id="8_0q1c7"]
 [ext_resource type="Script" uid="uid://bp1u6h3jw4ia" path="res://entities/enemies/enemy_data.gd" id="8_qop4w"]

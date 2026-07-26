@@ -7,6 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://bxmeme8lwj6vn" path="res://entities/enemies/shocky/textures/shocky_body.png" id="3_krwu5"]
 [ext_resource type="Texture2D" uid="uid://c74dv6yvastll" path="res://entities/enemies/mitsy/textures/mitsy_wing.png" id="4_crys5"]
 [ext_resource type="PackedScene" uid="uid://ut8t6yfdgmgr" path="res://vfx/death/death.tscn" id="5_1wcji"]
+[ext_resource type="AudioStream" uid="uid://cscwrejwuuevx" path="res://sounds/spawn_sound_enemies.mp3" id="5_garjh"]
+[ext_resource type="AudioStream" uid="uid://bpuqdampm1gn7" path="res://sounds/shock_mosquito.mp3" id="5_sv33k"]
+[ext_resource type="AudioStream" uid="uid://bp24ibdrtjoxf" path="res://sounds/moca_voar.mp3" id="6_sv33k"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lfsaj"]
 shader = ExtResource("1_6678x")
@@ -159,6 +162,30 @@ tracks/10/keys = {
 "update": 0,
 "values": [Vector2(1, 1)]
 }
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Audio:stream")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_sv33k")]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Audio:playing")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_vs0p7"]
 resource_name = "dismiss"
@@ -198,6 +225,30 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Audio:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.06666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Audio:stream")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_garjh")]
 }
 
 [sub_resource type="Animation" id="Animation_bby8g"]
@@ -239,6 +290,30 @@ tracks/2/keys = {
 "update": 0,
 "values": [0.0, -0.6405775, 0.0, -0.6405775, 0.0, -0.6405775, 0.0, -0.6405775, 0.0, -0.6405775, 0.0]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Audio:stream")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_sv33k")]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Audio:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.06666666, 0.96999997),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
 
 [sub_resource type="Animation" id="Animation_eeh53"]
 resource_name = "shock"
@@ -279,6 +354,30 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [0.9, 0.5, 0.9]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Audio:stream")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.033126224),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_sv33k")]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Audio:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.06666668),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_67suj"]
@@ -343,6 +442,42 @@ tracks/4/keys = {
 "update": 1,
 "values": [false, true]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Audio:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.033333335),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Audio:stream")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_garjh")]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Audio:pitch_scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.03666667, 0.9266666),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.8, 1.0]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vs0p7"]
 _data = {
@@ -354,6 +489,7 @@ _data = {
 }
 
 [node name="Shocky" type="Node2D" unique_id=713239565]
+scale = Vector2(0.2, 0.2)
 script = ExtResource("1_garjh")
 custom_material = ExtResource("2_ho4ni")
 
@@ -418,3 +554,7 @@ offset_right = 250.00003
 offset_bottom = 255.00003
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="." unique_id=1057881843]
+stream = ExtResource("5_sv33k")
+max_polyphony = 2

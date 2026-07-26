@@ -1,11 +1,12 @@
 [gd_scene format=3 uid="uid://bgqy0bsk8hsc0"]
 
-[ext_resource type="Texture2D" uid="uid://djovi8m1gfydt" path="res://entities/enemies/beetle/textures/beetle_body.png" id="1_777i1"]
 [ext_resource type="Script" uid="uid://160jlf2raxkd" path="res://vfx/highlight/highlight.gd" id="1_foxku"]
 [ext_resource type="Shader" uid="uid://bo5rbf228opsl" path="res://vfx/shadow/shadow2.gdshader" id="1_oaw15"]
 [ext_resource type="Material" uid="uid://ch1k8ukpxvwl6" path="res://entities/enemies/beetle/highlight_mat.tres" id="2_5qqps"]
+[ext_resource type="Texture2D" uid="uid://bgvdksml8730p" path="res://entities/enemies/beetle/textures/BeetleBody.png" id="2_8bf7l"]
 [ext_resource type="PackedScene" uid="uid://ut8t6yfdgmgr" path="res://vfx/death/death.tscn" id="2_oaw15"]
 [ext_resource type="Texture2D" uid="uid://ylsnjc24o3i7" path="res://core/frog_king/textures/heart.png" id="3_1cyop"]
+[ext_resource type="AudioStream" uid="uid://cscwrejwuuevx" path="res://sounds/spawn_sound_enemies.mp3" id="4_8bf7l"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oaw15"]
 shader = ExtResource("1_oaw15")
@@ -52,6 +53,30 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Body1:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CPUParticles2D:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_gc2ob"]
@@ -104,33 +129,196 @@ tracks/3/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Body1:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Audio:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.06666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Audio:stream")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_8bf7l")]
+}
+
+[sub_resource type="Animation" id="Animation_8bf7l"]
+resource_name = "spawn"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DeathAnimation:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.03333333, 0.06666666, 0.16666667, 0.23333333, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [6, 5, 4, 2, 1, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DeathAnimation:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.43333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DeathAnimation:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.0046694167, 0.23333332, 0.43333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Audio:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.033333335),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Audio:stream")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_8bf7l")]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Audio:pitch_scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.03666667, 0.9266666),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.8, 1.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Body2:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.6333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Body1:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.6333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("CPUParticles2D:emitting")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.6222122),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("CPUParticles2D:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.6222122),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ff7tl"]
 _data = {
 &"RESET": SubResource("Animation_wx1lq"),
-&"dismiss": SubResource("Animation_gc2ob")
+&"dismiss": SubResource("Animation_gc2ob"),
+&"spawn": SubResource("Animation_8bf7l")
 }
 
 [sub_resource type="Gradient" id="Gradient_18x6d"]
 colors = PackedColorArray(0.7647059, 0, 0, 0, 1, 0.54509807, 0.56078434, 1)
 
 [node name="Bettle" type="Node2D" unique_id=1709891465]
+scale = Vector2(0.2, 0.2)
 script = ExtResource("1_foxku")
 custom_material = ExtResource("2_5qqps")
 
 [node name="Body1" type="Sprite2D" parent="." unique_id=878988208]
+visible = false
 material = SubResource("ShaderMaterial_oaw15")
 position = Vector2(14.999998, -4.9999995)
-texture = ExtResource("1_777i1")
+texture = ExtResource("2_8bf7l")
 
 [node name="Body2" type="Sprite2D" parent="." unique_id=1991881147]
 material = ExtResource("2_5qqps")
 scale = Vector2(0.99999994, 0.99999994)
-texture = ExtResource("1_777i1")
+texture = ExtResource("2_8bf7l")
 
 [node name="DeathAnimation" parent="." unique_id=429524921 instance=ExtResource("2_oaw15")]
 visible = false
 scale = Vector2(3, 3)
+frame = 6
 frame_progress = 0.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1817184470]
@@ -139,7 +327,7 @@ libraries/ = SubResource("AnimationLibrary_ff7tl")
 [node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=327274196]
 position = Vector2(35, 10.0000305)
 emitting = false
-amount = 2
+amount = 5
 texture = ExtResource("3_1cyop")
 lifetime = 3.0
 emission_shape = 1
@@ -154,3 +342,8 @@ angular_velocity_max = 15.0
 scale_amount_min = 0.1
 scale_amount_max = 0.1
 color_ramp = SubResource("Gradient_18x6d")
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="." unique_id=1971710826]
+stream = ExtResource("4_8bf7l")
+pitch_scale = 0.8
+max_polyphony = 2

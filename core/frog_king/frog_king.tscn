@@ -5,7 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://dscxdn0lqahrf" path="res://core/frog_king/textures/frog_king_body.png" id="2_j14ed"]
 [ext_resource type="Texture2D" uid="uid://c51amtlehm4ye" path="res://core/frog_king/textures/frog_king_mouth.png" id="3_47ip5"]
 [ext_resource type="Texture2D" uid="uid://ylsnjc24o3i7" path="res://core/frog_king/textures/heart.png" id="4_22vrh"]
-[ext_resource type="Texture2D" uid="uid://sl7tac8ad41w" path="res://core/frog_king/textures/frog_king_eyelid.png" id="4_ajn0j"]
+[ext_resource type="Texture2D" uid="uid://bmnee46kx24bm" path="res://core/frog_king/textures/up-eye.png" id="4_47ip5"]
+[ext_resource type="Texture2D" uid="uid://cbcm3d4x3ehsa" path="res://core/frog_king/textures/down-eye.png" id="5_ajn0j"]
 
 [sub_resource type="Animation" id="Animation_22vrh"]
 length = 0.001
@@ -275,13 +276,13 @@ texture = ExtResource("3_47ip5")
 visible = false
 position = Vector2(169.00002, 113.00001)
 scale = Vector2(0.6, 0.6)
-texture = ExtResource("4_ajn0j")
+texture = ExtResource("4_47ip5")
 
 [node name="EyeLid2" type="Sprite2D" parent="." unique_id=1206468117]
 visible = false
 position = Vector2(166, 418.99997)
 scale = Vector2(0.6, 0.6)
-texture = ExtResource("4_ajn0j")
+texture = ExtResource("5_ajn0j")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=1845904255]
 visible = false
