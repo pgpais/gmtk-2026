@@ -11,6 +11,7 @@ var current_count: int = 0
 
 func _ready() -> void:
 	EventBus.ally_action_performed.connect(next_tick)
+	reset()
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("move_ticker") && OS.has_feature("editor_runtime"):
