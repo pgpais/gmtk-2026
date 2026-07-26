@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://djwq2t6ffm83s" path="res://entities/enemies/enemy.gd" id="1_p7g5j"]
 [ext_resource type="Script" uid="uid://yyhnn4sejhrt" path="res://abilities/actions/action.gd" id="2_jq0pf"]
-[ext_resource type="Texture2D" uid="uid://w5kafc3luitw" path="res://icon.svg" id="2_pqhw6"]
+[ext_resource type="Texture2D" uid="uid://bwt6g7ya7jlfo" path="res://icon.png" id="2_pqhw6"]
 [ext_resource type="Script" uid="uid://c2y0chmbgrpql" path="res://abilities/movement/sequential_movement_strategy.gd" id="2_uvc0s"]
 [ext_resource type="Script" uid="uid://b3n7i5kgdbo7r" path="res://abilities/actions/sequential_action_strategy.gd" id="3_68dbu"]
 [ext_resource type="Script" uid="uid://08ngtap170yx" path="res://abilities/selectable.gd" id="3_b4nis"]
