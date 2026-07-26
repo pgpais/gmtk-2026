@@ -25,6 +25,7 @@
 [ext_resource type="Resource" uid="uid://ca6l5hbqbik1o" path="res://spawner/cycles/advanced_enemy_cycle.tres" id="12_kq58d"]
 [ext_resource type="Resource" uid="uid://escuhvj7cayu" path="res://spawner/cycles/extreme_enemy_cycle.tres" id="13_a6jrf"]
 [ext_resource type="PackedScene" uid="uid://nclqfbt55yp5" path="res://core/frog_king/frog_king_ui.tscn" id="14_w48qg"]
+[ext_resource type="PackedScene" uid="uid://cyp77abfwuni3" path="res://entities/enemies/beetle/beetle-entity.tscn" id="20_xuqvo"]
 [ext_resource type="PackedScene" uid="uid://cfij45y4gl7ps" path="res://ui/menus/end_game_menu.tscn" id="25_0odxb"]
 [ext_resource type="AudioStream" uid="uid://bo78ru4bdvmc2" path="res://sounds/bg_sound.mp3" id="27_a6jrf"]
 
@@ -102,6 +103,7 @@ position = Vector2(260, 20)
 script = ExtResource("6_4c57u")
 spawn_cycles = Array[ExtResource("4_getpj")]([ExtResource("6_getpj"), ExtResource("12_kq58d"), ExtResource("5_ryguw"), ExtResource("7_getpj"), ExtResource("10_xuqvo"), ExtResource("11_qsp4k"), ExtResource("13_a6jrf"), ExtResource("8_lswn8"), ExtResource("9_a6jrf")])
 enemy_scene = ExtResource("4_2cqfq")
+beetle_scene = ExtResource("20_xuqvo")
 ally_scene = ExtResource("7_yaehf")
 enemiesParent = NodePath("../Entities/Enemies")
 alliesParent = NodePath("../Entities/Allies")

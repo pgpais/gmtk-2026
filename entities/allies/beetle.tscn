@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://cyso55iwi7rrm"]
+
+[ext_resource type="Script" uid="uid://ik53tbaqcr7g" path="res://entities/allies/ally.gd" id="1_41cex"]
+[ext_resource type="Texture2D" path="res://icon.svg" id="2_wovow"]
+[ext_resource type="Script" uid="uid://08ngtap170yx" path="res://abilities/selectable.gd" id="3_jljd5"]
+[ext_resource type="Script" uid="uid://ddx61kskhe162" path="res://abilities/actions/action_handler.gd" id="4_07yky"]
+[ext_resource type="PackedScene" uid="uid://dw8jbt2qu4loo" path="res://ui/entities/entity_control_ui.tscn" id="5_5w4x3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tfbxm"]
+size = Vector2(280, 336)
+
+[node name="Ally" type="Node2D" unique_id=28648160 node_paths=PackedStringArray("entity_ui", "action_handler", "_selectable") groups=["allies"]]
+scale = Vector2(0.2, 0.2)
+script = ExtResource("1_41cex")
+entity_ui = NodePath("EntityControlUI")
+action_handler = NodePath("ActionHandler")
+_selectable = NodePath("Selectable")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1325808683]
+visible = false
+modulate = Color(0.8929083, 0.17015585, 1.1551381e-06, 1)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_wovow")
+
+[node name="Selectable" type="Area2D" parent="." unique_id=1588231175]
+script = ExtResource("3_jljd5")
+_isSelectable = true
+metadata/_custom_type_script = "uid://08ngtap170yx"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Selectable" unique_id=2037993044]
+position = Vector2(28, -48)
+shape = SubResource("RectangleShape2D_tfbxm")
+
+[node name="ActionHandler" type="Node" parent="." unique_id=209209378]
+script = ExtResource("4_07yky")
+metadata/_custom_type_script = "uid://ddx61kskhe162"
+
+[node name="EntityControlUI" parent="." unique_id=928674730 instance=ExtResource("5_5w4x3")]
