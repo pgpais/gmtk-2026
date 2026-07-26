@@ -17,6 +17,7 @@ func _process(delta: float) -> void:
 		next_tick()
 
 func next_tick():
+	RangeHighlighter.instance.hide_all_highlights()
 	current_count = current_count + 1
 
 	if current_count == max_count:

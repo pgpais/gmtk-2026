@@ -129,6 +129,10 @@ func hide_blocked_highlight() -> void:
 	var tween = create_tween()
 	tween.tween_method(_set_modulate, blocked_color, Color(1, 1, 1, 1), 0.1)
 
+func reset_highlight() -> void:
+	var tween = create_tween()
+	tween.tween_method(_set_modulate, modulate, Color(1, 1, 1, 1), 0.1)
+
 func select():
 	EventBus.tile_selected.emit(self)
 
