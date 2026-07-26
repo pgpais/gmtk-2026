@@ -11,6 +11,10 @@ var parameters: Dictionary
 signal action_finished
 signal all_actions_finished
 
+func _ready() -> void:
+	pass
+	#EventBus.new_cycle.connect(clean_parameters)
+
 func set_parameter(parameter_name: String, value: Variant):
 	parameters[parameter_name] = value
 	print(parameters[parameter_name])
@@ -63,8 +67,10 @@ func loopActionsFrom(index: int):
 	current_action = index-1
 
 func _finish_performing():
-	parameters = {}
 	all_actions_finished.emit()
+
+func clean_parameters():
+	parameters = {}
 
 func _exit_tree() -> void:
 	_finish_performing()

@@ -157,7 +157,7 @@ func _move(x, y):
 			return false
 		elif team == TEAMS.ENEMY:
 			#TODO CASCADING EFFECT
-			if ! target_tile.entity._move(x, y):
+			if not await target_tile.entity._move(x, y):
 				return false
 	elif will_collide_with_entity and team != target_tile.entity.team and target_tile.entity.entity_data.blocking:
 		return false
@@ -199,15 +199,15 @@ func shock(toggle):
 	modulate = Color.AQUAMARINE if toggle else Color.WHITE
 
 func shoot_at(target_tile : Tile):
-	var entity_on_tile = target_tile.entity
+	play_animation("lick")
 	
-	play_animation("leek")
+	var entity_on_tile = target_tile.entity
 	
 	if entity_on_tile:
 		if entity_on_tile.is_shock:
 			await die()
 	
-	var valid_target = team != entity_on_tile.team and entity_on_tile.team != TEAMS.BEETLE 
+	var valid_target = entity_on_tile and team != entity_on_tile.team and entity_on_tile.team != TEAMS.BEETLE 
 	
 	if valid_target:
 		await kill_other_entity(entity_on_tile)
@@ -218,7 +218,7 @@ func shoot_at(target_tile : Tile):
 		reset_power()
 		action_handler._finish_performing()
 		
-	play_animation("leek", true)
+	play_animation("RESET")
 
 func reset_power():
 	power = 1

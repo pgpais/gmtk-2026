@@ -82,7 +82,7 @@ func get_random_empty_tile(column_index: int) -> Tile:
 			
 	return null
 
-func get_tile_path(current_tile: Tile, target_tile: Tile, include_target: bool = true, include_origin: bool = true) -> Array[Tile]:
+func get_tile_path(current_tile: Tile, target_tile: Tile, include_target: bool = true, include_origin: bool = true):
 	var path = []
 	
 	var current_x = current_tile.column.column_index
@@ -121,7 +121,9 @@ func get_valid_tiles(target_type, selection_range, reference_tile, target_team) 
 
 func is_valid_tile(target_type, target_team, tile):
 	if ((target_type in [Constants.TARGET_TYPES.TILE, Constants.TARGET_TYPES.DIRECTION] and ! tile.entity)
-	or (target_type == Constants.TARGET_TYPES.ENTITY and tile.entity and tile.entity.team == target_team)):
+	or (target_type == Constants.TARGET_TYPES.ENTITY and tile.entity and tile.entity.team == target_team)
+	or target_type == Constants.TARGET_TYPES.ANY
+	or target_type == Constants.TARGET_TYPES.ANY and tile.entity and tile.entity.entity_data.hand):
 		return true
 	else:
 		return false

@@ -6,5 +6,6 @@ class_name EntityData
 @export var action_sequence: ActionSequence
 
 @export var blocking : bool = false
+@export var hand : bool = false
 
 @export var color : Color # temporary to test

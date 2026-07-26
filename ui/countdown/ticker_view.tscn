@@ -12,6 +12,7 @@ offset_left = -75.0
 offset_right = 75.0
 offset_bottom = 150.0
 grow_horizontal = 2
+mouse_filter = 2
 script = ExtResource("1_sto81")
 highlight_color = Color(1, 1, 0, 1)
 highlight_scale = Vector2(2, 2)
@@ -27,6 +28,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="Label" type="Label" parent="TickerBackground" unique_id=1141362174]
 layout_mode = 1

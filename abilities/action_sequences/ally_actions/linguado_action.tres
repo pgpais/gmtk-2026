@@ -45,6 +45,7 @@ metadata/_custom_type_script = "uid://cs7o53c5hrvdk"
 
 [sub_resource type="Resource" id="Resource_0fv0w"]
 script = ExtResource("2_gx845")
+target_type = 4
 selection_range = SubResource("Resource_sb13e")
 metadata/_custom_type_script = "uid://08b553jmywp"
 

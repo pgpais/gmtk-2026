@@ -32,6 +32,7 @@ func execute(action_handler: ActionHandler, entity: Entity, grid_map: LayerGridM
 			var selected_entity = selected_tile.get_entity()
 			var distance_to_selected_tile = grid_map.get_tile_coordinates(selected_tile) - grid_map.get_tile_coordinates(entity.current_tile)
 			var selected_direction = distance_to_selected_tile
+			action_handler.set_parameter("selected_tile", selected_tile)
 			action_handler.set_parameter("selected_entity", selected_entity)
 			action_handler.set_parameter("selected_direction", selected_direction)
 		Constants.TARGET_TYPES.DIRECTION:
@@ -39,7 +40,17 @@ func execute(action_handler: ActionHandler, entity: Entity, grid_map: LayerGridM
 			var selected_direction = distance_to_selected_tile
 			action_handler.set_parameter("selected_tile", selected_tile)
 			action_handler.set_parameter("selected_direction", selected_direction)
-
+		Constants.TARGET_TYPES.ANY:
+			var distance_to_selected_tile = grid_map.get_tile_coordinates(selected_tile) - grid_map.get_tile_coordinates(entity.current_tile)
+			var selected_direction = distance_to_selected_tile
+			action_handler.set_parameter("selected_tile", selected_tile)
+			action_handler.set_parameter("selected_direction", selected_direction)
+		Constants.TARGET_TYPES.HAND:
+			var distance_to_selected_tile = grid_map.get_tile_coordinates(selected_tile) - grid_map.get_tile_coordinates(entity.current_tile)
+			var selected_direction = distance_to_selected_tile
+			action_handler.set_parameter("selected_tile", selected_tile)
+			action_handler.set_parameter("selected_direction", selected_direction)
+			
 func set_selectable_tiles(tiles: Array[Tile], state: bool):
 	for tile in tiles:
 		if tile.selectable:

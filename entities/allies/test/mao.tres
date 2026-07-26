@@ -11,5 +11,6 @@ movement_range = ExtResource("8_hcsw8")
 team = 2
 scene = ExtResource("3_x73ch")
 action_sequence = ExtResource("1_y3iqh")
+hand = true
 color = Color(0.68243855, 0.55624294, 0, 1)
 metadata/_custom_type_script = "uid://dly02pjrb1d6s"
