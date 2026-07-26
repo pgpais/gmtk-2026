@@ -223,9 +223,9 @@ func set_selectable(is_selectable: bool):
 	_selectable.set_selectable(is_selectable)
 
 func clear_overwatches():
-	#TODO:
-	print("IMPLEMENT OVERWATCH CLEARING YOU DUMBO")
-	pass
+	var overwatches = grid_map.get_overwatches_of_entity(self)
+	for overwatch in overwatches:
+			overwatch.tile.remove_overwatch(overwatch)
 
 func set_highlight(is_highlighted):
 	if visuals.has_method("set_highlight"):

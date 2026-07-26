@@ -128,6 +128,7 @@ func add_overwatch(overwatch: Overwatch):
 	overwatches.append(overwatch)
 	
 func remove_overwatch(overwatch: Overwatch):
+	overwatch.remove_self()
 	overwatches.erase(overwatch)
 
 func check_overwatches(entity: Entity):

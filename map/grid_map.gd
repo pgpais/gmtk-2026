@@ -158,3 +158,22 @@ func make_all_tiles_not_selectable():
 	for column in columns:
 		for tile in column.tiles:
 			tile.selectable.set_selectable(false)
+
+func get_all_overwatches() -> Array[Overwatch]:
+	var overwatches: Array[Overwatch] = []
+	for column in columns:
+		for tile in column.tiles:
+			overwatches.append_array(tile.overwatches)
+	return overwatches
+
+func get_overwatches_of_entity(entity: Entity) -> Array[Overwatch]:
+	var overwatches: Array[Overwatch] = []
+	for column in columns:
+		for tile in column.tiles:
+				overwatches.append_array(tile.overwatches)
+	
+	for overwatch in overwatches:
+		if overwatch.entity == entity:
+			overwatch.remove_self()
+			overwatches.erase(overwatch)
+	return overwatches
