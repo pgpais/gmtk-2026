@@ -14,7 +14,6 @@ func execute(action_handler: ActionHandler, entity: Entity, grid_map: LayerGridM
 		set_selectable_tiles(tiles, true)
 
 	var selected_tile: Tile = await EventBus.tile_selected
-	set_selectable_tiles(tiles, false)
 
 	match target_type:
 		Constants.TARGET_TYPES.TILE:

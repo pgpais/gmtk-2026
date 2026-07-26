@@ -150,3 +150,8 @@ func _on_new_tick(count: int):
 	await column.trigger_tiles()
 	
 	EventBus.tick_triggers_finished.emit()
+
+func make_all_tiles_not_selectable():
+	for column in columns:
+		for tile in column.tiles:
+			tile.selectable.set_selectable(false)

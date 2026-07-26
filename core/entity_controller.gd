@@ -134,6 +134,8 @@ func _on_tile_selected(tile: Tile) -> void:
 	target_tile_changed.emit(tile)
 	
 	range_highlighter.hide_highlight_tiles(range_tiles)
+	
+	grid_map.make_all_tiles_not_selectable()
 		
 	EventBus.player_action_performed.emit()
 
