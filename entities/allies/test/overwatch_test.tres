@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://b3n7i5kgdbo7r" path="res://abilities/actions/sequential_action_strategy.gd" id="6_yeo75"]
 [ext_resource type="Script" uid="uid://chsul68onsqss" path="res://abilities/actions/steps/overwatch_action.gd" id="7_bv4od"]
 [ext_resource type="Texture2D" uid="uid://w5kafc3luitw" path="res://icon.svg" id="8_ok5dn"]
-[ext_resource type="PackedScene" uid="uid://c8nq565hfwm2v" path="res://entities/allies/sapo-dar-mao/froggo.tscn" id="9_hdcbu"]
+[ext_resource type="PackedScene" uid="uid://c8nq565hfwm2v" path="res://entities/allies/froggo/froggo.tscn" id="9_hdcbu"]
 
 [sub_resource type="Resource" id="Resource_t6c80"]
 script = ExtResource("3_yvedr")

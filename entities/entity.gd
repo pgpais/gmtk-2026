@@ -66,8 +66,8 @@ func set_tile(tile):
 func set_new_position(position):
 	global_position = position
 
-	if animator.has_animation("move"):
-		animator.play("move")
+	#if animator.has_animation("move"):
+	#	animator.play("move")
 
 func move(tile_path):
 	if animator.has_animation("move"):
@@ -130,6 +130,8 @@ func _move(x, y):
 	new_tile_index = current_tile.tile_index + y
 	
 	if (new_layer_index < 0):
+		if team == TEAMS.BEETLE:
+			EventBus.game_ended.emit(true)
 		# Next to frog king
 		# TODO: play frog king attack animation
 		EventBus.enemy_attacked_frog_king.emit(self)
@@ -150,13 +152,15 @@ func _move(x, y):
 	
 	var will_collide_with_entity : bool = not target_tile.entity == null
 	
-	if will_collide_with_entity and team == target_tile.entity:
+	if will_collide_with_entity and team == target_tile.entity.team:
 		if team == TEAMS.ALLY:
 			return false
 		elif team == TEAMS.ENEMY:
 			#TODO CASCADING EFFECT
 			if ! target_tile.entity._move(x, y):
 				return false
+	elif will_collide_with_entity and team != target_tile.entity.team and target_tile.entity.entity_data.blocking:
+		return false
 	
 	await _move_to_tile(target_tile)
 	
@@ -186,13 +190,15 @@ func rotate_to_direction(direction_vector : Vector2):
 	
 	rotated.emit() # to accomodate the possibility of only finishing when animation finishes
 
+func reset_direction():
+	rotation = 0
+
 func shock(toggle):
 	is_shock = toggle
 	play_animation("shock")
 	modulate = Color.AQUAMARINE if toggle else Color.WHITE
 
-func shoot_at(tile_position : Vector2):
-	var target_tile = grid_map.get_tile(tile_position.x, tile_position.y)
+func shoot_at(target_tile : Tile):
 	var entity_on_tile = target_tile.entity
 	
 	play_animation("leek")

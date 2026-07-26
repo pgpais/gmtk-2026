@@ -24,7 +24,7 @@ func get_parameter(parameter_name: String):
 func set_entity(entity: Entity):
 	self.entity = entity
 
-func perform_actions(action_sequence: ActionSequence = entity.entity_data.action_sequence):
+func perform_actions(action_sequence: ActionSequence = entity.entity_data.action_sequence):		
 	actions = action_sequence.actions.duplicate()
 	current_action = 0
 
