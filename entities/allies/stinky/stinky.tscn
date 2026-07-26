@@ -475,7 +475,6 @@ offsets = PackedFloat32Array(0, 0.9950495)
 colors = PackedColorArray(0.5411765, 0.84705883, 0.6784314, 1, 1, 1, 1, 0.3019608)
 
 [node name="Stinky" type="Node2D" unique_id=398916788]
-scale = Vector2(0.2, 0.2)
 script = ExtResource("1_dq7gy")
 custom_material = ExtResource("2_vlown")
 

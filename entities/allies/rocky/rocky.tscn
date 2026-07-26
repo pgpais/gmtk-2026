@@ -576,7 +576,6 @@ colors = PackedColorArray(0.5411765, 0.84705883, 0.6784314, 1, 1, 1, 1, 0.301960
 
 [node name="Rocky" type="Node2D" unique_id=530385872]
 position = Vector2(-0.99999994, 19.000002)
-scale = Vector2(0.2, 0.2)
 script = ExtResource("1_ux635")
 custom_material = ExtResource("2_jd83n")
 

@@ -489,7 +489,6 @@ _data = {
 }
 
 [node name="Shocky" type="Node2D" unique_id=713239565]
-scale = Vector2(0.2, 0.2)
 script = ExtResource("1_garjh")
 custom_material = ExtResource("2_ho4ni")
 
