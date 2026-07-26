@@ -34,6 +34,7 @@ var range_tiles: Array[Tile]
 
 func _ready() -> void:
 	EventBus.tick_triggers_finished.connect(_change_to_action_selection_state)
+	EventBus.ticker_new_tick.connect(_disable_all_selections)
 
 	EventBus.request_highlight.connect(_change_to_selection_state)
 	EventBus.movement_needed.connect(_move_control_entity_to_target_tile)
@@ -78,6 +79,12 @@ func _change_to_tile_selection_state() -> void:
 	print("change to tile selection state")
 	state = EntityControllerState.TileSelection
 	
+	for selectable_entity in selectable_entities:
+		if selectable_entity:
+			selectable_entity.set_selectable(false)
+
+	selectable_entities = []
+	
 func _change_to_ally_selection_state() -> void:
 	print("change to ally selection state")
 	state = EntityControllerState.AllySelection
@@ -106,6 +113,7 @@ func _on_entity_selected(entity: Entity) -> void:
 	if state == EntityControllerState.WaitingNextAction:
 		if entity.team == Entity.TEAMS.NEUTRAL:
 			entity.activate(true)
+			entity.set_selectable(false)
 			
 		elif entity.team == Entity.TEAMS.ALLY:
 			EventBus.ally_selected.emit(entity)
@@ -153,3 +161,8 @@ func _cancel_interaction() -> void:
 	range_highlighter.hide_highlight_tiles(range_tiles)
 
 	state = EntityControllerState.WaitingNextAction
+
+func _disable_all_selections(count: int) -> void:
+	var allies = get_tree().get_nodes_in_group("allies")
+	for ally in allies:
+		ally.set_selectable(false)

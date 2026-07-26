@@ -264,6 +264,7 @@ func play_animation(animation, backwards = false):
 
 func set_selectable(is_selectable: bool):
 	_selectable.set_selectable(is_selectable)
+	set_highlight(is_selectable)
 
 func clear_overwatches():
 	var overwatches = grid_map.get_overwatches_of_entity(self)
