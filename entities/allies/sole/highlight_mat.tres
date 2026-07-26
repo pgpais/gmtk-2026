@@ -3,6 +3,7 @@
 [ext_resource type="Shader" uid="uid://dlara25h5dn1b" path="res://vfx/highlight/highlighter2.gdshader" id="1_nralg"]
 
 [resource]
+resource_local_to_scene = true
 shader = ExtResource("1_nralg")
 shader_parameter/aura_color = Color(0.95686275, 0.8156863, 0.39215687, 1)
 shader_parameter/aura_width = 0.0
