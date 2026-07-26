@@ -25,18 +25,18 @@ func execute(action_handler: ActionHandler, entity: Entity, grid_map: LayerGridM
 	match target_type:
 		Constants.TARGET_TYPES.TILE:
 			var distance_to_selected_tile = grid_map.get_tile_coordinates(selected_tile) - grid_map.get_tile_coordinates(entity.current_tile)
-			var selected_direction = distance_to_selected_tile.normalized()
+			var selected_direction = distance_to_selected_tile
 			action_handler.set_parameter("selected_tile", selected_tile)
 			action_handler.set_parameter("selected_direction", selected_direction)
 		Constants.TARGET_TYPES.ENTITY:
 			var selected_entity = selected_tile.get_entity()
 			var distance_to_selected_tile = grid_map.get_tile_coordinates(selected_tile) - grid_map.get_tile_coordinates(entity.current_tile)
-			var selected_direction = distance_to_selected_tile.normalized()
+			var selected_direction = distance_to_selected_tile
 			action_handler.set_parameter("selected_entity", selected_entity)
 			action_handler.set_parameter("selected_direction", selected_direction)
 		Constants.TARGET_TYPES.DIRECTION:
 			var distance_to_selected_tile = grid_map.get_tile_coordinates(selected_tile) - grid_map.get_tile_coordinates(entity.current_tile)
-			var selected_direction = distance_to_selected_tile.normalized()
+			var selected_direction = distance_to_selected_tile
 			action_handler.set_parameter("selected_tile", selected_tile)
 			action_handler.set_parameter("selected_direction", selected_direction)
 

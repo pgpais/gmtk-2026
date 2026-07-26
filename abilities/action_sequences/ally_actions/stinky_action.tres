@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="SequentialActionStrategy" format=3 uid="uid://ck3crnp01t45f"]
+
+[ext_resource type="Script" uid="uid://yyhnn4sejhrt" path="res://abilities/actions/action.gd" id="1_mqy4x"]
+[ext_resource type="Resource" uid="uid://bkpumi3iquptc" path="res://abilities/action_sequences/ally_actions/stinky_action_after_move.tres" id="2_5h1sm"]
+[ext_resource type="Script" uid="uid://4dukklpvpmfp" path="res://abilities/actions/steps/bank_action.gd" id="3_lnido"]
+[ext_resource type="Script" uid="uid://b3n7i5kgdbo7r" path="res://abilities/actions/sequential_action_strategy.gd" id="4_x8it6"]
+
+[sub_resource type="Resource" id="Resource_p13c6"]
+script = ExtResource("3_lnido")
+actions = ExtResource("2_5h1sm")
+metadata/_custom_type_script = "uid://4dukklpvpmfp"
+
+[resource]
+script = ExtResource("4_x8it6")
+actions = Array[ExtResource("1_mqy4x")]([SubResource("Resource_p13c6")])
+metadata/_custom_type_script = "uid://b3n7i5kgdbo7r"
