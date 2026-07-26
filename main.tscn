@@ -132,5 +132,6 @@ anchor_mode = 0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1942554994]
 stream = ExtResource("27_a6jrf")
+autoplay = true
 
 [editable path="FrogKing"]
