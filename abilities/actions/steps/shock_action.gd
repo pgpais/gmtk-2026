@@ -5,5 +5,8 @@ extends Action
 @export var toggle: bool = false
 
 func execute(action_handler: ActionHandler, entity: Entity, grid_map: LayerGridMap):
-	var toggle: bool = action_handler.get_parameter(parameter_name)
+	var parameter = action_handler.get_parameter(parameter_name)
+	if parameter is bool:
+		toggle = parameter
+	
 	entity.shock(toggle)
