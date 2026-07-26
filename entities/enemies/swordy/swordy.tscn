@@ -149,9 +149,46 @@ tracks/9/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath(".:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("death_animation:modulate")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Node2D/HighlightBody:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_eeerv"]
 resource_name = "dismiss"
+length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -211,6 +248,18 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [ExtResource("5_js2a8")]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("death_animation:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_xqrtd"]
@@ -291,6 +340,7 @@ tracks/5/keys = {
 
 [sub_resource type="Animation" id="Animation_aog04"]
 resource_name = "spawn"
+length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -427,6 +477,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [false, true]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Node2D/HighlightBody:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_q7dhs"]
 _data = {
@@ -449,6 +511,7 @@ position = Vector2(-16.000002, 0)
 texture = ExtResource("2_b2ufs")
 
 [node name="HighlightBody" type="Sprite2D" parent="Node2D" unique_id=281135385]
+visible = false
 material = ExtResource("2_js2a8")
 position = Vector2(4, 0)
 texture = ExtResource("2_b2ufs")
@@ -461,13 +524,13 @@ texture = ExtResource("2_b2ufs")
 [node name="Wings1" type="Sprite2D" parent="Node2D" unique_id=361812551]
 show_behind_parent = true
 position = Vector2(64, -63.999992)
-rotation = -0.20369437
+rotation = -0.3907847
 texture = ExtResource("4_o4ujd")
 flip_h = true
 
 [node name="Wings2" type="Sprite2D" parent="Node2D" unique_id=632811014]
 position = Vector2(106.73288, 12.083363)
-rotation = -0.20369437
+rotation = -0.3907847
 texture = ExtResource("4_o4ujd")
 flip_h = true
 flip_v = true
@@ -477,10 +540,11 @@ libraries/ = SubResource("AnimationLibrary_q7dhs")
 
 [node name="death_animation" parent="." unique_id=429524921 instance=ExtResource("5_b6rho")]
 visible = false
-modulate = Color(1, 1, 1, 0)
 scale = Vector2(3, 3)
 frame_progress = 0.0
 
 [node name="Audio" type="AudioStreamPlayer2D" parent="." unique_id=246489762]
+visible = false
 stream = ExtResource("5_56sm4")
+pitch_scale = 0.8
 max_polyphony = 2

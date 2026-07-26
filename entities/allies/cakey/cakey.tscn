@@ -283,6 +283,18 @@ tracks/16/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("BodyBackground:visible")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_ld50r"]
 resource_name = "bubbles"
@@ -305,6 +317,18 @@ tracks/1/path = NodePath("Body:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BodyBackground:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -817,6 +841,18 @@ tracks/7/keys = {
 "update": 1,
 "values": [true, false]
 }
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("BodyBackground:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kkaqq"]
 _data = {
@@ -841,6 +877,7 @@ script = ExtResource("1_awh0g")
 custom_material = ExtResource("2_ffxwy")
 
 [node name="BodyBackground" type="Sprite2D" parent="." unique_id=1667782968]
+visible = false
 position = Vector2(-20, -8)
 texture = ExtResource("1_7u5xo")
 
@@ -881,7 +918,6 @@ texture = ExtResource("8_68726")
 [node name="DeathAnimation" parent="." unique_id=429524921 instance=ExtResource("10_i3l6a")]
 visible = false
 scale = Vector2(3, 3)
-frame = 1
 frame_progress = 0.0
 
 [node name="Audio" type="AudioStreamPlayer2D" parent="." unique_id=1580775831]
