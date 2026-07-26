@@ -7,43 +7,73 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pbtxm"]
 bg_color = Color(1, 1, 1, 1)
+skew = Vector2(0.1, 0.05)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0, 0, 0, 1)
-expand_margin_left = 20.0
-expand_margin_right = 20.0
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 10
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+shadow_color = Color(0, 0, 0, 0.5882353)
+shadow_size = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uqein"]
 bg_color = Color(0.8819366, 0.8819366, 0.88193655, 1)
+skew = Vector2(0.1, 0.05)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0, 0, 0, 1)
-expand_margin_left = 20.0
-expand_margin_right = 20.0
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 10
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+shadow_color = Color(0, 0, 0, 0.5882353)
+shadow_size = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1oohf"]
 bg_color = Color(0.641934, 0.641934, 0.641934, 1)
+skew = Vector2(0.1, 0.05)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0, 0, 0, 1)
-expand_margin_left = 20.0
-expand_margin_right = 20.0
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 10
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+shadow_color = Color(0, 0, 0, 0.5882353)
+shadow_size = 10
 
-[node name="EntityControlUI" type="Control" unique_id=928674730 node_paths=PackedStringArray("move_button", "action_button", "dismiss_button", "h_box")]
+[node name="EntityControlUI" type="Control" unique_id=928674730 node_paths=PackedStringArray("move_button", "action_button", "dismiss_button", "v_box")]
 z_index = 100
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_hwwo4")
-move_button = NodePath("HBoxContainer/MoveButton")
-action_button = NodePath("HBoxContainer/ActionButton")
-dismiss_button = NodePath("HBoxContainer/DismissButton")
-h_box = NodePath("HBoxContainer")
+move_button = NodePath("VBoxContainer/MoveButton")
+action_button = NodePath("VBoxContainer/ActionButton")
+dismiss_button = NodePath("VBoxContainer/DismissButton")
+v_box = NodePath("VBoxContainer")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=807966718]
 visible = false
@@ -52,25 +82,27 @@ offset_right = 40.0
 offset_bottom = 40.0
 texture = SubResource("PlaceholderTexture2D_tfbxm")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=289241781]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=878502424]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -593.0
-offset_top = -72.5
-offset_right = 593.0
-offset_bottom = 72.5
+offset_left = -250.00018
+offset_top = -300.0
+offset_right = 250.00018
+offset_bottom = 300.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(607, 73.5)
 theme_override_constants/separation = 60
 
-[node name="MoveButton" type="Button" parent="HBoxContainer" unique_id=311205509]
+[node name="MoveButton" type="Button" parent="VBoxContainer" unique_id=311205509]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.0627451, 0.13333334, 0.1254902, 1)
+theme_override_colors/font_outline_color = Color(0.0627451, 0.13333334, 0.1254902, 1)
 theme_override_fonts/font = ExtResource("2_dxsxo")
 theme_override_font_sizes/font_size = 120
 theme_override_styles/normal = SubResource("StyleBoxFlat_pbtxm")
@@ -78,27 +110,31 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_uqein")
 theme_override_styles/hover = SubResource("StyleBoxFlat_1oohf")
 text = "MOVE"
 
-[node name="DismissButton" type="Button" parent="HBoxContainer" unique_id=848494835]
+[node name="DismissButton" type="Button" parent="VBoxContainer" unique_id=848494835]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.0627451, 0.13333334, 0.1254902, 1)
+theme_override_colors/font_outline_color = Color(0.0627451, 0.13333334, 0.1254902, 1)
 theme_override_fonts/font = ExtResource("2_dxsxo")
 theme_override_font_sizes/font_size = 120
 theme_override_styles/normal = SubResource("StyleBoxFlat_pbtxm")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_uqein")
 theme_override_styles/hover = SubResource("StyleBoxFlat_1oohf")
-text = "Dismiss"
+text = "DISMISS"
 
-[node name="ActionButton" type="Button" parent="HBoxContainer" unique_id=1206398211]
+[node name="ActionButton" type="Button" parent="VBoxContainer" unique_id=1206398211]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.0627451, 0.13333334, 0.1254902, 1)
+theme_override_colors/font_outline_color = Color(0.0627451, 0.13333334, 0.1254902, 1)
 theme_override_fonts/font = ExtResource("2_dxsxo")
 theme_override_font_sizes/font_size = 120
 theme_override_styles/normal = SubResource("StyleBoxFlat_pbtxm")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_uqein")
 theme_override_styles/hover = SubResource("StyleBoxFlat_1oohf")
-text = "Action"
+text = "ACTION"
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="." unique_id=1099613994]
+[node name="VBoxContainer3" type="VBoxContainer" parent="." unique_id=1914364409]
 visible = false
 layout_mode = 0
 offset_left = -953.45996
@@ -108,14 +144,14 @@ offset_bottom = 244.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 theme_override_constants/separation = 4
 
-[node name="ReferenceRect" type="ReferenceRect" parent="HBoxContainer3" unique_id=1384727909]
+[node name="ReferenceRect" type="ReferenceRect" parent="VBoxContainer3" unique_id=1384727909]
 layout_mode = 2
 size_flags_horizontal = 6
 
-[node name="ReferenceRect2" type="ReferenceRect" parent="HBoxContainer3" unique_id=462335718]
+[node name="ReferenceRect2" type="ReferenceRect" parent="VBoxContainer3" unique_id=462335718]
 layout_mode = 2
 size_flags_horizontal = 6
 
-[node name="ReferenceRect3" type="ReferenceRect" parent="HBoxContainer3" unique_id=1648060888]
+[node name="ReferenceRect3" type="ReferenceRect" parent="VBoxContainer3" unique_id=1648060888]
 layout_mode = 2
 size_flags_horizontal = 6

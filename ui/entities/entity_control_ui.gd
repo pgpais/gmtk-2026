@@ -6,7 +6,7 @@ extends Control
 
 @export var dismiss_button: Button
 
-@export var h_box : HBoxContainer
+@export var v_box : VBoxContainer
 
 var is_visible: bool = false
 
@@ -61,19 +61,19 @@ func trigger_show():
 
 	show()
 	
-	h_box.pivot_offset = h_box.size / 2
-	h_box.scale = Vector2(0.1, 0.1) 
+	v_box.pivot_offset = v_box.size / 2
+	v_box.scale = Vector2(0.1, 0.1) 
 	
 	var tween = create_tween()
 	tween.set_parallel(true)
 	
-	tween.tween_property(h_box, "scale", Vector2(1, 1), 0.2) \
+	tween.tween_property(v_box, "scale", Vector2(1, 1), 0.2) \
 		.set_trans(Tween.TRANS_BACK) \
 		.set_ease(Tween.EASE_OUT)
 		
 	var target_position = global_position + Vector2(0, 20) 
 	
-	tween.tween_property(h_box, "global_position", target_position, 0.2) \
+	tween.tween_property(v_box, "global_position", target_position, 0.2) \
 		.set_trans(Tween.TRANS_SINE) \
 		.set_ease(Tween.EASE_OUT)
 
