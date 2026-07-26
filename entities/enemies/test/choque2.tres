@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://d4afbfntventh" path="res://abilities/actions/steps/branch_action.gd" id="6_nu1cu"]
 [ext_resource type="Script" uid="uid://cchuyhgd0lsne" path="res://abilities/movement/basic_movement_strategy.gd" id="7_sqda1"]
 [ext_resource type="Script" uid="uid://b2ia62h5b18fg" path="res://abilities/actions/steps/move_action.gd" id="8_cnttq"]
-[ext_resource type="PackedScene" uid="uid://bjwl5ilt4my3o" path="res://entities/enemies/mosquito/mosquito.tscn" id="9_1663h"]
+[ext_resource type="PackedScene" uid="uid://bjwl5ilt4my3o" path="res://entities/enemies/swordy/swordy.tscn" id="9_1663h"]
 [ext_resource type="Script" uid="uid://bp1u6h3jw4ia" path="res://entities/enemies/enemy_data.gd" id="10_a5ccw"]
 
 [sub_resource type="Resource" id="Resource_tfbxm"]

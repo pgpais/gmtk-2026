@@ -12,11 +12,12 @@
 [ext_resource type="Script" uid="uid://b3n7i5kgdbo7r" path="res://abilities/actions/sequential_action_strategy.gd" id="12_qdce8"]
 [ext_resource type="Script" uid="uid://d4afbfntventh" path="res://abilities/actions/steps/branch_action.gd" id="13_ntww4"]
 [ext_resource type="Script" uid="uid://lmqlhagm40y7" path="res://abilities/actions/steps/for_action.gd" id="14_0jqe4"]
-[ext_resource type="PackedScene" uid="uid://bjwl5ilt4my3o" path="res://entities/enemies/mosquito/mosquito.tscn" id="14_pf323"]
+[ext_resource type="PackedScene" uid="uid://bjwl5ilt4my3o" path="res://entities/enemies/swordy/swordy.tscn" id="14_pf323"]
 [ext_resource type="Script" uid="uid://bp1u6h3jw4ia" path="res://entities/enemies/enemy_data.gd" id="15_7rmxr"]
 
 [sub_resource type="Resource" id="Resource_82xsv"]
 script = ExtResource("2_p75ue")
+check_height = 4
 metadata/_custom_type_script = "uid://b4g8cg1qh1qer"
 
 [sub_resource type="Resource" id="Resource_ryguw"]
