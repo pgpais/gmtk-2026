@@ -25,7 +25,6 @@ scale = Vector2(0.2, 0.2)
 script = ExtResource("1_p7g5j")
 action_sequence = SubResource("Resource_mmojd")
 action_handler = NodePath("ActionHandler")
-_selectable = NodePath("Selectable")
 movement_strategy = SubResource("Resource_b4nis")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1325808683]

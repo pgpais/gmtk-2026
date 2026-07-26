@@ -63,6 +63,7 @@ func loopActionsFrom(index: int):
 	current_action = index-1
 
 func _finish_performing():
+	parameters = {}
 	all_actions_finished.emit()
 
 func _exit_tree() -> void:

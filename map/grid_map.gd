@@ -106,6 +106,27 @@ func get_tile_path(current_tile: Tile, target_tile: Tile, include_target: bool =
 	
 	return path
 
+func get_valid_tiles(target_type, selection_range, reference_tile, target_team) -> Array[Tile]:
+	var range_tiles = []
+	var tiles = []
+	
+	if selection_range != null:
+		range_tiles = get_tiles_in_range(selection_range, reference_tile)
+		
+	for tile in range_tiles:
+		if is_valid_tile(target_type, target_team, tile):
+			tiles.append(tile)
+
+	return tiles
+
+func is_valid_tile(target_type, target_team, tile):
+	if ((target_type in [Constants.TARGET_TYPES.TILE, Constants.TARGET_TYPES.DIRECTION] and ! tile.entity)
+	or (target_type == Constants.TARGET_TYPES.ENTITY and tile.entity and tile.entity.team == target_team)):
+		return true
+	else:
+		return false
+	
+
 func get_entities_in_column(column_index : int) -> Array[Entity]:
 	var entities : Array[Entity] = []
 	for tile : Tile in columns[column_index].tiles:

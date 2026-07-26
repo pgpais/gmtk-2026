@@ -76,12 +76,12 @@ func spawn_from_sequence(spawn_sequence : SpawnSequence):
 					if ! tile:
 						break
 					
-					var hidden = randf_range(0, 1) < spawn_data.hidden_probability
+					var start_hidden  = randf_range(0, 1) < spawn_data.hidden_probability
 					
 					if entity_data.team == Entity.TEAMS.ENEMY:
-						_spawn_enemy(entity_data, tile, hidden)
+						_spawn_enemy(entity_data, tile, start_hidden)
 					else:
-						_spawn_ally(entity_data, tile, hidden)
+						_spawn_ally(entity_data, tile, start_hidden)
 					
 					spawn_count[i] += 1
 					
@@ -105,18 +105,14 @@ func spawn_enemies(n):
 		if tile:		
 			_spawn_enemy(enemy_data, tile)
 
-func _spawn_enemy(enemy_data: EnemyData, tile: Tile, hidden : bool = false):
+func _spawn_enemy(enemy_data: EnemyData, tile: Tile, start_hidden  : bool = false):
 	var enemy : Enemy = enemy_scene.instantiate()
 	
 	enemiesParent.add_child(enemy, true)
-	enemy.set_data(enemy_data)
+	enemy.set_data(enemy_data, start_hidden  )
 	enemy.set_tile(tile)
 	enemy.set_new_position(tile.global_position)
 	tile.set_entity(enemy)
-	
-	if hidden:
-		pass
-		#TODO some frogs spawn hidden (you do not know what they are)
 	
 	enemy.modulate = enemy_data.color # to test
 
@@ -130,7 +126,7 @@ func spawn_allies(n):
 		if tile:
 			_spawn_ally(ally_data, tile)
 
-func _spawn_ally(ally_data: AllyData, tile: Tile, hidden : bool = false):
+func _spawn_ally(ally_data: AllyData, tile: Tile, start_hidden  : bool = false):
 	var ally : Ally = ally_scene.instantiate()
 	
 	alliesParent.add_child(ally, true)
@@ -139,7 +135,7 @@ func _spawn_ally(ally_data: AllyData, tile: Tile, hidden : bool = false):
 	ally.set_new_position(tile.global_position)
 	tile.set_entity(ally)
 	
-	ally.modulate = Color(ally_data.color.r, ally_data.color.g, ally_data.color.b, 0.5) # to test
+	#ally.modulate = Color(ally_data.color.r, ally_data.color.g, ally_data.color.b, 0.5) # to test
 
 func dismiss_allies():
 	for column_index in grid_map.game_settings.map_columns:

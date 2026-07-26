@@ -41,18 +41,22 @@ func _ready() -> void:
 	EventBus.entity_selected.connect(_on_entity_selected)
 	EventBus.tile_selected.connect(_on_tile_selected)
 	
-func _change_to_selection_state(target_type, selection_range, reference_tile) -> void:
-	if selection_range != null:
-		range_tiles = grid_map.get_tiles_in_range(selection_range, reference_tile)
-		
-		for tile in range_tiles:
-			if ((target_type in [Constants.TARGET_TYPES.TILE, Constants.TARGET_TYPES.DIRECTION] and ! tile.entity)
-			or (target_type == Constants.TARGET_TYPES.ENTITY and tile.entity)):
-				tile.selectable.set_selectable(true)
+func _change_to_selection_state(target_type, selection_range, reference_tile, team, highlight) -> void:
+	var range_tiles = grid_map.get_tiles_in_range(selection_range, reference_tile)
+	var valid_tiles = grid_map.get_valid_tiles(target_type, selection_range, reference_tile, team)
+	
+	if valid_tiles.is_empty():
+		return
+	
+	for tile in range_tiles:
+		if tile in valid_tiles:
+			tile.selectable.set_selectable(true)
+			if highlight:
 				range_highlighter.highlight_tile(tile, true)
-			else:
+		else:
+			if highlight:
 				range_highlighter.darken_tile(tile)
-
+	
 	for selectable_entity in selectable_entities:
 		if selectable_entity:
 			selectable_entity.set_selectable(false)
@@ -65,6 +69,8 @@ func _change_to_selection_state(target_type, selection_range, reference_tile) ->
 		_change_to_ally_selection_state()
 	elif target_type == Constants.ENTITY_TYPES.ENEMY:
 		_change_to_enemy_selection_state()
+		
+	return true
 
 func _move_control_entity_to_target_tile():
 	var tile_path: Array[Tile] = grid_map.get_path_of_tiles(control_entity.current_tile, target_tile)
