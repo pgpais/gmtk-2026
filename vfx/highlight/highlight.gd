@@ -12,5 +12,6 @@ func set_highlight(is_highlighted):
 		# custom_material.shader_parameter.aura_width = 0
 	else:
 		custom_material.set_shader_parameter("aura_width", 16)
-		audioPlayer.play()
+		if audioPlayer:
+			audioPlayer.play()
 		# custom_material.shader_parameter.aura_width = 4
