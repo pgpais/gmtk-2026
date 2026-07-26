@@ -387,7 +387,6 @@ tracks/2/keys = {
 [sub_resource type="Animation" id="Animation_dfrpq"]
 resource_name = "dismiss"
 length = 0.56666666
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -928,7 +927,6 @@ tracks/9/keys = {
 
 [sub_resource type="Animation" id="Animation_7u5xo"]
 resource_name = "under"
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1057,6 +1055,7 @@ offsets = PackedFloat32Array(0, 0.9950495)
 colors = PackedColorArray(0.5411765, 0.84705883, 0.6784314, 1, 1, 1, 1, 0.3019608)
 
 [node name="Cakey" type="Node2D" unique_id=398916788]
+position = Vector2(-0.99999994, 19.000002)
 script = ExtResource("1_awh0g")
 custom_material = ExtResource("2_ffxwy")
 

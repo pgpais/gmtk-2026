@@ -257,7 +257,6 @@ tracks/3/keys = {
 [sub_resource type="Animation" id="Animation_hpl6f"]
 resource_name = "hide_idle"
 length = 3.0000000000000004
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -310,7 +309,6 @@ tracks/3/keys = {
 [sub_resource type="Animation" id="Animation_0moa5"]
 resource_name = "idle"
 length = 3.0000000000000004
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -711,6 +709,8 @@ offsets = PackedFloat32Array(0, 0.9950495)
 colors = PackedColorArray(0.5411765, 0.84705883, 0.6784314, 1, 1, 1, 1, 0.3019608)
 
 [node name="Rocky" type="Node2D" unique_id=530385872]
+modulate = Color(1, 1, 1, 0.06666666)
+position = Vector2(-0.99999994, 19.000002)
 script = ExtResource("1_ux635")
 custom_material = ExtResource("2_jd83n")
 

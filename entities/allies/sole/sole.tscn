@@ -691,6 +691,8 @@ offsets = PackedFloat32Array(0, 0.9950495)
 colors = PackedColorArray(0.5411765, 0.84705883, 0.6784314, 1, 1, 1, 1, 0.3019608)
 
 [node name="Sole" type="Node2D" unique_id=1994398961]
+modulate = Color(1, 1, 1, 0.06666666)
+position = Vector2(-0.99999994, 19.000002)
 script = ExtResource("1_4xfqm")
 custom_material = ExtResource("2_rw2ga")
 
